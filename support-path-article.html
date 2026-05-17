@@ -448,6 +448,8 @@
         
         const tool = cadToolsData[toolIndex];
         const name = tool.ToolName;
+        
+        // Read directly from editable inputs
         const file = inputDllFile.value.trim() || tool.DllName;
         const rawPath = inputDllPath.value.trim() || tool.DllPath;
         
@@ -457,40 +459,42 @@
         const safePath = escapeLispPath(rawPath);
         
         return `;; ==========================================================================
-;; AutoLoad & Shortcut Command Generator by ViDLab
-;; Description: Auto-loads C# .NET DLL and registers custom shortcut alias.
-;; Target Tool: ${name}
-;; File Path  : ${safePath}
+;;  ViDLab™ CAD Automation Suite — AutoLoad Helper
+;;  Target Tool : ${name}
+;;  Library File: ${file}
+;;  File Path   : ${safePath}
+;;  Registered Shortcut: [${shortCmd}] -> Command: [${origCmd}]
+;;  © 2026 ViDLab. All rights reserved.
 ;; ==========================================================================
 
 (vl-load-com)
 
-;; --- 1. Autoload Function for ${file} ---
+;; --- Step 1: Autoload Function for ViDLab™ ${name} ---
 (defun LoadViDLabTool_${shortCmd} ()
   (if (findfile "${safePath}")
     (progn
-      (princ "\\n[ViDLab] Nap cong cu ${name}...")
+      (princ "\\n[ViDLab] Loading ${name} plugin...")
       (vl-cmdf "._netload" "${safePath}")
     )
     (progn
-      (princ "\\n[ViDLab] LOI: Khong tim thay file tai duong dan: ${safePath}")
-      (princ "\\n[ViDLab] Vui long cau hinh lai duong dan chinh xac trong file LISP.")
+      (princ "\\n[ViDLab] ERROR: Plugin file not found at path: ${safePath}")
+      (princ "\\n[ViDLab] Please update the path inside this LISP loader file.")
     )
   )
 )
 
-;; Tu dong nap file khi mo ban ve
+;; Automatically load the plugin on drawing initialization
 (LoadViDLabTool_${shortCmd})
 
-;; --- 2. Dinh nghia Lenh Tat ---
+;; --- Step 2: Define Shortcut Command ---
 (defun c:${shortCmd} ()
-  (princ "\\n[ViDLab] Khoi chay lenh goc ${origCmd}...")
-  ;; Goi lenh goc da duoc nap tu DLL
+  (princ "\\n[ViDLab] Executing original command: ${origCmd}...")
+  ;; Execute the underlying DLL command
   (vl-cmdf "${origCmd}")
   (princ)
 )
 
-(princ "\\n[ViDLab] Da cai dat phim tat [${shortCmd}] cho lenh [${origCmd}].")
+(princ "\\n[ViDLab] Shortcut command [${shortCmd}] registered successfully for [${origCmd}].")
 (princ)
 `;
       }
