@@ -89,7 +89,7 @@ if (!window.safeStorage) {
       vx: randomBetween(-0.15, 0.15),
       vy: randomBetween(-0.15, 0.15),
       alpha: randomBetween(0.2, 0.7),
-      color: ['#63b3ed', '#b794f4', '#4fd1c5', '#667eea'][Math.floor(Math.random() * 4)]
+      color: ['#6fcf97', '#2fa084', '#1f6f5f', '#eeeeee'][Math.floor(Math.random() * 4)]
     };
   }
 
@@ -120,7 +120,7 @@ if (!window.safeStorage) {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = '#63b3ed';
+          ctx.strokeStyle = '#2fa084';
           ctx.globalAlpha = (1 - dist / 100) * 0.1;
           ctx.lineWidth = 0.5;
           ctx.stroke();
