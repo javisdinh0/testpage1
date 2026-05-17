@@ -237,15 +237,15 @@
       
       <!-- VIETNAMESE STATE -->
       <div id="download-modal-vi">
-        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Nhập Email Nhận Công Cụ</h3>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Vui lòng nhập địa chỉ email của bạn để tải xuống. Hệ thống sẽ tự động ghi nhận lượt tải và gửi đường dẫn cài đặt cùng tài liệu hỗ trợ trực tiếp vào hộp thư của bạn.</p>
+        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Nhập Email Tải Công Cụ</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Vui lòng nhập địa chỉ email của bạn để tải xuống. Quá trình tải xuống tệp cài đặt chính thức `.tsep` sẽ được tự động bắt đầu ngay lập tức sau khi xác nhận.</p>
         
         <form onsubmit="handleDownloadSubmit(event, 'vi')">
           <div style="margin-bottom: 1.25rem;">
             <input type="email" id="email-input-vi" placeholder="vi-du@gmail.com" required style="width: 100%; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03); color: var(--text-primary); font-size: 0.95rem; font-family: var(--font-main); transition: var(--transition); outline: none;">
           </div>
           <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem; border: none; cursor: pointer;">
-            <span>Gửi Link Tải Xuống 🚀</span>
+            <span>Tải Xuống Ngay 🚀</span>
           </button>
         </form>
       </div>
@@ -253,14 +253,14 @@
       <!-- ENGLISH STATE -->
       <div id="download-modal-en" style="display: none;">
         <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Enter Email to Download</h3>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Please enter your email address to download. The system will automatically record your download and send the installer link with guidance details straight to your inbox.</p>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Please enter your email address to download. Your official `.tsep` file download will start automatically immediately after confirmation.</p>
         
         <form onsubmit="handleDownloadSubmit(event, 'en')">
           <div style="margin-bottom: 1.25rem;">
             <input type="email" id="email-input-en" placeholder="example@gmail.com" required style="width: 100%; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03); color: var(--text-primary); font-size: 0.95rem; font-family: var(--font-main); transition: var(--transition); outline: none;">
           </div>
           <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem; border: none; cursor: pointer;">
-            <span>Get Download Link 🚀</span>
+            <span>Download Now 🚀</span>
           </button>
         </form>
       </div>
@@ -268,8 +268,8 @@
       <!-- LOADING STATE -->
       <div id="download-modal-loading" style="display: none; text-align: center; padding: 2rem 0;">
         <div style="width: 48px; height: 48px; border: 4px solid rgba(99, 179, 237, 0.1); border-top-color: var(--accent-blue); border-radius: 50%; display: inline-block; animation: spin 1s linear infinite; margin-bottom: 1.5rem;"></div>
-        <p id="loading-text-vi" style="color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Đang gửi thông tin, vui lòng chờ trong giây lát...</p>
-        <p id="loading-text-en" style="display: none; color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Processing request, please wait a moment...</p>
+        <p id="loading-text-vi" style="color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Đang ghi nhận lượt tải, vui lòng chờ...</p>
+        <p id="loading-text-en" style="display: none; color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Recording download, please wait...</p>
       </div>
 
       <!-- SUCCESS STATE -->
@@ -277,13 +277,13 @@
         <div style="width: 64px; height: 64px; background: rgba(104, 211, 145, 0.1); border: 2px solid var(--accent-green); color: var(--accent-green); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem; font-weight: bold;">✓</div>
         
         <div id="success-text-vi">
-          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Gửi Email Thành Công!</h4>
-          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Vui lòng kiểm tra hộp thư đến (hoặc thư mục Spam) của bạn. Quá trình tải xuống phần mềm cũng đang được bắt đầu tự động.</p>
+          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Xác Nhận Thành Công!</h4>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Cảm ơn bạn đã quan tâm. Quá trình tải xuống phần mềm đang được bắt đầu tự động.</p>
         </div>
 
         <div id="success-text-en" style="display: none;">
-          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Email Sent Successfully!</h4>
-          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Please check your inbox (or Spam folder). Your file download has also been initiated automatically as a convenience.</p>
+          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Successfully Verified!</h4>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Thank you for your interest. Your file download has been initiated automatically.</p>
         </div>
 
         <button onclick="closeDownloadModal()" class="btn-ghost" style="padding: 0.6rem 1.5rem; font-size: 0.9rem; border-radius: var(--radius-sm);">Đóng / Close</button>

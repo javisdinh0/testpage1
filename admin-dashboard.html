@@ -280,8 +280,8 @@
 
     <!-- GOOGLE APPS SCRIPT CONFIGURATION -->
     <div class="gas-config-section">
-      <h3 style="font-size: 1.3rem; color: var(--accent-cyan); margin-bottom: 1rem; font-weight: 700;">⚙️ Liên Kết Real-Time Google Sheet & Email API</h3>
-      <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Trang web của bạn đang sử dụng hệ thống giả lập cục bộ (`localStorage`). Để chuyển sang **tự động hóa 100% bằng Google Sheets** và gửi mail tự động miễn phí đến khách hàng của bạn, hãy thực hiện theo các bước sau:</p>
+      <h3 style="font-size: 1.3rem; color: var(--accent-cyan); margin-bottom: 1rem; font-weight: 700;">⚙️ Liên Kết Real-Time Google Sheet & Lead Analytics</h3>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Trang web của bạn đang sử dụng hệ thống giả lập cục bộ (`localStorage`). Để chuyển sang **tự động hóa 100% bằng Google Sheets** và ghi nhận danh sách email khách hàng trên trang tính trực tuyến thực tế, hãy thực hiện theo các bước sau:</p>
       
       <div style="margin-bottom: 1.5rem;">
         <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Mã Triển Khai Web App (Google Apps Script Web App URL):</label>
@@ -307,27 +307,9 @@
     var lang = data.lang || 'vi';
     var timestamp = new Date();
     
-    // 1. Ghi nhận dữ liệu vào Google Sheet active
+    // Ghi nhận thông tin đăng ký tải xuống vào Google Sheet active
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     sheet.appendRow([timestamp, email, app, version, lang]);
-    
-    // 2. Gửi Email với Link Tải chính thức
-    var subject = lang === 'vi' ? 
-      "Liên kết tải phần mềm PEB Section Creator v" + version : 
-      "PEB Section Creator v" + version + " Download Link";
-      
-    var body = lang === 'vi' ? 
-      "Chào bạn,\n\nCảm ơn bạn đã quan tâm đến giải pháp số hóa xây dựng của ViDLab.\n\n" +
-      "Dưới đây là link tải phần mềm PEB Section Creator phiên bản mới nhất v" + version + ":\n" +
-      "🔗 Tải về: https://javisdinh0.github.io/testpage1/PebSectionCreator.tsep\n\n" +
-      "Trân trọng,\nViDLab Team" :
-      
-      "Hello,\n\nThank you for your interest in ViDLab's digital construction engineering solutions.\n\n" +
-      "Here is your direct download link for PEB Section Creator v" + version + ":\n" +
-      "🔗 Download: https://javisdinh0.github.io/testpage1/PebSectionCreator.tsep\n\n" +
-      "Best Regards,\nViDLab Team";
-      
-    MailApp.sendEmail(email, subject, body);
     
     return ContentService.createTextOutput(JSON.stringify({status: "success"}))
       .setMimeType(ContentService.MimeType.JSON);
