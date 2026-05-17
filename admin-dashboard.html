@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ViDLab — Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* Admin specific overrides to build a premium glassmorphic dashboard control */
+    body {
+      background: #080b14;
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+    }
+    
+    .admin-container {
+      max-width: 1200px;
+      margin: 100px auto 50px;
+      padding: 0 2rem;
+    }
+    
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .dashboard-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .dashboard-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(99, 179, 237, 0.2), transparent);
+    }
+    
+    .card-value {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      margin-top: 0.5rem;
+    }
+    
+    .card-title {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .chart-container {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+    }
+    
+    .chart-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--accent-blue);
+    }
+    
+    .logs-table-container {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      overflow-x: auto;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.92rem;
+    }
+    
+    th {
+      text-align: left;
+      padding: 1rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+    }
+    
+    td {
+      padding: 1rem;
+      color: var(--text-primary);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.01);
+    }
+    
+    .status-badge {
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .status-badge.sent {
+      background: rgba(104, 211, 145, 0.15);
+      color: var(--accent-green);
+      border: 1px solid rgba(104, 211, 145, 0.2);
+    }
+    
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+    
+    .admin-login-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      background: #080b14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .gas-config-section {
+      background: rgba(13, 18, 32, 0.95);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .copy-box {
+      background: #0a0e1a;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      overflow-x: auto;
+      white-space: pre;
+      color: var(--accent-cyan);
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ADMIN PASSCODE GATEWAY -->
+  <div class="admin-login-overlay" id="admin-login-gate">
+    <div class="modal-content" style="max-width: 400px; padding: 2.5rem; background: #0d1220; text-align: center; border: 1px solid var(--border); border-radius: var(--radius);">
+      <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; color: var(--accent-blue);">Bảo Mật Admin / Portal Login</h3>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Vui lòng nhập mật khẩu quản trị để truy cập trang thống kê lượt tải (Mặc định: admin123)</p>
+      
+      <form onsubmit="unlockDashboard(event)">
+        <input type="password" id="admin-passcode-field" placeholder="Mật khẩu..." required style="width: 100%; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text-primary); font-size: 1rem; text-align: center; margin-bottom: 1.25rem; outline: none;">
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem; border: none; cursor: pointer;">
+          <span>Đăng Nhập Dashboard 🚀</span>
+        </button>
+      </form>
+      <p id="login-error-msg" style="color: #ff5f57; font-size: 0.85rem; margin-top: 1rem; display: none;">Mật khẩu không chính xác!</p>
+    </div>
+  </div>
+
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" style="text-decoration: none;">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">ViDLab</span>
+        <span class="logo-bracket">/&gt;</span>
+      </a>
+      <span style="font-weight: 600; color: var(--accent-blue); font-size: 1.1rem; margin-left: 1rem;">| Admin Panel</span>
+      <div class="nav-status" style="margin-left: auto;">
+        <span class="status-dot"></span>
+        <span>Dashboard Active</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- DASHBOARD CONTENT -->
+  <main class="admin-container" id="admin-dashboard-view" style="display: none;">
+    <div class="dashboard-header">
+      <div>
+        <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary);">Dashboard Thống Kê</h1>
+        <p style="color: var(--text-secondary); margin-top: 0.25rem;">Quản lý dữ liệu người dùng đăng ký nhận liên kết tải PEB Section Creator</p>
+      </div>
+      <div style="display: flex; gap: 0.75rem;">
+        <button onclick="exportToCSV()" class="btn-primary" style="padding: 0.7rem 1.5rem; font-size: 0.88rem; border: none; cursor: pointer;">
+          <span>Xuất Dữ Liệu CSV 📊</span>
+        </button>
+        <button onclick="resetMockData()" class="btn-ghost" style="padding: 0.7rem 1.5rem; font-size: 0.88rem; cursor: pointer; border-radius: var(--radius-sm);">
+          <span>Reset Bộ Đếm</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- STATS CARDS -->
+    <div class="dashboard-grid">
+      <div class="dashboard-card">
+        <span class="card-title">Tổng Lượt Tải</span>
+        <div class="card-value" id="stat-total-downloads">0</div>
+      </div>
+      <div class="dashboard-card">
+        <span class="card-title">Khách Hàng Đăng Ký (Unique)</span>
+        <div class="card-value" id="stat-unique-emails">0</div>
+      </div>
+      <div class="dashboard-card">
+        <span class="card-title">Kết Nối Live Backend</span>
+        <div class="card-value" style="font-size: 1.3rem; margin-top: 0.85rem; display: flex; align-items: center; gap: 0.5rem;" id="stat-connection">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #ff5f57;" id="conn-dot"></span>
+          <span id="conn-text" style="color: var(--text-secondary);">Chưa cấu hình (Demo Mode)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHARTS -->
+    <div class="charts-grid">
+      <div class="chart-container">
+        <div class="chart-title">📈 Hoạt Động Tải Theo Thời Gian</div>
+        <div style="height: 300px; position: relative;">
+          <canvas id="timelineChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-container">
+        <div class="chart-title">🎯 Tỷ Lệ Email Tên Miền</div>
+        <div style="height: 300px; position: relative;">
+          <canvas id="domainChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGS TABLE -->
+    <div class="logs-table-container">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <div class="chart-title" style="margin-bottom: 0;">📜 Nhật Ký Đăng Ký Tải Xuống</div>
+        <input type="text" id="log-search" oninput="filterLogs()" placeholder="Tìm kiếm email..." style="padding: 0.5rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text-primary); outline: none; font-size: 0.9rem; width: 250px;">
+      </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Thời Gian (Timestamp)</th>
+            <th>Email Địa Chỉ</th>
+            <th>Công Cụ / Phiên Bản</th>
+            <th>Trạng Thái</th>
+            <th>Hệ Điều Hành / IP</th>
+          </tr>
+        </thead>
+        <tbody id="logs-tbody">
+          <!-- Dynamically populated -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- GOOGLE APPS SCRIPT CONFIGURATION -->
+    <div class="gas-config-section">
+      <h3 style="font-size: 1.3rem; color: var(--accent-cyan); margin-bottom: 1rem; font-weight: 700;">⚙️ Liên Kết Real-Time Google Sheet & Email API</h3>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Trang web của bạn đang sử dụng hệ thống giả lập cục bộ (`localStorage`). Để chuyển sang **tự động hóa 100% bằng Google Sheets** và gửi mail tự động miễn phí đến khách hàng của bạn, hãy thực hiện theo các bước sau:</p>
+      
+      <div style="margin-bottom: 1.5rem;">
+        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Mã Triển Khai Web App (Google Apps Script Web App URL):</label>
+        <div style="display: flex; gap: 0.75rem;">
+          <input type="url" id="gas-url-field" placeholder="https://script.google.com/macros/s/.../exec" style="flex: 1; padding: 0.8rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text-primary); outline: none;">
+          <button onclick="saveGasUrl()" class="btn-primary" style="padding: 0 1.5rem; border: none; cursor: pointer;">Lưu Kết Nối</button>
+        </div>
+      </div>
+
+      <h4 style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Hướng Dẫn Cấu Hình Apps Script Đơn Giản:</h4>
+      <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.25rem; font-size: 0.92rem;">
+        <li>Truy cập <a href="https://sheets.google.com" target="_blank" style="color: var(--accent-blue);">Google Sheets</a> và tạo một bảng tính trống mới để chứa data khách hàng.</li>
+        <li>Trên thanh công cụ phía trên, click chọn <strong>Tiện ích mở rộng (Extensions)</strong> -> <strong>Apps Script</strong>.</li>
+        <li>Xóa toàn bộ mã code mặc định hiển thị trong trình soạn thảo, sao chép và dán đoạn mã code dưới đây vào:</li>
+      </ol>
+
+      <div class="copy-box">function doPost(e) {
+  try {
+    var data = JSON.parse(e.postData.contents);
+    var email = data.email;
+    var app = data.app;
+    var version = data.version;
+    var lang = data.lang || 'vi';
+    var timestamp = new Date();
+    
+    // 1. Ghi nhận dữ liệu vào Google Sheet active
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    sheet.appendRow([timestamp, email, app, version, lang]);
+    
+    // 2. Gửi Email với Link Tải chính thức
+    var subject = lang === 'vi' ? 
+      "Liên kết tải phần mềm PEB Section Creator v" + version : 
+      "PEB Section Creator v" + version + " Download Link";
+      
+    var body = lang === 'vi' ? 
+      "Chào bạn,\n\nCảm ơn bạn đã quan tâm đến giải pháp số hóa xây dựng của ViDLab.\n\n" +
+      "Dưới đây là link tải phần mềm PEB Section Creator phiên bản mới nhất v" + version + ":\n" +
+      "🔗 Tải về: https://javisdinh0.github.io/testpage1/PebSectionCreator.tsep\n\n" +
+      "Trân trọng,\nViDLab Team" :
+      
+      "Hello,\n\nThank you for your interest in ViDLab's digital construction engineering solutions.\n\n" +
+      "Here is your direct download link for PEB Section Creator v" + version + ":\n" +
+      "🔗 Download: https://javisdinh0.github.io/testpage1/PebSectionCreator.tsep\n\n" +
+      "Best Regards,\nViDLab Team";
+      
+    MailApp.sendEmail(email, subject, body);
+    
+    return ContentService.createTextOutput(JSON.stringify({status: "success"}))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({status: "error", message: error.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}</div>
+
+      <ol start="4" style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.25rem; font-size: 0.92rem;">
+        <li>Nhấn biểu tượng Lưu hình đĩa mềm trên thanh công cụ.</li>
+        <li>Click vào nút <strong>Triển khai (Deploy)</strong> ở góc trên bên phải -> chọn <strong>Triển khai mới (New deployment)</strong>.</li>
+        <li>Ở bảng mở ra, click biểu tượng răng cưa chọn loại cấu hình là <strong>Ứng dụng web (Web app)</strong>.</li>
+        <li>Thiết lập:
+          <ul style="padding-left: 1rem; margin: 0.25rem 0;">
+            <li><strong>Thực thi dưới dạng (Execute as):</strong> Chọn <u>Tôi (Me)</u>.</li>
+            <li><strong>Ai có quyền truy cập (Who has access):</strong> Chọn <u>Bất kỳ ai (Anyone)</u>.</li>
+          </ul>
+        </li>
+        <li>Click <strong>Triển khai (Deploy)</strong>, cấp quyền truy cập email và tài khoản của bạn, sau đó copy <strong>URL Ứng dụng web (Web app URL)</strong> và dán vào ô cấu hình phía trên của trang này!</li>
+      </ol>
+    </div>
+  </main>
+
+  <script>
+    let timelineChartInstance = null;
+    let domainChartInstance = null;
+
+    function unlockDashboard(event) {
+      if (event) event.preventDefault();
+      const code = document.getElementById('admin-passcode-field').value;
+      if (code === 'admin123') {
+        document.getElementById('admin-login-gate').style.display = 'none';
+        document.getElementById('admin-dashboard-view').style.display = 'block';
+        loadDashboardData();
+      } else {
+        document.getElementById('login-error-msg').style.display = 'block';
+      }
+    }
+
+    // Populate mock seed data if empty
+    function seedMockData() {
+      let logs = localStorage.getItem('vidlab_download_logs');
+      if (!logs) {
+        const demoLogs = [
+          { email: 'builder.pro@gmail.com', app: 'PEB Section Creator', version: '1.0.0', date: new Date(Date.now() - 3600000 * 2).toISOString(), status: 'Sent', ip: '192.168.1.5', platform: 'Windows 64-bit' },
+          { email: 'kethuat.thep@yahoo.com.vn', app: 'PEB Section Creator', version: '1.0.0', date: new Date(Date.now() - 3600000 * 18).toISOString(), status: 'Sent', ip: '172.16.0.4', platform: 'Windows 64-bit' },
+          { email: 'john.detailer@company.com', app: 'PEB Section Creator', version: '1.0.0', date: new Date(Date.now() - 3600000 * 36).toISOString(), status: 'Sent', ip: '98.45.1.25', platform: 'macOS Intel' },
+          { email: 'steel.designer@gmail.com', app: 'PEB Section Creator', version: '1.0.0', date: new Date(Date.now() - 3600000 * 48).toISOString(), status: 'Sent', ip: '192.168.1.18', platform: 'Windows 64-bit' },
+          { email: 'trantrung@steelcorp.com', app: 'PEB Section Creator', version: '1.0.0', date: new Date(Date.now() - 3600000 * 60).toISOString(), status: 'Sent', ip: '115.79.4.12', platform: 'Windows 64-bit' }
+        ];
+        localStorage.setItem('vidlab_download_logs', JSON.stringify(demoLogs));
+      }
+    }
+
+    function loadDashboardData() {
+      seedMockData();
+      
+      // Load GAS URL if configured
+      const gasUrl = localStorage.getItem('vidlab_gas_url') || '';
+      document.getElementById('gas-url-field').value = gasUrl;
+      
+      const connDot = document.getElementById('conn-dot');
+      const connText = document.getElementById('conn-text');
+      if (gasUrl) {
+        connDot.style.background = '#68d391'; // Live green
+        connText.innerText = 'Đã kết nối (Live Mode)';
+        connText.style.color = 'var(--accent-green)';
+      } else {
+        connDot.style.background = '#ff5f57'; // Demo red
+        connText.innerText = 'Chưa cấu hình (Demo Mode)';
+        connText.style.color = 'var(--text-secondary)';
+      }
+
+      const logs = JSON.parse(localStorage.getItem('vidlab_download_logs') || '[]');
+      
+      // Stats
+      document.getElementById('stat-total-downloads').innerText = logs.length;
+      
+      const uniqueEmails = [...new Set(logs.map(l => l.email.toLowerCase()))];
+      document.getElementById('stat-unique-emails').innerText = uniqueEmails.length;
+
+      // Populate Table
+      renderTable(logs);
+
+      // Render Charts
+      renderCharts(logs);
+    }
+
+    function renderTable(data) {
+      const tbody = document.getElementById('logs-tbody');
+      tbody.innerHTML = '';
+      
+      if (data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Không có dữ liệu lượt tải nào được tìm thấy.</td></tr>`;
+        return;
+      }
+
+      data.forEach(log => {
+        const formattedDate = new Date(log.date).toLocaleString('vi-VN');
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="font-family: var(--font-mono); font-size: 0.85rem;">${formattedDate}</td>
+          <td style="font-weight: 500; color: var(--accent-blue);">${log.email}</td>
+          <td>${log.app} <span style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">v${log.version}</span></td>
+          <td><span class="status-badge sent">${log.status}</span></td>
+          <td style="font-size: 0.85rem; color: var(--text-secondary);">${log.platform} <span style="color: var(--text-muted);">(${log.ip})</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterLogs() {
+      const query = document.getElementById('log-search').value.toLowerCase().trim();
+      const logs = JSON.parse(localStorage.getItem('vidlab_download_logs') || '[]');
+      const filtered = logs.filter(l => l.email.toLowerCase().includes(query));
+      renderTable(filtered);
+    }
+
+    function saveGasUrl() {
+      const url = document.getElementById('gas-url-field').value.trim();
+      if (url) {
+        localStorage.setItem('vidlab_gas_url', url);
+        alert('Đã lưu URL kết nối Google Apps Script Web App thành công!');
+      } else {
+        localStorage.removeItem('vidlab_gas_url');
+        alert('Đã gỡ bỏ URL kết nối Google Apps Script. Chuyển về chế độ giả lập Demo cục bộ.');
+      }
+      loadDashboardData();
+    }
+
+    function resetMockData() {
+      if (confirm('Bạn có chắc chắn muốn xóa toàn bộ bộ đếm và nhật ký đăng ký tải xuống?')) {
+        localStorage.removeItem('vidlab_download_logs');
+        loadDashboardData();
+      }
+    }
+
+    function exportToCSV() {
+      const logs = JSON.parse(localStorage.getItem('vidlab_download_logs') || '[]');
+      if (logs.length === 0) {
+        alert('Không có dữ liệu để xuất!');
+        return;
+      }
+
+      let csvContent = "data:text/csv;charset=utf-8,";
+      csvContent += "Timestamp,Email,App,Version,Status,IP,Platform\n";
+      
+      logs.forEach(l => {
+        csvContent += `"${l.date}","${l.email}","${l.app}","${l.version}","${l.status}","${l.ip}","${l.platform}"\n`;
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `vidlab_download_leads_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function renderCharts(logs) {
+      if (timelineChartInstance) timelineChartInstance.destroy();
+      if (domainChartInstance) domainChartInstance.destroy();
+
+      if (logs.length === 0) return;
+
+      // Domain Stats Parsing
+      const domains = {};
+      logs.forEach(l => {
+        const parts = l.email.split('@');
+        if (parts.length > 1) {
+          const domain = parts[1].toLowerCase();
+          domains[domain] = (domains[domain] || 0) + 1;
+        }
+      });
+
+      const sortedDomains = Object.entries(domains).sort((a,b) => b[1] - a[1]).slice(0, 5);
+      const domainLabels = sortedDomains.map(d => d[0]);
+      const domainData = sortedDomains.map(d => d[1]);
+
+      // Timeline Stats Parsing (group by day)
+      const dates = {};
+      logs.forEach(l => {
+        const day = new Date(l.date).toLocaleDateString('vi-VN', { month: '2-digit', day: '2-digit' });
+        dates[day] = (dates[day] || 0) + 1;
+      });
+
+      const timelineLabels = Object.keys(dates).reverse();
+      const timelineData = Object.values(dates).reverse();
+
+      // Timeline Chartjs
+      const ctxTimeline = document.getElementById('timelineChart').getContext('2d');
+      timelineChartInstance = new Chart(ctxTimeline, {
+        type: 'line',
+        data: {
+          labels: timelineLabels,
+          datasets: [{
+            label: 'Lượt tải',
+            data: timelineData,
+            borderColor: '#63b3ed',
+            backgroundColor: 'rgba(99, 179, 237, 0.15)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: {
+              grid: { color: 'rgba(255, 255, 255, 0.05)' },
+              ticks: { color: '#8892a4', stepSize: 1 }
+            },
+            x: {
+              grid: { color: 'rgba(255, 255, 255, 0.05)' },
+              ticks: { color: '#8892a4' }
+            }
+          }
+        }
+      });
+
+      // Domain Chartjs
+      const ctxDomain = document.getElementById('domainChart').getContext('2d');
+      domainChartInstance = new Chart(ctxDomain, {
+        type: 'doughnut',
+        data: {
+          labels: domainLabels,
+          datasets: [{
+            data: domainData,
+            backgroundColor: ['#63b3ed', '#b794f4', '#4fd1c5', '#f6ad55', '#f687b3'],
+            borderWidth: 1,
+            borderColor: '#0d1220'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: '#8892a4', boxWidth: 12, padding: 15 }
+            }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
