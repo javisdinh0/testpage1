@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hướng Dẫn Sử Dụng — ViDBlock — ViDLab</title>
+  <title>Hướng Dẫn Sử Dụng — BLOCKMASTER — ViDLab</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -16,7 +16,7 @@
     .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
     .article-title { font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem; color: var(--text-primary); }
     .article-body { font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary); }
-    .article-body h2 { color: var(--accent-purple); margin: 3rem 0 1.5rem; font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    .article-body h2 { color: var(--accent-cyan); margin: 3rem 0 1.5rem; font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
     .article-body h3 { color: var(--text-primary); margin: 2rem 0 1rem; font-size: 1.5rem; }
     .article-body p { margin-bottom: 1.5rem; }
     .step-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius); margin-bottom: 2rem; position: relative; overflow: hidden; }
@@ -63,111 +63,129 @@
           <span data-lang="vi">HƯỚNG DẪN SỬ DỤNG</span>
           <span data-lang="en">USER GUIDE</span>
         </h1>
-        <p style="font-size: 1.4rem; color: var(--accent-purple); font-weight: 600;">ViD Block Library v1.0</p>
+        <p style="font-size: 1.4rem; color: var(--accent-cyan); font-weight: 600;">BLOCKMASTER | Powered by ViDLab</p>
       </header>
 
       <div class="article-body">
         <div data-lang="vi">
-          <h2>I. Hướng dẫn sử dụng phần mềm</h2>
+          <h2>I. Quy trình thao tác phần mềm</h2>
           
           <div class="step-card">
             <span class="step-number">01</span>
             <h3>Khởi động công cụ</h3>
-            <p>Trong môi trường AutoCAD, bạn gõ lệnh <code>BI</code> và nhấn Enter. Giao diện quản lý thư viện sẽ xuất hiện phía trên màn hình làm việc của bạn.</p>
+            <p>Trong môi trường AutoCAD, gõ lệnh <code>BLOCKMASTER</code> và nhấn Enter để hiển thị thanh điều hướng quản lý thư viện Block ở cạnh phải màn hình.</p>
           </div>
 
           <div class="step-card">
             <span class="step-number">02</span>
-            <h3>Tìm kiếm và Duyệt Block</h3>
-            <p>Sử dụng bảng <strong>Tree View</strong> bên trái để tìm đến thư mục chứa cấu kiện bạn cần. Danh sách các Block sẽ hiện ra ở bảng bên cạnh.</p>
+            <h3>Tìm kiếm & Duyệt thư mục cây</h3>
+            <p>Duyệt sơ đồ danh mục cây (Tree View) lồng trực tiếp dưới tab "My Library". Các accordion sẽ trượt lên xuống mượt mà giúp bạn gom gọn cấu kiện.</p>
           </div>
 
           <div class="step-card">
             <span class="step-number">03</span>
-            <h3>Kiểm tra Preview</h3>
-            <p>Khi nhấn vào tên Block, hình ảnh minh họa sẽ hiện lên ở khung <strong>Preview</strong>. Điều này giúp bạn xác nhận đúng cấu kiện trước khi chèn.</p>
+            <h3>Lưu block nhanh với "Get From Text"</h3>
+            <p>Nhấp <strong>ADD TO LIBRARY</strong> $\rightarrow$ Click <strong>GET FROM TEXT</strong> để nhấp chọn chữ ghi chú trên bản vẽ làm tên tệp nhanh chóng mà không cần nhập tay.</p>
           </div>
 
           <div class="step-card">
             <span class="step-number">04</span>
-            <h3>Thiết lập tỷ lệ và Chèn</h3>
-            <p>Nhập giá trị vào ô <strong>Scale</strong> (ví dụ: 100 cho tỷ lệ 1/100). Sau đó <strong>Double-click</strong> vào ảnh Preview và chọn điểm đặt trên bản vẽ.</p>
+            <h3>Chèn block kèm scale dòng lệnh</h3>
+            <p>Nhấp đúp vào block cần chèn, tại dòng lệnh AutoCAD nhập tỷ lệ thu nhỏ (ví dụ: nhập <code>10</code> để thu nhỏ 1/10), sau đó chọn vị trí điểm đặt trên bản vẽ.</p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">05</span>
+            <h3>Dọn dẹp thư viện an toàn</h3>
+            <p>Để xóa tệp lỗi thời, click chọn block và nhấn nút phẳng đỏ <strong>🗑 DELETE BLOCK</strong>. Hệ thống giải phóng bộ nhớ GDI+ và xóa sạch DWG/Ảnh xem trước vật lý trên ổ đĩa lập tức.</p>
           </div>
 
           <div class="highlight-tip">
-            <strong>Lưu ý:</strong> Phần mềm hỗ trợ tự động Explode (phá khối) nếu bạn tích chọn vào ô "Auto Explode" trước khi chèn.
+            <strong>Hotline Hỗ Trợ:</strong> Mọi ý kiến phản hồi xin vui lòng liên hệ hotline trực tiếp Zalo: <strong>0969683188</strong> hoặc truy cập <strong>www.vidlab.vn</strong>.
           </div>
 
-          <h2>II. Hướng dẫn tự tạo thư viện riêng</h2>
-          <p>Để xây dựng kho dữ liệu cá nhân, hãy làm theo các bước sau:</p>
+          <h2>II. Hướng dẫn thiết lập cơ sở dữ liệu riêng</h2>
+          <p>Để tích hợp thư viện thiết kế riêng của công ty, hãy tuân thủ cấu trúc thư mục sau:</p>
 
-          <h3>1. Chuẩn bị thư mục dữ liệu</h3>
-          <p>Tìm đến thư mục cài đặt phần mềm, bạn sẽ thấy thư mục <code>Data</code>. Bạn có thể tạo thêm các thư mục con bên trong để phân loại.</p>
+          <h3>1. Tổ chức phân cấp thư mục</h3>
+          <p>Tạo các thư mục con trong thư mục <code>Data</code> gốc của phần mềm. Sơ đồ cây của BLOCKMASTER sẽ tự động đồng bộ hóa cấu trúc này.</p>
 
-          <h3>2. Quy tắc File</h3>
-          <p>Với mỗi cấu kiện, bạn cần 2 file có <strong>tên giống hệt nhau</strong>:</p>
+          <h3>2. Quy tắc đặt tên tệp đồng bộ</h3>
+          <p>Mỗi cấu kiện bắt buộc phải có 2 tệp trùng tên nằm trong cùng thư mục:</p>
           <ul>
-            <li><strong>File bản vẽ:</strong> Định dạng <code>.dwg</code>.</li>
-            <li><strong>File hình ảnh:</strong> Định dạng <code>.png</code> hoặc <code>.jpg</code>.</li>
+            <li><strong>Tệp bản vẽ:</strong> <code>.dwg</code> (chứa thực thể block định nghĩa).</li>
+            <li><strong>Tệp ảnh xem trước:</strong> <code>.png</code> hoặc <code>.jpg</code> (ảnh minh họa kích thước chuẩn 256x170).</li>
           </ul>
 
           <div class="code-block">
 Data/<br>
-└── 01_Mat_Cat_Thep/<br>
-    ├── I_Section.dwg<br>
-    └── I_Section.png  <-- BẮT BUỘC TRÙNG TÊN
+├── 01_Mat_Bang_Mong/<br>
+│   ├── Mong_Don_M1.dwg<br>
+│   └── Mong_Don_M1.png  <-- BẮT BUỘC TRÙNG TÊN<br>
+└── 02_Chi_Tiet_Cot/<br>
+    ├── Cot_C1.dwg<br>
+    └── Cot_C1.png<br>
           </div>
         </div>
 
         <div data-lang="en">
-          <h2>I. Software Usage Guide</h2>
+          <h2>I. Software Operation Workflow</h2>
           
           <div class="step-card">
             <span class="step-number">01</span>
-            <h3>Start the Tool</h3>
-            <p>In the AutoCAD environment, type <code>BI</code> and press Enter. The library management interface will appear on your workspace.</p>
+            <h3>Launch the Plugin</h3>
+            <p>Within AutoCAD, type <code>BLOCKMASTER</code> and hit Enter to display the elegant sidebar manager on the right side of the screen.</p>
           </div>
 
           <div class="step-card">
             <span class="step-number">02</span>
-            <h3>Search and Browse Blocks</h3>
-            <p>Use the <strong>Tree View</strong> panel on the left to navigate to the folder containing the components you need. The list of Blocks will appear in the adjacent panel.</p>
+            <h3>Browse Nested Tree Categories</h3>
+            <p>Navigate the folder Tree View placed inside the "My Library" button. Accordion transitions slide smoothly to conserve vertical screen space.</p>
           </div>
 
           <div class="step-card">
             <span class="step-number">03</span>
-            <h3>Check Preview</h3>
-            <p>When you click on a Block name, an illustration will appear in the <strong>Preview</strong> frame. This helps you confirm the correct component before insertion.</p>
+            <h3>Add Blocks with "Get From Text"</h3>
+            <p>Click **ADD TO LIBRARY** $\rightarrow$ Press **GET FROM TEXT** to pick database texts directly on the CAD view. The extracted cleaned string automatically names the block.</p>
           </div>
 
           <div class="step-card">
             <span class="step-number">04</span>
-            <h3>Set Scale and Insert</h3>
-            <p>Enter a value in the <strong>Scale</strong> box (e.g., 100 for 1/100 scale). Then <strong>Double-click</strong> the Preview image and pick an insertion point in AutoCAD.</p>
+            <h3>Insert with Command-Line Scaling</h3>
+            <p>Double-click the block, type the scale denominator factor in AutoCAD command bar (e.g. type <code>10</code> for 1/10 scale-down), then pick the insertion coordinate point.</p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">05</span>
+            <h3>Physically Delete Unused Assets</h3>
+            <p>Click a block card and hit <strong>🗑 DELETE BLOCK</strong>. The tool disposes file handles and completely removes DWG drawings and PNG/JPG previews from your disk.</p>
           </div>
 
           <div class="highlight-tip">
-            <strong>Note:</strong> The software supports automatic Explode if you check the "Auto Explode" box before insertion.
+            <strong>Contact Support:</strong> For suggestions or assistance, contact our Hotline/Zalo: <strong>0969683188</strong> or visit <strong>www.vidlab.vn</strong>.
           </div>
 
-          <h2>II. Creating Your Own Library</h2>
-          <p>To build your personal database, follow these steps:</p>
+          <h2>II. Setting Up Custom Databases</h2>
+          <p>To integrate custom company blocks, follow these layout specifications:</p>
 
-          <h3>1. Prepare Data Folders</h3>
-          <p>Locate the software installation directory and find the <code>Data</code> folder. You can create subfolders inside to categorize your blocks.</p>
+          <h3>1. Hierarchical Directory Hierarchy</h3>
+          <p>Create subfolders under the main <code>Data</code> directory. BLOCKMASTER dynamically constructs the tree based on these real directories.</p>
 
-          <h3>2. File Naming Rules</h3>
-          <p>For each component, you need 2 files with the <strong>exact same name</strong>:</p>
+          <h3>2. Synchronized Naming Strategy</h3>
+          <p>Each block component must comprise 2 files named identically inside the same subfolder:</p>
           <ul>
-            <li><strong>Drawing File:</strong> <code>.dwg</code> format.</li>
-            <li><strong>Image File:</strong> <code>.png</code> or <code>.jpg</code> format.</li>
+            <li><strong>Drawing File:</strong> <code>.dwg</code> (contains the geometric block block definitions).</li>
+            <li><strong>Thumbnail Image:</strong> <code>.png</code> or <code>.jpg</code> (dimensions recommended: 256x170).</li>
           </ul>
 
           <div class="code-block">
 Data/<br>
-└── 01_Steel_Sections/<br>
-    ├── I_Section.dwg<br>
-    └── I_Section.png  <-- MUST HAVE THE SAME NAME
+├── 01_Foundation_Layouts/<br>
+│   ├── Footing_F1.dwg<br>
+│   └── Footing_F1.png  <-- MUST BE INDENTICAL FILE NAME<br>
+└── 02_Column_Details/<br>
+    ├── Column_C1.dwg<br>
+    └── Column_C1.png<br>
           </div>
         </div>
       </div>
@@ -177,8 +195,8 @@ Data/<br>
   <footer class="footer">
     <div class="container">
       <p class="footer-copy">
-        <span data-lang="vi">© 2026 ViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
-        <span data-lang="en">© 2026 ViDLab. Digital solutions for the construction industry.</span>
+        <span data-lang="vi">© 2026 ViDLab. Giải pháp số hóa cho ngành xây dựng. Hotline: 0969683188</span>
+        <span data-lang="en">© 2026 ViDLab. Digital solutions for the construction industry. Hotline: 0969683188</span>
       </p>
     </div>
   </footer>
