@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -76,54 +76,129 @@
 
       <div class="article-body">
         <div data-lang="vi">
-          <p>Trong kỷ nguyên số hóa ngành xây dựng, việc tối ưu hóa quy trình thiết kế không còn là lựa chọn mà là yêu cầu bắt buộc. <strong>PEB Section Creator</strong> ra đời nhằm giải quyết bài toán phức tạp nhất trong thiết kế nhà thép tiền chế: quản lý và dựng hình các cấu kiện biến đổi (tapered members).</p>
+          <p>Trong kỷ nguyên số hóa ngành xây dựng và kết cấu thép, việc tối ưu hóa quy trình mô hình hóa thông tin công trình (BIM) không còn là một lựa chọn mà đã trở thành yêu cầu bắt buộc để nâng cao năng lực cạnh tranh. <strong>PEB Section Creator</strong> ra đời như một giải pháp đột phá, giải quyết triệt để bài toán phức tạp và tốn thời gian nhất trong thiết kế nhà thép tiền chế: Quản lý thuộc tính và tự động hóa dựng hình các cấu kiện biến đổi tiết diện (tapered members) trực tiếp trên nền tảng Tekla Structures.</p>
 
           <h2>Tại sao cần PEB Section Creator?</h2>
-          <p>Thiết kế nhà thép tiền chế (PEB) đòi hỏi các cấu kiện có tiết diện thay đổi liên tục để tối ưu hóa khả năng chịu lực và tiết kiệm vật liệu. Việc dựng hình thủ công các cấu kiện này trong Tekla Structures thường tốn rất nhiều thời gian và dễ xảy ra sai sót khi thay đổi thiết kế.</p>
+          <p>Thiết kế nhà thép tiền chế (PEB) đòi hỏi các cấu kiện dầm và cột có tiết diện thay đổi liên tục (tapered sections) để phân bổ ứng suất tối ưu, giảm thiểu khối lượng thép và tiết kiệm chi phí vật liệu tối đa. Việc tạo lập và quản lý thủ công hàng trăm file thuộc tính cấu kiện biến đổi này trong thư mục <code>attributes</code> của Tekla Structures là một cơn ác mộng thực sự: tốn hàng giờ bấm chuột, dễ nhầm lẫn thông số hình học và vô cùng khó khăn khi dự án có thay đổi thiết kế.</p>
           
-          <div class="highlight-box">
-            "Công cụ này giúp giảm thời gian dựng khung kèo từ 4 giờ xuống còn chỉ 15 phút, đồng thời đảm bảo độ chính xác tuyệt đối cho quá trình sản xuất tại nhà máy."
+          <div class="highlight-box" style="background: rgba(31, 138, 128, 0.05); border-left: 4px solid var(--accent-cyan);">
+            <strong>💡 Kết quả thực tế:</strong> Công cụ giúp giảm thời gian dựng và cập nhật khung kèo đầu hồi, kèo chính từ 3 - 4 giờ làm việc căng thẳng xuống còn <strong>chưa đầy 10 phút</strong>, loại bỏ hoàn toàn các sai sót nhập liệu thủ công và đảm bảo dữ liệu CNC xuất xưởng chính xác tuyệt đối.
           </div>
 
-          <h2>Các tính năng vượt trội</h2>
+          <h2>Các Tính Năng Vượt Trội</h2>
           <ul>
-            <li><strong>Định nghĩa tiết diện đa điểm:</strong> Cho phép thiết lập các điểm thay đổi chiều cao web, độ dày cánh linh hoạt chỉ trên một giao diện duy nhất.</li>
-            <li><strong>Tương thích Tekla Open API:</strong> Sử dụng các thư viện chính thức từ Trimble, đảm bảo tính ổn định và khả năng nâng cấp theo các phiên bản Tekla mới nhất (2024, 2025).</li>
-            <li><strong>Tích hợp BOM tự động:</strong> Mỗi thay đổi về tiết diện sẽ được cập nhật ngay lập tức vào bảng thống kê khối lượng vật liệu, giúp báo giá nhanh và chính xác.</li>
-            <li><strong>Giao diện Modern UI:</strong> Thiết kế tối giản, hỗ trợ Dark Mode, giúp kỹ sư tập trung tối đa vào công việc.</li>
+            <li><strong>Định nghĩa tiết diện đa điểm linh hoạt:</strong> Hỗ trợ nhập và tự động phân tích các định dạng tiết diện từ đơn giản đến phức tạp: từ tiết diện không đổi đến biến đổi 2 điểm, 3 điểm, thậm chí 4 điểm chiều sâu web (ví dụ: <code>W(300-500-600-300)x6+F186x8</code>).</li>
+            <li><strong>Giao diện thông minh và tối giản:</strong> Bố cục được sắp xếp lại vô cùng tinh gọn, loại bỏ các cài đặt prefix thừa thãi giúp kỹ sư chỉ cần tập trung vào vật liệu dự án (Project Material). Định dạng tiết diện sai cú pháp sẽ lập tức bị bôi đỏ cảnh báo trực quan trên bảng dữ liệu Grid.</li>
+            <li><strong>Thuật toán phân loại Class thông minh (4 Chế độ):</strong> Thay vì cấu hình thủ công phức tạp, hộp thoại <em>Part Settings</em> mới tích hợp bộ chọn <strong>Class By</strong> linh hoạt:
+              <ul>
+                <li><strong>By Thickness:</strong> Tự động gán Class theo chiều dày bản cánh và bản bụng cấu kiện (làm tròn mm), hỗ trợ đắc lực cho quản lý sản xuất theo chiều dày phôi.</li>
+                <li><strong>By Section:</strong> Tự động lọc tất cả các loại tiết diện khác nhau trong dự án, sắp xếp theo thứ tự bảng chữ cái và đánh số Class duy nhất từ <code>1</code> đến <code>99</code>.</li>
+                <li><strong>By Prefix:</strong> Tự động trích xuất các chữ số ở đuôi của cột Prefix (ví dụ: tiền tố <code>S12</code> tương ứng với Class <code>12</code>) để đồng bộ bản vẽ.</li>
+                <li><strong>By User:</strong> Cho phép kỹ sư nhập một con số Class mặc định cố định theo ý muốn.</li>
+              </ul>
+            </li>
+            <li><strong>Vẽ trực tiếp không lưu file rác (Draw PEB Member):</strong> Dựng cấu kiện 3D trực tiếp trong mô hình Tekla bằng cách pick 2 điểm cực kỳ nhanh chóng. Công cụ tự động xử lý và giải phóng bộ nhớ đệm, hoàn toàn không sinh ra các file rác thuộc tính dư thừa trong thư mục của bạn.</li>
+            <li><strong>Cập nhật cấu kiện hàng loạt (Update PEB Member):</strong> Chỉ cần quét chọn các cấu kiện PEB Member cần thay đổi trong mô hình Tekla và nhấn nút, toàn bộ tiết diện, vật liệu, và quy tắc Class mới sẽ được áp dụng đồng bộ ngay lập tức.</li>
           </ul>
 
-          <h2>Quy trình hoạt động</h2>
-          <p>Người dùng chỉ cần chọn điểm đầu và điểm cuối của cấu kiện, sau đó nhập các thông số hình học thông qua hộp thoại trực quan. Công cụ sẽ tự động tính toán các tọa độ trung gian và tạo ra mô hình 3D chính xác đến từng mm.</p>
+          <h2>Hướng Dẫn Sử Dụng Chi Tiết</h2>
+          
+          <h3>Bước 1: Nhập và kiểm tra dữ liệu tiết diện</h3>
+          <p>Người dùng có thể sao chép nhanh danh sách tiết diện từ Excel và dán trực tiếp vào bảng Grid của PEB Section Creator. Sử dụng nút <strong>Accepted Formats</strong> để xem các định dạng ký hiệu được hỗ trợ. Định dạng hợp lệ sẽ được tự động tách các trường kích thước (bản bụng Web, bản cánh Flange, chiều dày WebThk, FlgThk, các điểm chiều sâu d1, d2, d3, d4) để tính toán tự động.</p>
 
-          <h2>Kết luận</h2>
-          <p>PEB Section Creator không chỉ là một plugin, nó là một phần trong hệ sinh thái số hóa mà ViDLab đang hướng tới. Chúng tôi tin rằng bằng cách tự động hóa các tác vụ lặp đi lặp lại, các kỹ sư sẽ có nhiều thời gian hơn để sáng tạo và giải quyết các bài toán kỹ thuật thực sự quan trọng.</p>
+          <h3>Bước 2: Cấu hình quy tắc gắn thuộc tính (Part Settings)</h3>
+          <p>Click nút <strong>PEB Part Settings</strong> ở góc dưới bên phải giao diện chính. Tại đây, bạn thiết lập:
+            <ul>
+              <li>Tên gọi (Name) và tiền tố bản vẽ (Prefix) riêng biệt cho bản cánh (Flange) và bản bụng (Web).</li>
+              <li>Bộ quy tắc gán màu sắc/phân lớp cấu kiện tại ComboBox <strong>Class By</strong>. Nếu chọn chế độ <em>By User</em>, ô nhập <em>User Class</em> sẽ được kích hoạt để bạn điền thông số. Nhấn <strong>Save Settings</strong> để lưu lại cấu hình và áp dụng đồng loạt cho toàn bảng.</li>
+            </ul>
+          </p>
+
+          <h3>Bước 3: Dựng mô hình 3D trực tiếp trong Tekla Structures</h3>
+          <p>1. Chọn dòng tiết diện mong muốn dựng hình trên bảng Grid.<br>
+             2. Nhấn nút <strong>DRAW PEB MEMBER</strong>. Cửa sổ ứng dụng sẽ tạm thời ẩn đi để tối ưu không gian thao tác.<br>
+             3. Trên mô hình Tekla Structures, thực hiện click chọn 2 điểm: <strong>Điểm đầu (Start Point)</strong> và <strong>Điểm cuối (End Point)</strong>.<br>
+             4. Cấu kiện PEB Member sẽ được dựng chính xác tức thì. Ứng dụng sẽ tự động hiển thị trở lại để bạn tiếp tục làm việc.
+          </p>
+
+          <h3>Bước 4: Cập nhật cấu kiện hoặc Xuất thuộc tính hàng loạt</h3>
+          <p>Để cập nhật tiết diện mới cho các cấu kiện đã dựng sẵn, hãy chọn cấu kiện đó trên mô hình Tekla, chọn dòng tiết diện tương ứng trong bảng Grid của tool, sau đó nhấn <strong>UPDATE PEB MEMBER</strong>. Ngoài ra, bạn có thể chọn nhiều dòng tiết diện trong Grid và nhấn <strong>Export</strong> để lưu trữ các file cấu hình XML chuẩn hóa vào mô hình phục vụ cho các công tác thiết kế liên kết sau này.</p>
         </div>
 
         <div data-lang="en">
-          <p>In the digital era of the construction industry, optimizing the design process is no longer an option but a requirement. <strong>PEB Section Creator</strong> was born to solve the most complex problem in Pre-Engineered Building (PEB) design: managing and modeling tapered members.</p>
+          <p>In the era of construction and steel structure digitalization, optimizing Building Information Modeling (BIM) workflows is no longer optional—it is a critical requirement to improve competitiveness. <strong>PEB Section Creator</strong> stands out as a breakthrough solution that completely automates and simplifies the most complex and time-consuming tasks in Pre-Engineered Building (PEB) design: managing attributes and automatic 3D modeling of tapered members directly inside Tekla Structures.</p>
 
-          <h2>Why PEB Section Creator?</h2>
-          <p>PEB design requires members with continuously varying sections to optimize load-bearing capacity and save material. Manual modeling of these members in Tekla Structures is time-consuming and prone to errors during design changes.</p>
+          <h2>Why Choose PEB Section Creator?</h2>
+          <p>PEB design requires column and rafter members with continuously varying (tapered) sections to optimize load distribution, minimize steel weight, and maximize cost efficiency. Manually creating and managing hundreds of XML attribute files in the Tekla Structures <code>attributes</code> folder is a real workflow bottleneck: requiring endless repetitive mouse clicks, prone to parameter input errors, and extremely difficult to modify when design revisions occur.</p>
           
-          <div class="highlight-box">
-            "This tool reduces rafter modeling time from 4 hours to just 15 minutes, while ensuring absolute precision for factory production."
+          <div class="highlight-box" style="background: rgba(31, 138, 128, 0.05); border-left: 4px solid var(--accent-cyan);">
+            <strong>💡 Real-world Results:</strong> The tool slashes the time needed to model and update portal frames and gable frames from 3 to 4 hours of intense manual work to <strong>under 10 minutes</strong>, eliminating manual typing mistakes and guaranteeing 100% accurate CNC fabrication data.
           </div>
 
           <h2>Key Features</h2>
           <ul>
-            <li><strong>Multi-point Section Definition:</strong> Allows setting web height and flange thickness changes flexibly on a single interface.</li>
-            <li><strong>Tekla Open API Compatibility:</strong> Uses official libraries from Trimble, ensuring stability and upgradability for the latest Tekla versions (2024, 2025).</li>
-            <li><strong>Automatic BOM Integration:</strong> All section changes are instantly updated in material quantity statistics, enabling fast and accurate quotes.</li>
-            <li><strong>Modern UI:</strong> Minimalist design with Dark Mode support, helping engineers focus maximally on their work.</li>
+            <li><strong>Flexible Multi-Point Sections:</strong> Supports and automatically parses simple to highly complex section formats: from constant profiles to 2-point, 3-point, or even 4-point tapered web depths (e.g., <code>W(300-500-600-300)x6+F186x8</code>).</li>
+            <li><strong>Clean and Streamlined Interface:</strong> The layout is rearranged to be highly compact, removing redundant prefix controls and allowing engineers to focus solely on project material settings. Invalid profile formats are instantly highlighted in red on the DataGrid for rapid error correction.</li>
+            <li><strong>Smart Class Assignment (4 Modes):</strong> In the updated <em>Part Settings</em> dialog, a highly versatile <strong>Class By</strong> ComboBox lets you define class assignment rules:
+              <ul>
+                <li><strong>By Thickness:</strong> Automatically sets classes based on flange and web plate thicknesses (rounded to nearest mm)—ideal for manufacturing plate nesting and stock management.</li>
+                <li><strong>By Section:</strong> Automatically aggregates all unique profiles in your project, sorts them alphabetically, and assigns sequential class IDs from <code>1</code> to <code>99</code>.</li>
+                <li><strong>By Prefix:</strong> Dynamically extracts trailing digits in the Prefix column (e.g., prefix <code>S12</code> yields Class <code>12</code>) to align with standard drawing output.</li>
+                <li><strong>By User:</strong> Allows you to enter a single, custom default Class number for all components.</li>
+              </ul>
+            </li>
+            <li><strong>Direct 3D Modeling (Draw PEB Member):</strong> Insert 3D components directly into Tekla by picking 2 points. The application handles all temporary configurations in memory, leaving zero redundant XML attribute files in your directory.</li>
+            <li><strong>Batch Member Updates (Update PEB Member):</strong> Select any number of PEB components directly inside your active Tekla model and click to instantly synchronize their profiles, materials, and class rules.</li>
           </ul>
 
-          <h2>Operational Workflow</h2>
-          <p>Users only need to select the start and end points of the member, then input geometric parameters via an intuitive dialog. The tool automatically calculates intermediate coordinates and generates a 3D model accurate to the millimeter.</p>
+          <h2>Step-by-Step User Manual</h2>
+          
+          <h3>Step 1: Input and Validate Section Data</h3>
+          <p>You can quickly copy lists of profiles from Excel sheets and paste them directly into the DataGrid. Click <strong>Accepted Formats</strong> to review supported notation formats. Valid rows are automatically parsed into individual component metrics (Web, Flange, WebThk, FlgThk, d1, d2, d3, d4 depths) for downstream calculations.</p>
 
-          <h2>Conclusion</h2>
-          <p>PEB Section Creator is more than just a plugin; it is part of the digitalization ecosystem that ViDLab is aiming for. We believe that by automating repetitive tasks, engineers will have more time to create and solve truly important technical problems.</p>
+          <h3>Step 2: Configure Parts Attributes (Part Settings)</h3>
+          <p>Click the <strong>PEB Part Settings</strong> button at the bottom right. Here, you can configure:
+            <ul>
+              <li>The Name and drawing Prefix for both Flanges and Webs separately.</li>
+              <li>Your classification rules via the <strong>Class By</strong> ComboBox. If <em>By User</em> is selected, the custom <em>User Class</em> input box is enabled. Click <strong>Save Settings</strong> to commit the configuration and apply it across all rows instantly.</li>
+            </ul>
+          </p>
+
+          <h3>Step 3: Model 3D Components in Tekla Structures</h3>
+          <p>1. Select your target profile row in the DataGrid.<br>
+             2. Click the <strong>DRAW PEB MEMBER</strong> button. The app window will temporarily minimize to maximize your screen space.<br>
+             3. Inside the Tekla Structures 3D model, click to pick two coordinates: the <strong>Start Point</strong> and the <strong>End Point</strong>.<br>
+             4. The 3D PEB Member component is generated instantly. The app window automatically restores itself so you can continue your design.
+          </p>
+
+          <h3>Step 4: Update or Batch Export Attributes</h3>
+          <p>To modify existing structures in your model, select the components inside Tekla, choose your new profile row in the grid, and click <strong>UPDATE PEB MEMBER</strong>. You can also select multiple grid rows and click <strong>Export</strong> to automatically output optimized XML files to your model's <code>attributes</code> directory for subsequent detailing work.</p>
         </div>
+
+        <!-- ==================== GALLERY OF SCREENSHOTS ==================== -->
+        <div class="article-gallery" style="margin-top: 3.5rem; border-top: 1px solid var(--border); padding-top: 2.5rem;">
+          <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif;">
+            <span data-lang="vi">📸 Hình Ảnh Giao Diện & Kết Quả Mô Hình</span>
+            <span data-lang="en">📸 Interface Screenshots & Modeling Results</span>
+          </h3>
+          <div class="gallery-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1rem;">
+            <div class="gallery-item" style="border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: rgba(20, 24, 33, 0.4); box-shadow: var(--shadow); transition: var(--transition);">
+              <img src="peb_section_creator_ui_1.png" alt="PEB Section Creator WPF UI" style="width: 100%; display: block; object-fit: cover;">
+              <div style="padding: 1rem; border-top: 1px solid var(--border); font-size: 0.95rem; color: var(--text-muted); line-height: 1.4;">
+                <span data-lang="vi"><strong>Hình 1:</strong> Giao diện cấu hình thông số và xem trước 3D trực quan.</span>
+                <span data-lang="en"><strong>Figure 1:</strong> Parameters configuration panel & interactive 3D preview.</span>
+              </div>
+            </div>
+            <div class="gallery-item" style="border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: rgba(20, 24, 33, 0.4); box-shadow: var(--shadow); transition: var(--transition);">
+              <img src="peb_section_creator_ui_2.png" alt="PEB Section Creator Tekla Structures Model" style="width: 100%; display: block; object-fit: cover;">
+              <div style="padding: 1rem; border-top: 1px solid var(--border); font-size: 0.95rem; color: var(--text-muted); line-height: 1.4;">
+                <span data-lang="vi"><strong>Hình 2:</strong> Khung đầu hồi thép tiền chế (PEB) dựng hoàn toàn tự động trên Tekla.</span>
+                <span data-lang="en"><strong>Figure 2:</strong> Steel portal frame (PEB) modeled automatically in Tekla Structures.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </main>

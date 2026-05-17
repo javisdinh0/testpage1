@@ -97,6 +97,34 @@
       box-shadow: 0 0 0 2px rgba(79, 209, 197, 0.2);
     }
     
+    .input-group-with-btn {
+      display: flex;
+      gap: 0.5rem;
+      width: 100%;
+    }
+    
+    .form-btn-browse {
+      background: rgba(79, 209, 197, 0.1);
+      border: 1px solid var(--accent-cyan);
+      border-radius: 6px;
+      color: var(--accent-cyan);
+      padding: 0.8rem 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+    
+    .form-btn-browse:hover {
+      background: var(--accent-cyan);
+      color: #0b0f19;
+      box-shadow: 0 0 12px rgba(79, 209, 197, 0.4);
+    }
+    
     .code-preview-container {
       margin-top: 2rem;
     }
@@ -310,7 +338,14 @@
                 <span data-lang="vi">Đường dẫn đầy đủ tới file DLL trong máy tính</span>
                 <span data-lang="en">Full Local File Path to DLL</span>
               </label>
-              <input type="text" id="input-dll-path" class="form-input" placeholder="e.g. C:\Tools\ViDBlockLibrary.dll" />
+              <div class="input-group-with-btn">
+                <input type="text" id="input-dll-path" class="form-input" style="flex: 1;" placeholder="e.g. C:\Tools\ViDBlockLibrary.dll" />
+                <button type="button" id="btn-browse-path" class="form-btn-browse">
+                  <span data-lang="vi">Chọn file...</span>
+                  <span data-lang="en">Browse...</span>
+                </button>
+              </div>
+              <input type="file" id="file-picker" accept=".dll" style="display: none;" />
             </div>
             
             <div class="form-group">
@@ -436,6 +471,8 @@
       const codePreview = document.getElementById('lisp-code-preview');
       const btnCopy = document.getElementById('btn-copy-code');
       const btnDownload = document.getElementById('btn-download-lisp');
+      const btnBrowsePath = document.getElementById('btn-browse-path');
+      const filePicker = document.getElementById('file-picker');
 
       // Helper to double escape backslashes for AutoLISP strings
       function escapeLispPath(path) {
@@ -563,6 +600,32 @@
       inputDllFile.addEventListener('input', updatePreview);
       inputDllPath.addEventListener('input', updatePreview);
       inputCmdShort.addEventListener('input', updatePreview);
+
+      btnBrowsePath.addEventListener('click', () => {
+        filePicker.click();
+      });
+
+      filePicker.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+          const file = e.target.files[0];
+          inputDllFile.value = file.name;
+          
+          let currentPath = inputDllPath.value.trim();
+          if (currentPath) {
+            const lastSlashIdx = Math.max(currentPath.lastIndexOf('\\'), currentPath.lastIndexOf('/'));
+            if (lastSlashIdx !== -1) {
+              const dir = currentPath.substring(0, lastSlashIdx + 1);
+              inputDllPath.value = dir + file.name;
+            } else {
+              inputDllPath.value = "C:\\ViDLab\\Tools\\" + file.name;
+            }
+          } else {
+            inputDllPath.value = "C:\\ViDLab\\Tools\\" + file.name;
+          }
+          
+          updatePreview();
+        }
+      });
 
       // Copy code functionality
       btnCopy.addEventListener('click', () => {
