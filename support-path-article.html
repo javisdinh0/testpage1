@@ -282,17 +282,19 @@
             <span data-lang="en">🛠️ AutoLISP Autoload & Shortcut Generator</span>
           </div>
           <p class="tool-desc">
-            <span data-lang="vi">Điền thông số của công cụ CAD (.dll) bên dưới, hệ thống sẽ tự động viết code LISP và cho phép bạn tải về dùng ngay!</span>
-            <span data-lang="en">Fill in your CAD tool (.dll) parameters below. The system will write the LISP code and let you download it instantly!</span>
+            <span data-lang="vi">Chọn công cụ của bạn bên dưới, hệ thống sẽ tự động quét thông tin từ ổ đĩa máy tính, tạo mã LISP và cho phép tải về dùng ngay!</span>
+            <span data-lang="en">Select your CAD tool below. The system will load local parameters, write the LISP code, and let you download it instantly!</span>
           </p>
           
           <div class="form-grid">
             <div class="form-group">
               <label class="form-label" for="input-dll-name">
-                <span data-lang="vi">Tên công cụ (Gợi nhớ)</span>
-                <span data-lang="en">Tool Name (Friendly)</span>
+                <span data-lang="vi">Chọn Công Cụ CAD</span>
+                <span data-lang="en">Select CAD Tool</span>
               </label>
-              <input type="text" id="input-dll-name" class="form-input" value="ViD Block Library" placeholder="e.g. ViD Block Library" />
+              <select id="input-dll-name" class="form-input">
+                <!-- Will be populated dynamically -->
+              </select>
             </div>
             
             <div class="form-group">
@@ -300,7 +302,7 @@
                 <span data-lang="vi">Tên file DLL</span>
                 <span data-lang="en">DLL File Name</span>
               </label>
-              <input type="text" id="input-dll-file" class="form-input" value="ViDBlockLibrary.dll" placeholder="e.g. ViDBlockLibrary.dll" />
+              <input type="text" id="input-dll-file" class="form-input" readonly style="background: rgba(10,12,16,0.5); cursor: not-allowed;" />
             </div>
             
             <div class="form-group full-width">
@@ -308,15 +310,17 @@
                 <span data-lang="vi">Đường dẫn đầy đủ tới file DLL trong máy tính</span>
                 <span data-lang="en">Full Local File Path to DLL</span>
               </label>
-              <input type="text" id="input-dll-path" class="form-input" value="C:\ViDLab\Tools\ViDBlockLibrary.dll" placeholder="e.g. C:\ViDLab\Tools\ViDBlockLibrary.dll" />
+              <input type="text" id="input-dll-path" class="form-input" readonly style="background: rgba(10,12,16,0.5); cursor: not-allowed;" />
             </div>
             
             <div class="form-group">
               <label class="form-label" for="input-cmd-orig">
-                <span data-lang="vi">Lệnh gốc trong DLL</span>
-                <span data-lang="en">Original Command in DLL</span>
+                <span data-lang="vi">Chọn Lệnh Gốc Trong DLL</span>
+                <span data-lang="en">Select Original Command</span>
               </label>
-              <input type="text" id="input-cmd-orig" class="form-input" value="ViDBlockLib" placeholder="e.g. ViDBlockLib" />
+              <select id="input-cmd-orig" class="form-input">
+                <!-- Will be populated dynamically -->
+              </select>
             </div>
             
             <div class="form-group">
@@ -324,7 +328,7 @@
                 <span data-lang="vi">Lệnh tắt muốn đặt</span>
                 <span data-lang="en">Shortcut Command</span>
               </label>
-              <input type="text" id="input-cmd-short" class="form-input" value="VBL" placeholder="e.g. VBL" />
+              <input type="text" id="input-cmd-short" class="form-input" value="" placeholder="e.g. VBL" />
             </div>
           </div>
           
@@ -363,10 +367,70 @@
   <!-- INTERACTIVE TOOL JAVASCRIPT -->
   <script>
     (function() {
-      const inputDllName = document.getElementById('input-dll-name');
+      // Compiled Local CAD Tool data map from D:\OneDrive\05 CODI\04 ViD CAD Tools Box
+      const cadToolsData = [
+        {
+          "ToolName": "ViD Block Libraly",
+          "DllName": "ViD Block Libraly.dll",
+          "DllPath": "D:\\OneDrive\\05 CODI\\04 ViD CAD Tools Box\\ViD Block Libraly\\bin\\Debug\\ViD Block Libraly.dll",
+          "Commands": ["BI", "BLOCKMASTER_OPEN_FILE"],
+          "DefaultShortcut": "VBL"
+        },
+        {
+          "ToolName": "C2T-Cad to Tekla",
+          "DllName": "C2T-Cad to Tekla.dll",
+          "DllPath": "D:\\OneDrive\\05 CODI\\04 ViD CAD Tools Box\\C2T-Cad to Tekla\\bin\\Debug\\C2T-Cad to Tekla.dll",
+          "Commands": ["CadtoTekla"],
+          "DefaultShortcut": "CTT"
+        },
+        {
+          "ToolName": "MergeFilesDWG",
+          "DllName": "MergeFilesDWG.dll",
+          "DllPath": "D:\\OneDrive\\05 CODI\\04 ViD CAD Tools Box\\Merge File DWG\\bin\\Debug\\MergeFilesDWG.dll",
+          "Commands": ["MergeFilesDWG"],
+          "DefaultShortcut": "MFD"
+        },
+        {
+          "ToolName": "PaperSize",
+          "DllName": "PaperSize.dll",
+          "DllPath": "D:\\OneDrive\\05 CODI\\04 ViD CAD Tools Box\\PaperSize\\bin\\Debug\\PaperSize.dll",
+          "Commands": ["A3", "A0", "A1", "A2", "A4"],
+          "DefaultShortcut": "PS"
+        },
+        {
+          "ToolName": "QuickPick",
+          "DllName": "QuickPick.dll",
+          "DllPath": "D:\\OneDrive\\05 CODI\\04 ViD CAD Tools Box\\QuickPick\\bin\\Debug\\QuickPick.dll",
+          "Commands": ["PickLay", "PickTextSt"],
+          "DefaultShortcut": "QP"
+        },
+        {
+          "ToolName": "SteelsPro",
+          "DllName": "SteelsPro.dll",
+          "DllPath": "D:\\OneDrive\\05 CODI\\04 ViD CAD Tools Box\\SteelsPro\\bin\\Debug\\SteelsPro.dll",
+          "Commands": ["SteelsPro"],
+          "DefaultShortcut": "SP"
+        },
+        {
+          "ToolName": "SetCurrentDimStyleFromObject",
+          "DllName": "SetCurrentDimStyleFromObject.dll",
+          "DllPath": "D:\\OneDrive\\05 CODI\\04 ViD CAD Tools Box\\SetCurrentDimStyleFromObject\\bin\\Debug\\SetCurrentDimStyleFromObject.dll",
+          "Commands": ["SetCurrentDimStyleFromObject"],
+          "DefaultShortcut": "SCD"
+        },
+        {
+          "ToolName": "Builder",
+          "DllName": "Builder.dll",
+          "DllPath": "D:\\OneDrive\\05 CODI\\04 ViD CAD Tools Box\\Builder\\bin\\Debug\\Builder.dll",
+          "Commands": ["Builder"],
+          "DefaultShortcut": "BD"
+        }
+      ];
+
+      const selectDllName = document.getElementById('input-dll-name');
       const inputDllFile = document.getElementById('input-dll-file');
       const inputDllPath = document.getElementById('input-dll-path');
-      const inputCmdOrig = document.getElementById('input-cmd-orig');
+      const selectCmdOrig = document.getElementById('input-cmd-orig');
       const inputCmdShort = document.getElementById('input-cmd-short');
       
       const codePreview = document.getElementById('lisp-code-preview');
@@ -375,16 +439,19 @@
 
       // Helper to double escape backslashes for AutoLISP strings
       function escapeLispPath(path) {
-        // Replace backslashes with double backslashes, or convert to forward slashes.
-        // Forward slashes work perfectly in AutoCAD LISP and prevent escaping issues!
         return path.replace(/\\/g, '/');
       }
 
       function generateLispCode() {
-        const name = inputDllName.value.trim() || "CAD Tool";
-        const file = inputDllFile.value.trim() || "mytool.dll";
-        const rawPath = inputDllPath.value.trim() || "C:\\Tools\\mytool.dll";
-        const origCmd = inputCmdOrig.value.trim() || "MyOriginalCommand";
+        const toolIndex = selectDllName.selectedIndex;
+        if (toolIndex === -1) return ";; Error loading tool data";
+        
+        const tool = cadToolsData[toolIndex];
+        const name = tool.ToolName;
+        const file = tool.DllName;
+        const rawPath = tool.DllPath;
+        
+        const origCmd = selectCmdOrig.value || "MyOriginalCommand";
         const shortCmd = inputCmdShort.value.trim() || "MC";
         
         const safePath = escapeLispPath(rawPath);
@@ -402,28 +469,28 @@
 (defun LoadViDLabTool_${shortCmd} ()
   (if (findfile "${safePath}")
     (progn
-      (princ "\\n[ViDLab] Nạp công cụ ${name}...")
+      (princ "\\n[ViDLab] Nap cong cu ${name}...")
       (vl-cmdf "._netload" "${safePath}")
     )
     (progn
-      (princ "\\n[ViDLab] LỖI: Không tìm thấy file tại đường dẫn: ${safePath}")
-      (princ "\\n[ViDLab] Vui lòng cấu hình lại đường dẫn chính xác trong file LISP.")
+      (princ "\\n[ViDLab] LOI: Khong tim thay file tai duong dan: ${safePath}")
+      (princ "\\n[ViDLab] Vui long cau hinh lai duong dan chinh xac trong file LISP.")
     )
   )
 )
 
-;; Tự động nạp file khi mở bản vẽ
+;; Tu dong nap file khi mo ban ve
 (LoadViDLabTool_${shortCmd})
 
-;; --- 2. Định nghĩa Lệnh Tắt ---
+;; --- 2. Dinh nghia Lenh Tat ---
 (defun c:${shortCmd} ()
-  (princ "\\n[ViDLab] Khởi chạy lệnh gốc ${origCmd}...")
-  ;; Gọi lệnh gốc đã được nạp từ DLL
+  (princ "\\n[ViDLab] Khoi chay lenh goc ${origCmd}...")
+  ;; Goi lenh goc da duoc nap tu DLL
   (vl-cmdf "${origCmd}")
   (princ)
 )
 
-(princ "\\n[ViDLab] Đã cài đặt phím tắt [${shortCmd}] cho lệnh [${origCmd}].")
+(princ "\\n[ViDLab] Da cai dat phim tat [${shortCmd}] cho lenh [${origCmd}].")
 (princ)
 `;
       }
@@ -432,10 +499,64 @@
         codePreview.textContent = generateLispCode();
       }
 
-      // Add event listeners for instant typing update
-      [inputDllName, inputDllFile, inputDllPath, inputCmdOrig, inputCmdShort].forEach(input => {
-        input.addEventListener('input', updatePreview);
-      });
+      function populateTools() {
+        // Clear options
+        selectDllName.innerHTML = "";
+        
+        // Add options
+        cadToolsData.forEach((tool, idx) => {
+          const opt = document.createElement('option');
+          opt.value = idx;
+          opt.textContent = tool.ToolName;
+          selectDllName.appendChild(opt);
+        });
+
+        // Trigger manual select change on load
+        onToolChanged();
+      }
+
+      function onToolChanged() {
+        const toolIndex = selectDllName.value;
+        const tool = cadToolsData[toolIndex];
+        
+        inputDllFile.value = tool.DllName;
+        inputDllPath.value = tool.DllPath;
+        
+        // Clear & populate commands dropdown
+        selectCmdOrig.innerHTML = "";
+        tool.Commands.forEach(cmd => {
+          const opt = document.createElement('option');
+          opt.value = cmd;
+          opt.textContent = cmd;
+          selectCmdOrig.appendChild(opt);
+        });
+
+        // Propose a default shortcut
+        onCommandChanged();
+      }
+
+      function onCommandChanged() {
+        const toolIndex = selectDllName.value;
+        const tool = cadToolsData[toolIndex];
+        const selectedCmd = selectCmdOrig.value;
+
+        // If the command is A3 / A4 in PaperSize, set shortcut to A3 / A4
+        if (tool.ToolName === "PaperSize") {
+          inputCmdShort.value = selectedCmd;
+        } else if (selectedCmd === "BI") {
+          inputCmdShort.value = "VBL";
+        } else {
+          // Take default shortcut
+          inputCmdShort.value = selectedCmd ? selectedCmd.toUpperCase() + "_SHORT" : tool.DefaultShortcut;
+        }
+
+        updatePreview();
+      }
+
+      // Add event listeners
+      selectDllName.addEventListener('change', onToolChanged);
+      selectCmdOrig.addEventListener('change', onCommandChanged);
+      inputCmdShort.addEventListener('input', updatePreview);
 
       // Copy code functionality
       btnCopy.addEventListener('click', () => {
@@ -471,8 +592,8 @@
         URL.revokeObjectURL(url);
       });
 
-      // Initial render
-      updatePreview();
+      // Initial populate
+      populateTools();
     })();
   </script>
 </body>
