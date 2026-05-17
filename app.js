@@ -261,14 +261,30 @@ function closeModal() {
 // Attach click events to cards and buttons
 document.querySelectorAll('.app-card').forEach(card => {
   card.addEventListener('click', (e) => {
+    // Don't trigger navigation or modal if clicking on secondary links (e.g., download / hdsd)
+    if (e.target.closest('.card-btn-code')) return;
+
+    // Find the main detail link
+    const demoLink = card.querySelector('.card-btn-demo');
+    const href = demoLink ? demoLink.getAttribute('href') : null;
+
+    // If there is a real article link, navigate to it directly
+    if (href && href !== '#' && !demoLink.classList.contains('modal-trigger')) {
+      // If the user clicked directly on the anchor, let the browser handle it naturally
+      if (e.target.closest('a') === demoLink) {
+        return;
+      }
+      // Otherwise, navigate programmatically
+      e.preventDefault();
+      window.location.href = href;
+      return;
+    }
+
     const link = e.target.closest('a');
     // If clicked on a link with a real URL (not just #), allow it to navigate
     if (link && link.getAttribute('href') !== '#' && !link.classList.contains('modal-trigger')) {
       return; 
     }
-    
-    // Don't trigger modal if clicking on secondary links
-    if (e.target.closest('.card-btn-code')) return;
     
     e.preventDefault();
     openModal(card);
