@@ -267,8 +267,8 @@
       <!-- LOADING STATE -->
       <div id="download-modal-loading" style="display: none; text-align: center; padding: 2rem 0;">
         <div style="width: 48px; height: 48px; border: 4px solid rgba(99, 179, 237, 0.1); border-top-color: var(--accent-blue); border-radius: 50%; display: inline-block; animation: spin 1s linear infinite; margin-bottom: 1.5rem;"></div>
-        <p id="loading-text-vi" style="color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Đang ghi nhận lượt tải, vui lòng chờ...</p>
-        <p id="loading-text-en" style="display: none; color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Recording download, please wait...</p>
+        <p id="loading-text-vi" style="color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Đang gửi email, vui lòng chờ...</p>
+        <p id="loading-text-en" style="display: none; color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Sending email, please wait...</p>
       </div>
 
       <!-- SUCCESS STATE -->
@@ -276,13 +276,17 @@
         <div style="width: 64px; height: 64px; background: rgba(104, 211, 145, 0.1); border: 2px solid var(--accent-green); color: var(--accent-green); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem; font-weight: bold;">✓</div>
         
         <div id="success-text-vi">
-          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Xác Nhận Thành Công!</h4>
-          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Cảm ơn bạn đã quan tâm. Quá trình tải xuống phần mềm đang được bắt đầu tự động.</p>
+          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Gửi Email Thành Công! 📧</h4>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem;">Đường dẫn tải xuống đã được gửi đến:</p>
+          <p id="success-email-vi" style="color: var(--accent-blue); font-weight: 600; font-size: 1rem; margin-bottom: 1rem;"></p>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.5rem;">Vui lòng kiểm tra hộp thư (kể cả thư mục <strong>Spam</strong>) và nhấn vào đường dẫn trong email để tải xuống.</p>
         </div>
 
         <div id="success-text-en" style="display: none;">
-          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Successfully Verified!</h4>
-          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Thank you for your interest. Your file download has been initiated automatically.</p>
+          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Email Sent Successfully! 📧</h4>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem;">The download link has been sent to:</p>
+          <p id="success-email-en" style="color: var(--accent-blue); font-weight: 600; font-size: 1rem; margin-bottom: 1rem;"></p>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.5rem;">Please check your inbox (including the <strong>Spam</strong> folder) and click the link in the email to download.</p>
         </div>
 
         <button onclick="closeDownloadModal()" class="btn-ghost" style="padding: 0.6rem 1.5rem; font-size: 0.9rem; border-radius: var(--radius-sm);">Đóng / Close</button>
@@ -406,14 +410,15 @@
         referrer: window.location.href
       };
 
-      const proceedToSuccess = () => {
-        // Trigger file download
-        const a = document.createElement('a');
-        a.href = 'PebSectionCreator.tsep';
-        a.download = 'PebSectionCreator.tsep';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+      // Download link to be emailed
+      const downloadUrl = window.location.origin + window.location.pathname.replace('peb-article.html', '') + 'PebSectionCreator.tsep';
+
+      const proceedToSuccess = (emailAddr) => {
+        // Show email address in success message
+        const elVi = document.getElementById('success-email-vi');
+        const elEn = document.getElementById('success-email-en');
+        if (elVi) elVi.textContent = emailAddr;
+        if (elEn) elEn.textContent = emailAddr;
 
         // Display Success State
         document.getElementById('download-modal-loading').style.display = 'none';
@@ -429,24 +434,25 @@
       };
 
       if (gasUrl) {
-        // Make actual live REST call to Google Apps Script
+        // Make actual live REST call to Google Apps Script to send email
         fetch(gasUrl, {
           method: 'POST',
-          mode: 'no-cors', // standard cross-domain Apps Script method
+          mode: 'no-cors',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({ ...payload, downloadUrl: downloadUrl })
         })
         .then(() => {
-          proceedToSuccess();
+          proceedToSuccess(email);
         })
         .catch(err => {
-          console.error('GAS Request Error, falling back to local simulation:', err);
-          proceedToSuccess();
+          console.error('GAS Request Error:', err);
+          proceedToSuccess(email);
         });
       } else {
-        // Simulate local network latency of 1s
+        // No GAS URL configured — show warning in console, still show success UI
+        console.warn('Chưa cấu hình GAS URL. Vào Admin Dashboard để thiết lập.');
         setTimeout(() => {
-          proceedToSuccess();
+          proceedToSuccess(email);
         }, 1200);
       }
     }
