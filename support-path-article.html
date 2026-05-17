@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoCAD Support Path & Lisp Generator — ViDLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 900px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-image { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); margin: 2rem 0; box-shadow: var(--shadow); }
+    
+    .article-body { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); margin: 2.5rem 0 1rem; font-size: 1.8rem; font-family: 'Space Grotesk', sans-serif; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    .article-body h3 { color: var(--text-primary); margin: 1.8rem 0 0.8rem; font-size: 1.3rem; }
+    .article-body p { margin-bottom: 1.5rem; }
+    .article-body ul, .article-body ol { margin-bottom: 2rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .highlight-box { background: rgba(99,179,237,0.05); border-left: 4px solid var(--accent-cyan); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; }
+    
+    /* Interactive Tool Styling */
+    .lisp-tool-container {
+      background: rgba(20, 24, 33, 0.6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      margin: 3rem 0;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    .lisp-tool-container::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-purple));
+    }
+    .tool-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .tool-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    .form-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .form-input {
+      background: rgba(10, 12, 16, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.8rem 1rem;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 2px rgba(79, 209, 197, 0.2);
+    }
+    
+    .code-preview-container {
+      margin-top: 2rem;
+    }
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #11151c;
+      border: 1px solid var(--border);
+      border-bottom: none;
+      border-radius: 6px 6px 0 0;
+      padding: 0.6rem 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+    .code-title { color: var(--text-muted); }
+    .code-copy-btn {
+      background: none;
+      border: none;
+      color: var(--accent-cyan);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.8rem;
+      transition: var(--transition);
+    }
+    .code-copy-btn:hover { color: #fff; }
+    .code-body {
+      background: #090c10;
+      border: 1px solid var(--border);
+      border-radius: 0 0 6px 6px;
+      padding: 1.5rem;
+      overflow-x: auto;
+      margin: 0;
+    }
+    .code-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      line-height: 1.6;
+      display: block;
+      white-space: pre;
+    }
+    
+    .btn-generate {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      color: #0b0f19;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 1.5rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(79, 209, 197, 0.3);
+    }
+    .btn-generate:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(79, 209, 197, 0.5);
+    }
+    
+    @media (max-width: 768px) {
+      .article-title { font-size: 2.2rem; }
+      .article-container { padding: 1.5rem; }
+      .lisp-tool-container { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Particle Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navbar -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">ViDLab</span>
+        <span class="logo-bracket">/&gt;</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#home" class="nav-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+        <li><a href="index.html#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+        <li><a href="index.html#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-select-lang="vi">VN</button>
+          <button class="lang-btn" data-select-lang="en">EN</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <header class="article-header">
+        <a href="index.html" class="article-back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-lang="vi">Quay lại danh sách</span><span data-lang="en">Back to list</span>
+        </a>
+        <h1 class="article-title">
+          <span data-lang="vi">Cấu Hình Support Path Trong AutoCAD & Tự Động Load LISP</span>
+          <span data-lang="en">Configure Support Path in AutoCAD & Auto-loading LISP</span>
+        </h1>
+        <div class="article-meta">
+          <span data-lang="vi">Chuyên mục: AutoCAD Detailing</span><span data-lang="en">Category: AutoCAD Detailing</span>
+          <span>•</span>
+          <span data-lang="vi">Ngày đăng: 17/05/2026</span><span data-lang="en">Published: May 17, 2026</span>
+          <span>•</span>
+          <span data-lang="vi">Tác giả: ViDLab Team</span><span data-lang="en">Author: ViDLab Team</span>
+        </div>
+      </header>
+
+      <img src="autocad_lisp_helper.png" alt="AutoCAD Support Path & Lisp Illustration" class="article-image">
+
+      <div class="article-body">
+        <!-- TIẾNG VIỆT -->
+        <div data-lang="vi">
+          <p>Khi phát triển và sử dụng các công cụ lập trình bổ trợ cho AutoCAD (như file AutoLISP <code>.lsp</code>, file <code>.dcl</code>, hay các file ứng dụng .NET <code>.dll</code>), việc quản lý đường dẫn file là vô cùng quan trọng. Nếu không cấu hình đúng, AutoCAD sẽ không tìm thấy các file hỗ trợ hình ảnh, file giao diện hoặc các thư viện phụ thuộc.</p>
+          <p>Bài viết này sẽ hướng dẫn bạn cách cấu hình <strong>Support File Search Path</strong> chuẩn hóa để các công cụ luôn hoạt động mượt mà, đồng thời cung cấp một bộ công cụ tương tác bên dưới để tự động tạo file LISP giúp tự động tải ứng dụng DLL và định nghĩa lệnh tắt của riêng bạn.</p>
+
+          <h2>1. Support File Search Path là gì?</h2>
+          <p><strong>Support File Search Path</strong> là danh sách các thư mục mà AutoCAD sẽ tự động tìm kiếm khi bạn gọi một file bên ngoài (như nạp mã Lisp, file hình ảnh cho block, file menu tùy biến,...). Thay vì phải nhập đường dẫn tuyệt đối rất dài và dễ lỗi, bạn chỉ cần đưa thư mục chứa công cụ vào Support Path, AutoCAD sẽ tự tìm thấy nó.</p>
+
+          <h2>2. Các bước cấu hình trong AutoCAD</h2>
+          <ol>
+            <li>Mở AutoCAD, nhập lệnh <code>OP</code> hoặc <code>OPTIONS</code> và nhấn <strong>Enter</strong> để mở hộp thoại Options.</li>
+            <li>Tại tab <strong>Files</strong>, nhấp chọn dấu cộng <code>+</code> để mở rộng mục <strong>Support File Search Path</strong> đầu tiên.</li>
+            <li>Nhấp vào nút <strong>Add</strong> ở thanh menu bên phải, sau đó nhấn <strong>Browse</strong>.</li>
+            <li>Tìm và chọn thư mục chứa công cụ của bạn (ví dụ: <code>C:\ViDLab\Tools\</code>) rồi nhấn <strong>OK</strong>.</li>
+            <li>Nhấn <strong>Apply</strong> rồi <strong>OK</strong> để lưu cấu hình.</li>
+          </ol>
+
+          <div class="highlight-box">
+            <strong>Mẹo bảo mật (Bắt buộc từ AutoCAD 2014 trở đi):</strong> Bạn nên thêm đường dẫn thư mục đó vào mục <strong>Trusted Locations</strong> (ngay phía dưới Support Path trong tab Files) để AutoCAD không hiển thị cảnh báo bảo mật khó chịu mỗi khi nạp file Lisp hoặc DLL.
+          </div>
+
+          <h2>3. Cách Autoload file DLL và thiết lập Lệnh Tắt</h2>
+          <p>Để nạp một file .NET DLL, thông thường bạn phải gõ lệnh <code>NETLOAD</code> và tìm chọn file thủ công. Để tự động hóa việc này, cách chuyên nghiệp nhất là sử dụng một file **AutoLISP (.lsp)** nhỏ nạp lúc khởi động:</p>
+          <ul>
+            <li>Tự động thực hiện lệnh <code>NETLOAD</code> đến file DLL của bạn ngay khi mở bản vẽ.</li>
+            <li>Định nghĩa một lệnh tắt cực ngắn (ví dụ: <code>VBL</code>) để gọi lệnh gốc dài trong file DLL (ví dụ: <code>ViDBlockLibrary</code>).</li>
+          </ul>
+        </div>
+
+        <!-- ENGLISH -->
+        <div data-lang="en">
+          <p>When developing and using customized programming add-ons for AutoCAD (such as AutoLISP <code>.lsp</code> scripts, <code>.dcl</code> dialog forms, or C# .NET <code>.dll</code> plugins), file path management is extremely vital. Without a proper setup, AutoCAD will fail to locate resources like slide images, dialog structures, or dependency libraries.</p>
+          <p>This article guides you through setting up a standardized <strong>Support File Search Path</strong> to ensure your tools always run smoothly, and offers an interactive web tool below to instantly generate a custom AutoLISP loader script for your .NET DLLs with customized shortcut commands.</p>
+
+          <h2>1. What is Support File Search Path?</h2>
+          <p>The <strong>Support File Search Path</strong> tells AutoCAD which directories it should look into when loading external assets (such as executing Lisp routines, loading icon slides, custom menus, etc.). Instead of typing long, error-prone absolute file paths, you simply add your tool's folder to this list, and AutoCAD finds the files instantly.</p>
+
+          <h2>2. Step-by-Step Configuration in AutoCAD</h2>
+          <ol>
+            <li>Open AutoCAD, type <code>OP</code> or <code>OPTIONS</code> in the command line and press <strong>Enter</strong> to launch the Options window.</li>
+            <li>In the <strong>Files</strong> tab, click the plus sign <code>+</code> next to the very first item: <strong>Support File Search Path</strong>.</li>
+            <li>Click the <strong>Add</strong> button on the right, and then click **Browse**.</li>
+            <li>Select the folder containing your tools (e.g., <code>C:\ViDLab\Tools\</code>) and click **OK**.</li>
+            <li>Click <strong>Apply</strong> and then <strong>OK</strong> to save your changes.</li>
+          </ol>
+
+          <div class="highlight-box">
+            <strong>Security Tip (Mandatory since AutoCAD 2014):</strong> You should also add the same folder path to **Trusted Locations** (located slightly below the Support Path inside the Files tab) to prevent AutoCAD from asking for security confirmations every single time you load a plugin.
+          </div>
+
+          <h2>3. Autoloading DLLs and Assigning Shortcut Commands</h2>
+          <p>To load a C# .NET DLL in AutoCAD, you traditionally type the <code>NETLOAD</code> command and browse for the file. To automate this, the professional approach is using a tiny **AutoLISP (.lsp)** helper script executed at startup which:</p>
+          <ul>
+            <li>Automatically runs `NETLOAD` pointing to your target DLL on drawing initialization.</li>
+            <li>Creates a very short command alias (e.g. `VBL`) to run the actual command defined inside the DLL (e.g. `ViDBlockLibrary`).</li>
+          </ul>
+        </div>
+
+        <!-- ==================== INTERACTIVE GENERATOR TOOL ==================== -->
+        <div class="lisp-tool-container">
+          <div class="tool-title">
+            <span data-lang="vi">🛠️ Bộ Tạo File AutoLISP Autoload & Lệnh Tắt</span>
+            <span data-lang="en">🛠️ AutoLISP Autoload & Shortcut Generator</span>
+          </div>
+          <p class="tool-desc">
+            <span data-lang="vi">Điền thông số của công cụ CAD (.dll) bên dưới, hệ thống sẽ tự động viết code LISP và cho phép bạn tải về dùng ngay!</span>
+            <span data-lang="en">Fill in your CAD tool (.dll) parameters below. The system will write the LISP code and let you download it instantly!</span>
+          </p>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="input-dll-name">
+                <span data-lang="vi">Tên công cụ (Gợi nhớ)</span>
+                <span data-lang="en">Tool Name (Friendly)</span>
+              </label>
+              <input type="text" id="input-dll-name" class="form-input" value="ViD Block Library" placeholder="e.g. ViD Block Library" />
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="input-dll-file">
+                <span data-lang="vi">Tên file DLL</span>
+                <span data-lang="en">DLL File Name</span>
+              </label>
+              <input type="text" id="input-dll-file" class="form-input" value="ViDBlockLibrary.dll" placeholder="e.g. ViDBlockLibrary.dll" />
+            </div>
+            
+            <div class="form-group full-width">
+              <label class="form-label" for="input-dll-path">
+                <span data-lang="vi">Đường dẫn đầy đủ tới file DLL trong máy tính</span>
+                <span data-lang="en">Full Local File Path to DLL</span>
+              </label>
+              <input type="text" id="input-dll-path" class="form-input" value="C:\ViDLab\Tools\ViDBlockLibrary.dll" placeholder="e.g. C:\ViDLab\Tools\ViDBlockLibrary.dll" />
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="input-cmd-orig">
+                <span data-lang="vi">Lệnh gốc trong DLL</span>
+                <span data-lang="en">Original Command in DLL</span>
+              </label>
+              <input type="text" id="input-cmd-orig" class="form-input" value="ViDBlockLib" placeholder="e.g. ViDBlockLib" />
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="input-cmd-short">
+                <span data-lang="vi">Lệnh tắt muốn đặt</span>
+                <span data-lang="en">Shortcut Command</span>
+              </label>
+              <input type="text" id="input-cmd-short" class="form-input" value="VBL" placeholder="e.g. VBL" />
+            </div>
+          </div>
+          
+          <div class="code-preview-container">
+            <div class="code-header">
+              <span class="code-title">autoload_loader.lsp</span>
+              <button class="code-copy-btn" id="btn-copy-code">
+                <span data-lang="vi">Sao chép Code</span>
+                <span data-lang="en">Copy Code</span>
+              </button>
+            </div>
+            <pre class="code-body"><code id="lisp-code-preview">;; Live Preview will render here</code></pre>
+          </div>
+          
+          <button class="btn-generate" id="btn-download-lisp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:0.25rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            <span data-lang="vi">Tạo và Tải File LISP (.lsp)</span>
+            <span data-lang="en">Generate & Download LISP File (.lsp)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-copy">
+        <span data-lang="vi">© 2026 ViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+        <span data-lang="en">© 2026 ViDLab. Digital solutions for the construction industry.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  
+  <!-- INTERACTIVE TOOL JAVASCRIPT -->
+  <script>
+    (function() {
+      const inputDllName = document.getElementById('input-dll-name');
+      const inputDllFile = document.getElementById('input-dll-file');
+      const inputDllPath = document.getElementById('input-dll-path');
+      const inputCmdOrig = document.getElementById('input-cmd-orig');
+      const inputCmdShort = document.getElementById('input-cmd-short');
+      
+      const codePreview = document.getElementById('lisp-code-preview');
+      const btnCopy = document.getElementById('btn-copy-code');
+      const btnDownload = document.getElementById('btn-download-lisp');
+
+      // Helper to double escape backslashes for AutoLISP strings
+      function escapeLispPath(path) {
+        // Replace backslashes with double backslashes, or convert to forward slashes.
+        // Forward slashes work perfectly in AutoCAD LISP and prevent escaping issues!
+        return path.replace(/\\/g, '/');
+      }
+
+      function generateLispCode() {
+        const name = inputDllName.value.trim() || "CAD Tool";
+        const file = inputDllFile.value.trim() || "mytool.dll";
+        const rawPath = inputDllPath.value.trim() || "C:\\Tools\\mytool.dll";
+        const origCmd = inputCmdOrig.value.trim() || "MyOriginalCommand";
+        const shortCmd = inputCmdShort.value.trim() || "MC";
+        
+        const safePath = escapeLispPath(rawPath);
+        
+        return `;; ==========================================================================
+;; AutoLoad & Shortcut Command Generator by ViDLab
+;; Description: Auto-loads C# .NET DLL and registers custom shortcut alias.
+;; Target Tool: ${name}
+;; File Path  : ${safePath}
+;; ==========================================================================
+
+(vl-load-com)
+
+;; --- 1. Autoload Function for ${file} ---
+(defun LoadViDLabTool_${shortCmd} ()
+  (if (findfile "${safePath}")
+    (progn
+      (princ "\\n[ViDLab] Nạp công cụ ${name}...")
+      (vl-cmdf "._netload" "${safePath}")
+    )
+    (progn
+      (princ "\\n[ViDLab] LỖI: Không tìm thấy file tại đường dẫn: ${safePath}")
+      (princ "\\n[ViDLab] Vui lòng cấu hình lại đường dẫn chính xác trong file LISP.")
+    )
+  )
+)
+
+;; Tự động nạp file khi mở bản vẽ
+(LoadViDLabTool_${shortCmd})
+
+;; --- 2. Định nghĩa Lệnh Tắt ---
+(defun c:${shortCmd} ()
+  (princ "\\n[ViDLab] Khởi chạy lệnh gốc ${origCmd}...")
+  ;; Gọi lệnh gốc đã được nạp từ DLL
+  (vl-cmdf "${origCmd}")
+  (princ)
+)
+
+(princ "\\n[ViDLab] Đã cài đặt phím tắt [${shortCmd}] cho lệnh [${origCmd}].")
+(princ)
+`;
+      }
+
+      function updatePreview() {
+        codePreview.textContent = generateLispCode();
+      }
+
+      // Add event listeners for instant typing update
+      [inputDllName, inputDllFile, inputDllPath, inputCmdOrig, inputCmdShort].forEach(input => {
+        input.addEventListener('input', updatePreview);
+      });
+
+      // Copy code functionality
+      btnCopy.addEventListener('click', () => {
+        const text = generateLispCode();
+        navigator.clipboard.writeText(text).then(() => {
+          const originalTextVi = "Sao chép Code";
+          const originalTextEn = "Copy Code";
+          const isVi = document.documentElement.lang === 'vi';
+          
+          btnCopy.textContent = isVi ? "Đã sao chép!" : "Copied!";
+          setTimeout(() => {
+            btnCopy.textContent = isVi ? originalTextVi : originalTextEn;
+          }, 2000);
+        });
+      });
+
+      // Download file functionality
+      btnDownload.addEventListener('click', () => {
+        const code = generateLispCode();
+        const shortCmd = inputCmdShort.value.trim() || "vid_tool";
+        const filename = "load_" + shortCmd.toLowerCase() + ".lsp";
+        
+        const blob = new Blob([code], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+
+      // Initial render
+      updatePreview();
+    })();
+  </script>
+</body>
+</html>
