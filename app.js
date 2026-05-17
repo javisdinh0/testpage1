@@ -1,37 +1,38 @@
 // ===== SAFE STORAGE WORKAROUND FOR local file:// protocol =====
-const safeStorage = {
-  getItem: (key) => {
-    try {
-      return localStorage.getItem(key);
-    } catch (e) {
-      console.warn("localStorage is blocked or unavailable, using memory fallback.", e);
-      return safeStorage._data[key] || null;
-    }
-  },
-  setItem: (key, value) => {
-    try {
-      localStorage.setItem(key, value);
-    } catch (e) {
-      console.warn("localStorage is blocked or unavailable, using memory fallback.", e);
-      safeStorage._data[key] = String(value);
-    }
-  },
-  removeItem: (key) => {
-    try {
-      localStorage.removeItem(key);
-    } catch (e) {
-      console.warn("localStorage is blocked or unavailable, using memory fallback.", e);
-      delete safeStorage._data[key];
-    }
-  },
-  _data: {}
-};
-window.safeStorage = safeStorage;
+if (!window.safeStorage) {
+  window.safeStorage = {
+    getItem: (key) => {
+      try {
+        return localStorage.getItem(key);
+      } catch (e) {
+        console.warn("localStorage is blocked or unavailable, using memory fallback.", e);
+        return window.safeStorage._data[key] || null;
+      }
+    },
+    setItem: (key, value) => {
+      try {
+        localStorage.setItem(key, value);
+      } catch (e) {
+        console.warn("localStorage is blocked or unavailable, using memory fallback.", e);
+        window.safeStorage._data[key] = String(value);
+      }
+    },
+    removeItem: (key) => {
+      try {
+        localStorage.removeItem(key);
+      } catch (e) {
+        console.warn("localStorage is blocked or unavailable, using memory fallback.", e);
+        delete window.safeStorage._data[key];
+      }
+    },
+    _data: {}
+  };
+}
 
 /* ===== LANGUAGE SWITCHER ===== */
 (function() {
   const langBtns = document.querySelectorAll('.lang-btn');
-  const currentLang = safeStorage.getItem('vidlab_lang') || 'vi';
+  const currentLang = window.safeStorage.getItem('vidlab_lang') || 'vi';
 
   function setLanguage(lang) {
     document.querySelectorAll('[data-lang]').forEach(el => {
@@ -49,7 +50,7 @@ window.safeStorage = safeStorage;
     });
 
     document.documentElement.lang = lang;
-    safeStorage.setItem('vidlab_lang', lang);
+    window.safeStorage.setItem('vidlab_lang', lang);
   }
 
   // Init Language
@@ -256,7 +257,7 @@ function openModal(card) {
   if (fullContent) {
     modalBody.innerHTML = fullContent.innerHTML;
   } else {
-    const lang = safeStorage.getItem('vidlab_lang') || 'vi';
+    const lang = window.safeStorage.getItem('vidlab_lang') || 'vi';
     modalBody.innerHTML = `
       <div data-lang="vi" class="${lang === 'vi' ? 'active-lang' : ''}">
         <p>Nội dung chi tiết của bài viết <strong>"${title}"</strong> đang được cập nhật.</p>
