@@ -302,7 +302,7 @@
                 <span data-lang="vi">Tên file DLL</span>
                 <span data-lang="en">DLL File Name</span>
               </label>
-              <input type="text" id="input-dll-file" class="form-input" readonly style="background: rgba(10,12,16,0.5); cursor: not-allowed;" />
+              <input type="text" id="input-dll-file" class="form-input" placeholder="e.g. ViDBlockLibrary.dll" />
             </div>
             
             <div class="form-group full-width">
@@ -310,7 +310,7 @@
                 <span data-lang="vi">Đường dẫn đầy đủ tới file DLL trong máy tính</span>
                 <span data-lang="en">Full Local File Path to DLL</span>
               </label>
-              <input type="text" id="input-dll-path" class="form-input" readonly style="background: rgba(10,12,16,0.5); cursor: not-allowed;" />
+              <input type="text" id="input-dll-path" class="form-input" placeholder="e.g. C:\Tools\ViDBlockLibrary.dll" />
             </div>
             
             <div class="form-group">
@@ -448,8 +448,8 @@
         
         const tool = cadToolsData[toolIndex];
         const name = tool.ToolName;
-        const file = tool.DllName;
-        const rawPath = tool.DllPath;
+        const file = inputDllFile.value.trim() || tool.DllName;
+        const rawPath = inputDllPath.value.trim() || tool.DllPath;
         
         const origCmd = selectCmdOrig.value || "MyOriginalCommand";
         const shortCmd = inputCmdShort.value.trim() || "MC";
@@ -556,6 +556,8 @@
       // Add event listeners
       selectDllName.addEventListener('change', onToolChanged);
       selectCmdOrig.addEventListener('change', onCommandChanged);
+      inputDllFile.addEventListener('input', updatePreview);
+      inputDllPath.addEventListener('input', updatePreview);
       inputCmdShort.addEventListener('input', updatePreview);
 
       // Copy code functionality
