@@ -152,12 +152,14 @@ window.addEventListener('scroll', () => {
 // ===== HAMBURGER MENU =====
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-});
-document.querySelectorAll('.mobile-link').forEach(link => {
-  link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-});
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+}
 
 // ===== STAT COUNTER ANIMATION =====
 function animateCounter(el) {
@@ -322,14 +324,18 @@ document.querySelectorAll('.app-card').forEach(card => {
   });
 });
 
-modalClose.addEventListener('click', closeModal);
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) closeModal();
-});
+if (modalClose) modalClose.addEventListener('click', closeModal);
+if (modal) {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+}
 
 // Close modal on Escape key
 window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeModal();
+  if (e.key === 'Escape') {
+    if (modal && modal.classList.contains('active')) closeModal();
+  }
 });
 
 // ===== TYPING EFFECT IN CODE WINDOW =====
