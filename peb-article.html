@@ -77,7 +77,7 @@
       <div class="article-body">
         <div data-lang="vi">
           <div class="download-section" style="margin: 1.5rem 0; text-align: center;">
-            <a href="javascript:void(0)" class="btn-primary peb-download-trigger" onclick="openDownloadModal()" style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.75rem;">
+            <a href="PebSectionCreator.tsep" download="PebSectionCreator.tsep" class="btn-primary peb-download-trigger" style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.75rem;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
@@ -134,7 +134,7 @@
           <h3>Bước 4: Cập nhật cấu kiện hoặc Xuất thuộc tính hàng loạt</h3>
           <p>Để cập nhật tiết diện mới cho các cấu kiện đã dựng sẵn, hãy chọn cấu kiện đó trên mô hình Tekla, chọn dòng tiết diện tương ứng trong bảng Grid của tool, sau đó nhấn <strong>UPDATE PEB MEMBER</strong>. Ngoài ra, bạn có thể chọn nhiều dòng tiết diện trong Grid và nhấn <strong>Export</strong> để lưu trữ các file cấu hình XML chuẩn hóa vào mô hình phục vụ cho các công tác thiết kế liên kết sau này.</p>
           <div class="download-section" style="margin: 2rem 0 1rem; text-align: center;">
-            <a href="javascript:void(0)" class="btn-primary peb-download-trigger" onclick="openDownloadModal()" style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.75rem;">
+            <a href="PebSectionCreator.tsep" download="PebSectionCreator.tsep" class="btn-primary peb-download-trigger" style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.75rem;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
@@ -147,7 +147,7 @@
 
         <div data-lang="en">
           <div class="download-section" style="margin: 1.5rem 0; text-align: center;">
-            <a href="javascript:void(0)" class="btn-primary peb-download-trigger" onclick="openDownloadModal()" style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.75rem;">
+            <a href="PebSectionCreator.tsep" download="PebSectionCreator.tsep" class="btn-primary peb-download-trigger" style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.75rem;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
@@ -204,7 +204,7 @@
           <h3>Step 4: Update or Batch Export Attributes</h3>
           <p>To modify existing structures in your model, select the components inside Tekla, choose your new profile row in the grid, and click <strong>UPDATE PEB MEMBER</strong>. You can also select multiple grid rows and click <strong>Export</strong> to automatically output optimized XML files to your model's <code>attributes</code> directory for subsequent detailing work.</p>
           <div class="download-section" style="margin: 2rem 0 1rem; text-align: center;">
-            <a href="javascript:void(0)" class="btn-primary peb-download-trigger" onclick="openDownloadModal()" style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.75rem;">
+            <a href="PebSectionCreator.tsep" download="PebSectionCreator.tsep" class="btn-primary peb-download-trigger" style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.75rem;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
@@ -230,201 +230,7 @@
   </footer>
 
 
-  <!-- Email Download Modal -->
-  <div class="modal-overlay" id="download-email-modal" style="display: none; align-items: center; justify-content: center; position: fixed; inset: 0; z-index: 10000; background: rgba(8, 11, 20, 0.85); backdrop-filter: blur(15px); transition: opacity 0.3s ease;">
-    <div class="modal-content" style="max-width: 480px; width: 100%; padding: 2.5rem; background: #0d1220; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); position: relative;">
-      <button class="modal-close" onclick="closeDownloadModal()" style="position: absolute; top: 1.25rem; right: 1.25rem; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-secondary); cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: var(--transition);">&times;</button>
-      
-      <!-- VIETNAMESE STATE -->
-      <div id="download-modal-vi">
-        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Nhập Email Tải Công Cụ</h3>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Vui lòng nhập địa chỉ email của bạn để tải xuống. Quá trình tải xuống tệp cài đặt chính thức `.tsep` sẽ được tự động bắt đầu ngay lập tức sau khi xác nhận.</p>
-        
-        <form onsubmit="handleDownloadSubmit(event, 'vi')">
-          <div style="margin-bottom: 1.25rem;">
-            <input type="email" id="email-input-vi" placeholder="vi-du@gmail.com" required style="width: 100%; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03); color: var(--text-primary); font-size: 0.95rem; font-family: var(--font-main); transition: var(--transition); outline: none;">
-          </div>
-          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem; border: none; cursor: pointer;">
-            <span>Tải Xuống Ngay 🚀</span>
-          </button>
-        </form>
-      </div>
 
-      <!-- ENGLISH STATE -->
-      <div id="download-modal-en" style="display: none;">
-        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Enter Email to Download</h3>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Please enter your email address to download. Your official `.tsep` file download will start automatically immediately after confirmation.</p>
-        
-        <form onsubmit="handleDownloadSubmit(event, 'en')">
-          <div style="margin-bottom: 1.25rem;">
-            <input type="email" id="email-input-en" placeholder="example@gmail.com" required style="width: 100%; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03); color: var(--text-primary); font-size: 0.95rem; font-family: var(--font-main); transition: var(--transition); outline: none;">
-          </div>
-          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem; border: none; cursor: pointer;">
-            <span>Download Now 🚀</span>
-          </button>
-        </form>
-      </div>
-
-      <!-- LOADING STATE -->
-      <div id="download-modal-loading" style="display: none; text-align: center; padding: 2rem 0;">
-        <div style="width: 48px; height: 48px; border: 4px solid rgba(99, 179, 237, 0.1); border-top-color: var(--accent-blue); border-radius: 50%; display: inline-block; animation: spin 1s linear infinite; margin-bottom: 1.5rem;"></div>
-        <p id="loading-text-vi" style="color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Đang ghi nhận lượt tải, vui lòng chờ...</p>
-        <p id="loading-text-en" style="display: none; color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Recording download, please wait...</p>
-      </div>
-
-      <!-- SUCCESS STATE -->
-      <div id="download-modal-success" style="display: none; text-align: center; padding: 1.5rem 0 0.5rem;">
-        <div style="width: 64px; height: 64px; background: rgba(104, 211, 145, 0.1); border: 2px solid var(--accent-green); color: var(--accent-green); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem; font-weight: bold;">✓</div>
-        
-        <div id="success-text-vi">
-          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Xác Nhận Thành Công!</h4>
-          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Cảm ơn bạn đã quan tâm. Quá trình tải xuống phần mềm đang được bắt đầu tự động.</p>
-        </div>
-
-        <div id="success-text-en" style="display: none;">
-          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Successfully Verified!</h4>
-          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Thank you for your interest. Your file download has been initiated automatically.</p>
-        </div>
-
-        <button onclick="closeDownloadModal()" class="btn-ghost" style="padding: 0.6rem 1.5rem; font-size: 0.9rem; border-radius: var(--radius-sm);">Đóng / Close</button>
-      </div>
-    </div>
-  </div>
-
-  <style>
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-  </style>
-
-  <script>
-    function openDownloadModal() {
-      // Detect current language of website
-      let currentLang = 'vi';
-      const langViBtn = document.querySelector('[data-select-lang="vi"]');
-      if (langViBtn && !langViBtn.classList.contains('active')) {
-        currentLang = 'en';
-      }
-
-      // Reset modal views
-      document.getElementById('download-modal-loading').style.display = 'none';
-      document.getElementById('download-modal-success').style.display = 'none';
-      
-      if (currentLang === 'vi') {
-        document.getElementById('download-modal-vi').style.display = 'block';
-        document.getElementById('download-modal-en').style.display = 'none';
-      } else {
-        document.getElementById('download-modal-vi').style.display = 'none';
-        document.getElementById('download-modal-en').style.display = 'block';
-      }
-
-      // Display overlay
-      const overlay = document.getElementById('download-email-modal');
-      overlay.style.display = 'flex';
-      setTimeout(() => {
-        overlay.style.opacity = '1';
-      }, 10);
-    }
-
-    function closeDownloadModal() {
-      const overlay = document.getElementById('download-email-modal');
-      overlay.style.opacity = '0';
-      setTimeout(() => {
-        overlay.style.display = 'none';
-      }, 300);
-    }
-
-    function handleDownloadSubmit(event, lang) {
-      event.preventDefault();
-      
-      const emailInputId = lang === 'vi' ? 'email-input-vi' : 'email-input-en';
-      const email = document.getElementById(emailInputId).value.trim();
-      
-      if (!email) return;
-
-      // Hide forms, show loading spinner
-      document.getElementById('download-modal-vi').style.display = 'none';
-      document.getElementById('download-modal-en').style.display = 'none';
-      document.getElementById('download-modal-loading').style.display = 'block';
-      
-      if (lang === 'vi') {
-        document.getElementById('loading-text-vi').style.display = 'block';
-        document.getElementById('loading-text-en').style.display = 'none';
-      } else {
-        document.getElementById('loading-text-vi').style.display = 'none';
-        document.getElementById('loading-text-en').style.display = 'block';
-      }
-
-      // 1. Save locally to local storage for Admin Dashboard representation
-      let logs = JSON.parse(localStorage.getItem('vidlab_download_logs') || '[]');
-      const newLog = {
-        email: email,
-        app: 'PEB Section Creator',
-        version: '1.0.0',
-        date: new Date().toISOString(),
-        status: 'Sent',
-        ip: '192.168.1.15', // Mock IP Address
-        platform: navigator.platform || 'Windows 64-bit'
-      };
-      logs.unshift(newLog);
-      localStorage.setItem('vidlab_download_logs', JSON.stringify(logs));
-
-      // 2. Fetch configurations for Apps Script
-      const gasUrl = localStorage.getItem('vidlab_gas_url');
-      const payload = {
-        email: email,
-        app: 'PEB Section Creator',
-        version: '1.0.0',
-        lang: lang,
-        timestamp: new Date().toISOString(),
-        referrer: window.location.href
-      };
-
-      const proceedToSuccess = () => {
-        // Trigger file download
-        const a = document.createElement('a');
-        a.href = 'PebSectionCreator.tsep';
-        a.download = 'PebSectionCreator.tsep';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-
-        // Display Success State
-        document.getElementById('download-modal-loading').style.display = 'none';
-        document.getElementById('download-modal-success').style.display = 'block';
-        
-        if (lang === 'vi') {
-          document.getElementById('success-text-vi').style.display = 'block';
-          document.getElementById('success-text-en').style.display = 'none';
-        } else {
-          document.getElementById('success-text-vi').style.display = 'none';
-          document.getElementById('success-text-en').style.display = 'block';
-        }
-      };
-
-      if (gasUrl) {
-        // Make actual live REST call to Google Apps Script
-        fetch(gasUrl, {
-          method: 'POST',
-          mode: 'no-cors', // standard cross-domain Apps Script method
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        })
-        .then(() => {
-          proceedToSuccess();
-        })
-        .catch(err => {
-          console.error('GAS Request Error, falling back to local simulation:', err);
-          proceedToSuccess();
-        });
-      } else {
-        // Simulate local network latency of 1s
-        setTimeout(() => {
-          proceedToSuccess();
-        }, 1200);
-      }
-    }
-  </script>
 
   <script src="app.js"></script>
 </body>

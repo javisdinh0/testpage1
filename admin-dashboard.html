@@ -335,6 +335,35 @@
   </main>
 
   <script>
+    // ===== SAFE STORAGE WORKAROUND FOR local file:// protocol =====
+    const safeStorage = window.safeStorage || {
+      getItem: (key) => {
+        try {
+          return localStorage.getItem(key);
+        } catch (e) {
+          console.warn("localStorage is blocked or unavailable, using memory fallback.", e);
+          return safeStorage._data[key] || null;
+        }
+      },
+      setItem: (key, value) => {
+        try {
+          localStorage.setItem(key, value);
+        } catch (e) {
+          console.warn("localStorage is blocked or unavailable, using memory fallback.", e);
+          safeStorage._data[key] = String(value);
+        }
+      },
+      removeItem: (key) => {
+        try {
+          localStorage.removeItem(key);
+        } catch (e) {
+          console.warn("localStorage is blocked or unavailable, using memory fallback.", e);
+          delete safeStorage._data[key];
+        }
+      },
+      _data: {}
+    };
+
     let timelineChartInstance = null;
     let domainChartInstance = null;
 
@@ -352,7 +381,7 @@
 
     // Populate mock seed data if empty
     function seedMockData() {
-      let logs = localStorage.getItem('vidlab_download_logs');
+      let logs = safeStorage.getItem('vidlab_download_logs');
       if (!logs) {
         const demoLogs = [
           { email: 'builder.pro@gmail.com', app: 'PEB Section Creator', version: '1.0.0', date: new Date(Date.now() - 3600000 * 2).toISOString(), status: 'Sent', ip: '192.168.1.5', platform: 'Windows 64-bit' },
@@ -361,7 +390,7 @@
           { email: 'steel.designer@gmail.com', app: 'PEB Section Creator', version: '1.0.0', date: new Date(Date.now() - 3600000 * 48).toISOString(), status: 'Sent', ip: '192.168.1.18', platform: 'Windows 64-bit' },
           { email: 'trantrung@steelcorp.com', app: 'PEB Section Creator', version: '1.0.0', date: new Date(Date.now() - 3600000 * 60).toISOString(), status: 'Sent', ip: '115.79.4.12', platform: 'Windows 64-bit' }
         ];
-        localStorage.setItem('vidlab_download_logs', JSON.stringify(demoLogs));
+        safeStorage.setItem('vidlab_download_logs', JSON.stringify(demoLogs));
       }
     }
 
@@ -369,7 +398,7 @@
       seedMockData();
       
       // Load GAS URL if configured
-      const gasUrl = localStorage.getItem('vidlab_gas_url') || '';
+      const gasUrl = safeStorage.getItem('vidlab_gas_url') || '';
       document.getElementById('gas-url-field').value = gasUrl;
       
       const connDot = document.getElementById('conn-dot');
@@ -384,7 +413,7 @@
         connText.style.color = 'var(--text-secondary)';
       }
 
-      const logs = JSON.parse(localStorage.getItem('vidlab_download_logs') || '[]');
+      const logs = JSON.parse(safeStorage.getItem('vidlab_download_logs') || '[]');
       
       // Stats
       document.getElementById('stat-total-downloads').innerText = logs.length;
@@ -424,7 +453,7 @@
 
     function filterLogs() {
       const query = document.getElementById('log-search').value.toLowerCase().trim();
-      const logs = JSON.parse(localStorage.getItem('vidlab_download_logs') || '[]');
+      const logs = JSON.parse(safeStorage.getItem('vidlab_download_logs') || '[]');
       const filtered = logs.filter(l => l.email.toLowerCase().includes(query));
       renderTable(filtered);
     }
@@ -432,10 +461,10 @@
     function saveGasUrl() {
       const url = document.getElementById('gas-url-field').value.trim();
       if (url) {
-        localStorage.setItem('vidlab_gas_url', url);
+        safeStorage.setItem('vidlab_gas_url', url);
         alert('Đã lưu URL kết nối Google Apps Script Web App thành công!');
       } else {
-        localStorage.removeItem('vidlab_gas_url');
+        safeStorage.removeItem('vidlab_gas_url');
         alert('Đã gỡ bỏ URL kết nối Google Apps Script. Chuyển về chế độ giả lập Demo cục bộ.');
       }
       loadDashboardData();
@@ -443,13 +472,13 @@
 
     function resetMockData() {
       if (confirm('Bạn có chắc chắn muốn xóa toàn bộ bộ đếm và nhật ký đăng ký tải xuống?')) {
-        localStorage.removeItem('vidlab_download_logs');
+        safeStorage.removeItem('vidlab_download_logs');
         loadDashboardData();
       }
     }
 
     function exportToCSV() {
-      const logs = JSON.parse(localStorage.getItem('vidlab_download_logs') || '[]');
+      const logs = JSON.parse(safeStorage.getItem('vidlab_download_logs') || '[]');
       if (logs.length === 0) {
         alert('Không có dữ liệu để xuất!');
         return;
