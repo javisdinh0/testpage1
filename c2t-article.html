@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C2T: Cad to Tekla Sync — ViDLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 900px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-image { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); margin: 2rem 0; box-shadow: var(--shadow); }
+    .article-body { font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); margin: 2.5rem 0 1rem; font-size: 1.8rem; }
+    .article-body p { margin-bottom: 1.5rem; }
+    .article-body ul { margin-bottom: 2rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .highlight-box { background: rgba(99,179,237,0.05); border-left: 4px solid var(--accent-blue); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; }
+    
+    @media (max-width: 768px) {
+      .article-title { font-size: 2.2rem; }
+      .article-container { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">ViDLab</span>
+        <span class="logo-bracket">/&gt;</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#home" class="nav-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+        <li><a href="index.html#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+        <li><a href="index.html#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-select-lang="vi">VN</button>
+          <button class="lang-btn" data-select-lang="en">EN</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <header class="article-header">
+        <a href="index.html" class="article-back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-lang="vi">Quay lại danh sách</span><span data-lang="en">Back to list</span>
+        </a>
+        <h1 class="article-title">
+          <span data-lang="vi">C2T: Giải Pháp Đồng Bộ Lưới Trục Từ AutoCAD Sang Tekla</span>
+          <span data-lang="en">C2T: Grid Synchronization Solution from AutoCAD to Tekla</span>
+        </h1>
+        <div class="article-meta">
+          <span data-lang="vi">Chuyên mục: CAD To Tekla Automation</span><span data-lang="en">Category: CAD To Tekla Automation</span>
+          <span>•</span>
+          <span data-lang="vi">Ngày đăng: 16/05/2026</span><span data-lang="en">Published: May 16, 2026</span>
+          <span>•</span>
+          <span data-lang="vi">Tác giả: Admin ViDLab</span><span data-lang="en">Author: Admin ViDLab</span>
+        </div>
+      </header>
+
+      <img src="cad_to_tekla_tool_1778920656221.png" alt="Cad to Tekla Tool Illustration" class="article-image">
+
+      <div class="article-body">
+        <div data-lang="vi">
+          <p><strong>C2T (Cad to Tekla)</strong> là một trong những công cụ mạnh mẽ nhất trong bộ giải pháp của ViDLab, được thiết kế để xóa bỏ rào cản giữa AutoCAD và Tekla Structures trong giai đoạn thiết lập dự án.</p>
+
+          <h2>Nỗi đau của kỹ sư kết cấu</h2>
+          <p>Thông thường, khi bắt đầu một dự án Tekla, kỹ sư phải nhập tay hàng chục tọa độ X, Y, Z từ bản vẽ kiến trúc/kết cấu AutoCAD. Việc này không chỉ tốn thời gian mà còn cực kỳ dễ nhầm lẫn, dẫn đến sai lệch toàn bộ mô hình 3D sau này.</p>
+          
+          <div class="highlight-box">
+            "C2T cho phép bạn chỉ cần QUÉT CHỌN các Dimension trên AutoCAD, và công cụ sẽ tự động tính toán, sắp xếp và xuất ra file Grid (.grd) chuẩn xác cho Tekla."
+          </div>
+
+          <h2>Các tính năng cốt lõi</h2>
+          <ul>
+            <li><strong>Extract Dimensions:</strong> Tự động lấy giá trị từ các đường Dim trên AutoCAD, sắp xếp theo thứ tự tăng dần.</li>
+            <li><strong>Sequence Labeling:</strong> Tự động sinh chuỗi tên trục (A, B, C... hoặc 1, 2, 3...) với các tiền tố tùy chỉnh.</li>
+            <li><strong>Z-Level Calculation:</strong> Hỗ trợ nhập Base Level và tự động cộng dồn các khoảng cách để tính cao độ sàn chính xác.</li>
+            <li><strong>Direct Export:</strong> Xuất trực tiếp file .grd vào thư mục model Tekla đang mở.</li>
+          </ul>
+
+          <h2>Cách sử dụng đơn giản</h2>
+          <ol>
+            <li>Mở bản vẽ mặt bằng trên AutoCAD.</li>
+            <li>Chạy lệnh C2T để mở giao diện công cụ.</li>
+            <li>Quét chọn các đường Dim theo phương X và Y.</li>
+            <li>Nhấn 'Export' và quay lại Tekla để cập nhật lưới trục (Grid).</li>
+          </ol>
+
+          <h2>Công nghệ sử dụng</h2>
+          <p>Công cụ được viết bằng ngôn ngữ <strong>C#</strong>, sử dụng <strong>AutoCAD .NET API</strong> và <strong>Tekla Open API</strong> để đảm bảo sự tương tác mượt mà và hiệu suất cao nhất.</p>
+        </div>
+
+        <div data-lang="en">
+          <p><strong>C2T (Cad to Tekla)</strong> is one of the most powerful tools in ViDLab's solution suite, designed to eliminate the barrier between AutoCAD and Tekla Structures during the project setup phase.</p>
+
+          <h2>The Structural Engineer's Pain Point</h2>
+          <p>Typically, when starting a Tekla project, an engineer must manually enter dozens of X, Y, Z coordinates from AutoCAD architectural/structural drawings. This is not only time-consuming but also extremely error-prone, leading to discrepancies in the entire 3D model later on.</p>
+          
+          <div class="highlight-box">
+            "C2T allows you to simply SELECT dimensions in AutoCAD, and the tool automatically calculates, sorts, and exports an accurate Grid (.grd) file for Tekla."
+          </div>
+
+          <h2>Core Features</h2>
+          <ul>
+            <li><strong>Extract Dimensions:</strong> Automatically retrieves values from Dim lines in AutoCAD, sorted in ascending order.</li>
+            <li><strong>Sequence Labeling:</strong> Automatically generates grid labels (A, B, C... or 1, 2, 3...) with customizable prefixes.</li>
+            <li><strong>Z-Level Calculation:</strong> Supports entering a Base Level and automatically accumulates distances to calculate accurate floor elevations.</li>
+            <li><strong>Direct Export:</strong> Exports the .grd file directly into the currently open Tekla model folder.</li>
+          </ul>
+
+          <h2>Simple Usage</h2>
+          <ol>
+            <li>Open the plan drawing in AutoCAD.</li>
+            <li>Run the C2T command to open the tool interface.</li>
+            <li>Select Dim lines along the X and Y directions.</li>
+            <li>Press 'Export' and return to Tekla to update the Grid.</li>
+          </ol>
+
+          <h2>Technology Stack</h2>
+          <p>The tool is written in <strong>C#</strong>, utilizing the <strong>AutoCAD .NET API</strong> and <strong>Tekla Open API</strong> to ensure seamless interaction and maximum performance.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-copy">
+        <span data-lang="vi">© 2026 ViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+        <span data-lang="en">© 2026 ViDLab. Digital solutions for the construction industry.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

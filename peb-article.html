@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PEB Section Creator — ViDLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 900px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-image { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); margin: 2rem 0; box-shadow: var(--shadow); }
+    .article-body { font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); margin: 2.5rem 0 1rem; font-size: 1.8rem; }
+    .article-body p { margin-bottom: 1.5rem; }
+    .article-body ul { margin-bottom: 2rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .highlight-box { background: rgba(99,179,237,0.05); border-left: 4px solid var(--accent-blue); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; }
+    
+    @media (max-width: 768px) {
+      .article-title { font-size: 2.2rem; }
+      .article-container { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">ViDLab</span>
+        <span class="logo-bracket">/&gt;</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#home" class="nav-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+        <li><a href="index.html#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+        <li><a href="index.html#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-select-lang="vi">VN</button>
+          <button class="lang-btn" data-select-lang="en">EN</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <header class="article-header">
+        <a href="index.html" class="article-back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-lang="vi">Quay lại danh sách</span><span data-lang="en">Back to list</span>
+        </a>
+        <h1 class="article-title">
+          <span data-lang="vi">PEB Section Creator: Giải Pháp Đột Phá Cho Nhà Thép Tiền Chế</span>
+          <span data-lang="en">PEB Section Creator: Breakthrough Solution for Pre-Engineered Buildings</span>
+        </h1>
+        <div class="article-meta">
+          <span data-lang="vi">Chuyên mục: Tekla Structures</span><span data-lang="en">Category: Tekla Structures</span>
+          <span>•</span>
+          <span data-lang="vi">Ngày đăng: 16/05/2026</span><span data-lang="en">Published: May 16, 2026</span>
+          <span>•</span>
+          <span data-lang="vi">Tác giả: ViDLab Team</span><span data-lang="en">Author: ViDLab Team</span>
+        </div>
+      </header>
+
+      <img src="peb_software_ui_1778920310731.png" alt="PEB Section Creator UI Illustration" class="article-image">
+
+      <div class="article-body">
+        <div data-lang="vi">
+          <p>Trong kỷ nguyên số hóa ngành xây dựng, việc tối ưu hóa quy trình thiết kế không còn là lựa chọn mà là yêu cầu bắt buộc. <strong>PEB Section Creator</strong> ra đời nhằm giải quyết bài toán phức tạp nhất trong thiết kế nhà thép tiền chế: quản lý và dựng hình các cấu kiện biến đổi (tapered members).</p>
+
+          <h2>Tại sao cần PEB Section Creator?</h2>
+          <p>Thiết kế nhà thép tiền chế (PEB) đòi hỏi các cấu kiện có tiết diện thay đổi liên tục để tối ưu hóa khả năng chịu lực và tiết kiệm vật liệu. Việc dựng hình thủ công các cấu kiện này trong Tekla Structures thường tốn rất nhiều thời gian và dễ xảy ra sai sót khi thay đổi thiết kế.</p>
+          
+          <div class="highlight-box">
+            "Công cụ này giúp giảm thời gian dựng khung kèo từ 4 giờ xuống còn chỉ 15 phút, đồng thời đảm bảo độ chính xác tuyệt đối cho quá trình sản xuất tại nhà máy."
+          </div>
+
+          <h2>Các tính năng vượt trội</h2>
+          <ul>
+            <li><strong>Định nghĩa tiết diện đa điểm:</strong> Cho phép thiết lập các điểm thay đổi chiều cao web, độ dày cánh linh hoạt chỉ trên một giao diện duy nhất.</li>
+            <li><strong>Tương thích Tekla Open API:</strong> Sử dụng các thư viện chính thức từ Trimble, đảm bảo tính ổn định và khả năng nâng cấp theo các phiên bản Tekla mới nhất (2024, 2025).</li>
+            <li><strong>Tích hợp BOM tự động:</strong> Mỗi thay đổi về tiết diện sẽ được cập nhật ngay lập tức vào bảng thống kê khối lượng vật liệu, giúp báo giá nhanh và chính xác.</li>
+            <li><strong>Giao diện Modern UI:</strong> Thiết kế tối giản, hỗ trợ Dark Mode, giúp kỹ sư tập trung tối đa vào công việc.</li>
+          </ul>
+
+          <h2>Quy trình hoạt động</h2>
+          <p>Người dùng chỉ cần chọn điểm đầu và điểm cuối của cấu kiện, sau đó nhập các thông số hình học thông qua hộp thoại trực quan. Công cụ sẽ tự động tính toán các tọa độ trung gian và tạo ra mô hình 3D chính xác đến từng mm.</p>
+
+          <h2>Kết luận</h2>
+          <p>PEB Section Creator không chỉ là một plugin, nó là một phần trong hệ sinh thái số hóa mà ViDLab đang hướng tới. Chúng tôi tin rằng bằng cách tự động hóa các tác vụ lặp đi lặp lại, các kỹ sư sẽ có nhiều thời gian hơn để sáng tạo và giải quyết các bài toán kỹ thuật thực sự quan trọng.</p>
+        </div>
+
+        <div data-lang="en">
+          <p>In the digital era of the construction industry, optimizing the design process is no longer an option but a requirement. <strong>PEB Section Creator</strong> was born to solve the most complex problem in Pre-Engineered Building (PEB) design: managing and modeling tapered members.</p>
+
+          <h2>Why PEB Section Creator?</h2>
+          <p>PEB design requires members with continuously varying sections to optimize load-bearing capacity and save material. Manual modeling of these members in Tekla Structures is time-consuming and prone to errors during design changes.</p>
+          
+          <div class="highlight-box">
+            "This tool reduces rafter modeling time from 4 hours to just 15 minutes, while ensuring absolute precision for factory production."
+          </div>
+
+          <h2>Key Features</h2>
+          <ul>
+            <li><strong>Multi-point Section Definition:</strong> Allows setting web height and flange thickness changes flexibly on a single interface.</li>
+            <li><strong>Tekla Open API Compatibility:</strong> Uses official libraries from Trimble, ensuring stability and upgradability for the latest Tekla versions (2024, 2025).</li>
+            <li><strong>Automatic BOM Integration:</strong> All section changes are instantly updated in material quantity statistics, enabling fast and accurate quotes.</li>
+            <li><strong>Modern UI:</strong> Minimalist design with Dark Mode support, helping engineers focus maximally on their work.</li>
+          </ul>
+
+          <h2>Operational Workflow</h2>
+          <p>Users only need to select the start and end points of the member, then input geometric parameters via an intuitive dialog. The tool automatically calculates intermediate coordinates and generates a 3D model accurate to the millimeter.</p>
+
+          <h2>Conclusion</h2>
+          <p>PEB Section Creator is more than just a plugin; it is part of the digitalization ecosystem that ViDLab is aiming for. We believe that by automating repetitive tasks, engineers will have more time to create and solve truly important technical problems.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-copy">
+        <span data-lang="vi">© 2026 ViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+        <span data-lang="en">© 2026 ViDLab. Digital solutions for the construction industry.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

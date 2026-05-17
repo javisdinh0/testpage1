@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hướng Dẫn Sử Dụng — ViDBlock — ViDLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 900px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; text-align: center; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem; color: var(--text-primary); }
+    .article-body { font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary); }
+    .article-body h2 { color: var(--accent-purple); margin: 3rem 0 1.5rem; font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    .article-body h3 { color: var(--text-primary); margin: 2rem 0 1rem; font-size: 1.5rem; }
+    .article-body p { margin-bottom: 1.5rem; }
+    .step-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius); margin-bottom: 2rem; position: relative; overflow: hidden; }
+    .step-number { position: absolute; top: -10px; right: -10px; font-size: 5rem; font-weight: 900; color: rgba(255,255,255,0.05); }
+    .code-block { background: #0d1117; padding: 1.5rem; border-radius: 8px; font-family: 'JetBrains Mono'; font-size: 0.95rem; color: #e6edf3; border: 1px solid #30363d; overflow-x: auto; margin: 1.5rem 0; }
+    .highlight-tip { background: rgba(99,179,237,0.1); border-left: 4px solid var(--accent-blue); padding: 1.5rem; border-radius: 0 8px 8px 0; margin: 2rem 0; }
+    
+    @media (max-width: 768px) {
+      .article-title { font-size: 2.5rem; }
+      .article-container { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">ViDLab</span>
+        <span class="logo-bracket">/&gt;</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#home" class="nav-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+        <li><a href="index.html#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+        <li><a href="index.html#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-select-lang="vi">VN</button>
+          <button class="lang-btn" data-select-lang="en">EN</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <header class="article-header">
+        <a href="block-library-article.html" class="article-back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-lang="vi">Quay lại giới thiệu</span><span data-lang="en">Back to overview</span>
+        </a>
+        <h1 class="article-title">
+          <span data-lang="vi">HƯỚNG DẪN SỬ DỤNG</span>
+          <span data-lang="en">USER GUIDE</span>
+        </h1>
+        <p style="font-size: 1.4rem; color: var(--accent-purple); font-weight: 600;">ViD Block Library v1.0</p>
+      </header>
+
+      <div class="article-body">
+        <div data-lang="vi">
+          <h2>I. Hướng dẫn sử dụng phần mềm</h2>
+          
+          <div class="step-card">
+            <span class="step-number">01</span>
+            <h3>Khởi động công cụ</h3>
+            <p>Trong môi trường AutoCAD, bạn gõ lệnh <code>BI</code> và nhấn Enter. Giao diện quản lý thư viện sẽ xuất hiện phía trên màn hình làm việc của bạn.</p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">02</span>
+            <h3>Tìm kiếm và Duyệt Block</h3>
+            <p>Sử dụng bảng <strong>Tree View</strong> bên trái để tìm đến thư mục chứa cấu kiện bạn cần. Danh sách các Block sẽ hiện ra ở bảng bên cạnh.</p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">03</span>
+            <h3>Kiểm tra Preview</h3>
+            <p>Khi nhấn vào tên Block, hình ảnh minh họa sẽ hiện lên ở khung <strong>Preview</strong>. Điều này giúp bạn xác nhận đúng cấu kiện trước khi chèn.</p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">04</span>
+            <h3>Thiết lập tỷ lệ và Chèn</h3>
+            <p>Nhập giá trị vào ô <strong>Scale</strong> (ví dụ: 100 cho tỷ lệ 1/100). Sau đó <strong>Double-click</strong> vào ảnh Preview và chọn điểm đặt trên bản vẽ.</p>
+          </div>
+
+          <div class="highlight-tip">
+            <strong>Lưu ý:</strong> Phần mềm hỗ trợ tự động Explode (phá khối) nếu bạn tích chọn vào ô "Auto Explode" trước khi chèn.
+          </div>
+
+          <h2>II. Hướng dẫn tự tạo thư viện riêng</h2>
+          <p>Để xây dựng kho dữ liệu cá nhân, hãy làm theo các bước sau:</p>
+
+          <h3>1. Chuẩn bị thư mục dữ liệu</h3>
+          <p>Tìm đến thư mục cài đặt phần mềm, bạn sẽ thấy thư mục <code>Data</code>. Bạn có thể tạo thêm các thư mục con bên trong để phân loại.</p>
+
+          <h3>2. Quy tắc File</h3>
+          <p>Với mỗi cấu kiện, bạn cần 2 file có <strong>tên giống hệt nhau</strong>:</p>
+          <ul>
+            <li><strong>File bản vẽ:</strong> Định dạng <code>.dwg</code>.</li>
+            <li><strong>File hình ảnh:</strong> Định dạng <code>.png</code> hoặc <code>.jpg</code>.</li>
+          </ul>
+
+          <div class="code-block">
+Data/<br>
+└── 01_Mat_Cat_Thep/<br>
+    ├── I_Section.dwg<br>
+    └── I_Section.png  <-- BẮT BUỘC TRÙNG TÊN
+          </div>
+        </div>
+
+        <div data-lang="en">
+          <h2>I. Software Usage Guide</h2>
+          
+          <div class="step-card">
+            <span class="step-number">01</span>
+            <h3>Start the Tool</h3>
+            <p>In the AutoCAD environment, type <code>BI</code> and press Enter. The library management interface will appear on your workspace.</p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">02</span>
+            <h3>Search and Browse Blocks</h3>
+            <p>Use the <strong>Tree View</strong> panel on the left to navigate to the folder containing the components you need. The list of Blocks will appear in the adjacent panel.</p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">03</span>
+            <h3>Check Preview</h3>
+            <p>When you click on a Block name, an illustration will appear in the <strong>Preview</strong> frame. This helps you confirm the correct component before insertion.</p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">04</span>
+            <h3>Set Scale and Insert</h3>
+            <p>Enter a value in the <strong>Scale</strong> box (e.g., 100 for 1/100 scale). Then <strong>Double-click</strong> the Preview image and pick an insertion point in AutoCAD.</p>
+          </div>
+
+          <div class="highlight-tip">
+            <strong>Note:</strong> The software supports automatic Explode if you check the "Auto Explode" box before insertion.
+          </div>
+
+          <h2>II. Creating Your Own Library</h2>
+          <p>To build your personal database, follow these steps:</p>
+
+          <h3>1. Prepare Data Folders</h3>
+          <p>Locate the software installation directory and find the <code>Data</code> folder. You can create subfolders inside to categorize your blocks.</p>
+
+          <h3>2. File Naming Rules</h3>
+          <p>For each component, you need 2 files with the <strong>exact same name</strong>:</p>
+          <ul>
+            <li><strong>Drawing File:</strong> <code>.dwg</code> format.</li>
+            <li><strong>Image File:</strong> <code>.png</code> or <code>.jpg</code> format.</li>
+          </ul>
+
+          <div class="code-block">
+Data/<br>
+└── 01_Steel_Sections/<br>
+    ├── I_Section.dwg<br>
+    └── I_Section.png  <-- MUST HAVE THE SAME NAME
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-copy">
+        <span data-lang="vi">© 2026 ViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+        <span data-lang="en">© 2026 ViDLab. Digital solutions for the construction industry.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

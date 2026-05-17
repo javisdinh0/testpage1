@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ViD Block Library — ViDLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 900px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-image { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); margin: 2rem 0; box-shadow: var(--shadow); }
+    .article-body { font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); margin: 2.5rem 0 1rem; font-size: 1.8rem; }
+    .article-body p { margin-bottom: 1.5rem; }
+    .article-body ul { margin-bottom: 2rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .highlight-box { background: rgba(183,148,244,0.05); border-left: 4px solid var(--accent-purple); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; }
+    
+    @media (max-width: 768px) {
+      .article-title { font-size: 2.2rem; }
+      .article-container { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">ViDLab</span>
+        <span class="logo-bracket">/&gt;</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#home" class="nav-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+        <li><a href="index.html#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+        <li><a href="index.html#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-select-lang="vi">VN</button>
+          <button class="lang-btn" data-select-lang="en">EN</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <header class="article-header">
+        <a href="index.html" class="article-back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-lang="vi">Quay lại danh sách</span><span data-lang="en">Back to list</span>
+        </a>
+        <h1 class="article-title">
+          <span data-lang="vi">ViD Block Library: Hệ Thống Quản Lý Thư Viện CAD Thông Minh</span>
+          <span data-lang="en">ViD Block Library: Intelligent CAD Library Management System</span>
+        </h1>
+        <div class="article-meta">
+          <span data-lang="vi">Chuyên mục: CAD Productivity Tools</span><span data-lang="en">Category: CAD Productivity Tools</span>
+          <span>•</span>
+          <span data-lang="vi">Ngày đăng: 16/05/2026</span><span data-lang="en">Published: May 16, 2026</span>
+          <span>•</span>
+          <span data-lang="vi">Tác giả: Admin ViDLab</span><span data-lang="en">Author: Admin ViDLab</span>
+        </div>
+      </header>
+
+      <img src="block_library_ui_1778920676636.png" alt="Block Library UI Illustration" class="article-image">
+
+      <div class="article-body">
+        <div data-lang="vi">
+          <p>Trong công việc triển khai bản vẽ (Detailing), việc quản lý và tìm kiếm hàng ngàn Block là một cực hình. <strong>ViD Block Library</strong> được xây dựng để biến thư viện hỗn độn của bạn thành một kho tàng có tổ chức, trực quan và dễ sử dụng.</p>
+
+          <h2>Quản lý bằng hình ảnh trực quan</h2>
+          <p>Thay vì phải nhớ tên file khô khan (ví dụ: COL_300x500_SEC.dwg), ViD Block Library tự động nhận diện các file ảnh minh họa cùng tên trong thư mục. Bạn chỉ cần rê chuột qua danh sách để xem trước (Preview) hình ảnh thực tế của Block trước khi chèn vào bản vẽ.</p>
+          
+          <div class="highlight-box">
+            "Không cần phải mở từng file để kiểm tra nội dung. Với ViD Block Library, bạn nhìn thấy những gì bạn sắp chèn."
+          </div>
+
+          <h2>Các tính năng chính</h2>
+          <ul>
+            <li><strong>Tree View Folder:</strong> Tổ chức thư viện theo cấu trúc thư mục phân cấp, giúp quản lý hàng ngàn block theo từng hạng mục.</li>
+            <li><strong>Auto Preview:</strong> Hiển thị hình ảnh thu nhỏ cực nhanh, hỗ trợ định dạng PNG, JPG, JPEG.</li>
+            <li><strong>Smart Scale & Insert:</strong> Tùy chọn chèn block vào điểm bất kỳ, hỗ trợ tính toán tỷ lệ scale tự động phù hợp với khung bản vẽ hiện hành.</li>
+            <li><strong>Auto Explode:</strong> Tùy chọn tự động phá khối sau khi chèn để chỉnh sửa ngay lập tức.</li>
+          </ul>
+
+          <h2>Hướng dẫn sử dụng nhanh</h2>
+          <p>Để bắt đầu sử dụng ViD Block Library, bạn chỉ cần thực hiện các bước đơn giản sau:</p>
+          <ul>
+            <li><strong>Mở công cụ:</strong> Gõ lệnh <code>BI</code> trong AutoCAD để gọi giao diện quản lý.</li>
+            <li><strong>Duyệt danh mục:</strong> Sử dụng cây thư mục bên trái để di chuyển giữa các nhóm Block.</li>
+            <li><strong>Xem trước:</strong> Nhấn vào tên Block trong danh sách để xem hình ảnh minh họa.</li>
+            <li><strong>Chèn Block:</strong> Nhấn đúp (Double-click) vào hình ảnh preview hoặc nhấn nút "Insert".</li>
+          </ul>
+
+          <div class="highlight-box">
+            <strong>Mẹo:</strong> Bạn có thể nhập tỷ lệ Scale trước khi chèn để Block tự động khớp với tỷ lệ bản vẽ hiện hành (ví dụ: nhập 100 để chèn block tỷ lệ 1/100).
+          </div>
+        </div>
+
+        <div data-lang="en">
+          <p>In detailing work, managing and searching through thousands of Blocks can be a nightmare. <strong>ViD Block Library</strong> is built to turn your messy library into an organized, visual, and easy-to-use treasure trove.</p>
+
+          <h2>Visual Image Management</h2>
+          <p>Instead of having to remember dry filenames (e.g., COL_300x500_SEC.dwg), ViD Block Library automatically recognizes image files with the same name in the folder. You just need to hover over the list to Preview the actual image of the Block before inserting it into the drawing.</p>
+          
+          <div class="highlight-box">
+            "No need to open every file to check content. With ViD Block Library, you see what you're about to insert."
+          </div>
+
+          <h2>Key Features</h2>
+          <ul>
+            <li><strong>Tree View Folder:</strong> Organizes the library in a hierarchical folder structure, helping manage thousands of blocks by category.</li>
+            <li><strong>Auto Preview:</strong> Displays thumbnails extremely fast, supporting PNG, JPG, and JPEG formats.</li>
+            <li><strong>Smart Scale & Insert:</strong> Options to insert blocks at any point, supporting automatic scale calculation to fit the current drawing frame.</li>
+            <li><strong>Auto Explode:</strong> Optional automatic block exploding after insertion for immediate editing.</li>
+          </ul>
+
+          <h2>Quick Start Guide</h2>
+          <p>To start using ViD Block Library, simply follow these easy steps:</p>
+          <ul>
+            <li><strong>Open tool:</strong> Type <code>BI</code> in AutoCAD to bring up the management interface.</li>
+            <li><strong>Browse categories:</strong> Use the folder tree on the left to move between Block groups.</li>
+            <li><strong>Preview:</strong> Click on a Block name in the list to view its illustration.</li>
+            <li><strong>Insert Block:</strong> Double-click the preview image or press the "Insert" button.</li>
+          </ul>
+
+          <div class="highlight-box">
+            <strong>Tip:</strong> You can enter a Scale ratio before insertion so the Block automatically matches the current drawing scale (e.g., enter 100 to insert a 1/100 scale block).
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-copy">
+        <span data-lang="vi">© 2026 ViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+        <span data-lang="en">© 2026 ViDLab. Digital solutions for the construction industry.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

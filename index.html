@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ViDLab — Engineering Solutions</title>
+  <meta name="description" content="Showcase các ứng dụng được phát triển bởi ViDLab — khám phá công nghệ hiện đại trong ngành xây dựng." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Particle Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">ViDLab</span>
+        <span class="logo-bracket">/&gt;</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+        <li><a href="#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+        <li><a href="#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
+        <li><a href="#contact" class="nav-link"><span data-lang="vi">Liên Hệ</span><span data-lang="en">Contact</span></a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-select-lang="vi">VN</button>
+          <button class="lang-btn" data-select-lang="en">EN</button>
+        </li>
+      </ul>
+      <div class="nav-status">
+        <span class="status-dot"></span>
+        <span class="status-text" data-lang="vi">Kỹ thuật sẵn sàng</span>
+        <span class="status-text" data-lang="en">Engineering Ready</span>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#home" class="mobile-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+      <li><a href="#apps" class="mobile-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+      <li><a href="#about" class="mobile-link"><span data-lang="vi">Giới Thiệu</span><span data-lang="en">About</span></a></li>
+      <li><a href="#contact" class="mobile-link"><span data-lang="vi">Liên Hệ</span><span data-lang="en">Contact</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span data-lang="vi">Số hóa ngành xây dựng</span>
+        <span data-lang="en">Digitalizing Construction</span>
+      </div>
+      <h1 class="hero-title">
+        <span data-lang="vi">Kiến Tạo Tương Lai Vững Chắc</span>
+        <span data-lang="en">Building a Stronger Future</span>
+      </h1>
+      <p class="hero-subtitle">
+        <span data-lang="vi">Tổng hợp các giải pháp phần mềm, thư viện kiến thức và công cụ bổ trợ cho Tekla, AutoCAD và thiết kế kết cấu thép.</span>
+        <span data-lang="en">A collection of software solutions, knowledge libraries, and tools for Tekla, AutoCAD, and steel structural design.</span>
+      </p>
+      <div class="hero-actions">
+        <a href="#apps" class="btn-primary" id="hero-explore-btn">
+          <span data-lang="vi">Khám Phá Giải Pháp</span>
+          <span data-lang="en">Explore Solutions</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#about" class="btn-ghost" id="hero-about-btn">
+          <span data-lang="vi">Kinh Nghiệm</span>
+          <span data-lang="en">Experience</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number" data-target="15">0</span>
+          <span class="stat-label"><span data-lang="vi">Dự Án Thép</span><span data-lang="en">Steel Projects</span></span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="8">0</span>
+          <span class="stat-label"><span data-lang="vi">Công Cụ Tekla</span><span data-lang="en">Tekla Tools</span></span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="500">0</span>
+          <span class="stat-label"><span data-lang="vi">Người Dùng</span><span data-lang="en">Users</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="code-window">
+        <div class="window-header">
+          <div class="window-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="window-title">structural_analysis.py</span>
+        </div>
+        <div class="window-body">
+          <div class="code-line"><span class="code-keyword">import</span> <span class="code-var">tekla_api</span></div>
+          <div class="code-line"><span class="code-keyword">const</span> <span class="code-var">SteelProject</span> = {</div>
+          <div class="code-line indent"><span class="code-prop">material</span>: <span class="code-string">'Q345B'</span>,</div>
+          <div class="code-line indent"><span class="code-prop">standard</span>: <span class="code-string">'AISC / TCVN'</span>,</div>
+          <div class="code-line indent"><span class="code-prop">optimize</span>: <span class="code-keyword">async</span> () <span class="code-keyword">=&gt;</span> {</div>
+          <div class="code-line indent2"><span class="code-keyword">await</span> <span class="code-fn">calcLoads</span>();</div>
+          <div class="code-line indent2"><span class="code-keyword">await</span> <span class="code-fn">detailing</span>();</div>
+          <div class="code-line indent">}</div>
+          <div class="code-line">};</div>
+          <div class="code-line cursor-line"><span class="code-cursor">|</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <section id="apps" class="apps-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">// <span data-lang="vi">bài_viết_&_giải_pháp</span><span data-lang="en">articles_&_solutions</span></div>
+        <h2 class="section-title">
+          <span data-lang="vi">Kho <span class="gradient-text">Giải Pháp</span> ViDLab</span>
+          <span data-lang="en">ViDLab <span class="gradient-text">Solutions</span> Hub</span>
+        </h2>
+        <p class="section-subtitle">
+          <span data-lang="vi">Tổng hợp các bài viết kỹ thuật và công cụ phần mềm mới nhất trong ngành xây dựng.</span>
+          <span data-lang="en">A collection of the latest engineering articles and software tools in the construction industry.</span>
+        </p>
+      </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all" id="filter-all">
+          <span data-lang="vi">Tất Cả</span><span data-lang="en">All</span>
+        </button>
+        <button class="filter-btn" data-filter="trending" id="filter-trending">
+          <span data-lang="vi">Mới Nhất (2025)</span><span data-lang="en">Latest (2025)</span>
+        </button>
+        <button class="filter-btn" data-filter="tekla" id="filter-tekla">
+          <span data-lang="vi">Tekla Tools</span><span data-lang="en">Tekla Tools</span>
+        </button>
+        <button class="filter-btn" data-filter="cad" id="filter-cad">
+          <span data-lang="vi">AutoCAD</span><span data-lang="en">AutoCAD</span>
+        </button>
+        <button class="filter-btn" data-filter="knowledge" id="filter-knowledge">
+          <span data-lang="vi">Kiến Thức</span><span data-lang="en">Knowledge</span>
+        </button>
+        <button class="filter-btn" data-filter="design" id="filter-design">
+          <span data-lang="vi">Thiết Kế</span><span data-lang="en">Design</span>
+        </button>
+      </div>
+      <div class="apps-grid" id="apps-grid">
+
+        <!-- REAL TOOL 1: PEB SECTION CREATOR -->
+        <div class="app-card" data-category="tekla trending">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-icon icon-blue">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7 7 12 12 17 7"/><polyline points="7 17 12 12 17 17"/></svg>
+            </div>
+            <div class="card-badges">
+              <span class="badge badge-web">Tekla</span>
+              <span class="badge badge-hot"><span data-lang="vi">Nổi Bật</span><span data-lang="en">Featured</span></span>
+            </div>
+          </div>
+          <h3 class="card-title">PEB Section Creator</h3>
+          <p class="card-desc">
+            <span data-lang="vi">Công cụ tạo nhanh các tiết diện thép biến đổi cho nhà thép tiền chế, tự động hóa 90% quy trình dựng khung kèo.</span>
+            <span data-lang="en">A tool for rapidly creating tapered sections for pre-engineered buildings, automating 90% of the rafter modeling process.</span>
+          </p>
+          <div class="card-tech"><span class="tech-tag">Tekla API</span><span class="tech-tag">Steel Design</span></div>
+          <div class="card-footer">
+            <div class="card-stats"><span class="card-stat">⭐ 5.0</span><span class="card-stat">👥 1.5k</span></div>
+            <div class="card-actions">
+              <a href="peb-article.html" class="card-btn-demo">
+                <span data-lang="vi">Xem Chi Tiết</span><span data-lang="en">View Details</span>
+              </a>
+              <a href="#" class="card-btn-code">HDSD</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- REAL TOOL 2: C2T CAD TO TEKLA -->
+        <div class="app-card" data-category="tekla cad trending">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-icon icon-cyan">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="23 21 23 11 17 11"/><polyline points="17 15 23 11 17 7"/></svg>
+            </div>
+            <div class="card-badges">
+              <span class="badge badge-web">Sync</span>
+              <span class="badge badge-new"><span data-lang="vi">Mới</span><span data-lang="en">New</span></span>
+            </div>
+          </div>
+          <h3 class="card-title">C2T: Cad to Tekla Sync</h3>
+          <p class="card-desc">
+            <span data-lang="vi">Đồng bộ hóa lưới trục và cao độ từ AutoCAD sang Tekla Structures chỉ với vài cú click chuột.</span>
+            <span data-lang="en">Sync grids and elevations from AutoCAD to Tekla Structures with just a few clicks.</span>
+          </p>
+          <div class="card-tech"><span class="tech-tag">AutoCAD .NET</span><span class="tech-tag">Tekla API</span></div>
+          <div class="card-footer">
+            <div class="card-stats"><span class="card-stat">⭐ 4.9</span><span class="card-stat">👥 850</span></div>
+            <div class="card-actions">
+              <a href="c2t-article.html" class="card-btn-demo">
+                <span data-lang="vi">Xem Chi Tiết</span><span data-lang="en">View Details</span>
+              </a>
+              <a href="#" class="card-btn-code"><span data-lang="vi">Tải Về</span><span data-lang="en">Download</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- REAL TOOL 3: ViD BLOCK LIBRARY -->
+        <div class="app-card" data-category="cad">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-icon icon-purple">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18"/></svg>
+            </div>
+            <div class="card-badges">
+              <span class="badge badge-tool"><span data-lang="vi">Thư viện</span><span data-lang="en">Library</span></span>
+            </div>
+          </div>
+          <h3 class="card-title">ViD Block Library</h3>
+          <p class="card-desc">
+            <span data-lang="vi">Quản lý thư viện Block AutoCAD trực quan với hình ảnh preview, hỗ trợ chèn và scale tự động.</span>
+            <span data-lang="en">Visual AutoCAD Block library management with previews, supporting automatic insertion and scaling.</span>
+          </p>
+          <div class="card-tech"><span class="tech-tag">C#</span><span class="tech-tag">WinForms</span></div>
+          <div class="card-footer">
+            <div class="card-stats"><span class="card-stat">⭐ 4.8</span><span class="card-stat">👥 2.1k</span></div>
+            <div class="card-actions">
+              <a href="block-library-article.html" class="card-btn-demo">
+                <span data-lang="vi">Xem Chi Tiết</span><span data-lang="en">View Details</span>
+              </a>
+              <a href="hdsd-block-library.html" class="card-btn-code">HDSD</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- REAL TOOL 4: STEELSPRO -->
+        <div class="app-card" data-category="design cad">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-icon icon-orange">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="card-badges"><span class="badge badge-game">Pro</span></div>
+          </div>
+          <h3 class="card-title">SteelsPro Toolkit</h3>
+          <p class="card-desc">
+            <span data-lang="vi">Bộ công cụ hỗ trợ thiết kế kết cấu thép trên AutoCAD, bao gồm xoay nhãn và quản lý tiết diện.</span>
+            <span data-lang="en">A toolkit for steel structural design in AutoCAD, including label rotation and section management.</span>
+          </p>
+          <div class="card-tech"><span class="tech-tag">AutoCAD .NET</span><span class="tech-tag">Engineering</span></div>
+          <div class="card-footer">
+            <div class="card-stats"><span class="card-stat">⭐ 4.7</span><span class="card-stat">👥 420</span></div>
+            <div class="card-actions">
+              <a href="steelspro-article.html" class="card-btn-demo">
+                <span data-lang="vi">Xem Chi Tiết</span><span data-lang="en">View Details</span>
+              </a>
+              <a href="#" class="card-btn-code">Toolbox</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-left">
+          <div class="section-tag">// <span data-lang="vi">năng_lực_kỹ_thuật</span><span data-lang="en">technical_expertise</span></div>
+          <h2 class="section-title">
+            <span data-lang="vi">Kỹ Thuật Là <span class="gradient-text">Nền Tảng</span></span>
+            <span data-lang="en">Engineering is the <span class="gradient-text">Foundation</span></span>
+          </h2>
+          <p class="about-text">
+            <span data-lang="vi">Tôi là kỹ sư kết cấu đam mê lập trình, chuyên phát triển các công cụ tối ưu hóa cho Tekla Structures và AutoCAD. Với hơn 8 năm kinh nghiệm trong ngành kết cấu thép, tôi hiểu rõ những "nỗi đau" của kỹ sư và họa viên.</span>
+            <span data-lang="en">I am a structural engineer passionate about programming, specializing in developing optimization tools for Tekla Structures and AutoCAD. With over 8 years of experience in the steel industry, I deeply understand the "pain points" of engineers and detailers.</span>
+          </p>
+          <p class="about-text">
+            <span data-lang="vi">Mục tiêu của tôi là kết hợp sức mạnh của code (C#, Python) với kiến thức chuyên môn để tự động hóa 80% công việc thủ công trong thiết kế xây dựng.</span>
+            <span data-lang="en">My goal is to combine the power of code (C#, Python) with domain expertise to automate 80% of manual tasks in construction design.</span>
+          </p>
+          <div class="skills-grid">
+            <div class="skill-item" id="skill-tekla">
+              <span class="skill-icon">🏗️</span>
+              <span class="skill-name">Tekla Open API</span>
+            </div>
+            <div class="skill-item" id="skill-cad">
+              <span class="skill-icon">📏</span>
+              <span class="skill-name">AutoCAD .NET</span>
+            </div>
+            <div class="skill-item" id="skill-csharp">
+              <span class="skill-icon">🔷</span>
+              <span class="skill-name">C# / WPF</span>
+            </div>
+            <div class="skill-item" id="skill-python">
+              <span class="skill-icon">🐍</span>
+              <span class="skill-name">Python / BIM</span>
+            </div>
+            <div class="skill-item" id="skill-sap">
+              <span class="skill-icon">📉</span>
+              <span class="skill-name">SAP2000 / ETABS</span>
+            </div>
+            <div class="skill-item" id="skill-standard">
+              <span class="skill-icon">📚</span>
+              <span class="skill-name">TCVN / AISC</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-right">
+          <div class="terminal-window">
+            <div class="window-header">
+              <div class="window-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="window-title">~/engineer-profile</span>
+            </div>
+            <div class="terminal-body" id="terminal-body">
+              <div class="term-line"><span class="prompt">$</span> <span class="term-cmd">whoami</span></div>
+              <div class="term-output">Structural Engineer & Developer</div>
+              <div class="term-line"><span class="prompt">$</span> <span class="term-cmd">cat expertise.txt</span></div>
+              <div class="term-output">Steel Detailing · Automation · BIM</div>
+              <div class="term-line"><span class="prompt">$</span> <span class="term-cmd">echo $MISSION</span></div>
+              <div class="term-output term-highlight">Digitizing the Construction Industry 🚀</div>
+              <div class="term-line"><span class="prompt">$</span> <span class="term-cmd">git log --oneline -3</span></div>
+              <div class="term-output">d2e1a3 feat: add TCVN 5575 module</div>
+              <div class="term-output">f7b2c0 fix: optimize Tekla connection</div>
+              <div class="term-output">e4d5f1 init: AutoCAD Lisp toolkit</div>
+              <div class="term-line blink-line"><span class="prompt">$</span> <span class="term-cursor">▌</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">// <span data-lang="vi">kết_nối</span><span data-lang="en">connect</span></div>
+        <h2 class="section-title">
+          <span data-lang="vi">Hợp Tác <span class="gradient-text">Kỹ Thuật</span></span>
+          <span data-lang="en">Engineering <span class="gradient-text">Collaboration</span></span>
+        </h2>
+        <p class="section-subtitle">
+          <span data-lang="vi">Bạn cần giải pháp tự động hóa cho dự án? Liên hệ ngay!</span>
+          <span data-lang="en">Need automation solutions for your project? Contact me today!</span>
+        </p>
+      </div>
+      <div class="contact-grid">
+        <a href="mailto:engineer@example.com" class="contact-card" id="contact-email">
+          <div class="contact-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">engineer@example.com</span>
+        </a>
+        <a href="https://github.com/engineer" target="_blank" class="contact-card" id="contact-github">
+          <div class="contact-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </div>
+          <span class="contact-label">GitHub Tools</span>
+          <span class="contact-value">github.com/eng-tools</span>
+        </a>
+        <a href="#" target="_blank" class="contact-card" id="contact-linkedin">
+          <div class="contact-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">linkedin.com/in/engineer</span>
+        </a>
+        <a href="#" target="_blank" class="contact-card" id="contact-telegram">
+          <div class="contact-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </div>
+          <span class="contact-label">Zalo / Telegram</span>
+          <span class="contact-value">@eng_solutions</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="logo-bracket">&lt;</span>
+          <span class="logo-text">ViDLab</span>
+          <span class="logo-bracket">/&gt;</span>
+        </div>
+        <p class="footer-copy">
+          <span data-lang="vi">© 2026 ViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+          <span data-lang="en">© 2026 ViDLab. Digital solutions for the construction industry.</span>
+        </p>
+        <div class="footer-links">
+          <a href="#home" class="footer-link">
+            <span data-lang="vi">Trang đầu</span><span data-lang="en">Top</span>
+          </a>
+          <a href="#apps" class="footer-link">
+            <span data-lang="vi">Giải pháp</span><span data-lang="en">Solutions</span>
+          </a>
+          <a href="#contact" class="footer-link">
+            <span data-lang="vi">Liên hệ</span><span data-lang="en">Contact</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="article-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title">Tiêu đề bài viết</h2>
+        <div class="modal-meta">
+          <span id="modal-category">Chuyên mục</span>
+          <span>•</span>
+          <span id="modal-date">16/05/2026</span>
+        </div>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Content will be injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
