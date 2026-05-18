@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PEB Section Creator — ViDLab</title>
+  <title>PEB Section Creator — iViDLab</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -37,7 +37,7 @@
     <div class="nav-container">
       <div class="nav-logo">
         <span class="logo-bracket">&lt;</span>
-        <span class="logo-text">ViDLab</span>
+        <span class="logo-text">iViDLab</span>
         <span class="logo-bracket">/&gt;</span>
       </div>
       <ul class="nav-links">
@@ -68,7 +68,7 @@
           <span>•</span>
           <span data-lang="vi">Ngày đăng: 16/05/2026</span><span data-lang="en">Published: May 16, 2026</span>
           <span>•</span>
-          <span data-lang="vi">Tác giả: ViDLab Team</span><span data-lang="en">Author: ViDLab Team</span>
+          <span data-lang="vi">Tác giả: iViDLab Team</span><span data-lang="en">Author: iViDLab Team</span>
         </div>
       </header>
 
@@ -223,8 +223,8 @@
   <footer class="footer">
     <div class="container">
       <p class="footer-copy">
-        <span data-lang="vi">© 2026 ViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
-        <span data-lang="en">© 2026 ViDLab. Digital solutions for the construction industry.</span>
+        <span data-lang="vi">© 2026 iViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+        <span data-lang="en">© 2026 iViDLab. Digital solutions for the construction industry.</span>
       </p>
     </div>
   </footer>
@@ -344,7 +344,7 @@
 
     function openDownloadModal() {
       // Detect current language of website
-      let currentLang = safeStorage.getItem('vidlab_lang') || 'vi';
+      let currentLang = safeStorage.getItem('ividlab_lang') || 'vi';
 
       // Reset modal views
       document.getElementById('download-modal-loading').style.display = 'none';
@@ -398,7 +398,7 @@
       }
 
       // 1. Save locally to local storage for Admin Dashboard representation
-      let logs = JSON.parse(safeStorage.getItem('vidlab_download_logs') || '[]');
+      let logs = JSON.parse(safeStorage.getItem('ividlab_download_logs') || '[]');
       const newLog = {
         email: email,
         app: 'PEB Section Creator',
@@ -409,10 +409,10 @@
         platform: navigator.platform || 'Windows 64-bit'
       };
       logs.unshift(newLog);
-      safeStorage.setItem('vidlab_download_logs', JSON.stringify(logs));
+      safeStorage.setItem('ividlab_download_logs', JSON.stringify(logs));
 
       // 2. Fetch configurations for Apps Script
-      const gasUrl = safeStorage.getItem('vidlab_gas_url');
+      const gasUrl = safeStorage.getItem('ividlab_gas_url');
       const payload = {
         email: email,
         app: 'PEB Section Creator',

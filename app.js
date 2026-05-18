@@ -1,3 +1,7 @@
+/* ==========================================
+   iViDLab Premium JS Interactions
+   ========================================== */
+
 // ===== SAFE STORAGE WORKAROUND FOR local file:// protocol =====
 if (!window.safeStorage) {
   window.safeStorage = {
@@ -31,8 +35,8 @@ if (!window.safeStorage) {
 
 /* ===== LANGUAGE SWITCHER ===== */
 (function() {
-  const langBtns = document.querySelectorAll('.lang-btn');
-  const currentLang = window.safeStorage.getItem('vidlab_lang') || 'vi';
+  const langBtns = document.querySelectorAll('.header-lang-btn, .lang-btn');
+  const currentLang = window.safeStorage.getItem('ividlab_lang') || 'vi';
 
   function setLanguage(lang) {
     document.querySelectorAll('[data-lang]').forEach(el => {
@@ -42,7 +46,7 @@ if (!window.safeStorage) {
       }
     });
     
-    document.querySelectorAll('.lang-btn').forEach(btn => {
+    document.querySelectorAll('.header-lang-btn, .lang-btn').forEach(btn => {
       btn.classList.remove('active');
       if (btn.getAttribute('data-select-lang') === lang) {
         btn.classList.add('active');
@@ -50,10 +54,10 @@ if (!window.safeStorage) {
     });
 
     document.documentElement.lang = lang;
-    window.safeStorage.setItem('vidlab_lang', lang);
+    window.safeStorage.setItem('ividlab_lang', lang);
   }
 
-  // Init Language
+  // Initialize Language
   setLanguage(currentLang);
 
   langBtns.forEach(btn => {
@@ -65,282 +69,325 @@ if (!window.safeStorage) {
   });
 })();
 
-/* ===== PARTICLE CANVAS ===== */
+/* ===== HERO SLIDER BANNER ===== */
 (function() {
-  const canvas = document.getElementById('particles-canvas');
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  let W, H;
+  const slides = document.querySelectorAll('.slide');
+  const dotsContainer = document.querySelector('.slider-dots');
+  let currentSlideIdx = 0;
+  let slideTimer;
+  const slideIntervalTime = 6000; // 6 seconds
 
-  function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
+  if (slides.length === 0) return;
 
-  function randomBetween(a, b) { return a + Math.random() * (b - a); }
-
-  function createParticle() {
-    return {
-      x: randomBetween(0, W),
-      y: randomBetween(0, H),
-      r: randomBetween(0.5, 1.8),
-      vx: randomBetween(-0.15, 0.15),
-      vy: randomBetween(-0.15, 0.15),
-      alpha: randomBetween(0.2, 0.7),
-      color: ['#6fcf97', '#2fa084', '#1f6f5f', '#eeeeee'][Math.floor(Math.random() * 4)]
-    };
-  }
-
-  for (let i = 0; i < 120; i++) particles.push(createParticle());
-
-  function animate() {
-    ctx.clearRect(0, 0, W, H);
-    particles.forEach(p => {
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0) p.x = W;
-      if (p.x > W) p.x = 0;
-      if (p.y < 0) p.y = H;
-      if (p.y > H) p.y = 0;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = p.alpha;
-      ctx.fill();
+  // Dynamically generate dots
+  slides.forEach((_, idx) => {
+    const dot = document.createElement('button');
+    dot.classList.add('slider-dot');
+    if (idx === 0) dot.classList.add('active');
+    dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
+    dot.addEventListener('click', () => {
+      goToSlide(idx);
+      resetTimer();
     });
-    ctx.globalAlpha = 1;
-    // Draw connections
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 100) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = '#2fa084';
-          ctx.globalAlpha = (1 - dist / 100) * 0.1;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-          ctx.globalAlpha = 1;
-        }
-      }
-    }
-    requestAnimationFrame(animate);
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.slider-dot');
+
+  function goToSlide(idx) {
+    slides[currentSlideIdx].classList.remove('active');
+    dots[currentSlideIdx].classList.remove('active');
+    
+    currentSlideIdx = idx;
+    
+    slides[currentSlideIdx].classList.add('active');
+    dots[currentSlideIdx].classList.add('active');
   }
-  animate();
+
+  function nextSlide() {
+    let nextIdx = (currentSlideIdx + 1) % slides.length;
+    goToSlide(nextIdx);
+  }
+
+  function startTimer() {
+    slideTimer = setInterval(nextSlide, slideIntervalTime);
+  }
+
+  function resetTimer() {
+    clearInterval(slideTimer);
+    startTimer();
+  }
+
+  // Start Slider
+  startTimer();
 })();
 
-// ===== NAVBAR SCROLL =====
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
-  // Update active nav link
-  const sections = ['home', 'apps', 'about', 'contact'];
-  let current = 'home';
-  sections.forEach(id => {
-    const sec = document.getElementById(id);
-    if (sec && window.scrollY >= sec.offsetTop - 100) current = id;
-  });
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-  });
-});
+/* ===== MAIN HEADER STICKY & SCROLLSPY ===== */
+(function() {
+  const header = document.querySelector('.main-header');
+  const sections = document.querySelectorAll('section, main');
+  const navItems = document.querySelectorAll('.nav-item');
 
-// ===== HAMBURGER MENU =====
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobile-menu');
-if (hamburger && mobileMenu) {
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-  });
-  document.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  });
-}
-
-// ===== STAT COUNTER ANIMATION =====
-function animateCounter(el) {
-  const target = parseInt(el.dataset.target);
-  const duration = 1800;
-  const start = performance.now();
-  function update(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const ease = 1 - Math.pow(1 - progress, 3);
-    const value = Math.floor(ease * target);
-    el.textContent = value >= 1000 ? (value / 1000).toFixed(1) + 'k+' : value + (progress < 1 ? '' : '+');
-    if (progress < 1) requestAnimationFrame(update);
-  }
-  requestAnimationFrame(update);
-}
-
-// ===== INTERSECTION OBSERVER (Disabled for reliability) =====
-// const fadeEls = document.querySelectorAll('.app-card, .contact-card, .skill-item, .about-left, .about-right, .hero-content, .hero-visual');
-// fadeEls.forEach(el => el.classList.add('fade-in'));
-// const observer = new IntersectionObserver((entries) => { ... });
-
-// Stat counter observer
-const statObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.stat-number').forEach(animateCounter);
-      statObserver.unobserve(entry.target);
+  window.addEventListener('scroll', () => {
+    // Sticky Class
+    if (window.scrollY > 40) {
+      header.classList.add('sticky');
+    } else {
+      header.classList.remove('sticky');
     }
-  });
-}, { threshold: 0.5 });
-const heroSection = document.getElementById('home');
-if (heroSection) statObserver.observe(heroSection);
 
-// ===== FILTER APPS =====
-const filterBtns = document.querySelectorAll('.filter-btn');
-const appCards = document.querySelectorAll('.app-card');
-
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    appCards.forEach(card => {
-      const categories = card.dataset.category.split(' ');
-      const match = filter === 'all' || categories.includes(filter);
-      card.style.transition = 'opacity 0.3s, transform 0.3s';
-      if (match) {
-        card.style.display = '';
-        setTimeout(() => { card.style.opacity = '1'; card.style.transform = ''; }, 10);
-      } else {
-        card.style.opacity = '0';
-        card.style.transform = 'scale(0.95)';
-        setTimeout(() => { card.style.display = 'none'; }, 300);
+    // ScrollSpy active link
+    let currentId = '';
+    sections.forEach(sec => {
+      const sectionTop = sec.offsetTop;
+      const sectionHeight = sec.clientHeight;
+      if (window.scrollY >= (sectionTop - 120)) {
+        currentId = sec.getAttribute('id') || '';
       }
     });
-  });
-});
 
-// ===== SMOOTH SCROLL =====
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (currentId) {
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        const link = item.querySelector('.nav-menu-link');
+        if (link && link.getAttribute('href') === `#${currentId}`) {
+          item.classList.add('active');
+        }
+      });
     }
   });
-});
+})();
 
-// ===== CARD HOVER GLOW FOLLOW MOUSE =====
-document.querySelectorAll('.app-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    card.querySelector('.card-glow').style.background =
-      `radial-gradient(circle at ${x}% ${y}%, rgba(99,179,237,0.12), transparent 60%)`;
-  });
-});
+/* ===== SEARCH DRAWER OVERLAY ===== */
+(function() {
+  const searchOpenBtn = document.querySelector('.search-toggle-btn');
+  const searchCloseBtn = document.querySelector('.search-close-btn');
+  const searchDrawer = document.querySelector('.search-drawer');
 
-// ===== MODAL LOGIC =====
-const modal = document.getElementById('article-modal');
-const modalClose = document.getElementById('modal-close');
-const modalTitle = document.getElementById('modal-title');
-const modalBody = document.getElementById('modal-body');
-const modalCategory = document.getElementById('modal-category');
-
-function openModal(card) {
-  const title = card.querySelector('.card-title').textContent;
-  const category = card.querySelector('.badge').textContent;
-  const fullContent = card.querySelector('.full-article-content');
-  
-  modalTitle.textContent = title;
-  modalCategory.textContent = category;
-  
-  if (fullContent) {
-    modalBody.innerHTML = fullContent.innerHTML;
-  } else {
-    const lang = window.safeStorage.getItem('vidlab_lang') || 'vi';
-    modalBody.innerHTML = `
-      <div data-lang="vi" class="${lang === 'vi' ? 'active-lang' : ''}">
-        <p>Nội dung chi tiết của bài viết <strong>"${title}"</strong> đang được cập nhật.</p>
-        <p>Vui lòng quay lại sau để xem hướng dẫn sử dụng và các tính năng nâng cao của công cụ này.</p>
-        <h4>Thông tin kỹ thuật:</h4>
-        <ul>
-          <li>Danh mục: ${category}</li>
-          <li>Tình trạng: Sẵn sàng dùng thử</li>
-        </ul>
-      </div>
-      <div data-lang="en" class="${lang === 'en' ? 'active-lang' : ''}">
-        <p>Detailed content for <strong>"${title}"</strong> is currently being updated.</p>
-        <p>Please check back later for usage guides and advanced features of this tool.</p>
-        <h4>Technical Information:</h4>
-        <ul>
-          <li>Category: ${category}</li>
-          <li>Status: Ready for trial</li>
-        </ul>
-      </div>
-    `;
+  if (searchOpenBtn && searchDrawer) {
+    searchOpenBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      searchDrawer.classList.toggle('open');
+    });
   }
+
+  if (searchCloseBtn && searchDrawer) {
+    searchCloseBtn.addEventListener('click', () => {
+      searchDrawer.classList.remove('open');
+    });
+  }
+})();
+
+/* ===== MOBILE SIDE DRAWER MENU ===== */
+(function() {
+  const hamburger = document.querySelector('.hamburger');
+  const mobileDrawer = document.querySelector('.mobile-side-drawer');
+  const mobileClose = document.querySelector('.mobile-drawer-close');
+  const mobileOverlay = document.querySelector('.mobile-drawer-overlay');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  function openDrawer() {
+    mobileDrawer.classList.add('open');
+    mobileOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    mobileDrawer.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (hamburger) hamburger.addEventListener('click', openDrawer);
+  if (mobileClose) mobileClose.addEventListener('click', closeDrawer);
+  if (mobileOverlay) mobileOverlay.addEventListener('click', closeDrawer);
   
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden'; // Prevent scroll
-}
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+})();
 
-function closeModal() {
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-}
+/* ===== DYNAMIC TABS PORTFOLIO FILTER ===== */
+(function() {
+  const filterBtns = document.querySelectorAll('.filter-tab-btn');
+  const cards = document.querySelectorAll('.project-lux-card');
 
-// Attach click events to cards and buttons
-document.querySelectorAll('.app-card').forEach(card => {
-  card.addEventListener('click', (e) => {
-    // Don't trigger navigation or modal if clicking on secondary links (e.g., download / hdsd)
-    if (e.target.closest('.card-btn-code')) return;
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Toggle active classes
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-    // Find the main detail link
-    const demoLink = card.querySelector('.card-btn-demo');
-    const href = demoLink ? demoLink.getAttribute('href') : null;
+      const filterValue = btn.getAttribute('data-filter');
 
-    // If there is a real article link, navigate to it directly
-    if (href && href !== '#' && !demoLink.classList.contains('modal-trigger')) {
-      // If the user clicked directly on the anchor, let the browser handle it naturally
-      if (e.target.closest('a') === demoLink) {
-        return;
-      }
-      // Otherwise, navigate programmatically
-      e.preventDefault();
-      window.location.href = href;
-      return;
-    }
+      cards.forEach(card => {
+        const categories = card.getAttribute('data-category').split(' ');
+        const matches = filterValue === 'all' || categories.includes(filterValue);
 
-    const link = e.target.closest('a');
-    // If clicked on a link with a real URL (not just #), allow it to navigate
-    if (link && link.getAttribute('href') !== '#' && !link.classList.contains('modal-trigger')) {
-      return; 
+        // Tactile organic transition
+        if (matches) {
+          card.style.display = 'flex';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0) scale(1)';
+          }, 50);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(15px) scale(0.96)';
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 350);
+        }
+      });
+    });
+  });
+})();
+
+/* ===== INTERACTIVE CONSULTATION FORM ACTION ===== */
+(function() {
+  const form = document.querySelector('.consultation-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('.btn-form-submit');
+    const originalText = submitBtn.textContent;
+    
+    const lang = window.safeStorage.getItem('ividlab_lang') || 'vi';
+    const sendingText = lang === 'vi' ? 'ĐANG GỬI...' : 'SENDING...';
+    const successMsg = lang === 'vi' 
+      ? 'Cảm ơn bạn! Yêu cầu tư vấn của bạn đã được gửi thành công. Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất!'
+      : 'Thank you! Your quote request has been sent successfully. We will get back to you shortly!';
+
+    // Simulation Loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = sendingText;
+    submitBtn.style.opacity = '0.7';
+
+    setTimeout(() => {
+      alert(successMsg);
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+      submitBtn.style.opacity = '1';
+    }, 1500);
+  });
+})();
+
+/* ===== DETAIL OVERLAY MODAL LOGIC ===== */
+(function() {
+  const modal = document.getElementById('article-modal');
+  const modalClose = document.getElementById('modal-close');
+  const modalTitle = document.getElementById('modal-title');
+  const modalBody = document.getElementById('modal-body');
+  const modalCategory = document.getElementById('modal-category');
+
+  if (!modal) return;
+
+  function openModal(card) {
+    const title = card.querySelector('.project-card-title').textContent;
+    const category = card.querySelector('.project-card-badge').textContent;
+    const fullContent = card.querySelector('.full-article-content');
+    
+    modalTitle.textContent = title;
+    modalCategory.textContent = category;
+    
+    if (fullContent) {
+      modalBody.innerHTML = fullContent.innerHTML;
+    } else {
+      const lang = window.safeStorage.getItem('ividlab_lang') || 'vi';
+      modalBody.innerHTML = `
+        <div data-lang="vi" class="${lang === 'vi' ? 'active-lang' : ''}">
+          <p>Nội dung chi tiết cho dự án hoặc giải pháp <strong>"${title}"</strong> đang được số hóa và bổ sung tài liệu.</p>
+          <p>Vui lòng nhấp vào các nút liên kết trực tiếp bên dưới hoặc quay lại sau để xem hướng dẫn sử dụng đầy đủ.</p>
+          <h4 style="margin-top: 1.5rem; color: #c89d55;">Đặc tính kỹ thuật chính:</h4>
+          <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+            <li>Phân loại: ${category}</li>
+            <li>Trạng thái triển khai: Sẵn sàng thử nghiệm và chuyển giao công nghệ</li>
+            <li>Hỗ trợ tích hợp hệ thống: AutoCAD, Tekla Structures, Rhino Grasshopper</li>
+          </ul>
+        </div>
+        <div data-lang="en" class="${lang === 'en' ? 'active-lang' : ''}">
+          <p>Detailed documentation for <strong>"${title}"</strong> is currently being optimized and updated.</p>
+          <p>Please click on the direct download options or visit later to see the complete guide.</p>
+          <h4 style="margin-top: 1.5rem; color: #c89d55;">Core Technical Specs:</h4>
+          <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+            <li>Type: ${category}</li>
+            <li>Deployment Status: Stable release ready for production pipelines</li>
+            <li>Native Integrations: AutoCAD, Tekla Structures, Rhino Grasshopper</li>
+          </ul>
+        </div>
+      `;
     }
     
-    e.preventDefault();
-    openModal(card);
-  });
-});
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 
-if (modalClose) modalClose.addEventListener('click', closeModal);
-if (modal) {
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Bind click actions to portfolio cards
+  document.querySelectorAll('.project-lux-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Don't trigger modal if clicking on secondary buttons (HDSD, Download, etc.)
+      if (e.target.closest('.project-card-btn-sec')) return;
+
+      const detailLink = card.querySelector('.project-card-link');
+      const href = detailLink ? detailLink.getAttribute('href') : null;
+
+      // If the link has a valid subpage target (not "#" or empty), navigate to it directly
+      if (href && href !== '#' && href !== 'javascript:void(0)') {
+        // If they click directly on the link, allow native navigation
+        if (e.target.closest('a') === detailLink) return;
+        
+        e.preventDefault();
+        window.location.href = href;
+        return;
+      }
+
+      e.preventDefault();
+      openModal(card);
+    });
+  });
+
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
   });
-}
 
-// Close modal on Escape key
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    if (modal && modal.classList.contains('active')) closeModal();
-  }
-});
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+})();
 
-// ===== TYPING EFFECT IN CODE WINDOW =====
+/* ===== SMOOTH SCROLL ANCHORS ===== */
 (function() {
-  const cursor = document.querySelector('.code-cursor');
-  if (!cursor) return;
-  // Already blinking via CSS
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const targetHref = this.getAttribute('href');
+      if (targetHref === '#') return;
+      
+      const targetElement = document.querySelector(targetHref);
+      if (targetElement) {
+        e.preventDefault();
+        
+        const offset = 90; // Header size offset
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = targetElement.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
 })();

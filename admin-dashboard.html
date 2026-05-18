@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ViDLab — Admin Dashboard</title>
+  <title>iViDLab — Admin Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -192,7 +192,7 @@
     <div class="nav-container">
       <a href="index.html" class="nav-logo" style="text-decoration: none;">
         <span class="logo-bracket">&lt;</span>
-        <span class="logo-text">ViDLab</span>
+        <span class="logo-text">iViDLab</span>
         <span class="logo-bracket">/&gt;</span>
       </a>
       <span style="font-weight: 600; color: var(--accent-blue); font-size: 1.1rem; margin-left: 1rem;">| Admin Panel</span>
@@ -381,7 +381,7 @@
 
     // Populate mock seed data if empty
     function seedMockData() {
-      let logs = safeStorage.getItem('vidlab_download_logs');
+      let logs = safeStorage.getItem('ividlab_download_logs');
       if (!logs) {
         const demoLogs = [
           { email: 'builder.pro@gmail.com', app: 'PEB Section Creator', version: '1.0.0', date: new Date(Date.now() - 3600000 * 2).toISOString(), status: 'Sent', ip: '192.168.1.5', platform: 'Windows 64-bit' },
@@ -390,7 +390,7 @@
           { email: 'steel.designer@gmail.com', app: 'PEB Section Creator', version: '1.0.0', date: new Date(Date.now() - 3600000 * 48).toISOString(), status: 'Sent', ip: '192.168.1.18', platform: 'Windows 64-bit' },
           { email: 'trantrung@steelcorp.com', app: 'PEB Section Creator', version: '1.0.0', date: new Date(Date.now() - 3600000 * 60).toISOString(), status: 'Sent', ip: '115.79.4.12', platform: 'Windows 64-bit' }
         ];
-        safeStorage.setItem('vidlab_download_logs', JSON.stringify(demoLogs));
+        safeStorage.setItem('ividlab_download_logs', JSON.stringify(demoLogs));
       }
     }
 
@@ -398,7 +398,7 @@
       seedMockData();
       
       // Load GAS URL if configured
-      const gasUrl = safeStorage.getItem('vidlab_gas_url') || '';
+      const gasUrl = safeStorage.getItem('ividlab_gas_url') || '';
       document.getElementById('gas-url-field').value = gasUrl;
       
       const connDot = document.getElementById('conn-dot');
@@ -413,7 +413,7 @@
         connText.style.color = 'var(--text-secondary)';
       }
 
-      const logs = JSON.parse(safeStorage.getItem('vidlab_download_logs') || '[]');
+      const logs = JSON.parse(safeStorage.getItem('ividlab_download_logs') || '[]');
       
       // Stats
       document.getElementById('stat-total-downloads').innerText = logs.length;
@@ -453,7 +453,7 @@
 
     function filterLogs() {
       const query = document.getElementById('log-search').value.toLowerCase().trim();
-      const logs = JSON.parse(safeStorage.getItem('vidlab_download_logs') || '[]');
+      const logs = JSON.parse(safeStorage.getItem('ividlab_download_logs') || '[]');
       const filtered = logs.filter(l => l.email.toLowerCase().includes(query));
       renderTable(filtered);
     }
@@ -461,10 +461,10 @@
     function saveGasUrl() {
       const url = document.getElementById('gas-url-field').value.trim();
       if (url) {
-        safeStorage.setItem('vidlab_gas_url', url);
+        safeStorage.setItem('ividlab_gas_url', url);
         alert('Đã lưu URL kết nối Google Apps Script Web App thành công!');
       } else {
-        safeStorage.removeItem('vidlab_gas_url');
+        safeStorage.removeItem('ividlab_gas_url');
         alert('Đã gỡ bỏ URL kết nối Google Apps Script. Chuyển về chế độ giả lập Demo cục bộ.');
       }
       loadDashboardData();
@@ -472,13 +472,13 @@
 
     function resetMockData() {
       if (confirm('Bạn có chắc chắn muốn xóa toàn bộ bộ đếm và nhật ký đăng ký tải xuống?')) {
-        safeStorage.removeItem('vidlab_download_logs');
+        safeStorage.removeItem('ividlab_download_logs');
         loadDashboardData();
       }
     }
 
     function exportToCSV() {
-      const logs = JSON.parse(safeStorage.getItem('vidlab_download_logs') || '[]');
+      const logs = JSON.parse(safeStorage.getItem('ividlab_download_logs') || '[]');
       if (logs.length === 0) {
         alert('Không có dữ liệu để xuất!');
         return;
@@ -494,7 +494,7 @@
       const encodedUri = encodeURI(csvContent);
       const link = document.createElement("a");
       link.setAttribute("href", encodedUri);
-      link.setAttribute("download", `vidlab_download_leads_${new Date().toISOString().slice(0,10)}.csv`);
+      link.setAttribute("download", `ividlab_download_leads_${new Date().toISOString().slice(0,10)}.csv`);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

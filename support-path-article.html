@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AutoCAD Support Path & Lisp Generator — ViDLab</title>
+  <title>AutoCAD Support Path & Lisp Generator — iViDLab</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -207,7 +207,7 @@
     <div class="nav-container">
       <div class="nav-logo">
         <span class="logo-bracket">&lt;</span>
-        <span class="logo-text">ViDLab</span>
+        <span class="logo-text">iViDLab</span>
         <span class="logo-bracket">/&gt;</span>
       </div>
       <ul class="nav-links">
@@ -238,7 +238,7 @@
           <span>•</span>
           <span data-lang="vi">Ngày đăng: 17/05/2026</span><span data-lang="en">Published: May 17, 2026</span>
           <span>•</span>
-          <span data-lang="vi">Tác giả: ViDLab Team</span><span data-lang="en">Author: ViDLab Team</span>
+          <span data-lang="vi">Tác giả: iViDLab Team</span><span data-lang="en">Author: iViDLab Team</span>
         </div>
       </header>
 
@@ -258,7 +258,7 @@
             <li>Mở AutoCAD, nhập lệnh <code>OP</code> hoặc <code>OPTIONS</code> và nhấn <strong>Enter</strong> để mở hộp thoại Options.</li>
             <li>Tại tab <strong>Files</strong>, nhấp chọn dấu cộng <code>+</code> để mở rộng mục <strong>Support File Search Path</strong> đầu tiên.</li>
             <li>Nhấp vào nút <strong>Add</strong> ở thanh menu bên phải, sau đó nhấn <strong>Browse</strong>.</li>
-            <li>Tìm và chọn thư mục chứa công cụ của bạn (ví dụ: <code>C:\ViDLab\Tools\</code>) rồi nhấn <strong>OK</strong>.</li>
+            <li>Tìm và chọn thư mục chứa công cụ của bạn (ví dụ: <code>C:\iViDLab\Tools\</code>) rồi nhấn <strong>OK</strong>.</li>
             <li>Nhấn <strong>Apply</strong> rồi <strong>OK</strong> để lưu cấu hình.</li>
           </ol>
 
@@ -270,7 +270,7 @@
           <p>Để nạp một file .NET DLL, thông thường bạn phải gõ lệnh <code>NETLOAD</code> và tìm chọn file thủ công. Để tự động hóa việc này, cách chuyên nghiệp nhất là sử dụng một file **AutoLISP (.lsp)** nhỏ nạp lúc khởi động:</p>
           <ul>
             <li>Tự động thực hiện lệnh <code>NETLOAD</code> đến file DLL của bạn ngay khi mở bản vẽ.</li>
-            <li>Định nghĩa một lệnh tắt cực ngắn (ví dụ: <code>VBL</code>) để gọi lệnh gốc dài trong file DLL (ví dụ: <code>ViDBlockLibrary</code>).</li>
+            <li>Định nghĩa một lệnh tắt cực ngắn (ví dụ: <code>VBL</code>) để gọi lệnh gốc dài trong file DLL (ví dụ: <code>iViDBlockLibrary</code>).</li>
           </ul>
         </div>
 
@@ -287,7 +287,7 @@
             <li>Open AutoCAD, type <code>OP</code> or <code>OPTIONS</code> in the command line and press <strong>Enter</strong> to launch the Options window.</li>
             <li>In the <strong>Files</strong> tab, click the plus sign <code>+</code> next to the very first item: <strong>Support File Search Path</strong>.</li>
             <li>Click the <strong>Add</strong> button on the right, and then click **Browse**.</li>
-            <li>Select the folder containing your tools (e.g., <code>C:\ViDLab\Tools\</code>) and click **OK**.</li>
+            <li>Select the folder containing your tools (e.g., <code>C:\iViDLab\Tools\</code>) and click **OK**.</li>
             <li>Click <strong>Apply</strong> and then <strong>OK</strong> to save your changes.</li>
           </ol>
 
@@ -299,7 +299,7 @@
           <p>To load a C# .NET DLL in AutoCAD, you traditionally type the <code>NETLOAD</code> command and browse for the file. To automate this, the professional approach is using a tiny **AutoLISP (.lsp)** helper script executed at startup which:</p>
           <ul>
             <li>Automatically runs `NETLOAD` pointing to your target DLL on drawing initialization.</li>
-            <li>Creates a very short command alias (e.g. `VBL`) to run the actual command defined inside the DLL (e.g. `ViDBlockLibrary`).</li>
+            <li>Creates a very short command alias (e.g. `VBL`) to run the actual command defined inside the DLL (e.g. `iViDBlockLibrary`).</li>
           </ul>
         </div>
 
@@ -391,8 +391,8 @@
   <footer class="footer">
     <div class="container">
       <p class="footer-copy">
-        <span data-lang="vi">© 2026 ViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
-        <span data-lang="en">© 2026 ViDLab. Digital solutions for the construction industry.</span>
+        <span data-lang="vi">© 2026 iViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+        <span data-lang="en">© 2026 iViDLab. Digital solutions for the construction industry.</span>
       </p>
     </div>
   </footer>
@@ -496,42 +496,42 @@
         const safePath = escapeLispPath(rawPath);
         
         return `;; ==========================================================================
-;;  ViDLab™ CAD Automation Suite — AutoLoad Helper
+;;  iViDLab™ CAD Automation Suite — AutoLoad Helper
 ;;  Target Tool : ${name}
 ;;  Library File: ${file}
 ;;  File Path   : ${safePath}
 ;;  Registered Shortcut: [${shortCmd}] -> Command: [${origCmd}]
-;;  © 2026 ViDLab. All rights reserved.
+;;  © 2026 iViDLab. All rights reserved.
 ;; ==========================================================================
 
 (vl-load-com)
 
-;; --- Step 1: Autoload Function for ViDLab™ ${name} ---
-(defun LoadViDLabTool_${shortCmd} ()
+;; --- Step 1: Autoload Function for iViDLab™ ${name} ---
+(defun LoadiViDLabTool_${shortCmd} ()
   (if (findfile "${safePath}")
     (progn
-      (princ "\\n[ViDLab] Loading ${name} plugin...")
+      (princ "\\n[iViDLab] Loading ${name} plugin...")
       (vl-cmdf "._netload" "${safePath}")
     )
     (progn
-      (princ "\\n[ViDLab] ERROR: Plugin file not found at path: ${safePath}")
-      (princ "\\n[ViDLab] Please update the path inside this LISP loader file.")
+      (princ "\\n[iViDLab] ERROR: Plugin file not found at path: ${safePath}")
+      (princ "\\n[iViDLab] Please update the path inside this LISP loader file.")
     )
   )
 )
 
 ;; Automatically load the plugin on drawing initialization
-(LoadViDLabTool_${shortCmd})
+(LoadiViDLabTool_${shortCmd})
 
 ;; --- Step 2: Define Shortcut Command ---
 (defun c:${shortCmd} ()
-  (princ "\\n[ViDLab] Executing original command: ${origCmd}...")
+  (princ "\\n[iViDLab] Executing original command: ${origCmd}...")
   ;; Execute the underlying DLL command
   (vl-cmdf "${origCmd}")
   (princ)
 )
 
-(princ "\\n[ViDLab] Shortcut command [${shortCmd}] registered successfully for [${origCmd}].")
+(princ "\\n[iViDLab] Shortcut command [${shortCmd}] registered successfully for [${origCmd}].")
 (princ)
 `;
       }

@@ -3,337 +3,455 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ViDLab — Engineering Solutions</title>
-  <meta name="description" content="Showcase các ứng dụng được phát triển bởi ViDLab — khám phá công nghệ hiện đại trong ngành xây dựng." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <title>iViDLab — High-End Engineering & Software Automation</title>
+  <meta name="description" content="Showcase các ứng dụng được phát triển bởi iViDLab — khám phá công nghệ hiện đại trong ngành xây dựng, BIM và tự động hóa kết cấu thép." />
+  
+  <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Particle Canvas -->
-  <canvas id="particles-canvas"></canvas>
 
-  <!-- Navigation -->
-  <nav id="navbar">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <span class="logo-bracket">&lt;</span>
-        <span class="logo-text">ViDLab</span>
-        <span class="logo-bracket">/&gt;</span>
+  <!-- ===== TOP BAR ===== -->
+  <div class="top-bar">
+    <div class="container top-bar-container">
+      <div class="top-bar-contact">
+        <div class="top-bar-item">
+          <!-- Phone Icon -->
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>Hotline: <strong style="color:#ffffff;">0987.654.321</strong></span>
+        </div>
+        <div class="top-bar-item">
+          <!-- Email Icon -->
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>Email: contact@ividlab.com</span>
+        </div>
       </div>
-      <ul class="nav-links">
-        <li><a href="#home" class="nav-link active"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
-        <li><a href="#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
-        <li><a href="#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
-        <li><a href="#contact" class="nav-link"><span data-lang="vi">Liên Hệ</span><span data-lang="en">Contact</span></a></li>
-        <li class="lang-switcher">
-          <button class="lang-btn active" data-select-lang="vi">VN</button>
-          <button class="lang-btn" data-select-lang="en">EN</button>
-        </li>
-      </ul>
-      <div class="nav-status">
-        <span class="status-dot"></span>
-        <span class="status-text" data-lang="vi">Kỹ thuật sẵn sàng</span>
-        <span class="status-text" data-lang="en">Engineering Ready</span>
+      <div class="top-bar-socials">
+        <a href="https://github.com/engineer" target="_blank" class="social-circle-link" aria-label="GitHub">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="#" class="social-circle-link" aria-label="Facebook">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        </a>
+        <a href="#" class="social-circle-link" aria-label="Telegram">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </a>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobile-menu">
-    <ul>
-      <li><a href="#home" class="mobile-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
-      <li><a href="#apps" class="mobile-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
-      <li><a href="#about" class="mobile-link"><span data-lang="vi">Giới Thiệu</span><span data-lang="en">About</span></a></li>
-      <li><a href="#contact" class="mobile-link"><span data-lang="vi">Liên Hệ</span><span data-lang="en">Contact</span></a></li>
-    </ul>
   </div>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-bg-grid"></div>
-    <div class="hero-glow glow-1"></div>
-    <div class="hero-glow glow-2"></div>
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        <span data-lang="vi">Số hóa ngành xây dựng</span>
-        <span data-lang="en">Digitalizing Construction</span>
-      </div>
-      <h1 class="hero-title">
-        <span data-lang="vi">Kiến Tạo Tương Lai Vững Chắc</span>
-        <span data-lang="en">Building a Stronger Future</span>
-      </h1>
-      <p class="hero-subtitle">
-        <span data-lang="vi">Tổng hợp các giải pháp phần mềm, thư viện kiến thức và công cụ bổ trợ cho Tekla, AutoCAD và thiết kế kết cấu thép.</span>
-        <span data-lang="en">A collection of software solutions, knowledge libraries, and tools for Tekla, AutoCAD, and steel structural design.</span>
-      </p>
-      <div class="hero-actions">
-        <a href="#apps" class="btn-primary" id="hero-explore-btn">
-          <span data-lang="vi">Khám Phá Giải Pháp</span>
-          <span data-lang="en">Explore Solutions</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#about" class="btn-ghost" id="hero-about-btn">
-          <span data-lang="vi">Kinh Nghiệm</span>
-          <span data-lang="en">Experience</span>
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-number" data-target="15">0</span>
-          <span class="stat-label"><span data-lang="vi">Dự Án Thép</span><span data-lang="en">Steel Projects</span></span>
+  <!-- ===== MAIN HEADER & NAV ===== -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="#home" class="header-logo">
+        <span>iViDLab</span>
+        <span>Engineering & Automation</span>
+      </a>
+
+      <!-- Menu Desktop -->
+      <ul class="nav-menu">
+        <li class="nav-item active">
+          <a href="#home" class="nav-menu-link">
+            <span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#apps" class="nav-menu-link">
+            <span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#services" class="nav-menu-link">
+            <span data-lang="vi">Dịch Vụ</span><span data-lang="en">Services</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#about" class="nav-menu-link">
+            <span data-lang="vi">Giới Thiệu</span><span data-lang="en">About</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#blog" class="nav-menu-link">
+            <span data-lang="vi">Tin Tức</span><span data-lang="en">News</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#contact-form" class="nav-menu-link">
+            <span data-lang="vi">Liên Hệ</span><span data-lang="en">Contact</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Utilities (Lang, Search, Mobile) -->
+      <div class="header-utils">
+        <button class="search-toggle-btn" aria-label="Open search drawer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+
+        <div class="header-lang-switcher">
+          <button class="header-lang-btn active" data-select-lang="vi">VN</button>
+          <button class="header-lang-btn" data-select-lang="en">EN</button>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="8">0</span>
-          <span class="stat-label"><span data-lang="vi">Công Cụ Tekla</span><span data-lang="en">Tekla Tools</span></span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="500">0</span>
-          <span class="stat-label"><span data-lang="vi">Người Dùng</span><span data-lang="en">Users</span></span>
-        </div>
+
+        <button class="hamburger" aria-label="Menu Toggle">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="code-window">
-        <div class="window-header">
-          <div class="window-dots">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
+  </header>
+
+  <!-- ===== SEARCH DRAWER ===== -->
+  <div class="search-drawer">
+    <div class="search-drawer-container">
+      <input type="text" class="search-input-field" placeholder="Nhập từ khóa tìm kiếm giải pháp..." />
+      <button class="search-close-btn" aria-label="Close search drawer">&times;</button>
+    </div>
+  </div>
+
+  <!-- ===== MOBILE SIDE DRAWER MENU ===== -->
+  <div class="mobile-drawer-overlay"></div>
+  <div class="mobile-side-drawer">
+    <button class="mobile-drawer-close" aria-label="Close menu">&times;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="#home" class="mobile-nav-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+      <li><a href="#apps" class="mobile-nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+      <li><a href="#services" class="mobile-nav-link"><span data-lang="vi">Dịch Vụ</span><span data-lang="en">Services</span></a></li>
+      <li><a href="#about" class="mobile-nav-link"><span data-lang="vi">Giới Thiệu</span><span data-lang="en">About</span></a></li>
+      <li><a href="#blog" class="mobile-nav-link"><span data-lang="vi">Tin Tức</span><span data-lang="en">News</span></a></li>
+      <li><a href="#contact-form" class="mobile-nav-link"><span data-lang="vi">Liên Hệ</span><span data-lang="en">Contact</span></a></li>
+    </ul>
+    <div class="lang-switcher" style="margin-left: 0; margin-top: 2rem;">
+      <button class="lang-btn active" data-select-lang="vi">VN</button>
+      <button class="lang-btn" data-select-lang="en">EN</button>
+    </div>
+  </div>
+
+  <!-- ===== HERO SLIDER SECTION ===== -->
+  <section id="home" class="hero-slider-section">
+    <div class="slider-container">
+      <!-- Slide 1 -->
+      <div class="slide active">
+        <div class="slide-bg-img" style="background-image: url('https://thegioithepvn.com/wp-content/uploads/2021/07/nha-tien-che-the-gioi-thepvn.com_.jpg');"></div>
+        <div class="slide-overlay"></div>
+        <div class="container">
+          <div class="slide-content">
+            <div class="slide-subtitle">BIM & Steel Structure Automation</div>
+            <h1 class="slide-title">Kiến Tạo Công Nghệ Xây Dựng</h1>
+            <p class="slide-desc">Bộ công cụ lập trình tiên tiến bổ trợ Tekla, AutoCAD & tối ưu hóa 90% quy trình thiết kế nhà thép tiền chế.</p>
+            <div class="slide-actions">
+              <a href="#apps" class="btn-gold">
+                <span data-lang="vi">Khám Phá Giải Pháp</span><span data-lang="en">Explore Solutions</span>
+              </a>
+              <a href="#contact-form" class="btn-outline-white">
+                <span data-lang="vi">Yêu Cầu Tư Vấn</span><span data-lang="en">Get Quotes</span>
+              </a>
+            </div>
           </div>
-          <span class="window-title">structural_analysis.py</span>
         </div>
-        <div class="window-body">
-          <div class="code-line"><span class="code-keyword">import</span> <span class="code-var">tekla_api</span></div>
-          <div class="code-line"><span class="code-keyword">const</span> <span class="code-var">SteelProject</span> = {</div>
-          <div class="code-line indent"><span class="code-prop">material</span>: <span class="code-string">'Q345B'</span>,</div>
-          <div class="code-line indent"><span class="code-prop">standard</span>: <span class="code-string">'AISC / TCVN'</span>,</div>
-          <div class="code-line indent"><span class="code-prop">optimize</span>: <span class="code-keyword">async</span> () <span class="code-keyword">=&gt;</span> {</div>
-          <div class="code-line indent2"><span class="code-keyword">await</span> <span class="code-fn">calcLoads</span>();</div>
-          <div class="code-line indent2"><span class="code-keyword">await</span> <span class="code-fn">detailing</span>();</div>
-          <div class="code-line indent">}</div>
-          <div class="code-line">};</div>
-          <div class="code-line cursor-line"><span class="code-cursor">|</span></div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <div class="slide-bg-img" style="background-image: url('https://thegioithepvn.com/wp-content/uploads/2021/07/khung-suon-nha-thep-tien-che.jpg');"></div>
+        <div class="slide-overlay"></div>
+        <div class="container">
+          <div class="slide-content">
+            <div class="slide-subtitle">Precision Engineering Customization</div>
+            <h1 class="slide-title">Tự Động Hóa Quy Trình Thiết Kế</h1>
+            <p class="slide-desc">Đồng bộ lưới trục tự động, quản lý thư viện Block CAD thông minh và giải phóng sức lao động thủ công của kỹ sư.</p>
+            <div class="slide-actions">
+              <a href="#apps" class="btn-gold">
+                <span data-lang="vi">Xem Thư Viện Công Cụ</span><span data-lang="en">View Library</span>
+              </a>
+              <a href="#about" class="btn-outline-white">
+                <span data-lang="vi">Về iViDLab</span><span data-lang="en">About Us</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <div class="slide-bg-img" style="background-image: url('https://pebsteel.com/wp-content/uploads/2023/11/Gia-cong-thep-ket-cau-1-1024x682.jpeg.webp');"></div>
+        <div class="slide-overlay"></div>
+        <div class="container">
+          <div class="slide-content">
+            <div class="slide-subtitle">State-of-the-Art Steel Frameworks</div>
+            <h1 class="slide-title">Năng Suất Vượt Trội Cho Kỹ Sư</h1>
+            <p class="slide-desc">Giải quyết triệt để các nút thắt kỹ thuật thủ công, rút ngắn thời gian hoàn thành dự án từ hàng tuần xuống hàng giờ.</p>
+            <div class="slide-actions">
+              <a href="#contact-form" class="btn-gold">
+                <span data-lang="vi">Đăng Ký Tư Vấn Ngay</span><span data-lang="en">Register Consultation</span>
+              </a>
+              <a href="#services" class="btn-outline-white">
+                <span data-lang="vi">Xem Dịch Vụ</span><span data-lang="en">Our Services</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Dots navigation -->
+    <div class="slider-dots"></div>
   </section>
 
-  <!-- Filter Bar -->
-  <section id="apps" class="apps-section">
+  <!-- ===== SECTION: SOLUTION HUB (TABS & GRID) ===== -->
+  <section id="apps" class="section bg-light-gray">
     <div class="container">
-      <div class="section-header">
-        <div class="section-tag">// <span data-lang="vi">bài_viết_&_giải_pháp</span><span data-lang="en">articles_&_solutions</span></div>
-        <h2 class="section-title">
-          <span data-lang="vi">Kho <span class="gradient-text">Giải Pháp</span> ViDLab</span>
-          <span data-lang="en">ViDLab <span class="gradient-text">Solutions</span> Hub</span>
-        </h2>
-        <p class="section-subtitle">
-          <span data-lang="vi">Tổng hợp các bài viết kỹ thuật và công cụ phần mềm mới nhất trong ngành xây dựng.</span>
-          <span data-lang="en">A collection of the latest engineering articles and software tools in the construction industry.</span>
-        </p>
+      <div class="section-title-wrapper">
+        <span class="section-label">Solutions Hub</span>
+        <h2 class="section-title">Kho Giải Pháp iViDLab</h2>
+        <p class="section-subtitle">Tổng hợp các bài viết kỹ thuật, hướng dẫn sử dụng và công cụ bổ trợ đột phá ngành kỹ thuật xây dựng.</p>
       </div>
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all" id="filter-all">
+
+      <!-- Interactive Filter Tabs -->
+      <div class="tabs-filter-bar">
+        <button class="filter-tab-btn active" data-filter="all">
           <span data-lang="vi">Tất Cả</span><span data-lang="en">All</span>
         </button>
-        <button class="filter-btn" data-filter="trending" id="filter-trending">
-          <span data-lang="vi">Mới Nhất (2025)</span><span data-lang="en">Latest (2025)</span>
+        <button class="filter-tab-btn" data-filter="tekla">
+          <span>Tekla Tools</span>
         </button>
-        <button class="filter-btn" data-filter="tekla" id="filter-tekla">
-          <span data-lang="vi">Tekla Tools</span><span data-lang="en">Tekla Tools</span>
+        <button class="filter-tab-btn" data-filter="cad">
+          <span>AutoCAD Tools</span>
         </button>
-        <button class="filter-btn" data-filter="grasshopper" id="filter-grasshopper">
-          <span data-lang="vi">Tekla Grasshopper</span><span data-lang="en">Tekla Grasshopper</span>
+        <button class="filter-tab-btn" data-filter="grasshopper">
+          <span>Grasshopper Link</span>
         </button>
-        <button class="filter-btn" data-filter="cad" id="filter-cad">
-          <span data-lang="vi">AutoCAD</span><span data-lang="en">AutoCAD</span>
-        </button>
-        <button class="filter-btn" data-filter="knowledge" id="filter-knowledge">
-          <span data-lang="vi">Kiến Thức</span><span data-lang="en">Knowledge</span>
-        </button>
-        <button class="filter-btn" data-filter="design" id="filter-design">
-          <span data-lang="vi">Thiết Kế</span><span data-lang="en">Design</span>
+        <button class="filter-tab-btn" data-filter="knowledge">
+          <span data-lang="vi">Kiến Thức</span><span data-lang="en">Technical Tech</span>
         </button>
       </div>
-      <div class="apps-grid" id="apps-grid">
+
+      <!-- Grid Cards -->
+      <div class="projects-grid">
 
         <!-- REAL TOOL 1: PEB SECTION CREATOR -->
-        <div class="app-card" data-category="tekla trending">
-          <div class="card-glow"></div>
-          <div class="card-header">
-            <div class="card-icon icon-blue">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7 7 12 12 17 7"/><polyline points="7 17 12 12 17 17"/></svg>
-            </div>
-            <div class="card-badges">
-              <span class="badge badge-web">Tekla</span>
-              <span class="badge badge-hot"><span data-lang="vi">Nổi Bật</span><span data-lang="en">Featured</span></span>
+        <div class="project-lux-card" data-category="tekla">
+          <span class="project-card-badge">Tekla Structures</span>
+          <div class="project-card-image-box">
+            <img src="peb_section_creator_ui_1.png" alt="PEB Section Creator UI" class="project-card-image" />
+            <div class="project-card-overlay">
+              <span style="color:#ffffff; font-weight:700; border-bottom:1px solid #c89d55; padding-bottom:4px;">VIEW DETAILS</span>
             </div>
           </div>
-          <h3 class="card-title">PEB Section Creator</h3>
-          <p class="card-desc">
-            <span data-lang="vi">Công cụ tạo nhanh các tiết diện thép biến đổi cho nhà thép tiền chế, tự động hóa 90% quy trình dựng khung kèo.</span>
-            <span data-lang="en">A tool for rapidly creating tapered sections for pre-engineered buildings, automating 90% of the rafter modeling process.</span>
-          </p>
-          <div class="card-tech"><span class="tech-tag">Tekla API</span><span class="tech-tag">Steel Design</span></div>
-          <div class="card-footer">
-            <div class="card-stats"><span class="card-stat">⭐ 5.0</span><span class="card-stat">👥 1.5k</span></div>
-            <div class="card-actions">
-              <a href="peb-article.html" class="card-btn-demo">
-                <span data-lang="vi">Xem Chi Tiết</span><span data-lang="en">View Details</span>
+          <div class="project-card-content">
+            <h3 class="project-card-title">PEB Section Creator</h3>
+            <p class="project-card-desc">Công cụ tạo nhanh các tiết diện thép biến đổi cho nhà thép tiền chế, tự động hóa 90% quy trình dựng khung kèo kèo thép phức tạp.</p>
+            
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Developer</td>
+                <td class="project-meta-val">iViDLab</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">Technology</td>
+                <td class="project-meta-val">Tekla Open API</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">License</td>
+                <td class="project-meta-val">Commercial / Trial</td>
+              </tr>
+            </table>
+
+            <div class="project-card-footer">
+              <a href="peb-article.html" class="project-card-link">
+                <span data-lang="vi">Xem Bài Viết</span><span data-lang="en">Read Article</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
-              <a href="#" class="card-btn-code">HDSD</a>
+              <a href="peb-article.html#download-section" class="project-card-btn-sec">TẢI VỀ</a>
             </div>
           </div>
         </div>
 
         <!-- REAL TOOL 2: C2T CAD TO TEKLA -->
-        <div class="app-card" data-category="tekla cad trending">
-          <div class="card-glow"></div>
-          <div class="card-header">
-            <div class="card-icon icon-cyan">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="23 21 23 11 17 11"/><polyline points="17 15 23 11 17 7"/></svg>
-            </div>
-            <div class="card-badges">
-              <span class="badge badge-web">Sync</span>
-              <span class="badge badge-new"><span data-lang="vi">Mới</span><span data-lang="en">New</span></span>
+        <div class="project-lux-card" data-category="tekla cad">
+          <span class="project-card-badge">BIM Sync</span>
+          <div class="project-card-image-box">
+            <img src="cad_to_tekla_tool_1778920656221.png" alt="C2T: Cad to Tekla Sync UI" class="project-card-image" />
+            <div class="project-card-overlay">
+              <span style="color:#ffffff; font-weight:700; border-bottom:1px solid #c89d55; padding-bottom:4px;">VIEW DETAILS</span>
             </div>
           </div>
-          <h3 class="card-title">C2T: Cad to Tekla Sync</h3>
-          <p class="card-desc">
-            <span data-lang="vi">Đồng bộ hóa lưới trục và cao độ từ AutoCAD sang Tekla Structures chỉ với vài cú click chuột.</span>
-            <span data-lang="en">Sync grids and elevations from AutoCAD to Tekla Structures with just a few clicks.</span>
-          </p>
-          <div class="card-tech"><span class="tech-tag">AutoCAD .NET</span><span class="tech-tag">Tekla API</span></div>
-          <div class="card-footer">
-            <div class="card-stats"><span class="card-stat">⭐ 4.9</span><span class="card-stat">👥 850</span></div>
-            <div class="card-actions">
-              <a href="c2t-article.html" class="card-btn-demo">
-                <span data-lang="vi">Xem Chi Tiết</span><span data-lang="en">View Details</span>
+          <div class="project-card-content">
+            <h3 class="project-card-title">C2T: Cad to Tekla Sync</h3>
+            <p class="project-card-desc">Đồng bộ hóa lưới trục và cao độ từ AutoCAD sang Tekla Structures chính xác tuyệt đối chỉ với vài cú click chuột quét chọn.</p>
+            
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Developer</td>
+                <td class="project-meta-val">iViDLab</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">Technology</td>
+                <td class="project-meta-val">AutoCAD & Tekla API</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">Speedup</td>
+                <td class="project-meta-val">~15x faster</td>
+              </tr>
+            </table>
+
+            <div class="project-card-footer">
+              <a href="c2t-article.html" class="project-card-link">
+                <span data-lang="vi">Xem Bài Viết</span><span data-lang="en">Read Article</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
-              <a href="#" class="card-btn-code"><span data-lang="vi">Tải Về</span><span data-lang="en">Download</span></a>
+              <a href="#" class="project-card-btn-sec">TẢI VỀ</a>
             </div>
           </div>
         </div>
 
-        <!-- REAL TOOL 7: GRASSHOPPER TEKLA DRAWING LINK -->
-        <div class="app-card" data-category="tekla grasshopper trending">
-          <div class="card-glow"></div>
-          <div class="card-header">
-            <div class="card-icon icon-green">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <div class="card-badges">
-              <span class="badge badge-web">Grasshopper</span>
-              <span class="badge badge-hot"><span data-lang="vi">Nổi Bật</span><span data-lang="en">Featured</span></span>
+        <!-- REAL TOOL 3: GRASSHOPPER TEKLA DRAWING LINK -->
+        <div class="project-lux-card" data-category="tekla grasshopper">
+          <span class="project-card-badge">Grasshopper Link</span>
+          <div class="project-card-image-box">
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80" alt="Grasshopper Tekla Link" class="project-card-image" />
+            <div class="project-card-overlay">
+              <span style="color:#ffffff; font-weight:700; border-bottom:1px solid #c89d55; padding-bottom:4px;">VIEW DETAILS</span>
             </div>
           </div>
-          <h3 class="card-title">Grasshopper Tekla Drawing Link</h3>
-          <p class="card-desc">
-            <span data-lang="vi">Kết nối trực tiếp Rhino Grasshopper với Tekla Drawing API để tự động hóa hoàn toàn quy trình tạo và bố trí bản vẽ kỹ thuật.</span>
-            <span data-lang="en">Directly connect Rhino Grasshopper with Tekla Drawing API to fully automate the technical drawing creation and layout process.</span>
-          </p>
-          <div class="card-tech"><span class="tech-tag">Grasshopper</span><span class="tech-tag">Tekla Drawing API</span></div>
-          <div class="card-footer">
-            <div class="card-stats"><span class="card-stat">⭐ 5.0</span><span class="card-stat">👥 620</span></div>
-            <div class="card-actions">
-              <a href="#" class="card-btn-demo">
-                <span data-lang="vi">Xem Chi Tiết</span><span data-lang="en">View Details</span>
+          <div class="project-card-content">
+            <h3 class="project-card-title">Grasshopper Tekla Drawing</h3>
+            <p class="project-card-desc">Kết nối trực tiếp Rhino Grasshopper với Tekla Drawing API để tự động hóa hoàn toàn quy trình tạo và bố trí bản vẽ 2D kỹ thuật phức tạp.</p>
+            
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Integration</td>
+                <td class="project-meta-val">Rhino & Tekla</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">Core Engine</td>
+                <td class="project-meta-val">Drawing Link API</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">Status</td>
+                <td class="project-meta-val">Highly Recommended</td>
+              </tr>
+            </table>
+
+            <div class="project-card-footer">
+              <a href="#" class="project-card-link">
+                <span data-lang="vi">Xem Chi Tiết</span><span data-lang="en">Details</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
-              <a href="#" class="card-btn-code">Link</a>
+              <a href="#" class="project-card-btn-sec">HƯỚNG DẪN</a>
             </div>
           </div>
         </div>
 
-        <!-- REAL TOOL 3: BLOCKMASTER -->
-        <div class="app-card" data-category="cad">
-          <div class="card-glow"></div>
-          <div class="card-header">
-            <div class="card-icon icon-purple">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18"/></svg>
-            </div>
-            <div class="card-badges">
-              <span class="badge badge-tool"><span data-lang="vi">Thư viện</span><span data-lang="en">Library</span></span>
+        <!-- REAL TOOL 4: BLOCKMASTER -->
+        <div class="project-lux-card" data-category="cad">
+          <span class="project-card-badge">AutoCAD Library</span>
+          <div class="project-card-image-box">
+            <img src="block_library_ui_1778920676636.png" alt="BLOCKMASTER UI" class="project-card-image" />
+            <div class="project-card-overlay">
+              <span style="color:#ffffff; font-weight:700; border-bottom:1px solid #c89d55; padding-bottom:4px;">VIEW DETAILS</span>
             </div>
           </div>
-          <h3 class="card-title">BLOCKMASTER</h3>
-          <p class="card-desc">
-            <span data-lang="vi">Quản lý thư viện Block AutoCAD trực quan nâng cao, hỗ trợ lồng sidebar, scale ngược dòng lệnh, Get From Text và xóa tệp an toàn.</span>
-            <span data-lang="en">Advanced AutoCAD block library management featuring nested sidebar accordions, command-line division scaling, smart text extraction, and safe file deletions.</span>
-          </p>
-          <div class="card-tech"><span class="tech-tag">C#</span><span class="tech-tag">WinForms</span></div>
-          <div class="card-footer">
-            <div class="card-stats"><span class="card-stat">⭐ 4.9</span><span class="card-stat">👥 2.1k</span></div>
-            <div class="card-actions">
-              <a href="block-library-article.html" class="card-btn-demo">
-                <span data-lang="vi">Xem Chi Tiết</span><span data-lang="en">View Details</span>
+          <div class="project-card-content">
+            <h3 class="project-card-title">BLOCKMASTER Library</h3>
+            <p class="project-card-desc">Trình quản lý thư viện Block AutoCAD trực quan nâng cao, hỗ trợ sidebar phân cấp, scale ngược dòng lệnh, Get From Text và xóa tệp an toàn.</p>
+            
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Interface</td>
+                <td class="project-meta-val">Direct WinForms Palette</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">Language</td>
+                <td class="project-meta-val">C# / AutoCAD .NET</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">Features</td>
+                <td class="project-meta-val">Nested Accordions</td>
+              </tr>
+            </table>
+
+            <div class="project-card-footer">
+              <a href="block-library-article.html" class="project-card-link">
+                <span data-lang="vi">Xem Bài Viết</span><span data-lang="en">Read Article</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
-              <a href="hdsd-block-library.html" class="card-btn-code">HDSD</a>
+              <a href="hdsd-block-library.html" class="project-card-btn-sec">HDSD</a>
             </div>
           </div>
         </div>
 
         <!-- REAL TOOL 5: BLOCKMASTER DIRECT EDIT ARCHITECTURE -->
-        <div class="app-card" data-category="cad knowledge trending">
-          <div class="card-glow"></div>
-          <div class="card-header">
-            <div class="card-icon icon-cyan">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            </div>
-            <div class="card-badges">
-              <span class="badge badge-new"><span data-lang="vi">Tech</span><span data-lang="en">Tech</span></span>
-              <span class="badge badge-hot"><span data-lang="vi">Mới</span><span data-lang="en">New</span></span>
+        <div class="project-lux-card" data-category="cad knowledge">
+          <span class="project-card-badge">Session Context</span>
+          <div class="project-card-image-box">
+            <img src="block_library_ui_1778920676636.png" alt="BLOCKMASTER Direct Editor" class="project-card-image" />
+            <div class="project-card-overlay">
+              <span style="color:#ffffff; font-weight:700; border-bottom:1px solid #c89d55; padding-bottom:4px;">VIEW DETAILS</span>
             </div>
           </div>
-          <h3 class="card-title">BLOCKMASTER: Direct Editor</h3>
-          <p class="card-desc">
-            <span data-lang="vi">Công nghệ mở và chỉnh sửa bản vẽ gốc trực quan bằng giải pháp Session Context Command trong AutoCAD .NET.</span>
-            <span data-lang="en">Deep dive into opening and editing source DWG files safely using AutoCAD .NET Session Command architecture.</span>
-          </p>
-          <div class="card-tech"><span class="tech-tag">AutoCAD .NET</span><span class="tech-tag">Session Context</span></div>
-          <div class="card-footer">
-            <div class="card-stats"><span class="card-stat">⭐ 5.0</span><span class="card-stat">👥 Tech</span></div>
-            <div class="card-actions">
-              <a href="blockmaster-edit-article.html" class="card-btn-demo">
+          <div class="project-card-content">
+            <h3 class="project-card-title">BLOCKMASTER: Direct Editor</h3>
+            <p class="project-card-desc">Khám phá công nghệ chiều sâu mở và chỉnh sửa trực tiếp bản vẽ nguồn AutoCAD trực quan bằng giải pháp Session Command Context đặc biệt.</p>
+            
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Topic</td>
+                <td class="project-meta-val">AutoCAD Command Context</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">API Level</td>
+                <td class="project-meta-val">Deep .NET Interop</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">Type</td>
+                <td class="project-meta-val">Developer Guide</td>
+              </tr>
+            </table>
+
+            <div class="project-card-footer">
+              <a href="blockmaster-edit-article.html" class="project-card-link">
                 <span data-lang="vi">Xem Bài Viết</span><span data-lang="en">Read Article</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
-              <a href="hdsd-block-library.html" class="card-btn-code">HDSD</a>
+              <a href="hdsd-block-library.html" class="project-card-btn-sec">HDSD</a>
             </div>
           </div>
         </div>
 
         <!-- REAL TOOL 6: AUTOLISP GENERATOR & SUPPORT PATH GUIDE -->
-        <div class="app-card" data-category="cad trending knowledge">
-          <div class="card-glow"></div>
-          <div class="card-header">
-            <div class="card-icon icon-orange">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            </div>
-            <div class="card-badges">
-              <span class="badge badge-tool"><span data-lang="vi">Tự động hóa</span><span data-lang="en">Automation</span></span>
-              <span class="badge badge-new"><span data-lang="vi">Mới</span><span data-lang="en">New</span></span>
+        <div class="project-lux-card" data-category="cad knowledge">
+          <span class="project-card-badge">CAD Automation</span>
+          <div class="project-card-image-box">
+            <img src="autocad_lisp_helper.png" alt="AutoLISP Support Path Helper" class="project-card-image" />
+            <div class="project-card-overlay">
+              <span style="color:#ffffff; font-weight:700; border-bottom:1px solid #c89d55; padding-bottom:4px;">VIEW DETAILS</span>
             </div>
           </div>
-          <h3 class="card-title">AutoCAD Support Path & Lisp Tool</h3>
-          <p class="card-desc">
-            <span data-lang="vi">Hướng dẫn cấu hình Support Path trong AutoCAD và bộ công cụ tự động sinh file AutoLISP để load nhanh file .NET DLL.</span>
-            <span data-lang="en">Guide to adding Support Search Paths and a web tool to generate AutoLISP for autoloading DLLs and defining shortcuts.</span>
-          </p>
-          <div class="card-tech"><span class="tech-tag">AutoLISP</span><span class="tech-tag">AutoCAD</span><span class="tech-tag">Web App</span></div>
-          <div class="card-footer">
-            <div class="card-stats"><span class="card-stat">⭐ 5.0</span><span class="card-stat">👥 New</span></div>
-            <div class="card-actions">
-              <a href="support-path-article.html" class="card-btn-demo">
-                <span data-lang="vi">Xem Chi Tiết</span><span data-lang="en">View Details</span>
+          <div class="project-card-content">
+            <h3 class="project-card-title">AutoCAD Support Path Helper</h3>
+            <p class="project-card-desc">Cấu hình tự động Support Search Path trong AutoCAD và bộ công cụ trực tuyến sinh mã AutoLISP tải tự động tệp DLL .NET nhanh gọn.</p>
+            
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Platform</td>
+                <td class="project-meta-val">Web Utility</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">Target</td>
+                <td class="project-meta-val">AutoLISP Autoload</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">Integration</td>
+                <td class="project-meta-val">DLL Bootstrap</td>
+              </tr>
+            </table>
+
+            <div class="project-card-footer">
+              <a href="support-path-article.html" class="project-card-link">
+                <span data-lang="vi">Xem Bài Viết</span><span data-lang="en">Read Article</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
-              <a href="#" class="card-btn-code">Lisp Tool</a>
+              <a href="#" class="project-card-btn-sec">MÃ NGUỒN</a>
             </div>
           </div>
         </div>
@@ -342,173 +460,355 @@
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="about-section">
+  <!-- ===== SECTION: SPECIALIZED SERVICES ===== -->
+  <section id="services" class="section">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-left">
-          <div class="section-tag">// <span data-lang="vi">năng_lực_kỹ_thuật</span><span data-lang="en">technical_expertise</span></div>
-          <h2 class="section-title">
-            <span data-lang="vi">Kỹ Thuật Là <span class="gradient-text">Nền Tảng</span></span>
-            <span data-lang="en">Engineering is the <span class="gradient-text">Foundation</span></span>
-          </h2>
-          <p class="about-text">
-            <span data-lang="vi">Tôi là kỹ sư kết cấu đam mê lập trình, chuyên phát triển các công cụ tối ưu hóa cho Tekla Structures và AutoCAD. Với hơn 5 năm kinh nghiệm trong ngành kết cấu thép, tôi hiểu rõ những "nỗi đau" của kỹ sư và họa viên.</span>
-            <span data-lang="en">I am a structural engineer passionate about programming, specializing in developing optimization tools for Tekla Structures and AutoCAD. With over 5 years of experience in the steel industry, I deeply understand the "pain points" of engineers and detailers.</span>
-          </p>
-          <p class="about-text">
-            <span data-lang="vi">Mục tiêu của tôi là kết hợp sức mạnh của code (C#, Python) với kiến thức chuyên môn để tự động hóa 80% công việc thủ công trong thiết kế xây dựng.</span>
-            <span data-lang="en">My goal is to combine the power of code (C#, Python) with domain expertise to automate 80% of manual tasks in construction design.</span>
-          </p>
-          <div class="skills-grid">
-            <div class="skill-item" id="skill-tekla">
-              <span class="skill-icon">🏗️</span>
-              <span class="skill-name">Tekla Open API</span>
-            </div>
-            <div class="skill-item" id="skill-cad">
-              <span class="skill-icon">📏</span>
-              <span class="skill-name">AutoCAD .NET</span>
-            </div>
-            <div class="skill-item" id="skill-csharp">
-              <span class="skill-icon">🔷</span>
-              <span class="skill-name">C# / WPF</span>
-            </div>
-            <div class="skill-item" id="skill-python">
-              <span class="skill-icon">🐍</span>
-              <span class="skill-name">Python / BIM</span>
-            </div>
-            <div class="skill-item" id="skill-sap">
-              <span class="skill-icon">📉</span>
-              <span class="skill-name">SAP2000 / ETABS</span>
-            </div>
-            <div class="skill-item" id="skill-standard">
-              <span class="skill-icon">📚</span>
-              <span class="skill-name">TCVN / AISC</span>
-            </div>
+      <div class="section-title-wrapper">
+        <span class="section-label">Expert Services</span>
+        <h2 class="section-title">Dịch Vụ Kỹ Thuật Chuyên Nghiệp</h2>
+        <p class="section-subtitle">Bằng năng lực lập trình và chuyên môn kết cấu thép vượt trội, chúng tôi cung cấp giải pháp tối ưu hóa năng suất doanh nghiệp.</p>
+      </div>
+
+      <div class="services-container">
+        <!-- Service 1 -->
+        <div class="service-lux-card">
+          <div class="service-card-icon">🏗️</div>
+          <h3 class="service-card-title">Thiết Kế Kết Cấu Thép</h3>
+          <p class="service-card-desc">Khai triển mô hình 3D Tekla và bản vẽ kỹ thuật chi tiết nhà thép tiền chế, kết cấu nhịp rộng đạt chuẩn TCVN / AISC quốc tế.</p>
+          <a href="#contact-form" class="service-card-more">LIÊN HỆ BÁO GIÁ &rarr;</a>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-lux-card">
+          <div class="service-card-icon">💻</div>
+          <h3 class="service-card-title">Tự Động Hóa BIM & Tekla</h3>
+          <p class="service-card-desc">Phát triển các ứng dụng Add-on, Plugin và API tùy biến độc quyền theo quy trình nội bộ của doanh nghiệp xây dựng của bạn.</p>
+          <a href="#contact-form" class="service-card-more">ĐẶT HÀNG NGAY &rarr;</a>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-lux-card">
+          <div class="service-card-icon">📐</div>
+          <h3 class="service-card-title">Lập Trình AutoCAD .NET</h3>
+          <p class="service-card-desc">Xây dựng các giải pháp tự động sinh bản vẽ, bóc tách khối lượng, trích xuất dữ liệu AutoCAD sang Excel thông minh bằng C#.</p>
+          <a href="#contact-form" class="service-card-more">TÌM HIỂU THÊM &rarr;</a>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-lux-card">
+          <div class="service-card-icon">⚡</div>
+          <h3 class="service-card-title">Chuyển Giao Công Nghệ</h3>
+          <p class="service-card-desc">Tư vấn đào tạo chuyên sâu về giải pháp tự động hóa bản vẽ, thiết lập hệ thống CAD Standard đồng bộ cho toàn văn phòng.</p>
+          <a href="#contact-form" class="service-card-more">NHẬN CHƯƠNG TRÌNH &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION: INTERACTIVE CONSULTATION FORM ===== -->
+  <section id="contact-form" class="consultation-section" style="background-image: url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1600&q=80');">
+    <div class="consultation-overlay"></div>
+    <div class="container consultation-container">
+      <div class="consultation-text-column">
+        <h2 class="consultation-h2">Kiến Tạo Sự Khác Biệt Cho Dự Án Của Bạn</h2>
+        <p class="consultation-desc">Bạn đang cần giải pháp tự động hóa riêng biệt? Hay một bản báo giá chi tiết cho công tác thiết kế kết cấu thép nhà máy? Hãy để lại thông tin, đội ngũ chuyên gia của chúng tôi sẽ liên hệ khảo sát trong vòng 24 giờ làm việc.</p>
+        
+        <div class="consultation-hotline-badge">
+          <div class="consultation-hotline-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <div class="consultation-hotline-text">
+            <span>ĐƯỜNG DÂY NÓNG HỖ TRỢ</span>
+            <a href="tel:0987654321">0987.654.321</a>
           </div>
         </div>
-        <div class="about-right">
-          <div class="terminal-window">
-            <div class="window-header">
-              <div class="window-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
+      </div>
+
+      <!-- Glassmorphism form card -->
+      <div class="consultation-form-card">
+        <h3 class="consultation-form-title">Đăng Ký Tư Vấn Miễn Phí</h3>
+        <p class="consultation-form-subtitle">Cam kết bảo mật thông tin tuyệt đối</p>
+        
+        <form class="consultation-form">
+          <div class="consultation-input-group">
+            <input type="text" class="consultation-input" placeholder="Họ và tên của bạn *" required />
+          </div>
+          <div class="consultation-input-group">
+            <input type="tel" class="consultation-input" placeholder="Số điện thoại liên hệ *" required />
+          </div>
+          <div class="consultation-input-group">
+            <input type="email" class="consultation-input" placeholder="Địa chỉ Email *" required />
+          </div>
+          <div class="consultation-input-group">
+            <textarea class="consultation-textarea" placeholder="Mô tả nhu cầu dự án của bạn (VD: Viết plugin tạo kèo zamil tự động, thiết kế nhà kho 5000m2...)" required></textarea>
+          </div>
+          <button type="submit" class="btn-form-submit">GỬI YÊU CẦU ĐĂNG KÝ</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION: SHOWCASE ENERGY & FLOW ===== -->
+  <section class="section bg-light-gray">
+    <div class="container">
+      <div class="factory-showcase-grid">
+        <div class="factory-video-wrapper">
+          <!-- Embed YouTube Video / Structural design loop placeholder -->
+          <iframe src="https://www.youtube.com/embed/Q43t784a_mQ" title="Tekla Automation Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="factory-details-column">
+          <span class="section-label">Automation Power</span>
+          <h2 class="section-title" style="text-align: left; padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-family: var(--font-serif);">Tại Sao Chọn Giải Pháp Của iViDLab?</h2>
+          <p style="color:var(--text-gray); font-size:0.92rem; margin-bottom:1.5rem;">Chúng tôi phá vỡ quy trình truyền thống bằng cách đóng gói các thuật toán nâng cao vào giao diện người dùng trực quan, giúp tăng tốc hiệu quả gấp nhiều lần.</p>
+          
+          <ul class="factory-checklist">
+            <li class="factory-check-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <span class="factory-check-title">Chính Xác Tuyệt Đối (Zero Error)</span>
+                <p class="factory-check-desc">Hệ thống tính toán tự động các khoảng cách trục và cao độ, triệt tiêu hoàn toàn các lỗi nhập tay thủ công.</p>
               </div>
-              <span class="window-title">~/engineer-profile</span>
+            </li>
+            <li class="factory-check-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <span class="factory-check-title">Rút Ngắn 90% Thời Gian</span>
+                <p class="factory-check-desc">Tạo lập mô hình khung kết cấu zamil biến đổi, thiết lập lưới chỉ trong vài giây thay vì nhiều giờ.</p>
+              </div>
+            </li>
+            <li class="factory-check-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <span class="factory-check-title">Chuyển Giao Tận Tâm</span>
+                <p class="factory-check-desc">Cung cấp bộ tài liệu HDSD chi tiết, hỗ trợ trọn đời và giải quyết nhanh các yêu cầu phát sinh.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION: PARTNER CAROUSEL ===== -->
+  <section class="partners-slider-section">
+    <div class="container partners-logos-container">
+      <div class="partner-logo-item">
+        <img src="https://mauthemewp.com/wp-content/uploads/2021/04/brand1.png" alt="Partner Happy Home" />
+      </div>
+      <div class="partner-logo-item">
+        <img src="https://mauthemewp.com/wp-content/uploads/2021/04/brand2.png" alt="Partner Forward Electric" />
+      </div>
+      <div class="partner-logo-item">
+        <img src="https://mauthemewp.com/wp-content/uploads/2021/04/brand3.png" alt="Partner Wyn Hospital" />
+      </div>
+      <div class="partner-logo-item">
+        <img src="https://mauthemewp.com/wp-content/uploads/2021/04/brand4.png" alt="Partner S-Home" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION: ABOUT ME TERMINAL GRAPHIC ===== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+        <div>
+          <span class="section-label">Founder Profile</span>
+          <h2 class="section-title" style="text-align: left; padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-family: var(--font-serif);">Kỹ Thuật Là Nền Tảng Cốt Lõi</h2>
+          <p style="color:var(--text-gray); font-size:0.95rem; margin-bottom:1rem; line-height:1.75;">Tôi là kỹ sư kết cấu đam mê lập trình, chuyên phát triển các công cụ tối ưu hóa cho Tekla Structures và AutoCAD. Với hơn 5 năm kinh nghiệm thực chiến trong ngành nhà thép tiền chế, tôi thấu hiểu sâu sắc những khó khăn lặp đi lặp lại của kỹ sư.</p>
+          <p style="color:var(--text-gray); font-size:0.95rem; margin-bottom:1.5rem; line-height:1.75;">Mục tiêu cốt lõi của tôi là tích hợp nhuần nhuyễn sức mạnh thuật toán máy tính (C#, AutoLISP, Python) với chuyên môn xây dựng thực tế để tự động hóa 80% công việc thủ công.</p>
+          
+          <div class="skills-grid">
+            <div class="skill-item">
+              <span class="skill-icon">✔</span>
+              <span>Tekla Open API</span>
             </div>
-            <div class="terminal-body" id="terminal-body">
-              <div class="term-line"><span class="prompt">$</span> <span class="term-cmd">whoami</span></div>
-              <div class="term-output">Structural Engineer & Developer</div>
-              <div class="term-line"><span class="prompt">$</span> <span class="term-cmd">cat expertise.txt</span></div>
-              <div class="term-output">Steel Detailing · Automation · BIM</div>
-              <div class="term-line"><span class="prompt">$</span> <span class="term-cmd">echo $MISSION</span></div>
-              <div class="term-output term-highlight">Digitizing the Construction Industry 🚀</div>
-              <div class="term-line"><span class="prompt">$</span> <span class="term-cmd">git log --oneline -3</span></div>
-              <div class="term-output">d2e1a3 feat: add TCVN 5575 module</div>
-              <div class="term-output">f7b2c0 fix: optimize Tekla connection</div>
-              <div class="term-output">e4d5f1 init: AutoCAD Lisp toolkit</div>
-              <div class="term-line blink-line"><span class="prompt">$</span> <span class="term-cursor">▌</span></div>
+            <div class="skill-item">
+              <span class="skill-icon">✔</span>
+              <span>AutoCAD .NET</span>
             </div>
+            <div class="skill-item">
+              <span class="skill-icon">✔</span>
+              <span>C# / WPF Palette</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-icon">✔</span>
+              <span>Python / Grasshopper</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-icon">✔</span>
+              <span>SAP2000 / ETABS</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-icon">✔</span>
+              <span>TCVN 5575 / AISC</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Window Visual -->
+        <div class="terminal-window">
+          <div class="terminal-body">
+            <div class="term-line"><span class="prompt">$</span> <span class="term-cmd">whoami</span></div>
+            <div class="term-output">Structural Engineer & Software Developer</div>
+            <div class="term-line"><span class="prompt">$</span> <span class="term-cmd">cat profile.json</span></div>
+            <div class="term-output">{ "role": "Steel Detailing Automation Specialist", "experience": "5+ Years" }</div>
+            <div class="term-line"><span class="prompt">$</span> <span class="term-cmd">echo $MISSION</span></div>
+            <div class="term-output term-highlight">Digitizing & Automating the BIM Industry 🚀</div>
+            <div class="term-line"><span class="prompt">$</span> <span class="term-cmd">git log --oneline -3</span></div>
+            <div class="term-output">c7e48b feat: optimize tapered rafter geometry</div>
+            <div class="term-output">8d2f12 feat: add AutoCAD Grid coordinate reader</div>
+            <div class="term-output">1e5b22 init: connect Tekla Grasshopper Link</div>
+            <div class="term-line"><span class="prompt">$</span> <span class="term-cursor">▌</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact-section">
+  <!-- ===== SECTION: EXPERT BLOG TIN TỨC ===== -->
+  <section id="blog" class="section bg-light-gray">
     <div class="container">
-      <div class="section-header">
-        <div class="section-tag">// <span data-lang="vi">kết_nối</span><span data-lang="en">connect</span></div>
-        <h2 class="section-title">
-          <span data-lang="vi">Hợp Tác <span class="gradient-text">Kỹ Thuật</span></span>
-          <span data-lang="en">Engineering <span class="gradient-text">Collaboration</span></span>
-        </h2>
-        <p class="section-subtitle">
-          <span data-lang="vi">Bạn cần giải pháp tự động hóa cho dự án? Liên hệ ngay!</span>
-          <span data-lang="en">Need automation solutions for your project? Contact me today!</span>
-        </p>
+      <div class="section-title-wrapper">
+        <span class="section-label">Insights & News</span>
+        <h2 class="section-title">Kiến Thức Chuyên Gia</h2>
+        <p class="section-subtitle">Tổng hợp các chia sẻ sâu sắc về công nghệ BIM, lập trình CAD/BIM API và kinh nghiệm thực chiến dành cho kỹ sư.</p>
       </div>
-      <div class="contact-grid">
-        <a href="mailto:engineer@example.com" class="contact-card" id="contact-email">
-          <div class="contact-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+
+      <div class="blog-posts-grid">
+        <!-- Post 1 -->
+        <div class="blog-lux-card">
+          <div class="blog-card-image-box">
+            <img src="peb_section_creator_ui_2.png" alt="Tekla Zamil Framing Tips" class="blog-card-image" />
+            <div class="blog-card-date-badge">16 May 2026</div>
           </div>
-          <span class="contact-label">Email</span>
-          <span class="contact-value">engineer@example.com</span>
-        </a>
-        <a href="https://github.com/engineer" target="_blank" class="contact-card" id="contact-github">
-          <div class="contact-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <div class="blog-card-content">
+            <span class="blog-card-category">Tekla Tips</span>
+            <h3 class="blog-card-title">Kỹ Thuật Dựng Khung Zamil Tự Động Trong Tekla Structures</h3>
+            <p class="blog-card-desc">Làm thế nào để tạo lập nhanh các tiết diện thay đổi (tapered section) bằng thuật toán và tối ưu hóa 90% quy trình khung kèo nhà tiền chế...</p>
+            <a href="peb-article.html" class="blog-card-readmore">ĐỌC CHI TIẾT &rarr;</a>
           </div>
-          <span class="contact-label">GitHub Tools</span>
-          <span class="contact-value">github.com/eng-tools</span>
-        </a>
-        <a href="#" target="_blank" class="contact-card" id="contact-linkedin">
-          <div class="contact-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+
+        <!-- Post 2 -->
+        <div class="blog-lux-card">
+          <div class="blog-card-image-box">
+            <img src="block_library_ui_1778920676636.png" alt="AutoCAD Session Context" class="blog-card-image" />
+            <div class="blog-card-date-badge">14 May 2026</div>
           </div>
-          <span class="contact-label">LinkedIn</span>
-          <span class="contact-value">linkedin.com/in/engineer</span>
-        </a>
-        <a href="#" target="_blank" class="contact-card" id="contact-telegram">
-          <div class="contact-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          <div class="blog-card-content">
+            <span class="blog-card-category">AutoCAD .NET</span>
+            <h3 class="blog-card-title">Quản Lý DWG Database Context An Toàn Bằng C#</h3>
+            <p class="blog-card-desc">Tìm hiểu sâu về cơ chế Session Context Command trong AutoCAD .NET API để mở khóa tính năng sửa bản vẽ nguồn trực quan không gây crash phần mềm...</p>
+            <a href="blockmaster-edit-article.html" class="blog-card-readmore">ĐỌC CHI TIẾT &rarr;</a>
           </div>
-          <span class="contact-label">Zalo / Telegram</span>
-          <span class="contact-value">@eng_solutions</span>
-        </a>
+        </div>
+
+        <!-- Post 3 -->
+        <div class="blog-lux-card">
+          <div class="blog-card-image-box">
+            <img src="cad_to_tekla_tool_1778920656221.png" alt="BIM Grid Coordinates" class="blog-card-image" />
+            <div class="blog-card-date-badge">10 May 2026</div>
+          </div>
+          <div class="blog-card-content">
+            <span class="blog-card-category">BIM workflow</span>
+            <h3 class="blog-card-title">Tại Sao Nên Số Hóa Đồng Bộ Lưới Trục Lập Trình?</h3>
+            <p class="blog-card-desc">Sai sót cao độ và tọa độ ban đầu là cơn ác mộng của kỹ sư BIM. Tìm hiểu phương pháp đồng bộ hóa không lỗi từ AutoCAD sang mô hình Tekla...</p>
+            <a href="c2t-article.html" class="blog-card-readmore">ĐỌC CHI TIẾT &rarr;</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <span class="logo-bracket">&lt;</span>
-          <span class="logo-text">ViDLab</span>
-          <span class="logo-bracket">/&gt;</span>
+  <!-- ===== LUXURY MULTI-COLUMN FOOTER ===== -->
+  <footer id="footer" class="premium-footer">
+    <div class="container footer-top">
+      <div class="footer-grid">
+        <!-- Col 1: Contacts info -->
+        <div>
+          <div class="footer-about-logo">iViD<span>Lab</span></div>
+          <p class="footer-about-desc">Giải pháp số hóa nâng tầm hiệu suất và độ chính xác của kỹ sư thiết kế kết cấu thép Việt Nam.</p>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Địa chỉ: Tầng 6, Tòa nhà iViDLab, Cầu Giấy, Hà Nội</span>
+            </li>
+            <li class="footer-contact-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>Hotline kỹ thuật: 0987.654.321</span>
+            </li>
+          </ul>
         </div>
-        <p class="footer-copy">
-          <span data-lang="vi">© 2026 ViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
-          <span data-lang="en">© 2026 ViDLab. Digital solutions for the construction industry.</span>
-        </p>
-        <div class="footer-links">
-          <a href="#home" class="footer-link">
-            <span data-lang="vi">Trang đầu</span><span data-lang="en">Top</span>
-          </a>
-          <a href="#apps" class="footer-link">
-            <span data-lang="vi">Giải pháp</span><span data-lang="en">Solutions</span>
-          </a>
-          <a href="#contact" class="footer-link">
-            <span data-lang="vi">Liên hệ</span><span data-lang="en">Contact</span>
-          </a>
+
+        <!-- Col 2: Internal links and policies -->
+        <div>
+          <h4 class="footer-col-title">Chính Sách & Liên Kết</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#apps">Các Giải Pháp Tekla</a></li>
+            <li class="footer-link-item"><a href="#services">Dịch Vụ Thiết Kế Thép</a></li>
+            <li class="footer-link-item"><a href="#about">Founder & Kỹ Năng</a></li>
+            <li class="footer-link-item"><a href="peb-article.html">Chính Sách Bảo Mật</a></li>
+            <li class="footer-link-item"><a href="peb-article.html">Điều Khoản Sử Dụng</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Map widget -->
+        <div class="footer-col-map">
+          <h4 class="footer-col-title">Vị Trí Văn Phòng</h4>
+          <div class="footer-map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.097074366657!2d105.7944208!3d21.028807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4cd08848ff%3A0xe54e60b29ff078bc!2zQ8O0bmcgdmnDqm4gQ-G6p3UgR2nhuqV5!5e0!3m2!1svi!2svn!4v1700000000000!5m2!1svi!2svn" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p>&copy; 2026 iViDLab. Tất cả các quyền được bảo lưu. Thiết kế giao diện sang trọng bởi iViDLab Team.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Bản đồ trang</a>
+          <span>•</span>
+          <a href="#">Chính sách chuyển giao</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Modal Overlay -->
+  <!-- ===== VIETNAM FLOATING HOTLINE BUTTON (VIBRATING) ===== -->
+  <div class="floating-hotline">
+    <a href="tel:0987654321" class="hotline-btn" aria-label="Call Hotline">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    </a>
+  </div>
+
+  <!-- ===== VIETNAM FLOATING ZALO CHAT BUTTON ===== -->
+  <div class="floating-zalo">
+    <a href="https://zalo.me/0987654321" target="_blank" class="zalo-btn" aria-label="Chat Zalo">
+      <!-- High quality chat icon vector placeholder -->
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo Chat icon" onerror="this.src='https://cdn.icon-icons.com/icons2/2108/PNG/512/zalo_icon_130799.png'" />
+    </a>
+  </div>
+
+  <!-- ===== DETAIL OVERLAY MODAL ===== -->
   <div class="modal-overlay" id="article-modal">
     <div class="modal-content">
       <button class="modal-close" id="modal-close">&times;</button>
       <div class="modal-header">
-        <h2 class="modal-title" id="modal-title">Tiêu đề bài viết</h2>
+        <h2 class="modal-title" id="modal-title">Dự án chi tiết</h2>
         <div class="modal-meta">
-          <span id="modal-category">Chuyên mục</span>
+          <span id="modal-category">BIM & API</span>
           <span>•</span>
-          <span id="modal-date">16/05/2026</span>
+          <span>Cập nhật mới nhất: 16/05/2026</span>
         </div>
       </div>
       <div class="modal-body" id="modal-body">
-        <!-- Content will be injected by JS -->
+        <!-- JS Injections go here -->
       </div>
     </div>
   </div>
 
+  <!-- JS Interactions file -->
   <script src="app.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BLOCKMASTER Direct Editing — ViDLab</title>
+  <title>BLOCKMASTER Direct Editing — iViDLab</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -42,7 +42,7 @@
     <div class="nav-container">
       <div class="nav-logo">
         <span class="logo-bracket">&lt;</span>
-        <span class="logo-text">ViDLab</span>
+        <span class="logo-text">iViDLab</span>
         <span class="logo-bracket">/&gt;</span>
       </div>
       <ul class="nav-links">
@@ -73,7 +73,7 @@
           <span>•</span>
           <span data-lang="vi">Ngày đăng: 17/05/2026</span><span data-lang="en">Published: May 17, 2026</span>
           <span>•</span>
-          <span data-lang="vi">Tác giả: ViDLab Team</span><span data-lang="en">Author: ViDLab Team</span>
+          <span data-lang="vi">Tác giả: iViDLab Team</span><span data-lang="en">Author: iViDLab Team</span>
         </div>
       </header>
 
@@ -81,7 +81,7 @@
 
       <div class="article-body">
         <div data-lang="vi">
-          <p>Trong quá trình thiết kế AutoCAD, việc chỉnh sửa các tệp tin Block nguồn (các tệp <code>.dwg</code> lưu trữ) thường yêu cầu các thao tác thủ công rườm rà. Với phiên bản <strong>BLOCKMASTER</strong> mới nhất, nhóm phát triển <strong>ViDLab</strong> đã tích hợp nút <strong>✏️ EDIT BLOCK</strong> đột phá, cho phép mở tệp nguồn để chỉnh sửa ngay lập tức trực tiếp từ giao diện phần mềm.</p>
+          <p>Trong quá trình thiết kế AutoCAD, việc chỉnh sửa các tệp tin Block nguồn (các tệp <code>.dwg</code> lưu trữ) thường yêu cầu các thao tác thủ công rườm rà. With phiên bản <strong>BLOCKMASTER</strong> mới nhất, nhóm phát triển <strong>iViDLab</strong> đã tích hợp nút <strong>✏️ EDIT BLOCK</strong> đột phá, cho phép mở tệp nguồn để chỉnh sửa ngay lập tức trực tiếp từ giao diện phần mềm.</p>
 
           <h2>Thách thức kỹ thuật: Lỗi "Invalid execution context"</h2>
           <p>Khi tích hợp WinForms trong AutoCAD .NET, luồng giao diện người dùng (UI thread) của Form Modal mặc định hoạt động trong <strong>Document Context</strong>. Khi người dùng click nút chỉnh sửa và cố gắng gọi phương thức mở tệp vẽ mới (<code>DocumentCollection.Open</code>), AutoCAD lập tức chặn lại và ném ra ngoại lệ <code>Invalid execution context</code>.</p>
@@ -91,7 +91,7 @@
           </div>
 
           <h2>Giải pháp kiến trúc: Session Command Pattern</h2>
-          <p>Để giải quyết triệt để lỗi này, ViDLab đã thiết kế mô hình **Session Command Pattern**. Thay vì thực thi trực tiếp trên luồng của WinForms, phần mềm chia tách quy trình làm 2 bước:</p>
+          <p>Để giải quyết triệt để lỗi này, iViDLab đã thiết kế mô hình **Session Command Pattern**. Thay vì thực thi trực tiếp trên luồng của WinForms, phần mềm chia tách quy trình làm 2 bước:</p>
           
           <h3>1. Đăng ký lệnh độc lập Session</h3>
           <p>Chúng tôi đăng ký một lệnh nội bộ với cờ <code>CommandFlags.Session</code>, cho phép lệnh này chạy ngoài tài liệu vẽ hiện tại:</p>
@@ -110,11 +110,11 @@
           <p>Quy trình hoạt động diễn ra mượt mà trong nháy mắt. Chỉ với 1 cú click chuột, Form thư viện sẽ đóng lại, AutoCAD tự động chuyển tiêu điểm sang bản vẽ nguồn vừa mở (hoặc kích hoạt ngay tab bản vẽ nếu đã được mở trước đó). Người dùng có thể tiến hành chỉnh sửa và lưu lại ngay lập tức.</p>
 
           <h2>Kết luận</h2>
-          <p>Bằng việc vượt qua các giới hạn kỹ thuật của AutoCAD API thông qua giải pháp kiến trúc Session Command thông minh, BLOCKMASTER đã chứng minh năng lực thiết kế phần mềm chuẩn quốc tế của ViDLab, hướng tới sự ổn định tuyệt đối và năng suất làm việc vượt trội cho các kỹ sư xây dựng.</p>
+          <p>Bằng việc vượt qua các giới hạn kỹ thuật của AutoCAD API thông qua giải pháp kiến trúc Session Command thông minh, BLOCKMASTER đã chứng minh năng lực thiết kế phần mềm chuẩn quốc tế của iViDLab, hướng tới sự ổn định tuyệt đối và năng suất làm việc vượt trội cho các kỹ sư xây dựng.</p>
         </div>
 
         <div data-lang="en">
-          <p>During AutoCAD design processes, editing source block files (the stored <code>.dwg</code> drawings) usually demands redundant manual actions. In the latest <strong>BLOCKMASTER</strong> version, the <strong>ViDLab</strong> engineering team has introduced a revolutionary <strong>✏️ EDIT BLOCK</strong> button to open source drawings for direct modification straight from the user interface.</p>
+          <p>During AutoCAD design processes, editing source block files (the stored <code>.dwg</code> drawings) usually demands redundant manual actions. In the latest <strong>BLOCKMASTER</strong> version, the <strong>iViDLab</strong> engineering team has introduced a revolutionary <strong>✏️ EDIT BLOCK</strong> button to open source drawings for direct modification straight from the user interface.</p>
 
           <h2>The Technical Challenge: "Invalid execution context"</h2>
           <p>When embedding Windows Forms inside AutoCAD .NET plugins, the UI event thread of a Modal dialog defaults to the active <strong>Document Context</strong>. When a user clicks the edit button and attempts to invoke a drawing open call (<code>DocumentCollection.Open</code>), AutoCAD instantly blocks the thread and throws an <code>Invalid execution context</code> exception.</p>
@@ -124,7 +124,7 @@
           </div>
 
           <h2>The Architectural Solution: Session Command Pattern</h2>
-          <p>To eliminate this roadblock, ViDLab implemented an elegant **Session Command Pattern**. Instead of running document actions directly inside the WinForms click thread, the process is decoupled into two clean phases:</p>
+          <p>To eliminate this roadblock, iViDLab implemented an elegant **Session Command Pattern**. Instead of running document actions directly inside the WinForms click thread, the process is decoupled into two clean phases:</p>
           
           <h3>1. Registering a Session-Level Command</h3>
           <p>We register an internal hidden command configured with the <code>CommandFlags.Session</code> execution flag, granting it system privilege to open and modify drawings:</p>
@@ -143,7 +143,7 @@
           <p>The workflow executes seamlessly in a fraction of a second. With a single click, the library manager disposes, and AutoCAD instantly switches target focus to the newly opened source drawing (or activates the existing viewport if it was already open). Detailers can edit and save changes on the fly.</p>
 
           <h2>Conclusion</h2>
-          <p>By overriding the AutoCAD API threading limitations via this smart Session Command architecture, BLOCKMASTER showcases ViDLab's elite software engineering caliber, driving peak stability and premium performance for structural detailers worldwide.</p>
+          <p>By overriding the AutoCAD API threading limitations via this smart Session Command architecture, BLOCKMASTER showcases iViDLab's elite software engineering caliber, driving peak stability and premium performance for structural detailers worldwide.</p>
         </div>
       </div>
     </div>
@@ -152,8 +152,8 @@
   <footer class="footer">
     <div class="container">
       <p class="footer-copy">
-        <span data-lang="vi">© 2026 ViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
-        <span data-lang="en">© 2026 ViDLab. Digital solutions for the construction industry.</span>
+        <span data-lang="vi">© 2026 iViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+        <span data-lang="en">© 2026 iViDLab. Digital solutions for the construction industry.</span>
       </p>
     </div>
   </footer>
