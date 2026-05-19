@@ -195,7 +195,7 @@
         <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Nhập Email Tải Công Cụ</h3>
         <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Vui lòng nhập địa chỉ email của bạn để tải xuống. Quá trình tải xuống tệp an toàn `iViDBlockLibrarySetup.zip` chứa trình cài đặt tự động `.exe` sẽ được tự động bắt đầu ngay lập tức sau khi xác nhận.</p>
         
-        <form onsubmit="handleDownloadSubmit(event, 'vi')">
+        <form id="download-form-vi">
           <div style="margin-bottom: 1.25rem;">
             <input type="email" id="email-input-vi" placeholder="vi-du@gmail.com" required style="width: 100%; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03); color: var(--text-primary); font-size: 0.95rem; font-family: var(--font-main); transition: var(--transition); outline: none;">
           </div>
@@ -210,7 +210,7 @@
         <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Enter Email to Download</h3>
         <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Please enter your email address to download. Your download of the safe `iViDBlockLibrarySetup.zip` (containing the `.exe` installer) will start automatically immediately after confirmation.</p>
         
-        <form onsubmit="handleDownloadSubmit(event, 'en')">
+        <form id="download-form-en">
           <div style="margin-bottom: 1.25rem;">
             <input type="email" id="email-input-en" placeholder="example@gmail.com" required style="width: 100%; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03); color: var(--text-primary); font-size: 0.95rem; font-family: var(--font-main); transition: var(--transition); outline: none;">
           </div>
@@ -450,6 +450,20 @@
     // Close download modal on Escape key
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeDownloadModal();
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      const formVi = document.getElementById('download-form-vi');
+      if (formVi) {
+        formVi.addEventListener('submit', (e) => {
+          handleDownloadSubmit(e, 'vi');
+        });
+      }
+      const formEn = document.getElementById('download-form-en');
+      if (formEn) {
+        formEn.addEventListener('submit', (e) => {
+          handleDownloadSubmit(e, 'en');
+        });
+      }
     });
   </script>
 

@@ -178,7 +178,7 @@
       <div id="download-modal-vi">
         <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: \'Space Grotesk\', sans-serif;">Nhập Email để Tải Xuống</h3>
         <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Vui lòng nhập địa chỉ email của bạn để tải xuống. Quá trình tải xuống tệp nén an toàn `iViDCadToTeklaSetup.zip` chứa trình cài đặt tự động `.exe` sẽ tự động bắt đầu ngay lập tức sau khi xác nhận.</p>
-        <form onsubmit="handleDownloadSubmit(event, \'vi\')">
+        <form id="download-form-vi">
           <div style="margin-bottom: 1.25rem;">
             <input type="email" id="email-input-vi" required placeholder="example@domain.com" style="width: 100%; padding: 0.85rem 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-size: 0.95rem; transition: border-color 0.2s; outline: none;" />
           </div>
@@ -192,7 +192,7 @@
       <div id="download-modal-en" style="display: none;">
         <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: \'Space Grotesk\', sans-serif;">Enter Email to Download</h3>
         <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Please enter your email address to download. Your download of the safe `iViDCadToTeklaSetup.zip` (containing the `.exe` installer) will start automatically immediately after confirmation.</p>
-        <form onsubmit="handleDownloadSubmit(event, \'en\')">
+        <form id="download-form-en">
           <div style="margin-bottom: 1.25rem;">
             <input type="email" id="email-input-en" required placeholder="example@domain.com" style="width: 100%; padding: 0.85rem 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-size: 0.95rem; transition: border-color 0.2s; outline: none;" />
           </div>
@@ -402,6 +402,20 @@
     // Close download modal on Escape key
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeDownloadModal();
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      const formVi = document.getElementById('download-form-vi');
+      if (formVi) {
+        formVi.addEventListener('submit', (e) => {
+          handleDownloadSubmit(e, 'vi');
+        });
+      }
+      const formEn = document.getElementById('download-form-en');
+      if (formEn) {
+        formEn.addEventListener('submit', (e) => {
+          handleDownloadSubmit(e, 'en');
+        });
+      }
     });
   </script>
 
