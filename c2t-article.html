@@ -332,7 +332,8 @@
       };
 
       // Download link
-      const downloadUrl = window.location.origin + window.location.pathname.replace('c2t-article.html', '') + 'iViDCadToTeklaSetup.zip';
+      const baseDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+      const downloadUrl = window.location.origin + baseDir + 'iViDCadToTeklaSetup.zip';
 
       // Set manual download link href
       const manualDownloadBtn = document.getElementById('manual-download-link');
