@@ -193,7 +193,7 @@
       <!-- VIETNAMESE STATE -->
       <div id="download-modal-vi">
         <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Nhập Email Tải Công Cụ</h3>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Vui lòng nhập địa chỉ email của bạn để tải xuống. Quá trình tải xuống trình cài đặt tự động `iViDBlockLibrarySetup.exe` sẽ được tự động bắt đầu ngay lập tức sau khi xác nhận.</p>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Vui lòng nhập địa chỉ email của bạn để tải xuống. Quá trình tải xuống tệp an toàn `iViDBlockLibrarySetup.zip` chứa trình cài đặt tự động `.exe` sẽ được tự động bắt đầu ngay lập tức sau khi xác nhận.</p>
         
         <form onsubmit="handleDownloadSubmit(event, 'vi')">
           <div style="margin-bottom: 1.25rem;">
@@ -208,7 +208,7 @@
       <!-- ENGLISH STATE -->
       <div id="download-modal-en" style="display: none;">
         <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Enter Email to Download</h3>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Please enter your email address to download. Your official `iViDBlockLibrarySetup.exe` installer download will start automatically immediately after confirmation.</p>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Please enter your email address to download. Your download of the safe `iViDBlockLibrarySetup.zip` (containing the `.exe` installer) will start automatically immediately after confirmation.</p>
         
         <form onsubmit="handleDownloadSubmit(event, 'en')">
           <div style="margin-bottom: 1.25rem;">
@@ -233,14 +233,14 @@
         
         <div id="success-text-vi">
           <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Bắt Đầu Tải Xuống! 🎉</h4>
-          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem;">Trình cài đặt tự động `iViDBlockLibrarySetup.exe` đang được tải xuống tự động cho email:</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem;">Tệp nén an toàn `iViDBlockLibrarySetup.zip` (chứa trình cài đặt `.exe`) đang được tải xuống tự động cho email:</p>
           <p id="success-email-vi" style="color: var(--accent-blue); font-weight: 600; font-size: 1rem; margin-bottom: 1rem;"></p>
           <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.5rem;">Nếu quá trình tải xuống không tự động bắt đầu sau vài giây, vui lòng click nút bên dưới:</p>
         </div>
 
         <div id="success-text-en" style="display: none;">
           <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Download Started! 🎉</h4>
-          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem;">The `iViDBlockLibrarySetup.exe` installer file is downloading automatically for email:</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem;">The safe `iViDBlockLibrarySetup.zip` archive (containing the `.exe` installer) is downloading automatically for email:</p>
           <p id="success-email-en" style="color: var(--accent-blue); font-weight: 600; font-size: 1rem; margin-bottom: 1rem;"></p>
           <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.5rem;">If the download did not start automatically after a few seconds, click the button below:</p>
         </div>
@@ -379,19 +379,19 @@
       };
 
       // Download link
-      const downloadUrl = window.location.origin + window.location.pathname.replace('block-library-article.html', '') + 'iViDBlockLibrarySetup.exe';
+      const downloadUrl = window.location.origin + window.location.pathname.replace('block-library-article.html', '') + 'iViDBlockLibrarySetup.zip';
 
       // Set manual download link href
       const manualDownloadBtn = document.getElementById('manual-download-link');
       if (manualDownloadBtn) {
         manualDownloadBtn.href = downloadUrl;
-        manualDownloadBtn.setAttribute('download', 'iViDBlockLibrarySetup.exe');
+        manualDownloadBtn.setAttribute('download', 'iViDBlockLibrarySetup.zip');
       }
 
       const triggerAutoDownload = () => {
         const link = document.createElement('a');
         link.href = downloadUrl;
-        link.download = 'iViDBlockLibrarySetup.exe';
+        link.download = 'iViDBlockLibrarySetup.zip';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
