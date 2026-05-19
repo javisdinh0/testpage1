@@ -545,6 +545,8 @@
 
       function normalizePath(p) {
         let clean = p.trim().replace(/\\/g, '/');
+        // Convert trailing /bin, /bin/debug, /bin/release to /
+        clean = clean.replace(/\/bin(\/(debug|release))?\/?$/i, '/');
         if (!clean.endsWith('/')) clean += '/';
         return clean;
       }
@@ -603,10 +605,34 @@
         }
       }
 
-      if (pathVi) pathVi.addEventListener('input', updateC2TPreviews);
-      if (shortVi) shortVi.addEventListener('input', updateC2TPreviews);
-      if (pathEn) pathEn.addEventListener('input', updateC2TPreviews);
-      if (shortEn) shortEn.addEventListener('input', updateC2TPreviews);
+      if (pathVi) {
+        pathVi.addEventListener('input', updateC2TPreviews);
+        pathVi.addEventListener('blur', () => {
+          pathVi.value = normalizePath(pathVi.value);
+          updateC2TPreviews();
+        });
+      }
+      if (shortVi) {
+        shortVi.addEventListener('input', updateC2TPreviews);
+        shortVi.addEventListener('blur', () => {
+          shortVi.value = shortVi.value.trim().toUpperCase() || 'CTT';
+          updateC2TPreviews();
+        });
+      }
+      if (pathEn) {
+        pathEn.addEventListener('input', updateC2TPreviews);
+        pathEn.addEventListener('blur', () => {
+          pathEn.value = normalizePath(pathEn.value);
+          updateC2TPreviews();
+        });
+      }
+      if (shortEn) {
+        shortEn.addEventListener('input', updateC2TPreviews);
+        shortEn.addEventListener('blur', () => {
+          shortEn.value = shortEn.value.trim().toUpperCase() || 'CTT';
+          updateC2TPreviews();
+        });
+      }
 
       // Copy buttons
       if (btnCopyVi) {
