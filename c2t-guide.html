@@ -195,7 +195,7 @@
                 <h4>Dùng lệnh AP (APPLOAD) để nạp công cụ</h4>
                 <p>Nhập lệnh <code>AP</code> hoặc <code>APPLOAD</code> trong dòng lệnh AutoCAD. Hộp thoại nạp ứng dụng xuất hiện:</p>
                 <ul style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
-                  <li>Tìm đến thư mục chứa file, chọn file AutoLISP nạp Grid (Ví dụ: <code>load_c2t.lsp</code>).</li>
+                  <li>Tìm đến thư mục chứa file, chọn file AutoLISP nạp Grid (Ví dụ: <code>C2T-Cad to Tekla.lsp</code>).</li>
                   <li>Click vào nút <strong>Load</strong>.</li>
                   <li>Nhìn xuống dòng trạng thái Command Line của AutoCAD sẽ thấy thông báo load thành công: <br><strong style="color: var(--primary);">"[iViDLab] Shortcut command [CTT] registered successfully."</strong></li>
                 </ul>
@@ -211,7 +211,7 @@
                 <ol style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
                   <li>Trong bảng điều khiển <strong>APPLOAD</strong>, tìm biểu tượng chiếc cặp màu vàng có tên <strong>Startup Suite</strong>.</li>
                   <li>Click vào nút <strong>Contents...</strong> ở bên dưới chiếc cặp.</li>
-                  <li>Click nút <strong>Add...</strong>, tìm và chọn đúng file AutoLISP nạp <code>load_c2t.lsp</code> của bạn rồi nhấn Open.</li>
+                  <li>Click nút <strong>Add...</strong>, tìm và chọn đúng file AutoLISP nạp <code>C2T-Cad to Tekla.lsp</code> của bạn rồi nhấn Open.</li>
                   <li>Click <strong>Close</strong> để hoàn tất. Từ nay, mỗi khi mở bất kỳ bản vẽ CAD nào, công cụ C2T sẽ tự động sẵn sàng sử dụng.</li>
                 </ol>
               </div>
@@ -306,7 +306,7 @@
 
                 <div class="code-container">
                   <div class="code-header">
-                    <span class="code-lang">load_c2t.lsp</span>
+                    <span class="code-lang">C2T-Cad to Tekla.lsp</span>
                     <button class="btn-copy-code-c2t" id="btn-copy-c2t-lisp">Sao chép Code</button>
                   </div>
                   <pre class="code-body"><code id="c2t-lisp-preview">;; AutoLISP loader will generate here</code></pre>
@@ -357,7 +357,7 @@
                 <h4>Use APPLOAD (AP) to Load the Loader Script</h4>
                 <p>Type <code>AP</code> or <code>APPLOAD</code> in AutoCAD command prompt. In the file browser dialog:</p>
                 <ul style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
-                  <li>Locate your folder and select the AutoLISP loader script (e.g. <code>load_c2t.lsp</code>).</li>
+                  <li>Locate your folder and select the AutoLISP loader script (e.g. <code>C2T-Cad to Tekla.lsp</code>).</li>
                   <li>Click <strong>Load</strong>.</li>
                   <li>You will see a success message in the command window: <br><strong style="color: var(--primary);">"[iViDLab] Shortcut command [CTT] registered successfully."</strong></li>
                 </ul>
@@ -372,7 +372,7 @@
                 <ol style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
                   <li>In the <strong>APPLOAD</strong> dialog, look for the gold briefcase icon labeled <strong>Startup Suite</strong>.</li>
                   <li>Click the <strong>Contents...</strong> button under the briefcase.</li>
-                  <li>Click <strong>Add...</strong>, select your <code>load_c2t.lsp</code> loader file, and click open.</li>
+                  <li>Click <strong>Add...</strong>, select your <code>C2T-Cad to Tekla.lsp</code> loader file, and click open.</li>
                   <li>Click <strong>Close</strong> to save. Now, the C2T plugin will load automatically in every drawing session.</li>
                 </ol>
               </div>
@@ -467,7 +467,7 @@
 
                 <div class="code-container">
                   <div class="code-header">
-                    <span class="code-lang">load_c2t.lsp</span>
+                    <span class="code-lang">C2T-Cad to Tekla.lsp</span>
                     <button class="btn-copy-code-c2t" id="btn-copy-c2t-lisp-en">Copy Code</button>
                   </div>
                   <pre class="code-body"><code id="c2t-lisp-preview-en">;; AutoLISP loader will generate here</code></pre>
@@ -670,15 +670,13 @@
       if (btnDlVi) {
         btnDlVi.addEventListener('click', () => {
           const txt = generateLisp(pathVi.value, shortVi.value);
-          const sc = (shortVi.value.trim() || 'ctt').toLowerCase();
-          downloadFile(txt, `load_c2t_${sc}.lsp`);
+          downloadFile(txt, 'C2T-Cad to Tekla.lsp');
         });
       }
       if (btnDlEn) {
         btnDlEn.addEventListener('click', () => {
           const txt = generateLisp(pathEn.value, shortEn.value);
-          const sc = (shortEn.value.trim() || 'ctt').toLowerCase();
-          downloadFile(txt, `load_c2t_${sc}.lsp`);
+          downloadFile(txt, 'C2T-Cad to Tekla.lsp');
         });
       }
 
