@@ -1,4 +1,4 @@
-/* ==========================================
+﻿/* ==========================================
    iViDLab Premium Design System — Luxury Aesthetic
    Inspired by noithat42.mauthemewp.com
    ========================================== */
@@ -53,7 +53,7 @@
   --accent-orange: var(--primary);
   
   /* Typography */
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-serif: 'Space Grotesk', 'Inter', 'Montserrat', sans-serif;
   --font-sans: 'Montserrat', 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   
