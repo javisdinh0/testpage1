@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BLOCKMASTER — iViDLab</title>
+  <title>iViD Block Library — iViDLab</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -68,7 +68,7 @@
           <span>•</span>
           <span data-lang="vi">Ngày đăng: 17/05/2026</span><span data-lang="en">Published: May 17, 2026</span>
           <span>•</span>
-          <span data-lang="vi">Tác giả: Admin iViDLab</span><span data-lang="en">Author: Admin iViDLab</span>
+          <span data-lang="vi">Tác giả: iViDLab Team</span><span data-lang="en">Author: iViDLab Team</span>
         </div>
       </header>
 
@@ -76,18 +76,30 @@
 
       <div class="article-body">
         <div data-lang="vi">
+          <div class="download-section" id="download-section" style="margin: 1.5rem 0; text-align: center;">
+            <a href="javascript:void(0)" class="btn-primary blockmaster-download-trigger" onclick="openDownloadModal()" style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.75rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Tải Về BlockMaster 3D (v1.0.0)</span>
+            </a>
+          </div>
+
           <p>Trong công việc thiết kế và triển khai bản vẽ kỹ thuật, việc quản lý hàng ngàn Block mẫu luôn là bài toán khó khăn. <strong>BLOCKMASTER</strong> ra đời dưới sự phát triển của <strong>iViDLab</strong> nhằm mang tới một giải pháp quản lý thư viện Block thông minh, trực quan và tối ưu hiệu suất làm việc vượt trội.</p>
 
           <h2>Giao diện hiện đại & Xem trước trực quan</h2>
           <p>Với phong cách thiết kế GitHub Dark cao cấp, BLOCKMASTER mang lại trải nghiệm làm việc mượt mà, hạn chế mỏi mắt. Bạn không cần phải mở từng file để kiểm tra nội dung; hình ảnh minh họa sẽ tự động tải lên ngay lập tức giúp bạn duyệt tìm dễ dàng.</p>
           
-          <div class="highlight-box">
+          <div class="highlight-box" style="background: rgba(183,148,244,0.05); border-left: 4px solid var(--accent-purple);">
             "Không còn những dòng tên khô khan. BLOCKMASTER trực quan hóa toàn bộ thư viện Block của bạn ngay trên bản vẽ."
           </div>
 
           <h2>Các tính năng đột phá mới</h2>
           <ul>
             <li><strong>Sơ đồ cây lồng sidebar (Tree View Accordion):</strong> Cây thư mục được lồng trực tiếp trong Sidebar trái giúp thu gọn/mở rộng accordion trượt cực kỳ mượt mà.</li>
+            <li><strong>Bilingual dynamic switcher:</strong> Hỗ trợ chuyển đổi nhanh ngôn ngữ tiếng Anh và tiếng Việt trực tiếp trên giao diện Ribbon và bảng điều khiển WinForms Palette.</li>
             <li><strong>Nhập tỷ lệ scale ngược dòng lệnh:</strong> Trước khi chèn, phần mềm nhắc bạn nhập tỷ lệ từ dòng lệnh (ví dụ nhập 10 để tự động thu nhỏ 1/10), áp dụng hoàn hảo cho cả chèn thường và chèn rã khối (Explode Insert).</li>
             <li><strong>Trích xuất chữ làm tên block (Get From Text):</strong> Tạo block mới siêu nhanh bằng cách chọn trực tiếp text trên bản vẽ làm tên file, tự động lọc sạch ký tự đặc biệt.</li>
             <li><strong>Trình xóa tệp an toàn (Anti-Lock Delete):</strong> Nút xóa đỏ phẳng sang trọng cho phép xóa tệp bản vẽ và ảnh xem trước vật lý trên ổ cứng an toàn mà không bị Windows khóa tệp.</li>
@@ -97,21 +109,44 @@
           <h2>Đường dẫn nhanh</h2>
           <p>Tìm hiểu các bước thiết lập thư viện và thao tác chuyên sâu tại đây:</p>
           <p>👉 <a href="hdsd-block-library.html" style="color: var(--accent-cyan); text-decoration: underline; font-weight: 600;">Xem hướng dẫn sử dụng và cài đặt chi tiết BLOCKMASTER</a></p>
+          
+          <div class="download-section" style="margin: 2rem 0 1rem; text-align: center;">
+            <a href="javascript:void(0)" class="btn-primary blockmaster-download-trigger" onclick="openDownloadModal()" style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.75rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Tải Về BlockMaster 3D (v1.0.0)</span>
+            </a>
+          </div>
         </div>
 
         <div data-lang="en">
+          <div class="download-section" id="download-section-en" style="margin: 1.5rem 0; text-align: center;">
+            <a href="javascript:void(0)" class="btn-primary blockmaster-download-trigger" onclick="openDownloadModal()" style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.75rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download BlockMaster 3D (v1.0.0)</span>
+            </a>
+          </div>
+
           <p>In drafting and detailing workflows, managing thousands of drawing Blocks can be highly repetitive and time-consuming. <strong>BLOCKMASTER</strong> is engineered by <strong>iViDLab</strong> to provide an intelligent, visual, and highly efficient solution to govern your entire CAD block repository.</p>
 
           <h2>Modern Dark UX & Visual Previews</h2>
           <p>Following a premium GitHub Dark aesthetic, BLOCKMASTER ensures comfortable drafting during extended hours. You no longer need to remember obscure file names or manually open files to verify contents; accurate image thumbnails are rendered instantly.</p>
           
-          <div class="highlight-box">
+          <div class="highlight-box" style="background: rgba(183,148,244,0.05); border-left: 4px solid var(--accent-purple);">
             "No more cryptic file names. BLOCKMASTER visualizes your entire drawing asset library right inside AutoCAD."
           </div>
 
           <h2>Breakthrough Features</h2>
           <ul>
             <li><strong>Nested Sidebar Tree Accordion:</strong> The directory folder explorer is embedded directly under the My Library tab, expanding with responsive accordion animations.</li>
+            <li><strong>Dynamic English/Vietnamese Toggle:</strong> Access prompts, forms, and alerts instantly in your preferred language without restarts.</li>
             <li><strong>Command-line Division Scale Prompt:</strong> Prompts you natively via AutoCAD's command bar for a division factor (e.g., entering 10 scales the block down to exactly 1/10 or 0.1 scale). Supports both standard and explode block insertions.</li>
             <li><strong>Smart Text Extractor (Get From Text):</strong> Instantly extracts block names by selecting single-line (DBText) or multi-line (MText) objects on-screen, cleaning invalid path characters automatically.</li>
             <li><strong>Anti-Lock Physical File Deletion (🗑 DELETE BLOCK):</strong> A sleek red button that disposes GDI+ preview handles and cleans both the DWG and PNG/JPG files safely from disk.</li>
@@ -121,6 +156,17 @@
           <h2>Quick Links</h2>
           <p>Learn how to register custom block libraries and operate the plugin step-by-step:</p>
           <p>👉 <a href="hdsd-block-library.html" style="color: var(--accent-cyan); text-decoration: underline; font-weight: 600;">Read BLOCKMASTER User & Installation Guide</a></p>
+
+          <div class="download-section" style="margin: 2rem 0 1rem; text-align: center;">
+            <a href="javascript:void(0)" class="btn-primary blockmaster-download-trigger" onclick="openDownloadModal()" style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.75rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download BlockMaster 3D (v1.0.0)</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -135,6 +181,276 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <!-- Email Download Modal -->
+  <div class="modal-overlay" id="download-email-modal" style="display: none; align-items: center; justify-content: center; position: fixed; inset: 0; z-index: 10000; background: rgba(8, 11, 20, 0.85); backdrop-filter: blur(15px); transition: opacity 0.3s ease;">
+    <div class="modal-content" style="max-width: 480px; width: 100%; padding: 2.5rem; background: #0d1220; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); position: relative;">
+      <button class="modal-close" onclick="closeDownloadModal()">&times;</button>
+      
+      <!-- VIETNAMESE STATE -->
+      <div id="download-modal-vi">
+        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Nhập Email Tải Công Cụ</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Vui lòng nhập địa chỉ email của bạn để tải xuống. Quá trình tải xuống tệp cài đặt chính thức `.zip` sẽ được tự động bắt đầu ngay lập tức sau khi xác nhận.</p>
+        
+        <form onsubmit="handleDownloadSubmit(event, 'vi')">
+          <div style="margin-bottom: 1.25rem;">
+            <input type="email" id="email-input-vi" placeholder="vi-du@gmail.com" required style="width: 100%; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03); color: var(--text-primary); font-size: 0.95rem; font-family: var(--font-main); transition: var(--transition); outline: none;">
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem; border: none; cursor: pointer;">
+            <span>Tải Xuống Ngay 🚀</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- ENGLISH STATE -->
+      <div id="download-modal-en" style="display: none;">
+        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Enter Email to Download</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Please enter your email address to download. Your official `.zip` file download will start automatically immediately after confirmation.</p>
+        
+        <form onsubmit="handleDownloadSubmit(event, 'en')">
+          <div style="margin-bottom: 1.25rem;">
+            <input type="email" id="email-input-en" placeholder="example@gmail.com" required style="width: 100%; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03); color: var(--text-primary); font-size: 0.95rem; font-family: var(--font-main); transition: var(--transition); outline: none;">
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem; border: none; cursor: pointer;">
+            <span>Download Now 🚀</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- LOADING STATE -->
+      <div id="download-modal-loading" style="display: none; text-align: center; padding: 2rem 0;">
+        <div style="width: 48px; height: 48px; border: 4px solid rgba(99, 179, 237, 0.1); border-top-color: var(--accent-blue); border-radius: 50%; display: inline-block; animation: spin 1s linear infinite; margin-bottom: 1.5rem;"></div>
+        <p id="loading-text-vi" style="color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Đang chuẩn bị tải xuống, vui lòng chờ...</p>
+        <p id="loading-text-en" style="display: none; color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Preparing download, please wait...</p>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div id="download-modal-success" style="display: none; text-align: center; padding: 1.5rem 0 0.5rem;">
+        <div style="width: 64px; height: 64px; background: rgba(104, 211, 145, 0.1); border: 2px solid var(--accent-green); color: var(--accent-green); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem; font-weight: bold;">✓</div>
+        
+        <div id="success-text-vi">
+          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Bắt Đầu Tải Xuống! 🎉</h4>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem;">Tệp cài đặt `.zip` đang được tải xuống tự động cho email:</p>
+          <p id="success-email-vi" style="color: var(--accent-blue); font-weight: 600; font-size: 1rem; margin-bottom: 1rem;"></p>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.5rem;">Nếu quá trình tải xuống không tự động bắt đầu sau vài giây, vui lòng click nút bên dưới:</p>
+        </div>
+
+        <div id="success-text-en" style="display: none;">
+          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Download Started! 🎉</h4>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem;">The `.zip` installer file is downloading automatically for email:</p>
+          <p id="success-email-en" style="color: var(--accent-blue); font-weight: 600; font-size: 1rem; margin-bottom: 1rem;"></p>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.5rem;">If the download did not start automatically after a few seconds, click the button below:</p>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <a id="manual-download-link" href="#" class="btn-primary" style="display: inline-flex; text-decoration: none; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 0.85rem; border: none; cursor: pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span data-lang="vi">Tải Xuống Lại</span>
+            <span data-lang="en">Download Again</span>
+          </a>
+        </div>
+
+        <button onclick="closeDownloadModal()" class="btn-ghost" style="padding: 0.6rem 1.5rem; font-size: 0.9rem; border-radius: var(--radius-sm); cursor: pointer;">Đóng / Close</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+
+  <script>
+    // ===== SAFE STORAGE WORKAROUND FOR local file:// protocol =====
+    const safeStorage = window.safeStorage || {
+      getItem: (key) => {
+        try {
+          return localStorage.getItem(key);
+        } catch (e) {
+          console.warn("localStorage is blocked or unavailable, using memory fallback.", e);
+          return safeStorage._data[key] || null;
+        }
+      },
+      setItem: (key, value) => {
+        try {
+          localStorage.setItem(key, value);
+        } catch (e) {
+          console.warn("localStorage is blocked or unavailable, using memory fallback.", e);
+          safeStorage._data[key] = String(value);
+        }
+      },
+      removeItem: (key) => {
+        try {
+          localStorage.removeItem(key);
+        } catch (e) {
+          console.warn("localStorage is blocked or unavailable, using memory fallback.", e);
+          delete safeStorage._data[key];
+        }
+      },
+      _data: {}
+    };
+
+    function openDownloadModal() {
+      // Detect current language of website
+      let currentLang = safeStorage.getItem('ividlab_lang') || 'vi';
+
+      // Reset modal views
+      document.getElementById('download-modal-loading').style.display = 'none';
+      document.getElementById('download-modal-success').style.display = 'none';
+      
+      if (currentLang === 'vi') {
+        document.getElementById('download-modal-vi').style.display = 'block';
+        document.getElementById('download-modal-en').style.display = 'none';
+      } else {
+        document.getElementById('download-modal-vi').style.display = 'none';
+        document.getElementById('download-modal-en').style.display = 'block';
+      }
+
+      // Display overlay
+      const overlay = document.getElementById('download-email-modal');
+      overlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        overlay.classList.add('active');
+      }, 10);
+    }
+
+    function closeDownloadModal() {
+      const overlay = document.getElementById('download-email-modal');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 300);
+    }
+
+    function handleDownloadSubmit(event, lang) {
+      event.preventDefault();
+      
+      const emailInputId = lang === 'vi' ? 'email-input-vi' : 'email-input-en';
+      const email = document.getElementById(emailInputId).value.trim();
+      
+      if (!email) return;
+
+      // Hide forms, show loading spinner
+      document.getElementById('download-modal-vi').style.display = 'none';
+      document.getElementById('download-modal-en').style.display = 'none';
+      document.getElementById('download-modal-loading').style.display = 'block';
+      
+      if (lang === 'vi') {
+        document.getElementById('loading-text-vi').style.display = 'block';
+        document.getElementById('loading-text-en').style.display = 'none';
+      } else {
+        document.getElementById('loading-text-vi').style.display = 'none';
+        document.getElementById('loading-text-en').style.display = 'block';
+      }
+
+      // 1. Save locally to local storage for Admin Dashboard representation
+      let logs = JSON.parse(safeStorage.getItem('ividlab_download_logs') || '[]');
+      const newLog = {
+        email: email,
+        app: 'BLOCKMASTER',
+        version: '1.0.0',
+        date: new Date().toISOString(),
+        status: 'Downloaded',
+        ip: '192.168.1.15', // Mock IP Address
+        platform: navigator.platform || 'Windows 64-bit'
+      };
+      logs.unshift(newLog);
+      safeStorage.setItem('ividlab_download_logs', JSON.stringify(logs));
+
+      // 2. Fetch configurations for Apps Script
+      const gasUrl = safeStorage.getItem('ividlab_gas_url');
+      const payload = {
+        email: email,
+        app: 'BLOCKMASTER',
+        version: '1.0.0',
+        lang: lang,
+        timestamp: new Date().toISOString(),
+        referrer: window.location.href
+      };
+
+      // Download link
+      const downloadUrl = window.location.origin + window.location.pathname.replace('block-library-article.html', '') + 'BlockMaster3D.zip';
+
+      // Set manual download link href
+      const manualDownloadBtn = document.getElementById('manual-download-link');
+      if (manualDownloadBtn) {
+        manualDownloadBtn.href = downloadUrl;
+        manualDownloadBtn.setAttribute('download', 'BlockMaster3D.zip');
+      }
+
+      const triggerAutoDownload = () => {
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = 'BlockMaster3D.zip';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
+
+      const proceedToSuccess = (emailAddr) => {
+        // Show email address in success message
+        const elVi = document.getElementById('success-email-vi');
+        const elEn = document.getElementById('success-email-en');
+        if (elVi) elVi.textContent = emailAddr;
+        if (elEn) elEn.textContent = emailAddr;
+
+        // Auto trigger download
+        triggerAutoDownload();
+
+        // Display Success State
+        document.getElementById('download-modal-loading').style.display = 'none';
+        document.getElementById('download-modal-success').style.display = 'block';
+        
+        if (lang === 'vi') {
+          document.getElementById('success-text-vi').style.display = 'block';
+          document.getElementById('success-text-en').style.display = 'none';
+        } else {
+          document.getElementById('success-text-vi').style.display = 'none';
+          document.getElementById('success-text-en').style.display = 'block';
+        }
+      };
+
+      if (gasUrl) {
+        // Make actual live REST call to Google Apps Script to log download
+        fetch(gasUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...payload, downloadUrl: downloadUrl })
+        })
+        .then(() => {
+          proceedToSuccess(email);
+        })
+        .catch(err => {
+          console.error('GAS Request Error:', err);
+          proceedToSuccess(email);
+        });
+      } else {
+        // No GAS URL configured — show warning in console, still show success UI and download
+        console.warn('Chưa cấu hình GAS URL. Vào Admin Dashboard để thiết lập.');
+        setTimeout(() => {
+          proceedToSuccess(email);
+        }, 1200);
+      }
+    }
+
+    // Close download modal when clicking outside on the overlay background
+    document.getElementById('download-email-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeDownloadModal();
+    });
+
+    // Close download modal on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDownloadModal();
+    });
+  </script>
+
+  <script src="app.js?v=1.0.1"></script>
 </body>
 </html>
