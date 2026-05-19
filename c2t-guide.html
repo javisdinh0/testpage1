@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hướng Dẫn Cài Đặt & Sử Dụng C2T: AutoCAD to Tekla Sync — iViDLab</title>
+  <meta name="description" content="Hướng dẫn chi tiết từng bước cài đặt thủ công AutoLISP C2T vào AutoCAD bằng lệnh AP (APPLOAD) và cách đồng bộ hóa lưới trục sang Tekla Structures." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 950px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3.5rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; font-family: 'Space Grotesk', sans-serif; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-image { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); margin: 2rem 0; box-shadow: var(--shadow); }
+    .article-body { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); margin: 3rem 0 1.25rem; font-size: 1.9rem; font-family: 'Space Grotesk', sans-serif; border-bottom: 1px solid var(--border); padding-bottom: 0.6rem; display: flex; align-items: center; gap: 0.75rem; }
+    .article-body h3 { color: var(--text-primary); margin: 2rem 0 1rem; font-size: 1.4rem; font-family: 'Space Grotesk', sans-serif; }
+    .article-body p { margin-bottom: 1.5rem; }
+    .article-body ul, .article-body ol { margin-bottom: 2rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.75rem; }
+    
+    /* Premium visual elements */
+    .highlight-box { background: rgba(200, 157, 85, 0.04); border-left: 4px solid var(--primary); padding: 1.5rem; margin: 2.5rem 0; border-radius: 0 12px 12px 0; font-style: italic; }
+    
+    .tip-box { background: rgba(99, 179, 237, 0.05); border-left: 4px solid #1877f2; padding: 1.25rem 1.5rem; margin: 1.8rem 0; border-radius: 0 8px 8px 0; font-size: 0.98rem; }
+    .tip-box strong { color: var(--text-primary); }
+    
+    .warning-box { background: rgba(229, 62, 62, 0.04); border-left: 4px solid #e53e3e; padding: 1.25rem 1.5rem; margin: 1.8rem 0; border-radius: 0 8px 8px 0; font-size: 0.98rem; }
+    
+    /* Step Cards Layout */
+    .steps-container { display: flex; flex-direction: column; gap: 1.5rem; margin: 2.5rem 0; }
+    .step-card { display: flex; gap: 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; position: relative; transition: var(--transition); }
+    .step-card:hover { transform: translateY(-3px); border-color: var(--primary); box-shadow: var(--shadow-sm); background: rgba(200, 157, 85, 0.01); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+    .step-number { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--primary) 0%, #ecd79b 100%); color: #111; font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Space Grotesk', sans-serif; box-shadow: 0 4px 10px rgba(200, 157, 85, 0.25); }
+    .step-content { flex: 1; }
+    .step-content h4 { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.6rem; font-family: 'Space Grotesk', sans-serif; }
+    
+    /* Code Blocks */
+    .code-container { margin: 1.5rem 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+    .code-header { display: flex; justify-content: space-between; align-items: center; background: #141821; padding: 0.75rem 1.25rem; font-family: var(--font-mono); font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .code-lang { color: var(--text-muted); }
+    .btn-copy-code-c2t { background: none; border: none; color: var(--primary); font-weight: 600; cursor: pointer; transition: var(--transition); font-size: 0.85rem; }
+    .btn-copy-code-c2t:hover { color: #fff; }
+    .code-body { background: #0c0f16; padding: 1.5rem; overflow-x: auto; margin: 0; }
+    .code-body code { font-family: var(--font-mono); font-size: 0.92rem; color: #e2e8f0; line-height: 1.6; display: block; white-space: pre; text-align: left; }
+
+    /* Download Center */
+    .download-center { background: rgba(20, 24, 33, 0.4); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; margin: 3.5rem 0; box-shadow: var(--shadow-lg); backdrop-filter: blur(10px); text-align: center; position: relative; overflow: hidden; }
+    .download-center::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--primary), #ecd79b, var(--primary)); }
+    .dc-title { font-size: 1.8rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; font-family: 'Space Grotesk', sans-serif; }
+    .dc-desc { color: var(--text-muted); font-size: 0.98rem; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .download-card { background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; align-items: center; text-align: center; transition: var(--transition); }
+    .download-card:hover { transform: translateY(-5px); border-color: rgba(200, 157, 85, 0.3); background: rgba(200, 157, 85, 0.01); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+    .dc-icon { font-size: 2.5rem; margin-bottom: 1.25rem; }
+    .dc-card-title { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; font-family: 'Space Grotesk', sans-serif; }
+    .dc-card-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.8rem; flex: 1; }
+    
+    /* Interactive Loader Maker inside Article */
+    .lisp-creator-section { margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+    .lisp-creator-box { background: #0c0f16; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 2rem; text-align: left; }
+    .creator-form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .creator-label { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.05em; }
+    .creator-input { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 6px; padding: 0.75rem 1rem; color: #fff; font-family: var(--font-sans); font-size: 0.95rem; transition: var(--transition); }
+    .creator-input:focus { outline: none; border-color: var(--primary); }
+    .btn-create-lisp { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; background: linear-gradient(135deg, var(--primary) 0%, #ecd79b 100%); color: #111; font-weight: 700; padding: 0.9rem; border: none; border-radius: 6px; cursor: pointer; transition: var(--transition); margin-top: 1rem; }
+    .btn-create-lisp:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(200, 157, 85, 0.3); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, #ecd79b 100%);
+      color: #111 !important;
+      font-weight: 700;
+      padding: 0.85rem 1.8rem;
+      border-radius: 6px;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(200, 157, 85, 0.2);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(200, 157, 85, 0.4);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary) !important;
+      border: 1px solid var(--border);
+      font-weight: 600;
+      padding: 0.85rem 1.8rem;
+      border-radius: 6px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.03);
+      border-color: var(--primary);
+      color: var(--primary) !important;
+    }
+    
+    @media (max-width: 850px) {
+      .download-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .article-container { padding: 2rem 1.5rem; }
+      .article-title { font-size: 2.4rem; }
+      .step-card { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">iViDLab</span>
+        <span class="logo-bracket">/&gt;</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#home" class="nav-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+        <li><a href="index.html#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+        <li><a href="index.html#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-select-lang="vi">VN</button>
+          <button class="lang-btn" data-select-lang="en">EN</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <header class="article-header">
+        <a href="index.html" class="article-back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-lang="vi">Quay lại danh sách</span><span data-lang="en">Back to list</span>
+        </a>
+        <h1 class="article-title" id="guide-main-heading">
+          <span data-lang="vi">Hướng Dẫn Nạp AutoLISP C2T Và Chi Tiết Sử Dụng</span>
+          <span data-lang="en">Manual AutoLISP Loading & Detailed C2T Usage Guide</span>
+        </h1>
+        <div class="article-meta">
+          <span data-lang="vi">Chuyên mục: CAD To Tekla Automation</span><span data-lang="en">Category: CAD To Tekla Automation</span>
+          <span>•</span>
+          <span data-lang="vi">Cập nhật: 20/05/2026</span><span data-lang="en">Updated: May 20, 2026</span>
+          <span>•</span>
+          <span data-lang="vi">Tác giả: Admin iViDLab</span><span data-lang="en">Author: Admin iViDLab</span>
+        </div>
+      </header>
+
+      <img src="cad_to_tekla_tool_1778920656221.png" alt="C2T Cad to Tekla Guide Header Illustration" class="article-image">
+
+      <div class="article-body">
+        <!-- ==================== VIETNAMESE CONTENT ==================== -->
+        <div data-lang="vi">
+          <p><strong>C2T (Cad to Tekla Grid Sync)</strong> là giải pháp tự động hóa giúp đồng bộ hóa lưới trục và cao trình từ bản vẽ AutoCAD trực tiếp sang mô hình 3D trên Tekla Structures chính xác tuyệt đối. Bài viết này sẽ hướng dẫn chi tiết cách tích hợp thủ công gói AutoLISP C2T bằng lệnh <code>AP</code> (APPLOAD) và các bước vận hành phần mềm hiệu quả.</p>
+
+          <h2>🛠️ Hướng Dẫn Nạp AutoLISP C2T Thủ Công Bằng Lệnh AP (APPLOAD)</h2>
+          <p>Ngoài trình cài đặt tự động (.EXE), bạn hoàn toàn có thể tích hợp thủ công công cụ C2T vào AutoCAD dưới dạng AutoLISP (.LSP) để dễ dàng quản lý lệnh tắt và linh hoạt lưu trữ trong các thư mục làm việc riêng. Hãy thực hiện theo các bước sau:</p>
+
+          <div class="steps-container">
+            <!-- Step 1 -->
+            <div class="step-card">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Tải và giải nén thư viện thủ công</h4>
+                <p>Tải về gói thư viện thủ công C2T (chứa file <code>C2T-Cad to Tekla.dll</code> và file script Lisp loader) và giải nén vào một thư mục cố định an toàn trên máy tính của bạn. <br>Ví dụ: <code>D:\iViDLab\Tools\C2T\</code></p>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Cấu hình Support Path & Trusted Locations</h4>
+                <p>Để AutoCAD luôn tự động tìm thấy các file hỗ trợ và không hiển thị cảnh báo bảo mật phiền phức:</p>
+                <ol style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                  <li>Gõ lệnh <code>OP</code> hoặc <code>OPTIONS</code> trong CAD để mở bảng tùy chọn (Options).</li>
+                  <li>Chọn tab <strong>Files</strong>, nhấn vào dấu <code>+</code> tại mục <strong>Support File Search Path</strong>, chọn <strong>Add</strong> -> <strong>Browse</strong> và tìm đến thư mục chứa file ở Bước 1.</li>
+                  <li>Tương tự, kéo xuống mục <strong>Trusted Locations</strong> ở ngay phía dưới, add thư mục đó vào danh sách tin cậy.</li>
+                  <li>Nhấn <strong>Apply</strong> và <strong>OK</strong> để lưu lại.</li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Dùng lệnh AP (APPLOAD) để nạp công cụ</h4>
+                <p>Nhập lệnh <code>AP</code> hoặc <code>APPLOAD</code> trong dòng lệnh AutoCAD. Hộp thoại nạp ứng dụng xuất hiện:</p>
+                <ul style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                  <li>Tìm đến thư mục chứa file, chọn file AutoLISP nạp Grid (Ví dụ: <code>load_c2t.lsp</code>).</li>
+                  <li>Click vào nút <strong>Load</strong>.</li>
+                  <li>Nhìn xuống dòng trạng thái Command Line của AutoCAD sẽ thấy thông báo load thành công: <br><strong style="color: var(--primary);">"[iViDLab] Shortcut command [CTT] registered successfully."</strong></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-card">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Tự động hóa nạp vĩnh viễn (Startup Suite)</h4>
+                <p>Để không phải dùng lệnh AP để load lại mỗi khi khởi động lại AutoCAD:</p>
+                <ol style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                  <li>Trong bảng điều khiển <strong>APPLOAD</strong>, tìm biểu tượng chiếc cặp màu vàng có tên <strong>Startup Suite</strong>.</li>
+                  <li>Click vào nút <strong>Contents...</strong> ở bên dưới chiếc cặp.</li>
+                  <li>Click nút <strong>Add...</strong>, tìm và chọn đúng file AutoLISP nạp <code>load_c2t.lsp</code> của bạn rồi nhấn Open.</li>
+                  <li>Click <strong>Close</strong> để hoàn tất. Từ nay, mỗi khi mở bất kỳ bản vẽ CAD nào, công cụ C2T sẽ tự động sẵn sàng sử dụng.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-box">
+            <strong>💡 Mẹo Chuyên Gia:</strong> Đoạn mã AutoLISP nạp DLL thủ công cực kỳ đơn giản. Bạn có thể sử dụng Trình Tạo File AutoLISP tùy chỉnh ở phần dưới bài viết để tự đặt lệnh tắt theo ý muốn (ví dụ: <code>C2T</code>, <code>CTT</code>, hoặc <code>GRID</code>) và tạo file Lisp của riêng bạn chỉ trong 1 click.
+          </div>
+
+          <h2>🚀 Hướng Dẫn Sử Dụng Đồng Bộ Lưới Trục Chi Tiết Từng Bước</h2>
+          <p>Khi công cụ đã được load thành công vào AutoCAD, bạn có thể nhanh chóng đồng bộ lưới trục sang Tekla bằng các bước cực kỳ dễ dàng sau:</p>
+
+          <div class="steps-container">
+            <div class="step-card">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Chuẩn bị bản vẽ CAD và mở Tekla</h4>
+                <p>Mở bản vẽ mặt bằng kiến trúc/kết cấu trên AutoCAD có chứa các Dimension đo khoảng cách các trục. Đồng thời, khởi động phần mềm Tekla Structures và mở model dự án của bạn lên.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Gõ lệnh tắt để mở giao diện C2T</h4>
+                <p>Gõ lệnh <code>CTT</code> (hoặc lệnh tắt bạn đã đặt) trên AutoCAD để khởi chạy công cụ. Giao diện trực quan hiện đại của C2T sẽ xuất hiện, tự động kết nối API song song sang Tekla.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Quét chọn Dimensions theo phương X, Y và Z</h4>
+                <ol style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                  <li><strong>Phương X (Lưới trục đứng):</strong> Click nút <em>Select X Dimensions</em>, quét chọn các đường Dim nằm ngang (đo khoảng cách trục dọc). Hệ thống sẽ tự động bóc tách khoảng cách trục và điền nhãn tăng dần 1, 2, 3...</li>
+                  <li><strong>Phương Y (Lưới trục ngang):</strong> Click nút <em>Select Y Dimensions</em>, quét chọn các đường Dim đứng (đo khoảng cách trục ngang) và gán chuỗi nhãn chữ A, B, C...</li>
+                  <li><strong>Cao trình Z:</strong> Nhập cao trình gốc Base Level (ví dụ: 0.00) và click quét chọn chiều cao các tầng. C2T tự động cộng dồn khoảng cách để tính toán cao trình sàn tuyệt đối chính xác cho Tekla.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Xuất lưới và cập nhật nhanh trên Tekla</h4>
+                <p>Click nút <strong>Export Grid</strong> trên giao diện C2T. File cấu hình lưới trục <code>.grd</code> sẽ được tự động xuất thẳng vào thư mục model Tekla đang mở. <br>Quay lại phần mềm Tekla structures, click đúp vào lưới trục hiện có để mở Grid Properties, click <strong>Modify</strong>. Lưới trục mới sẽ được đồng bộ và cập nhật ngay lập tức mà không cần gõ tay bất cứ tọa độ nào!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== DOWNLOAD CENTER ==================== -->
+          <div class="download-center" id="download-center">
+            <div class="dc-title">Tải Về Giải Pháp C2T: Cad to Tekla</div>
+            <div class="dc-desc">Lựa chọn phương thức tải về phù hợp với nhu cầu sử dụng của bạn. Bản cài đặt tự động dễ sử dụng hoặc gói cài đặt thủ công chuyên nghiệp.</div>
+            
+            <div class="download-grid">
+              <!-- Setup Card -->
+              <div class="download-card">
+                <div class="dc-icon">📦</div>
+                <div class="dc-card-title">Bộ Cài Đặt Tự Động (Setup.exe)</div>
+                <div class="dc-card-desc">Phương án nhanh chóng nhất. Tự động sao chép file, đăng ký lệnh tắt, thiết lập Registry và cấu hình trọn gói từ A-Z cho AutoCAD và Tekla. Không cần thao tác thủ công.</div>
+                <button class="btn-primary c2t-download-trigger" onclick="openDownloadModal()">Tải Bộ Cài Setup (.EXE)</button>
+              </div>
+              
+              <!-- Manual Card -->
+              <div class="download-card">
+                <div class="dc-icon">🛠️</div>
+                <div class="dc-card-title">Gói Cài Đặt Thủ Công (.ZIP)</div>
+                <div class="dc-card-desc">Dành cho kỹ sư nâng cao. Gói file nén an toàn chứa thư viện core C2T DLL và file AutoLISP mẫu để bạn tự do lưu trữ và nạp thủ công bằng lệnh APPLOAD.</div>
+                <a href="iViDCadToTeklaSetup.zip" class="btn-secondary" style="display: inline-flex; justify-content: center; align-items: center;">Tải Bản Thủ Công (.ZIP)</a>
+              </div>
+            </div>
+
+            <!-- ==================== LISP CREATOR UTILITY ==================== -->
+            <div class="lisp-creator-section">
+              <div class="dc-card-title" style="margin-bottom: 0.5rem; text-align: left;">🛠️ Trình Tạo File AutoLISP Nạp C2T Tùy Biến</div>
+              <p style="color: var(--text-muted); font-size: 0.92rem; text-align: left; margin-bottom: 1.5rem;">
+                Nhập đường dẫn thư mục lưu trữ DLL của bạn và tùy chọn đặt lệnh tắt theo sở thích. Hệ thống sẽ sinh mã Lisp tương thích tuyệt đối và cho phép tải về dùng ngay!
+              </p>
+              
+              <div class="lisp-creator-box">
+                <div class="creator-form-group">
+                  <label class="creator-label">Đường dẫn đầy đủ tới thư mục chứa C2T DLL trong máy tính</label>
+                  <input type="text" id="c2t-local-path" class="creator-input" value="D:\\iViDLab\\Tools\\C2T\\" placeholder="Ví dụ: D:\\iViDLab\\Tools\\C2T\\" />
+                </div>
+                
+                <div class="creator-form-group">
+                  <label class="creator-label">Lệnh tắt muốn đặt trong AutoCAD</label>
+                  <input type="text" id="c2t-shortcut" class="creator-input" value="CTT" placeholder="Ví dụ: CTT, C2T, GRID..." style="max-width: 250px;" />
+                </div>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-lang">load_c2t.lsp</span>
+                    <button class="btn-copy-code-c2t" id="btn-copy-c2t-lisp">Sao chép Code</button>
+                  </div>
+                  <pre class="code-body"><code id="c2t-lisp-preview">;; AutoLISP loader will generate here</code></pre>
+                </div>
+
+                <button class="btn-create-lisp" id="btn-download-c2t-lisp">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:0.25rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                  Tải file AutoLISP (.lsp)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== ENGLISH CONTENT ==================== -->
+        <div data-lang="en">
+          <p><strong>C2T (Cad to Tekla Grid Sync)</strong> is an advanced automation solution built to synchronize grid lines and elevations from AutoCAD drawings directly into Tekla Structures. This article guides you through manually loading C2T AutoLISP using the <code>AP</code> (APPLOAD) command and provides detailed usage steps.</p>
+
+          <h2>🛠️ How to Load C2T AutoLISP Manually via APPLOAD (AP) Command</h2>
+          <p>In addition to our automated installer (.EXE), you can manually load the C2T plugin into AutoCAD using AutoLISP (.LSP). This offers full flexibility in terms of directory structure and command alias customization. Follow these steps:</p>
+
+          <div class="steps-container">
+            <div class="step-card">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Download and extract manual packages</h4>
+                <p>Download the manual package ZIP file (containing the core <code>C2T-Cad to Tekla.dll</code> library and a loader script) and extract it to a permanent folder on your drive.<br>Example: <code>D:\iViDLab\Tools\C2T\</code></p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Configure AutoCAD Support Path & Trusted Locations</h4>
+                <p>Register the directory to ensure AutoCAD always finds the files securely without annoying warnings:</p>
+                <ol style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                  <li>Type <code>OP</code> or <code>OPTIONS</code> in AutoCAD command line and hit Enter.</li>
+                  <li>In the <strong>Files</strong> tab, click <code>+</code> next to <strong>Support File Search Path</strong>, select <strong>Add</strong> -> <strong>Browse</strong>, and pick the folder path from Step 1.</li>
+                  <li>Scroll slightly down, expand <strong>Trusted Locations</strong>, and add the same path.</li>
+                  <li>Click <strong>Apply</strong> and <strong>OK</strong> to save.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Use APPLOAD (AP) to Load the Loader Script</h4>
+                <p>Type <code>AP</code> or <code>APPLOAD</code> in AutoCAD command prompt. In the file browser dialog:</p>
+                <ul style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                  <li>Locate your folder and select the AutoLISP loader script (e.g. <code>load_c2t.lsp</code>).</li>
+                  <li>Click <strong>Load</strong>.</li>
+                  <li>You will see a success message in the command window: <br><strong style="color: var(--primary);">"[iViDLab] Shortcut command [CTT] registered successfully."</strong></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Setup Auto-loading (Startup Suite)</h4>
+                <p>Avoid loading the script manually every time you launch AutoCAD:</p>
+                <ol style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                  <li>In the <strong>APPLOAD</strong> dialog, look for the gold briefcase icon labeled <strong>Startup Suite</strong>.</li>
+                  <li>Click the <strong>Contents...</strong> button under the briefcase.</li>
+                  <li>Click <strong>Add...</strong>, select your <code>load_c2t.lsp</code> loader file, and click open.</li>
+                  <li>Click <strong>Close</strong> to save. Now, the C2T plugin will load automatically in every drawing session.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip-box">
+            <strong>💡 Pro Tip:</strong> The AutoLISP code used to bootstrap C# DLLs is extremely lightweight. Use the custom LISP Generator tool in the download area below to define your favorite command abbreviation (e.g., C2T, CTT, GRID) and build your script instantly.
+          </div>
+
+          <h2>🚀 Step-by-Step C2T Grid Synchronization Guide</h2>
+          <p>Once loaded, running C2T and exporting grids is a simple 4-step process:</p>
+
+          <div class="steps-container">
+            <div class="step-card">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Prepare AutoCAD drawing & Open Tekla Model</h4>
+                <p>Open the architectural or structural general arrangement plan on AutoCAD with active Dimension chains. At the same time, open your active project model on Tekla Structures.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Run the C2T command in AutoCAD</h4>
+                <p>Type <code>CTT</code> (or your custom shortcut) in AutoCAD command prompt. The modern C2T workspace UI will appear, establishing active link to Tekla Model.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Select Dimension chains in AutoCAD</h4>
+                <ol style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                  <li><strong>X Axis (Vertical Grids):</strong> Click <em>Select X Dimensions</em>, select coordinate Dim chains. C2T reads, sorts values, and assigns tags: 1, 2, 3...</li>
+                  <li><strong>Y Axis (Horizontal Grids):</strong> Click <em>Select Y Dimensions</em>, select vertical grid Dim chains. Tags A, B, C... will be assigned.</li>
+                  <li><strong>Z Elevations:</strong> Enter the Base Level (e.g. 0.00), click select height dimensions. Elevations accumulate automatically.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Export and Update Grid on Tekla</h4>
+                <p>Click <strong>Export Grid</strong>. The <code>.grd</code> config file is sent directly to the Tekla model folder. In Tekla structures, double-click the grid to open Grid Properties, and click <strong>Modify</strong>. The grid is updated instantly!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== DOWNLOAD CENTER (EN) ==================== -->
+          <div class="download-center" id="download-center-en">
+            <div class="dc-title">Download C2T: Cad to Tekla</div>
+            <div class="dc-desc">Choose the installation package that fits your engineering workflow. Automated Installer or manual LISP plugin.</div>
+            
+            <div class="download-grid">
+              <!-- Setup Card -->
+              <div class="download-card">
+                <div class="dc-icon">📦</div>
+                <div class="dc-card-title">Automated Installer (Setup.exe)</div>
+                <div class="dc-card-desc">Recommended for standard users. Installs files, configures AutoCAD profiles, maps registry entries, and sets up v1.0.0 automatically from A to Z. No manual actions needed.</div>
+                <button class="btn-primary c2t-download-trigger" onclick="openDownloadModal()">Download Setup (.EXE)</button>
+              </div>
+              
+              <!-- Manual Card -->
+              <div class="download-card">
+                <div class="dc-icon">🛠️</div>
+                <div class="dc-card-title">Manual Library (.ZIP)</div>
+                <div class="dc-card-desc">For advanced developers and engineers. Contains the core C2T DLL binary and sample loader script to manually load via APPLOAD and configure.</div>
+                <a href="iViDCadToTeklaSetup.zip" class="btn-secondary" style="display: inline-flex; justify-content: center; align-items: center;">Download Manual ZIP</a>
+              </div>
+            </div>
+
+            <!-- ==================== LISP CREATOR (EN) ==================== -->
+            <div class="lisp-creator-section">
+              <div class="dc-card-title" style="margin-bottom: 0.5rem; text-align: left;">🛠️ Custom AutoLISP Loader Generator</div>
+              <p style="color: var(--text-muted); font-size: 0.92rem; text-align: left; margin-bottom: 1.5rem;">
+                Specify your custom local folder path and shortcut alias. The system will compile a perfectly mapped loader script to download instantly!
+              </p>
+              
+              <div class="lisp-creator-box">
+                <div class="creator-form-group">
+                  <label class="creator-label">Full folder path to DLL file on your machine</label>
+                  <input type="text" id="c2t-local-path-en" class="creator-input" value="D:\\iViDLab\\Tools\\C2T\\" placeholder="e.g. D:\\iViDLab\\Tools\\C2T\\" />
+                </div>
+                
+                <div class="creator-form-group">
+                  <label class="creator-label">Custom Command Shortcut Alias</label>
+                  <input type="text" id="c2t-shortcut-en" class="creator-input" value="CTT" placeholder="e.g. CTT, C2T, GRID..." style="max-width: 250px;" />
+                </div>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-lang">load_c2t.lsp</span>
+                    <button class="btn-copy-code-c2t" id="btn-copy-c2t-lisp-en">Copy Code</button>
+                  </div>
+                  <pre class="code-body"><code id="c2t-lisp-preview-en">;; AutoLISP loader will generate here</code></pre>
+                </div>
+
+                <button class="btn-create-lisp" id="btn-download-c2t-lisp-en">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:0.25rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                  Generate & Download LISP (.lsp)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Download Email Modal -->
+  <div id="download-email-modal" class="modal-overlay">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeDownloadModal()">&times;</button>
+      
+      <!-- VN Modal -->
+      <div data-lang="vi" class="modal-lang-section">
+        <h3 class="modal-title">Đăng Ký Tải Công Cụ C2T</h3>
+        <p class="modal-desc">Vui lòng cung cấp thông tin để nhận bộ cài đặt tự động (Setup) trực tiếp qua Email của bạn.</p>
+        <form id="download-form-vi" class="modal-form">
+          <input type="hidden" name="tool_name" value="C2T" />
+          <div class="form-group">
+            <label class="form-label" for="name-vi">Họ và Tên</label>
+            <input type="text" id="name-vi" name="user_name" class="form-input" required placeholder="Nguyễn Văn A" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email-vi">Địa chỉ Email</label>
+            <input type="email" id="email-vi" name="user_email" class="form-input" required placeholder="example@gmail.com" />
+          </div>
+          <button type="submit" class="btn-primary modal-submit-btn">Đăng Ký & Nhận Link Tải</button>
+        </form>
+      </div>
+
+      <!-- EN Modal -->
+      <div data-lang="en" class="modal-lang-section">
+        <h3 class="modal-title">Register to Download C2T</h3>
+        <p class="modal-desc">Please provide your details to receive the automated setup package directly in your Email.</p>
+        <form id="download-form-en" class="modal-form">
+          <input type="hidden" name="tool_name" value="C2T" />
+          <div class="form-group">
+            <label class="form-label" for="name-en">Full Name</label>
+            <input type="text" id="name-en" name="user_name" class="form-input" required placeholder="John Doe" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email-en">Email Address</label>
+            <input type="email" id="email-en" name="user_email" class="form-input" required placeholder="example@gmail.com" />
+          </div>
+          <button type="submit" class="btn-primary modal-submit-btn">Register & Get Link</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // C2T AutoLISP Generator JS Logic
+    (function() {
+      const pathVi = document.getElementById('c2t-local-path');
+      const shortVi = document.getElementById('c2t-shortcut');
+      const previewVi = document.getElementById('c2t-lisp-preview');
+      const btnCopyVi = document.getElementById('btn-copy-c2t-lisp');
+      const btnDlVi = document.getElementById('btn-download-c2t-lisp');
+      
+      const pathEn = document.getElementById('c2t-local-path-en');
+      const shortEn = document.getElementById('c2t-shortcut-en');
+      const previewEn = document.getElementById('c2t-lisp-preview-en');
+      const btnCopyEn = document.getElementById('btn-copy-c2t-lisp-en');
+      const btnDlEn = document.getElementById('btn-download-c2t-lisp-en');
+
+      function normalizePath(p) {
+        let clean = p.trim().replace(/\\/g, '/');
+        if (!clean.endsWith('/')) clean += '/';
+        return clean;
+      }
+
+      function generateLisp(path, shortcut) {
+        const fullDllPath = normalizePath(path) + 'C2T-Cad to Tekla.dll';
+        const sc = shortcut.trim().toUpperCase() || 'CTT';
+        
+        return `;; ==========================================================================
+;;  iViDLab™ CAD Automation Suite — C2T AutoLoad Helper
+;;  Target Tool : C2T-Cad to Tekla
+;;  Library File: C2T-Cad to Tekla.dll
+;;  File Path   : ${fullDllPath}
+;;  Shortcut    : [${sc}] -> AutoCAD command: [CadtoTekla]
+;;  © 2026 iViDLab. All rights reserved.
+;; ==========================================================================
+
+(vl-load-com)
+
+;; --- Step 1: Autoload Function for C2T ---
+(defun LoadiViDLab_C2T_${sc} ()
+  (setq dllPath "${fullDllPath}")
+  (if (findfile dllPath)
+    (progn
+      (princ "\\n[iViDLab] Loading C2T (Cad to Tekla) plugin...")
+      (vl-cmdf "._netload" dllPath)
+    )
+    (progn
+      (princ "\\n[iViDLab] ERROR: C2T-Cad to Tekla.dll not found!")
+      (princ (strcat "\\nPath expected: " dllPath))
+    )
+  )
+)
+
+;; Automatically load the plugin on drawing initialization
+(LoadiViDLab_C2T_${sc})
+
+;; --- Step 2: Define Shortcut Command ---
+(defun c:${sc} ()
+  (princ "\\n[iViDLab] Executing Grid Sync Command: [CadtoTekla]...")
+  (vl-cmdf "CadtoTekla")
+  (princ)
+)
+
+(princ "\\n[iViDLab] Shortcut command [${sc}] registered successfully for [CadtoTekla].")
+(princ)
+`;
+      }
+
+      function updateC2TPreviews() {
+        if (previewVi && pathVi && shortVi) {
+          previewVi.textContent = generateLisp(pathVi.value, shortVi.value);
+        }
+        if (previewEn && pathEn && shortEn) {
+          previewEn.textContent = generateLisp(pathEn.value, shortEn.value);
+        }
+      }
+
+      if (pathVi) pathVi.addEventListener('input', updateC2TPreviews);
+      if (shortVi) shortVi.addEventListener('input', updateC2TPreviews);
+      if (pathEn) pathEn.addEventListener('input', updateC2TPreviews);
+      if (shortEn) shortEn.addEventListener('input', updateC2TPreviews);
+
+      // Copy buttons
+      if (btnCopyVi) {
+        btnCopyVi.addEventListener('click', () => {
+          const txt = generateLisp(pathVi.value, shortVi.value);
+          navigator.clipboard.writeText(txt).then(() => {
+            btnCopyVi.textContent = 'Đã sao chép!';
+            setTimeout(() => { btnCopyVi.textContent = 'Sao chép Code'; }, 2000);
+          });
+        });
+      }
+      if (btnCopyEn) {
+        btnCopyEn.addEventListener('click', () => {
+          const txt = generateLisp(pathEn.value, shortEn.value);
+          navigator.clipboard.writeText(txt).then(() => {
+            btnCopyEn.textContent = 'Copied!';
+            setTimeout(() => { btnCopyEn.textContent = 'Copy Code'; }, 2000);
+          });
+        });
+      }
+
+      // Download buttons
+      function downloadFile(txt, filename) {
+        const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+
+      if (btnDlVi) {
+        btnDlVi.addEventListener('click', () => {
+          const txt = generateLisp(pathVi.value, shortVi.value);
+          const sc = (shortVi.value.trim() || 'ctt').toLowerCase();
+          downloadFile(txt, `load_c2t_${sc}.lsp`);
+        });
+      }
+      if (btnDlEn) {
+        btnDlEn.addEventListener('click', () => {
+          const txt = generateLisp(pathEn.value, shortEn.value);
+          const sc = (shortEn.value.trim() || 'ctt').toLowerCase();
+          downloadFile(txt, `load_c2t_${sc}.lsp`);
+        });
+      }
+
+      // Init
+      setTimeout(updateC2TPreviews, 500);
+    })();
+
+    // Close download modal when clicking outside on the overlay background
+    document.getElementById('download-email-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeDownloadModal();
+    });
+
+    // Close download modal on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDownloadModal();
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      const formVi = document.getElementById('download-form-vi');
+      if (formVi) {
+        formVi.addEventListener('submit', (e) => {
+          handleDownloadSubmit(e, 'vi');
+        });
+      }
+      const formEn = document.getElementById('download-form-en');
+      if (formEn) {
+        formEn.addEventListener('submit', (e) => {
+          handleDownloadSubmit(e, 'en');
+        });
+      }
+    });
+  </script>
+
+  <script src="app.js"></script>
+</body>
+</html>
