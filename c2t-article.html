@@ -293,6 +293,19 @@
       
       if (!email) return;
 
+      // Extract base directory and setup download URL
+      const baseDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+      const downloadUrl = window.location.origin + baseDir + 'iViDCadToTeklaSetup.zip';
+
+      // 1. Immediately trigger the download synchronously within the user-click context!
+      // This guarantees the browser's anti-spam/popup/ad blocker will NEVER block the file!
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = 'iViDCadToTeklaSetup.zip';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
       // Hide forms, show loading spinner
       document.getElementById('download-modal-vi').style.display = 'none';
       document.getElementById('download-modal-en').style.display = 'none';
@@ -306,7 +319,7 @@
         document.getElementById('loading-text-en').style.display = 'block';
       }
 
-      // 1. Save locally to local storage for Admin Dashboard representation
+      // 2. Save locally to local storage for Admin Dashboard representation
       let logs = JSON.parse(safeStorage.getItem('ividlab_download_logs') || '[]');
       const newLog = {
         email: email,
@@ -320,7 +333,7 @@
       logs.unshift(newLog);
       safeStorage.setItem('ividlab_download_logs', JSON.stringify(logs));
 
-      // 2. Fetch configurations for Apps Script
+      // 3. Fetch configurations for Apps Script
       const gasUrl = safeStorage.getItem('ividlab_gas_url');
       const payload = {
         email: email,
@@ -331,25 +344,12 @@
         referrer: window.location.href
       };
 
-      // Download link
-      const baseDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-      const downloadUrl = window.location.origin + baseDir + 'iViDCadToTeklaSetup.zip';
-
-      // Set manual download link href
+      // Set manual download link href for manual retry button on the success screen
       const manualDownloadBtn = document.getElementById('manual-download-link');
       if (manualDownloadBtn) {
         manualDownloadBtn.href = downloadUrl;
         manualDownloadBtn.setAttribute('download', 'iViDCadToTeklaSetup.zip');
       }
-
-      const triggerAutoDownload = () => {
-        const link = document.createElement('a');
-        link.href = downloadUrl;
-        link.download = 'iViDCadToTeklaSetup.zip';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      };
 
       const proceedToSuccess = (emailAddr) => {
         // Show email address in success message
@@ -357,9 +357,6 @@
         const elEn = document.getElementById('success-email-en');
         if (elVi) elVi.textContent = emailAddr;
         if (elEn) elEn.textContent = emailAddr;
-
-        // Auto trigger download
-        triggerAutoDownload();
 
         // Display Success State
         document.getElementById('download-modal-loading').style.display = 'none';
@@ -397,7 +394,7 @@
       }
     }
 
-    // Close download modal when clicking outside on the overlay background
+        // Close download modal when clicking outside on the overlay background
     document.getElementById('download-email-modal').addEventListener('click', (e) => {
       if (e.target === e.currentTarget) closeDownloadModal();
     });
