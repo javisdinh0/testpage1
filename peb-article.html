@@ -103,18 +103,19 @@
               <ul>
                 <li><strong>By Thickness:</strong> Tự động gán Class theo chiều dày bản cánh và bản bụng cấu kiện (làm tròn mm), hỗ trợ đắc lực cho quản lý sản xuất theo chiều dày phôi.</li>
                 <li><strong>By Section:</strong> Tự động lọc tất cả các loại tiết diện khác nhau trong dự án, sắp xếp theo thứ tự bảng chữ cái và đánh số Class duy nhất từ <code>1</code> đến <code>99</code>.</li>
-                <li><strong>By Prefix:</strong> Tự động trích xuất các chữ số ở đuôi của cột Prefix (ví dụ: tiền tố <code>S12</code> tương ứng với Class <code>12</code>) để đồng bộ bản vẽ.</li>
-                <li><strong>By User:</strong> Cho phép kỹ sư nhập một con số Class mặc định cố định theo ý muốn.</li>
+                <li><strong>By Prefix:</strong> Tự động trích xuất các chữ số ở đuôi của cột Prefix (ví dụ: tiền tố <code>S12</code> tương ứng với Class <code>12</code>) để đồng bộ với bản vẽ xuất xưởng.</li>
+                <li><strong>By User:</strong> Cho phép người dùng nhập trực tiếp một số Class mặc định duy nhất áp dụng cho tất cả cấu kiện.</li>
               </ul>
             </li>
-            <li><strong>Vẽ trực tiếp không lưu file rác (Draw PEB Member):</strong> Dựng cấu kiện 3D trực tiếp trong mô hình Tekla bằng cách pick 2 điểm cực kỳ nhanh chóng. Công cụ tự động xử lý và giải phóng bộ nhớ đệm, hoàn toàn không sinh ra các file rác thuộc tính dư thừa trong thư mục của bạn.</li>
-            <li><strong>Cập nhật cấu kiện hàng loạt (Update PEB Member):</strong> Chỉ cần quét chọn các cấu kiện PEB Member cần thay đổi trong mô hình Tekla và nhấn nút, toàn bộ tiết diện, vật liệu, và quy tắc Class mới sẽ được áp dụng đồng bộ ngay lập tức.</li>
+            <li><strong>Dựng mô hình 3D trực tiếp (Draw PEB Member):</strong> Dựng trực tiếp cấu kiện 3D vào mô hình Tekla Structures bằng cách chọn 2 điểm. Ứng dụng xử lý cấu hình động trực tiếp trong bộ nhớ, không để lại bất kỳ file XML thuộc tính rác nào trong thư mục dự án.</li>
+            <li><strong>Cập nhật hàng loạt (Update PEB Member):</strong> Chọn bất kỳ số lượng cấu kiện PEB nào trên mô hình Tekla và nhấn nút để đồng bộ tức thời các thông số về tiết diện, vật liệu và quy tắc màu sắc (Class).</li>
           </ul>
 
           <h2>Hướng Dẫn Sử Dụng Chi Tiết</h2>
           
           <h3>Bước 1: Nhập và kiểm tra dữ liệu tiết diện</h3>
           <p>Người dùng có thể sao chép nhanh danh sách tiết diện từ Excel và dán trực tiếp vào bảng Grid của PEB Section Creator. Sử dụng nút <strong>Accepted Formats</strong> để xem các định dạng ký hiệu được hỗ trợ. Định dạng hợp lệ sẽ được tự động tách các trường kích thước (bản bụng Web, bản cánh Flange, chiều dày WebThk, FlgThk, các điểm chiều sâu d1, d2, d3, d4) để tính toán tự động.</p>
+          <img src="Pic1/Screenshot_1.jpg" alt="Nhập dữ liệu tiết diện vào bảng Grid" class="article-image">
 
           <h3>Bước 2: Cấu hình quy tắc gắn thuộc tính (Part Settings)</h3>
           <p>Click nút <strong>PEB Part Settings</strong> ở góc dưới bên phải giao diện chính. Tại đây, bạn thiết lập:
@@ -123,6 +124,7 @@
               <li>Bộ quy tắc gán màu sắc/phân lớp cấu kiện tại ComboBox <strong>Class By</strong>. Nếu chọn chế độ <em>By User</em>, ô nhập <em>User Class</em> sẽ được kích hoạt để bạn điền thông số. Nhấn <strong>Save Settings</strong> để lưu lại cấu hình và áp dụng đồng loạt cho toàn bảng.</li>
             </ul>
           </p>
+          <img src="Pic1/Screenshot_2.jpg" alt="Cấu hình thuộc tính cấu kiện trong Part Settings" class="article-image">
 
           <h3>Bước 3: Dựng mô hình 3D trực tiếp trong Tekla Structures</h3>
           <p>1. Chọn dòng tiết diện mong muốn dựng hình trên bảng Grid.<br>
@@ -130,8 +132,9 @@
              3. Trên mô hình Tekla Structures, thực hiện click chọn 2 điểm: <strong>Điểm đầu (Start Point)</strong> và <strong>Điểm cuối (End Point)</strong>.<br>
              4. Cấu kiện PEB Member sẽ được dựng chính xác tức thì. Ứng dụng sẽ tự động hiển thị trở lại để bạn tiếp tục làm việc.
           </p>
-
-          <h3>Bước 4: Cập nhật cấu kiện hoặc Xuất thuộc tính hàng loạt</h3>
+          <img src="Pic1/Screenshot_3.jpg" alt="Dựng trực tiếp cấu kiện PEB Member trong Tekla" class="article-image">
+          
+<h3>Bước 4: Cập nhật cấu kiện hoặc Xuất thuộc tính hàng loạt</h3>
           <p>Để cập nhật tiết diện mới cho các cấu kiện đã dựng sẵn, hãy chọn cấu kiện đó trên mô hình Tekla, chọn dòng tiết diện tương ứng trong bảng Grid của tool, sau đó nhấn <strong>UPDATE PEB MEMBER</strong>. Ngoài ra, bạn có thể chọn nhiều dòng tiết diện trong Grid và nhấn <strong>Export</strong> để lưu trữ các file cấu hình XML chuẩn hóa vào mô hình phục vụ cho các công tác thiết kế liên kết sau này.</p>
           <div class="download-section" style="margin: 2rem 0 1rem; text-align: center;">
             <a href="javascript:void(0)" class="btn-primary peb-download-trigger" onclick="openDownloadModal()" style="display: inline-flex; text-decoration: none; align-items: center; gap: 0.75rem;">
@@ -185,6 +188,7 @@
           
           <h3>Step 1: Input and Validate Section Data</h3>
           <p>You can quickly copy lists of profiles from Excel sheets and paste them directly into the DataGrid. Click <strong>Accepted Formats</strong> to review supported notation formats. Valid rows are automatically parsed into individual component metrics (Web, Flange, WebThk, FlgThk, d1, d2, d3, d4 depths) for downstream calculations.</p>
+          <img src="Pic1/Screenshot_1.jpg" alt="Input profile data into the DataGrid" class="article-image">
 
           <h3>Step 2: Configure Parts Attributes (Part Settings)</h3>
           <p>Click the <strong>PEB Part Settings</strong> button at the bottom right. Here, you can configure:
@@ -193,6 +197,7 @@
               <li>Your classification rules via the <strong>Class By</strong> ComboBox. If <em>By User</em> is selected, the custom <em>User Class</em> input box is enabled. Click <strong>Save Settings</strong> to commit the configuration and apply it across all rows instantly.</li>
             </ul>
           </p>
+          <img src="Pic1/Screenshot_2.jpg" alt="Configure part attributes in Part Settings" class="article-image">
 
           <h3>Step 3: Model 3D Components in Tekla Structures</h3>
           <p>1. Select your target profile row in the DataGrid.<br>
@@ -200,6 +205,7 @@
              3. Inside the Tekla Structures 3D model, click to pick two coordinates: the <strong>Start Point</strong> and the <strong>End Point</strong>.<br>
              4. The 3D PEB Member component is generated instantly. The app window automatically restores itself so you can continue your design.
           </p>
+          <img src="Pic1/Screenshot_3.jpg" alt="Direct 3D modeling of PEB Member inside Tekla" class="article-image">
 
           <h3>Step 4: Update or Batch Export Attributes</h3>
           <p>To modify existing structures in your model, select the components inside Tekla, choose your new profile row in the grid, and click <strong>UPDATE PEB MEMBER</strong>. You can also select multiple grid rows and click <strong>Export</strong> to automatically output optimized XML files to your model's <code>attributes</code> directory for subsequent detailing work.</p>
