@@ -266,64 +266,17 @@
           <!-- ==================== DOWNLOAD CENTER ==================== -->
           <div class="download-center" id="download-center">
             <div class="dc-title">Tải Về Giải Pháp C2T: Cad to Tekla</div>
-            <div class="dc-desc">Lựa chọn phương thức tải về phù hợp với nhu cầu sử dụng của bạn. Bản cài đặt tự động dễ sử dụng hoặc gói cài đặt thủ công chuyên nghiệp.</div>
+            <div class="dc-desc">Nhận trình cài đặt tự động (Setup.exe) đầy đủ tính năng. Tự động thiết lập môi trường, sao chép tệp thư viện và tích hợp lệnh vào AutoCAD & Tekla Structures chỉ trong vài giây.</div>
             
-            <div class="download-grid">
-              <!-- Setup Card -->
-              <div class="download-card">
+            <div style="max-width: 500px; margin: 2rem auto 0; padding: 0 1rem;">
+              <div class="download-card" style="background: rgba(200, 157, 85, 0.02); border-color: rgba(200, 157, 85, 0.2);">
                 <div class="dc-icon">📦</div>
                 <div class="dc-card-title">Bộ Cài Đặt Tự Động (Setup.exe)</div>
-                <div class="dc-card-desc">Phương án nhanh chóng nhất. Tự động sao chép file, đăng ký lệnh tắt, thiết lập Registry và cấu hình trọn gói từ A-Z cho AutoCAD và Tekla. Không cần thao tác thủ công.</div>
+                <div class="dc-card-desc">Phương án nhanh chóng và tối ưu nhất. Tự động cấu hình trọn gói từ A-Z cho AutoCAD và Tekla, đăng ký lệnh tắt mà không cần bất kỳ thao tác thủ công phức tạp nào.</div>
                 <button class="btn-primary c2t-download-trigger" onclick="openDownloadModal()">Tải Bộ Cài Setup (.EXE)</button>
               </div>
-              
-              <!-- Manual Card -->
-              <div class="download-card">
-                <div class="dc-icon">🛠️</div>
-                <div class="dc-card-title">Gói Cài Đặt Thủ Công (.ZIP)</div>
-                <div class="dc-card-desc">Dành cho kỹ sư nâng cao. Gói file nén an toàn chứa thư viện core C2T DLL và file AutoLISP mẫu để bạn tự do lưu trữ và nạp thủ công bằng lệnh APPLOAD.</div>
-                <a href="iViDCadToTeklaSetup.zip" class="btn-secondary" style="display: inline-flex; justify-content: center; align-items: center;">Tải Bản Thủ Công (.ZIP)</a>
-              </div>
             </div>
-
-            <!-- ==================== LISP CREATOR UTILITY ==================== -->
-            <div class="lisp-creator-section">
-              <div class="dc-card-title" style="margin-bottom: 0.5rem; text-align: left;">🛠️ Trình Tạo File AutoLISP Nạp C2T Tùy Biến</div>
-              <p style="color: var(--text-muted); font-size: 0.92rem; text-align: left; margin-bottom: 1.5rem;">
-                Nhập đường dẫn thư mục lưu trữ DLL của bạn và tùy chọn đặt lệnh tắt theo sở thích. Hệ thống sẽ sinh mã Lisp tương thích tuyệt đối và cho phép tải về dùng ngay!
-              </p>
-              
-              <div class="lisp-creator-box">
-                <div class="creator-form-group">
-                  <label class="creator-label">Đường dẫn đầy đủ tới thư mục chứa C2T DLL trong máy tính</label>
-                  <div style="display: flex; gap: 0.75rem; width: 100%;">
-                    <input type="text" id="c2t-local-path" class="creator-input" value="D:\\iViDLab\\Tools\\C2T\\" placeholder="Ví dụ: D:\\iViDLab\\Tools\\C2T\\" style="flex: 1;" />
-                    <label class="btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; padding: 0 1.5rem; margin: 0; cursor: pointer; border-radius: 6px; font-size: 0.9rem; font-weight: 600;">
-                      Browse...
-                      <input type="file" id="c2t-dll-browser" accept=".dll" style="display: none;" />
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="creator-form-group">
-                  <label class="creator-label">Lệnh tắt muốn đặt trong AutoCAD</label>
-                  <input type="text" id="c2t-shortcut" class="creator-input" value="CTT" placeholder="Ví dụ: CTT, C2T, GRID..." style="max-width: 250px;" />
-                </div>
-
-                <div class="code-container">
-                  <div class="code-header">
-                    <span class="code-lang">C2T-Cad to Tekla.lsp</span>
-                    <button class="btn-copy-code-c2t" id="btn-copy-c2t-lisp">Sao chép Code</button>
-                  </div>
-                  <pre class="code-body"><code id="c2t-lisp-preview">;; AutoLISP loader will generate here</code></pre>
-                </div>
-
-                <button class="btn-create-lisp" id="btn-download-c2t-lisp">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:0.25rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                  Tải file AutoLISP (.lsp)
-                </button>
-              </div>
-            </div>
+          </div>
           </div>
         </div>
 
@@ -433,296 +386,247 @@
           <!-- ==================== DOWNLOAD CENTER (EN) ==================== -->
           <div class="download-center" id="download-center-en">
             <div class="dc-title">Download C2T: Cad to Tekla</div>
-            <div class="dc-desc">Choose the installation package that fits your engineering workflow. Automated Installer or manual LISP plugin.</div>
+            <div class="dc-desc">Get the full-featured Automated Installer (Setup.exe). Automatically configures paths, DLL profiles, and registry keys for AutoCAD & Tekla Structures in seconds.</div>
             
-            <div class="download-grid">
-              <!-- Setup Card -->
-              <div class="download-card">
+            <div style="max-width: 500px; margin: 2rem auto 0; padding: 0 1rem;">
+              <div class="download-card" style="background: rgba(200, 157, 85, 0.02); border-color: rgba(200, 157, 85, 0.2);">
                 <div class="dc-icon">📦</div>
                 <div class="dc-card-title">Automated Installer (Setup.exe)</div>
-                <div class="dc-card-desc">Recommended for standard users. Installs files, configures AutoCAD profiles, maps registry entries, and sets up v1.0.0 automatically from A to Z. No manual actions needed.</div>
+                <div class="dc-card-desc">Recommended for standard users. Installs files, configures profiles, maps registry entries, and sets up AutoCAD shortcut aliases automatically from A to Z. No manual actions needed.</div>
                 <button class="btn-primary c2t-download-trigger" onclick="openDownloadModal()">Download Setup (.EXE)</button>
               </div>
-              
-              <!-- Manual Card -->
-              <div class="download-card">
-                <div class="dc-icon">🛠️</div>
-                <div class="dc-card-title">Manual Library (.ZIP)</div>
-                <div class="dc-card-desc">For advanced developers and engineers. Contains the core C2T DLL binary and sample loader script to manually load via APPLOAD and configure.</div>
-                <a href="iViDCadToTeklaSetup.zip" class="btn-secondary" style="display: inline-flex; justify-content: center; align-items: center;">Download Manual ZIP</a>
-              </div>
             </div>
-
-            <!-- ==================== LISP CREATOR (EN) ==================== -->
-            <div class="lisp-creator-section">
-              <div class="dc-card-title" style="margin-bottom: 0.5rem; text-align: left;">🛠️ Custom AutoLISP Loader Generator</div>
-              <p style="color: var(--text-muted); font-size: 0.92rem; text-align: left; margin-bottom: 1.5rem;">
-                Specify your custom local folder path and shortcut alias. The system will compile a perfectly mapped loader script to download instantly!
-              </p>
-              
-              <div class="lisp-creator-box">
-                <div class="creator-form-group">
-                  <label class="creator-label">Full folder path to DLL file on your machine</label>
-                  <div style="display: flex; gap: 0.75rem; width: 100%;">
-                    <input type="text" id="c2t-local-path-en" class="creator-input" value="D:\\iViDLab\\Tools\\C2T\\" placeholder="e.g. D:\\iViDLab\\Tools\\C2T\\" style="flex: 1;" />
-                    <label class="btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; padding: 0 1.5rem; margin: 0; cursor: pointer; border-radius: 6px; font-size: 0.9rem; font-weight: 600;">
-                      Browse...
-                      <input type="file" id="c2t-dll-browser-en" accept=".dll" style="display: none;" />
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="creator-form-group">
-                  <label class="creator-label">Custom Command Shortcut Alias</label>
-                  <input type="text" id="c2t-shortcut-en" class="creator-input" value="CTT" placeholder="e.g. CTT, C2T, GRID..." style="max-width: 250px;" />
-                </div>
-
-                <div class="code-container">
-                  <div class="code-header">
-                    <span class="code-lang">C2T-Cad to Tekla.lsp</span>
-                    <button class="btn-copy-code-c2t" id="btn-copy-c2t-lisp-en">Copy Code</button>
-                  </div>
-                  <pre class="code-body"><code id="c2t-lisp-preview-en">;; AutoLISP loader will generate here</code></pre>
-                </div>
-
-                <button class="btn-create-lisp" id="btn-download-c2t-lisp-en">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:0.25rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                  Generate & Download LISP (.lsp)
-                </button>
-              </div>
-            </div>
+          </div>
           </div>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Download Email Modal -->
-  <div id="download-email-modal" class="modal-overlay">
-    <div class="modal-card">
-      <button class="modal-close" onclick="closeDownloadModal()">&times;</button>
+  <!-- Email Download Modal -->
+  <div class="modal-overlay" id="download-email-modal" style="display: none; align-items: center; justify-content: center; position: fixed; inset: 0; z-index: 10000; background: rgba(8, 11, 20, 0.85); backdrop-filter: blur(15px); transition: opacity 0.3s ease;">
+    <div class="modal-content" style="background: #10141e; border: 1px solid rgba(255,255,255,0.08); padding: 2.5rem; border-radius: 16px; width: 90%; max-width: 480px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+      <button class="modal-close" onclick="closeDownloadModal()" style="position: absolute; top: 1rem; right: 1.2rem; background: none; border: none; color: var(--text-secondary); font-size: 1.8rem; cursor: pointer; transition: color 0.2s;">&times;</button>
       
-      <!-- VN Modal -->
-      <div data-lang="vi" class="modal-lang-section">
-        <h3 class="modal-title">Đăng Ký Tải Công Cụ C2T</h3>
-        <p class="modal-desc">Vui lòng cung cấp thông tin để nhận bộ cài đặt tự động (Setup) trực tiếp qua Email của bạn.</p>
-        <form id="download-form-vi" class="modal-form">
-          <input type="hidden" name="tool_name" value="C2T" />
-          <div class="form-group">
-            <label class="form-label" for="name-vi">Họ và Tên</label>
-            <input type="text" id="name-vi" name="user_name" class="form-input" required placeholder="Nguyễn Văn A" />
+      <!-- VIETNAMESE STATE -->
+      <div id="download-modal-vi">
+        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Nhập Email để Tải Xuống</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Vui lòng nhập địa chỉ email của bạn để tải xuống. Quá trình tải xuống tệp nén an toàn `iViDCadToTeklaSetup.zip` chứa trình cài đặt tự động `.exe` sẽ tự động bắt đầu ngay lập tức sau khi xác nhận.</p>
+        <form id="download-form-vi">
+          <div style="margin-bottom: 1.25rem;">
+            <input type="email" id="email-input-vi" required placeholder="example@domain.com" style="width: 100%; padding: 0.85rem 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-size: 0.95rem; transition: border-color 0.2s; outline: none;" />
           </div>
-          <div class="form-group">
-            <label class="form-label" for="email-vi">Địa chỉ Email</label>
-            <input type="email" id="email-vi" name="user_email" class="form-input" required placeholder="example@gmail.com" />
-          </div>
-          <button type="submit" class="btn-primary modal-submit-btn">Đăng Ký & Nhận Link Tải</button>
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem; border: none; cursor: pointer;">
+            <span>Tải Xuống Ngay</span>
+          </button>
         </form>
       </div>
 
-      <!-- EN Modal -->
-      <div data-lang="en" class="modal-lang-section">
-        <h3 class="modal-title">Register to Download C2T</h3>
-        <p class="modal-desc">Please provide your details to receive the automated setup package directly in your Email.</p>
-        <form id="download-form-en" class="modal-form">
-          <input type="hidden" name="tool_name" value="C2T" />
-          <div class="form-group">
-            <label class="form-label" for="name-en">Full Name</label>
-            <input type="text" id="name-en" name="user_name" class="form-input" required placeholder="John Doe" />
+      <!-- ENGLISH STATE -->
+      <div id="download-modal-en" style="display: none;">
+        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Enter Email to Download</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Please enter your email address to download. Your download of the safe `iViDCadToTeklaSetup.zip` (containing the `.exe` installer) will start automatically immediately after confirmation.</p>
+        <form id="download-form-en">
+          <div style="margin-bottom: 1.25rem;">
+            <input type="email" id="email-input-en" required placeholder="example@domain.com" style="width: 100%; padding: 0.85rem 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-size: 0.95rem; transition: border-color 0.2s; outline: none;" />
           </div>
-          <div class="form-group">
-            <label class="form-label" for="email-en">Email Address</label>
-            <input type="email" id="email-en" name="user_email" class="form-input" required placeholder="example@gmail.com" />
-          </div>
-          <button type="submit" class="btn-primary modal-submit-btn">Register & Get Link</button>
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem; border: none; cursor: pointer;">
+            <span>Download Now</span>
+          </button>
         </form>
+      </div>
+
+      <!-- LOADING STATE -->
+      <div id="download-modal-loading" style="display: none; text-align: center; padding: 2rem 0;">
+        <div style="width: 48px; height: 48px; border: 4px solid rgba(99, 179, 237, 0.1); border-top-color: var(--accent-blue); border-radius: 50%; display: inline-block; animation: spin 1s linear infinite; margin-bottom: 1.5rem;"></div>
+        <p id="loading-text-vi" style="color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Đang chuẩn bị tải xuống, vui lòng chờ...</p>
+        <p id="loading-text-en" style="display: none; color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Preparing download, please wait...</p>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div id="download-modal-success" style="display: none; text-align: center; padding: 1.5rem 0 0.5rem;">
+        <div style="width: 64px; height: 64px; background: rgba(104, 211, 145, 0.1); border: 2px solid var(--accent-green); color: var(--accent-green); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem; font-weight: bold;">✓</div>
+        
+        <div id="success-text-vi">
+          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Bắt Đầu Tải Xuống!</h4>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem;">Tệp nén an toàn `iViDCadToTeklaSetup.zip` (chứa trình cài đặt `.exe`) đang được tải xuống tự động cho email:</p>
+          <p id="success-email-vi" style="color: var(--accent-blue); font-weight: 600; font-size: 1rem; margin-bottom: 1rem;"></p>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.5rem;">Nếu quá trình tải xuống không tự động bắt đầu sau vài giây, vui lòng click nút bên dưới:</p>
+        </div>
+
+        <div id="success-text-en" style="display: none;">
+          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Download Started!</h4>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem;">The safe `iViDCadToTeklaSetup.zip` archive (containing the `.exe` installer) is downloading automatically for email:</p>
+          <p id="success-email-en" style="color: var(--accent-blue); font-weight: 600; font-size: 1rem; margin-bottom: 1rem;"></p>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.5rem;">If the download did not start automatically after a few seconds, click the button below:</p>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <a id="manual-download-link" href="#" class="btn-primary" style="display: inline-flex; text-decoration: none; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 0.85rem; border: none; cursor: pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span data-lang="vi">Tải Xuống Lại</span>
+            <span data-lang="en">Download Again</span>
+          </a>
+        </div>
+
+        <button onclick="closeDownloadModal()" class="btn-ghost" style="padding: 0.6rem 1.5rem; font-size: 0.9rem; border-radius: var(--radius-sm); cursor: pointer;">Đóng / Close</button>
       </div>
     </div>
   </div>
 
   <script>
-    // C2T AutoLISP Generator JS Logic
-    (function() {
-      const pathVi = document.getElementById('c2t-local-path');
-      const shortVi = document.getElementById('c2t-shortcut');
-      const previewVi = document.getElementById('c2t-lisp-preview');
-      const btnCopyVi = document.getElementById('btn-copy-c2t-lisp');
-      const btnDlVi = document.getElementById('btn-download-c2t-lisp');
+    // Safe storage helper
+    const safeStorage = {
+      getItem: (key) => { try { return localStorage.getItem(key); } catch(e) { return null; } },
+      setItem: (key, val) => { try { localStorage.setItem(key, val); } catch(e) {} }
+    };
+
+    function openDownloadModal() {
+      // Detect current language of website
+      let currentLang = safeStorage.getItem('ividlab_lang') || 'vi';
+
+      // Reset modal views
+      document.getElementById('download-modal-loading').style.display = 'none';
+      document.getElementById('download-modal-success').style.display = 'none';
       
-      const pathEn = document.getElementById('c2t-local-path-en');
-      const shortEn = document.getElementById('c2t-shortcut-en');
-      const previewEn = document.getElementById('c2t-lisp-preview-en');
-      const btnCopyEn = document.getElementById('btn-copy-c2t-lisp-en');
-      const btnDlEn = document.getElementById('btn-download-c2t-lisp-en');
-
-      function normalizePath(p) {
-        let clean = p.trim().replace(/\\/g, '/');
-        // Convert trailing /bin, /bin/debug, /bin/release to /
-        clean = clean.replace(/\/bin(\/(debug|release))?\/?$/i, '/');
-        if (!clean.endsWith('/')) clean += '/';
-        return clean;
+      if (currentLang === 'vi') {
+        document.getElementById('download-modal-vi').style.display = 'block';
+        document.getElementById('download-modal-en').style.display = 'none';
+      } else {
+        document.getElementById('download-modal-vi').style.display = 'none';
+        document.getElementById('download-modal-en').style.display = 'block';
       }
 
-      function generateLisp(path, shortcut) {
-        const fullDllPath = normalizePath(path) + 'C2T-Cad to Tekla.dll';
-        const sc = shortcut.trim().toUpperCase() || 'CTT';
+      // Display overlay
+      const overlay = document.getElementById('download-email-modal');
+      overlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        overlay.classList.add('active');
+      }, 10);
+    }
+
+    function closeDownloadModal() {
+      const overlay = document.getElementById('download-email-modal');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 300);
+    }
+
+    function handleDownloadSubmit(event, lang) {
+      event.preventDefault();
+      
+      const emailInputId = lang === 'vi' ? 'email-input-vi' : 'email-input-en';
+      const email = document.getElementById(emailInputId).value.trim();
+      
+      if (!email) return;
+
+      // Extract base directory and setup download URL
+      const baseDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+      const downloadUrl = window.location.origin + baseDir + 'iViDCadToTeklaSetup.zip';
+
+      // 1. Immediately trigger the download synchronously within the user-click context!
+      // This guarantees the browser's anti-spam/popup/ad blocker will NEVER block the file!
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = 'iViDCadToTeklaSetup.zip';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Hide forms, show loading spinner
+      document.getElementById('download-modal-vi').style.display = 'none';
+      document.getElementById('download-modal-en').style.display = 'none';
+      document.getElementById('download-modal-loading').style.display = 'block';
+      
+      if (lang === 'vi') {
+        document.getElementById('loading-text-vi').style.display = 'block';
+        document.getElementById('loading-text-en').style.display = 'none';
+      } else {
+        document.getElementById('loading-text-vi').style.display = 'none';
+        document.getElementById('loading-text-en').style.display = 'block';
+      }
+
+      // 2. Save locally to local storage for Admin Dashboard representation
+      let logs = JSON.parse(safeStorage.getItem('ividlab_download_logs') || '[]');
+      const newLog = {
+        email: email,
+        app: 'C2T',
+        version: '1.0.0',
+        date: new Date().toISOString(),
+        status: 'Downloaded',
+        ip: '192.168.1.15', // Mock IP Address
+        platform: navigator.platform || 'Windows 64-bit'
+      };
+      logs.unshift(newLog);
+      safeStorage.setItem('ividlab_download_logs', JSON.stringify(logs));
+
+      // 3. Fetch configurations for Apps Script
+      const gasUrl = safeStorage.getItem('ividlab_gas_url');
+      const payload = {
+        email: email,
+        app: 'C2T',
+        version: '1.0.0',
+        lang: lang,
+        timestamp: new Date().toISOString(),
+        referrer: window.location.href
+      };
+
+      // Set manual download link href for manual retry button on the success screen
+      const manualDownloadBtn = document.getElementById('manual-download-link');
+      if (manualDownloadBtn) {
+        manualDownloadBtn.href = downloadUrl;
+        manualDownloadBtn.setAttribute('download', 'iViDCadToTeklaSetup.zip');
+      }
+
+      const proceedToSuccess = (emailAddr) => {
+        // Show email address in success message
+        const elVi = document.getElementById('success-email-vi');
+        const elEn = document.getElementById('success-email-en');
+        if (elVi) elVi.textContent = emailAddr;
+        if (elEn) elEn.textContent = emailAddr;
+
+        // Display Success State
+        document.getElementById('download-modal-loading').style.display = 'none';
+        document.getElementById('download-modal-success').style.display = 'block';
         
-        return `;; ==========================================================================
-;;  iViDLab™ CAD Automation Suite — C2T AutoLoad Helper
-;;  Target Tool : C2T-Cad to Tekla
-;;  Library File: C2T-Cad to Tekla.dll
-;;  File Path   : ${fullDllPath}
-;;  Shortcut    : [${sc}] -> AutoCAD command: [CadtoTekla]
-;;  © 2026 iViDLab. All rights reserved.
-;; ==========================================================================
-
-(vl-load-com)
-
-;; --- Step 1: Autoload Function for C2T ---
-(defun LoadiViDLab_C2T_${sc} ()
-  (setq dllPath "${fullDllPath}")
-  (if (findfile dllPath)
-    (progn
-      (princ "\\n[iViDLab] Loading C2T (Cad to Tekla) plugin...")
-      (vl-cmdf "._netload" dllPath)
-    )
-    (progn
-      (princ "\\n[iViDLab] ERROR: C2T-Cad to Tekla.dll not found!")
-      (princ (strcat "\\nPath expected: " dllPath))
-    )
-  )
-)
-
-;; Automatically load the plugin on drawing initialization
-(LoadiViDLab_C2T_${sc})
-
-;; --- Step 2: Define Shortcut Command ---
-(defun c:${sc} ()
-  (princ "\\n[iViDLab] Executing Grid Sync Command: [CadtoTekla]...")
-  (vl-cmdf "CadtoTekla")
-  (princ)
-)
-
-(princ "\\n[iViDLab] Shortcut command [${sc}] registered successfully for [CadtoTekla].")
-(princ)
-`;
-      }
-
-      function updateC2TPreviews() {
-        if (previewVi && pathVi && shortVi) {
-          previewVi.textContent = generateLisp(pathVi.value, shortVi.value);
+        if (lang === 'vi') {
+          document.getElementById('success-text-vi').style.display = 'block';
+          document.getElementById('success-text-en').style.display = 'none';
+        } else {
+          document.getElementById('success-text-vi').style.display = 'none';
+          document.getElementById('success-text-en').style.display = 'block';
         }
-        if (previewEn && pathEn && shortEn) {
-          previewEn.textContent = generateLisp(pathEn.value, shortEn.value);
-        }
-      }
+      };
 
-      if (pathVi) {
-        pathVi.addEventListener('input', updateC2TPreviews);
-        pathVi.addEventListener('blur', () => {
-          pathVi.value = normalizePath(pathVi.value);
-          updateC2TPreviews();
+      if (gasUrl) {
+        // Make actual live REST call to Google Apps Script to log download
+        fetch(gasUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...payload, downloadUrl: downloadUrl })
+        })
+        .then(() => {
+          proceedToSuccess(email);
+        })
+        .catch(err => {
+          console.error('GAS Request Error:', err);
+          proceedToSuccess(email);
         });
+      } else {
+        // No GAS URL configured
+        setTimeout(() => {
+          proceedToSuccess(email);
+        }, 1200);
       }
-      if (shortVi) {
-        shortVi.addEventListener('input', updateC2TPreviews);
-        shortVi.addEventListener('blur', () => {
-          shortVi.value = shortVi.value.trim().toUpperCase() || 'CTT';
-          updateC2TPreviews();
-        });
-      }
-      if (pathEn) {
-        pathEn.addEventListener('input', updateC2TPreviews);
-        pathEn.addEventListener('blur', () => {
-          pathEn.value = normalizePath(pathEn.value);
-          updateC2TPreviews();
-        });
-      }
-      if (shortEn) {
-        shortEn.addEventListener('input', updateC2TPreviews);
-        shortEn.addEventListener('blur', () => {
-          shortEn.value = shortEn.value.trim().toUpperCase() || 'CTT';
-          updateC2TPreviews();
-        });
-      }
-
-      // Copy buttons
-      if (btnCopyVi) {
-        btnCopyVi.addEventListener('click', () => {
-          const txt = generateLisp(pathVi.value, shortVi.value);
-          navigator.clipboard.writeText(txt).then(() => {
-            btnCopyVi.textContent = 'Đã sao chép!';
-            setTimeout(() => { btnCopyVi.textContent = 'Sao chép Code'; }, 2000);
-          });
-        });
-      }
-      if (btnCopyEn) {
-        btnCopyEn.addEventListener('click', () => {
-          const txt = generateLisp(pathEn.value, shortEn.value);
-          navigator.clipboard.writeText(txt).then(() => {
-            btnCopyEn.textContent = 'Copied!';
-            setTimeout(() => { btnCopyEn.textContent = 'Copy Code'; }, 2000);
-          });
-        });
-      }
-
-      // Download buttons
-      function downloadFile(txt, filename) {
-        const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      }
-
-      if (btnDlVi) {
-        btnDlVi.addEventListener('click', () => {
-          const txt = generateLisp(pathVi.value, shortVi.value);
-          downloadFile(txt, 'C2T-Cad to Tekla.lsp');
-        });
-      }
-      if (btnDlEn) {
-        btnDlEn.addEventListener('click', () => {
-          const txt = generateLisp(pathEn.value, shortEn.value);
-          downloadFile(txt, 'C2T-Cad to Tekla.lsp');
-        });
-      }
-
-      // Browse DLL button handler
-      const dllBrowserVi = document.getElementById('c2t-dll-browser');
-      const dllBrowserEn = document.getElementById('c2t-dll-browser-en');
-
-      function handleDllFileSelect(inputElement, textInputElement, lang) {
-        if (inputElement.files && inputElement.files.length > 0) {
-          const file = inputElement.files[0];
-          // Due to browser security sandbox, absolute path is masked as C:\fakepath\
-          // We inform the user elegantly via an alert
-          const msgVi = `🔒 BẢO MẬT TRÌNH DUYỆT:\n\nVì lý do bảo mật hệ thống của các trình duyệt hiện đại, trang web KHÔNG ĐƯỢC PHÉP đọc trực tiếp đường dẫn tuyệt đối trên ổ đĩa của bạn (trình duyệt trả về đường dẫn giả lập: C:\\fakepath\\${file.name}).\n\n💡 HƯỚNG DẪN COPY NHANH:\n1. Mở thư mục chứa file DLL trên máy tính của bạn.\n2. Click vào thanh địa chỉ của Windows Explorer (hoặc nhấn Alt + D) để bôi đen đường dẫn.\n3. Nhấn Ctrl + C để copy đường dẫn đó.\n4. Nhấp đúp chuột vào ô nhập liệu và nhấn Ctrl + V để dán.`;
-          
-          const msgEn = `🔒 BROWSER SECURITY NOTICE:\n\nFor security reasons, web browsers are strictly RESTRICTED from reading the absolute file path on your local disk (browser returned virtual path: C:\\fakepath\\${file.name}).\n\n💡 QUICK COPY WORKAROUND:\n1. Open the folder containing the DLL file in Windows Explorer.\n2. Click the Explorer address bar (or press Alt + D) to highlight the path.\n3. Press Ctrl + C to copy the folder path.\n4. Double-click the text input field in this browser page and press Ctrl + V to paste.`;
-
-          alert(lang === 'vi' ? msgVi : msgEn);
-        }
-      }
-
-      if (dllBrowserVi && pathVi) {
-        dllBrowserVi.addEventListener('change', () => {
-          handleDllFileSelect(dllBrowserVi, pathVi, 'vi');
-        });
-      }
-      if (dllBrowserEn && pathEn) {
-        dllBrowserEn.addEventListener('change', () => {
-          handleDllFileSelect(dllBrowserEn, pathEn, 'en');
-        });
-      }
-
-      // Init
-      setTimeout(updateC2TPreviews, 500);
-    })();
+    }
 
     // Close download modal when clicking outside on the overlay background
     document.getElementById('download-email-modal').addEventListener('click', (e) => {
@@ -733,6 +637,7 @@
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeDownloadModal();
     });
+
     document.addEventListener('DOMContentLoaded', () => {
       const formVi = document.getElementById('download-form-vi');
       if (formVi) {
