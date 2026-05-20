@@ -296,7 +296,13 @@
               <div class="lisp-creator-box">
                 <div class="creator-form-group">
                   <label class="creator-label">Đường dẫn đầy đủ tới thư mục chứa C2T DLL trong máy tính</label>
-                  <input type="text" id="c2t-local-path" class="creator-input" value="D:\\iViDLab\\Tools\\C2T\\" placeholder="Ví dụ: D:\\iViDLab\\Tools\\C2T\\" />
+                  <div style="display: flex; gap: 0.75rem; width: 100%;">
+                    <input type="text" id="c2t-local-path" class="creator-input" value="D:\\iViDLab\\Tools\\C2T\\" placeholder="Ví dụ: D:\\iViDLab\\Tools\\C2T\\" style="flex: 1;" />
+                    <label class="btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; padding: 0 1.5rem; margin: 0; cursor: pointer; border-radius: 6px; font-size: 0.9rem; font-weight: 600;">
+                      Browse...
+                      <input type="file" id="c2t-dll-browser" accept=".dll" style="display: none;" />
+                    </label>
+                  </div>
                 </div>
                 
                 <div class="creator-form-group">
@@ -457,7 +463,13 @@
               <div class="lisp-creator-box">
                 <div class="creator-form-group">
                   <label class="creator-label">Full folder path to DLL file on your machine</label>
-                  <input type="text" id="c2t-local-path-en" class="creator-input" value="D:\\iViDLab\\Tools\\C2T\\" placeholder="e.g. D:\\iViDLab\\Tools\\C2T\\" />
+                  <div style="display: flex; gap: 0.75rem; width: 100%;">
+                    <input type="text" id="c2t-local-path-en" class="creator-input" value="D:\\iViDLab\\Tools\\C2T\\" placeholder="e.g. D:\\iViDLab\\Tools\\C2T\\" style="flex: 1;" />
+                    <label class="btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; padding: 0 1.5rem; margin: 0; cursor: pointer; border-radius: 6px; font-size: 0.9rem; font-weight: 600;">
+                      Browse...
+                      <input type="file" id="c2t-dll-browser-en" accept=".dll" style="display: none;" />
+                    </label>
+                  </div>
                 </div>
                 
                 <div class="creator-form-group">
@@ -677,6 +689,34 @@
         btnDlEn.addEventListener('click', () => {
           const txt = generateLisp(pathEn.value, shortEn.value);
           downloadFile(txt, 'C2T-Cad to Tekla.lsp');
+        });
+      }
+
+      // Browse DLL button handler
+      const dllBrowserVi = document.getElementById('c2t-dll-browser');
+      const dllBrowserEn = document.getElementById('c2t-dll-browser-en');
+
+      function handleDllFileSelect(inputElement, textInputElement, lang) {
+        if (inputElement.files && inputElement.files.length > 0) {
+          const file = inputElement.files[0];
+          // Due to browser security sandbox, absolute path is masked as C:\fakepath\
+          // We inform the user elegantly via an alert
+          const msgVi = `🔒 BẢO MẬT TRÌNH DUYỆT:\n\nVì lý do bảo mật hệ thống của các trình duyệt hiện đại, trang web KHÔNG ĐƯỢC PHÉP đọc trực tiếp đường dẫn tuyệt đối trên ổ đĩa của bạn (trình duyệt trả về đường dẫn giả lập: C:\\fakepath\\${file.name}).\n\n💡 HƯỚNG DẪN COPY NHANH:\n1. Mở thư mục chứa file DLL trên máy tính của bạn.\n2. Click vào thanh địa chỉ của Windows Explorer (hoặc nhấn Alt + D) để bôi đen đường dẫn.\n3. Nhấn Ctrl + C để copy đường dẫn đó.\n4. Nhấp đúp chuột vào ô nhập liệu và nhấn Ctrl + V để dán.`;
+          
+          const msgEn = `🔒 BROWSER SECURITY NOTICE:\n\nFor security reasons, web browsers are strictly RESTRICTED from reading the absolute file path on your local disk (browser returned virtual path: C:\\fakepath\\${file.name}).\n\n💡 QUICK COPY WORKAROUND:\n1. Open the folder containing the DLL file in Windows Explorer.\n2. Click the Explorer address bar (or press Alt + D) to highlight the path.\n3. Press Ctrl + C to copy the folder path.\n4. Double-click the text input field in this browser page and press Ctrl + V to paste.`;
+
+          alert(lang === 'vi' ? msgVi : msgEn);
+        }
+      }
+
+      if (dllBrowserVi && pathVi) {
+        dllBrowserVi.addEventListener('change', () => {
+          handleDllFileSelect(dllBrowserVi, pathVi, 'vi');
+        });
+      }
+      if (dllBrowserEn && pathEn) {
+        dllBrowserEn.addEventListener('change', () => {
+          handleDllFileSelect(dllBrowserEn, pathEn, 'en');
         });
       }
 
