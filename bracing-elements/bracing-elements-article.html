@@ -80,43 +80,155 @@
         </div>
       </header>
 
-      <img src="bracing_elements_3d_render.png" alt="Bracing Elements" class="article-image" style="max-height: 500px; object-fit: cover; padding: 0;">
+      <img src="bracing_elements_3d_render.png" alt="Bracing Connection Elements" class="article-image" style="max-height: 500px; object-fit: cover; padding: 0;">
 
       <div class="article-body">
         
         <!-- ==================== VIETNAMESE LANG WRAPPER ==================== -->
         <div data-lang="vi">
-          <p>Đối với hệ giằng sử dụng thép ống tròn (CHS) hoặc thép hộp rỗng (SHS/RHS), kỹ sư thường gặp khó khăn trong việc thiết kế liên kết bu lông ở 2 đầu thanh giằng. Kỹ thuật phổ biến là ép dẹt đầu ống (flattening) hoặc xẻ rãnh dọc ống để chèn bản mã (slotted tube with gusset).</p>
-
-          <p>Dựa trên tài liệu hệ thống, <strong>iViDLab Team</strong> giới thiệu các liên kết mạnh mẽ gồm: <strong>Tube gusset (S46)</strong>, <strong>Tube crossing (S47)</strong>, <strong>Tube splice (S48)</strong> và <strong>Tube hollow (S49)</strong> nhằm tự động hóa quá trình dựng hình phức tạp này.</p>
-
-          <h2>1. Ép Dẹt Đầu Ống (Flattened Ends) & Xẻ Rãnh (Slotted Ends)</h2>
-          <p>Tekla cung cấp hai tùy chọn cấu hình cơ bản cho đầu thanh giằng ống:</p>
+          <h2>1. INTRODUCTION (Tổng quan nhiệm vụ & Component ID)</h2>
+          <p>Khi thiết kế hệ giằng chịu tải trọng ngang bằng thép ống tròn (CHS) hoặc thép hộp rỗng (RHS/SHS), thách thức lớn nhất là chi tiết hóa liên kết bắt bu lông ở hai đầu thanh giằng. Kỹ thuật gia công thực tế thường sử dụng 2 phương pháp: <strong>ép dẹt đầu ống (Crushed/Flattened tube)</strong> hoặc <strong>xẻ rãnh chèn bản mã (Gusset tube/Slotted tube)</strong>.</p>
+          <p>Tài liệu Tekla Structures giới thiệu nhóm công cụ <strong>Bracing Connection Elements</strong> mạnh mẽ, cho phép mô hình hóa tự động các chi tiết này ở mức độ LOD400. Các component chủ lực bao gồm:</p>
           <ul>
-            <li><strong>Xẻ rãnh (Slotted):</strong> Cắt một đường rãnh ở giữa đầu ống, chèn bản mã vào và hàn xung quanh. Đây là phương pháp phổ biến cho cấu kiện chịu tải lớn.</li>
-            <li><strong>Ép dẹt (Flattened):</strong> Ép bẹp trực tiếp đầu ống bằng máy thủy lực và khoan lỗ bắt bu lông thẳng vào bản mã. Thích hợp cho kết cấu nhẹ, yêu cầu thẩm mỹ cao.</li>
+            <li><strong>Crushed tube in points (S46)</strong> & <strong>Crushed tube in bolts (S48):</strong> Ép dẹt đầu ống và bắt bu lông trực tiếp.</li>
+            <li><strong>Gusset tube in points (S47)</strong> & <strong>Gusset tube in bolts (S49):</strong> Xẻ rãnh dọc ống, chèn bản mã (gusset) và sử dụng thép T (Tees) hàn kín hai đầu.</li>
           </ul>
 
+          <h2>2. USE CASES TABLE (Các trường hợp thực tế)</h2>
+          <table class="project-meta-table" style="width:100%; text-align:left; border-collapse: collapse; margin-bottom: 2rem;">
+            <tr style="background: rgba(255,255,255,0.05);">
+              <th style="padding: 1rem; border-bottom: 1px solid var(--border);">Component ID</th>
+              <th style="padding: 1rem; border-bottom: 1px solid var(--border);">Mô tả (Description)</th>
+              <th style="padding: 1rem; border-bottom: 1px solid var(--border);">Ứng dụng thực tế</th>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);"><strong>S46</strong></td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Crushed tube between two points</td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Giằng thép ống tròn chịu lực vừa/nhỏ, ưu tiên tính thẩm mỹ kiến trúc (Architectural Expose).</td>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);"><strong>S47</strong></td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Tube brace between two points, two tees at each end</td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Giằng ống hạng nặng, xẻ rãnh bản mã và bịt kín đầu (Sealed tube) chống ăn mòn.</td>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);"><strong>S48 / S49</strong></td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Crushed/Gusset tube between points or bolts</td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Gắn giằng trực tiếp vào các nhóm bu lông đã có sẵn từ liên kết bản mã góc (Corner Gusset).</td>
+            </tr>
+          </table>
+
+          <h2>3. SELECTION ORDER (Quy trình thao tác)</h2>
+          <p>Tùy thuộc vào việc bạn sử dụng component "in points" hay "in bolts", quy trình click chuột sẽ khác nhau:</p>
+          
+          <div class="highlight-box">
+            <p><strong>Đối với S46 / S47 (In points):</strong></p>
+            <ol>
+              <li>Pick điểm bắt đầu (Start point) của thanh giằng.</li>
+              <li>Pick điểm kết thúc (End point) của thanh giằng.</li>
+              <li>Thanh giằng và liên kết đầu ống được tự động sinh ra sau click thứ 2.</li>
+            </ol>
+          </div>
+
+          <div class="highlight-box">
+            <p><strong>Đối với S48 / S49 (In bolts):</strong></p>
+            <ol>
+              <li>Pick vào nhóm bu lông (Bolt group) thứ nhất.</li>
+              <li>Pick vào nhóm bu lông thứ hai.</li>
+              <li>Hoặc click chuột giữa (Middle mouse) nếu chỉ muốn gán một đầu.</li>
+            </ol>
+          </div>
+
+          <h2>4. DEEP DIVE SETTINGS (Chi tiết thông số)</h2>
+          <p>Khác với các liên kết thông thường, nhóm <strong>Bracing Elements</strong> không cho phép sửa đổi các part riêng lẻ (individual objects) bằng tay sau khi sinh ra từ component. Mọi điều chỉnh phải thực hiện thông qua bảng thuộc tính (Properties dialog).</p>
+          
+          <h3>Tab Parameters (Thông số dập đầu ống)</h3>
+          <ul>
+            <li><strong>Corner dimension:</strong> Xác định bán kính vuốt khi ống từ hình tròn chuyển sang trạng thái bị ép dẹt (đối với S46).</li>
+            <li><strong>Tube end length:</strong> Chiều dài của phần dẹt (flat area), phải đủ lớn để bố trí bu lông và đảm bảo khoảng cách mép (Edge distance).</li>
+          </ul>
+
+          <h3>Tab Bolts (Bu lông)</h3>
+          <p>Đặc biệt lưu ý thiết lập <code>Thread in mat</code> (Vị trí ren). Khi kết nối giằng chịu lực lớn, nên cài đặt ren nằm ngoài mặt phẳng cắt (Thread out of shear plane) để tăng cường khả năng chịu cắt của bu lông.</p>
+
+          <h2>5. DETAIL ERRECTION TIPS (Mẹo thi công & lắp dựng)</h2>
           <div class="info-alert">
-            <strong>Kỹ thuật triển khai S46 & S49:</strong> Để sử dụng tốt <em>Tube gusset (S46)</em>, bạn cần định nghĩa chính xác khe hở giữa bản mã và thanh giằng chính (clearance gap) để thợ có thể đưa thanh giằng vào lắp ghép dễ dàng tại công trường.
+            <strong>Mẹo lắp dựng (Erection Tip):</strong> 
+            Khi sử dụng <strong>Gusset tube (S47)</strong>, ống sẽ bị hàn kín (sealed). Điều này cực kỳ quan trọng đối với các dự án mạ kẽm nhúng nóng (Hot-Dip Galvanizing). Nếu bạn bịt kín hai đầu ống, bạn PHẢI bổ sung lỗ thoát khí/khoét lỗ (Vent/Drain holes) ở tab <em>Flow holes</em> hoặc bằng tay, nếu không ống sẽ bị nổ khi nhúng vào bể kẽm nóng 450 độ C!
           </div>
         </div>
 
         <!-- ==================== ENGLISH LANG WRAPPER ==================== -->
         <div data-lang="en" style="display:none;">
-          <p>When designing bracing systems using Circular Hollow Sections (CHS) or Rectangular Hollow Sections (RHS), engineers often face challenges creating bolted connections at the brace ends. The common techniques are either flattening the tube ends or slotting the tube to insert a gusset plate.</p>
-
-          <p>Based on the system manual, the <strong>iViDLab Team</strong> introduces powerful components: <strong>Tube gusset (S46)</strong>, <strong>Tube crossing (S47)</strong>, <strong>Tube splice (S48)</strong>, and <strong>Tube hollow (S49)</strong> to automate this complex detailing process.</p>
-
-          <h2>1. Flattened Ends & Slotted Ends</h2>
-          <p>Tekla offers two primary configuration options for tubular brace ends:</p>
+          <h2>1. INTRODUCTION (Task Overview & Component ID)</h2>
+          <p>When designing transverse bracing systems using Circular Hollow Sections (CHS) or Rectangular/Square Hollow Sections (RHS/SHS), the biggest detailing challenge lies at the brace ends. The two most common fabrication techniques are <strong>Crushed/Flattened tube</strong> and <strong>Gusset/Slotted tube</strong>.</p>
+          <p>Tekla Structures provides a powerful suite of <strong>Bracing Connection Elements</strong> to automate these details to LOD400. The core components are:</p>
           <ul>
-            <li><strong>Slotted:</strong> Cutting a slit at the end of the tube, inserting a gusset plate, and welding around it. This method is preferred for heavy-duty load transfers.</li>
-            <li><strong>Flattened:</strong> Mechanically pressing the tube end flat and drilling bolt holes directly through it. Suitable for lightweight architectural structures.</li>
+            <li><strong>Crushed tube in points (S46)</strong> & <strong>Crushed tube in bolts (S48):</strong> Flattens the tube ends and applies bolting directly.</li>
+            <li><strong>Gusset tube in points (S47)</strong> & <strong>Gusset tube in bolts (S49):</strong> Slots the tube longitudinally to insert a gusset plate, often sealed with structural Tees.</li>
           </ul>
 
+          <h2>2. USE CASES TABLE</h2>
+          <table class="project-meta-table" style="width:100%; text-align:left; border-collapse: collapse; margin-bottom: 2rem;">
+            <tr style="background: rgba(255,255,255,0.05);">
+              <th style="padding: 1rem; border-bottom: 1px solid var(--border);">Component ID</th>
+              <th style="padding: 1rem; border-bottom: 1px solid var(--border);">Description</th>
+              <th style="padding: 1rem; border-bottom: 1px solid var(--border);">Practical Application</th>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);"><strong>S46</strong></td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Crushed tube between two points</td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Light/medium load bracing, highly favored in Architectural Exposed Structural Steel (AESS).</td>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);"><strong>S47</strong></td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Tube brace between two points, two tees at each end</td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Heavy-duty bracing. Slots the gusset and fully seals the tube to prevent internal corrosion.</td>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);"><strong>S48 / S49</strong></td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Crushed/Gusset tube in bolts</td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Attach the brace directly to existing bolt groups created by corner gusset macros.</td>
+            </tr>
+          </table>
+
+          <h2>3. SELECTION ORDER</h2>
+          <p>Depending on whether you use the "in points" or "in bolts" variant, the input sequence differs:</p>
+          
+          <div class="highlight-box">
+            <p><strong>For S46 / S47 (In points):</strong></p>
+            <ol>
+              <li>Pick the start point for the tube.</li>
+              <li>Pick the end point for the tube.</li>
+              <li>The tube is created automatically when you pick the end point.</li>
+            </ol>
+          </div>
+
+          <div class="highlight-box">
+            <p><strong>For S48 / S49 (In bolts):</strong></p>
+            <ol>
+              <li>Pick the first bolt group.</li>
+              <li>Pick the second bolt group.</li>
+              <li>Or click the middle mouse button if connecting only one end.</li>
+            </ol>
+          </div>
+
+          <h2>4. DEEP DIVE SETTINGS</h2>
+          <p>Unlike standard connections, the <strong>Bracing Elements</strong> components do not allow you to modify the individual objects they create manually. All adjustments MUST be routed through the macro dialog.</p>
+          
+          <h3>Parameters Tab</h3>
+          <ul>
+            <li><strong>Corner dimension:</strong> Defines the transition radius where the round tube morphs into the flat crushed state (for S46).</li>
+            <li><strong>Tube end length:</strong> The length of the flat portion. It must be sufficiently long to accommodate the bolt group and maintain proper edge distances.</li>
+          </ul>
+
+          <h3>Bolts Tab</h3>
+          <p>Pay close attention to the <code>Thread in mat</code> setting. For heavy tension/compression braces, ensure the threads are excluded from the shear plane to maximize the bolt's shear capacity.</p>
+
+          <h2>5. DETAIL ERRECTION TIPS</h2>
           <div class="info-alert">
-            <strong>Detailing Tip for S46 & S49:</strong> To effectively use the <em>Tube gusset (S46)</em> component, precisely define the clearance gap between the gusset plate and the brace to allow for smooth on-site erection.
+            <strong>Erection & Fabrication Note:</strong> 
+            When using <strong>Gusset tube (S47)</strong>, the tube ends are completely sealed. This is critical for Hot-Dip Galvanizing (HDG) projects. If the tube is sealed, you MUST manually or parametrically add vent and drain holes. Failure to do so will cause the trapped air inside the tube to violently expand and potentially rupture the tube when submerged in the 450°C molten zinc bath!
           </div>
         </div>
 
