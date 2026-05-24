@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tekla Structures System Components Portal — iViDLab</title>
+  <meta name="description" content="Khám phá BIM Component Portal cho Tekla Structures - Chỉ mục tổng hợp đầy đủ các bài viết kỹ thuật chuyên sâu và giải pháp từ iViDLab." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .portal-page { padding: 140px 2rem 5rem; position: relative; z-index: 1; min-height: 100vh; }
+    .portal-header { text-align: center; margin-bottom: 4rem; }
+    .portal-back-home { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; font-size: 0.95rem; margin-bottom: 1.5rem; transition: var(--transition); border-bottom: 1px solid transparent; padding-bottom: 2px; }
+    .portal-back-home:hover { color: var(--primary-hover); border-color: var(--primary-hover); transform: translateX(-4px); }
+    .portal-title { font-size: 3.2rem; font-weight: 800; margin-bottom: 1rem; font-family: var(--font-serif); }
+    .portal-desc { max-width: 700px; margin: 0 auto; color: var(--text-gray); font-size: 1.15rem; line-height: 1.7; }
+    
+    /* Planned Glassmorphic Card Styles */
+    .card-planned {
+      filter: grayscale(0.4) opacity(0.8);
+      position: relative;
+      overflow: hidden;
+      border: 1px dashed var(--border-gold) !important;
+      background: rgba(255, 255, 255, 0.01) !important;
+      cursor: not-allowed !important;
+      transition: var(--transition);
+    }
+    .card-planned:hover {
+      transform: none !important;
+      box-shadow: var(--shadow-sm) !important;
+    }
+    .card-planned::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(3px);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .card-planned-badge {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(15, 15, 15, 0.95);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      z-index: 3;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .card-planned .project-card-link,
+    .card-planned .project-card-overlay {
+      display: none !important;
+    }
+    
+    .project-card-image-box {
+      background: rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ===== NAVIGATION NAVBAR ===== -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">iViDLab</span>
+        <span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#home" class="nav-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+        <li><a href="index.html#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+        <li><a href="index.html#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-select-lang="vi">VN</button>
+          <button class="lang-btn" data-select-lang="en">EN</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== PORTAL CONTENT ===== -->
+  <main class="portal-page">
+    <div class="container">
+      <header class="portal-header">
+        <a href="index.html" class="portal-back-home">
+          <!-- Back arrow -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-lang="vi">Trở về Trang Chủ</span><span data-lang="en">Back to Home</span>
+        </a>
+        <h1 class="portal-title gradient-text">
+          <span data-lang="vi">Cổng Mục Lục Tekla Components</span>
+          <span data-lang="en">Tekla Components Portal</span>
+        </h1>
+        <p class="portal-desc">
+          <span data-lang="vi">Thư viện kiến thức và hướng dẫn làm chủ các liên kết, cấu kiện tiêu chuẩn (System Components) trong Tekla Structures. Được nghiên cứu và biên soạn chất lượng cao bởi iViDLab Team.</span>
+          <span data-lang="en">Knowledge hub and masterguides for standard system components in Tekla Structures. Detailed and engineered at premium standards by the iViDLab Team.</span>
+        </p>
+      </header>
+
+      <!-- Filter tabs specialized for Tekla Components -->
+      <div class="tabs-filter-bar" style="margin-bottom: 3.5rem;">
+        <button class="filter-tab-btn active" data-filter="all">
+          <span data-lang="vi">Tất Cả</span><span data-lang="en">All</span>
+        </button>
+        <button class="filter-tab-btn" data-filter="base-plates">
+          <span data-lang="vi">Chân Cột (Base Plates)</span><span data-lang="en">Base Plates</span>
+        </button>
+        <button class="filter-tab-btn" data-filter="bracings">
+          <span data-lang="vi">Hệ Giằng (Bracings)</span><span data-lang="en">Bracings</span>
+        </button>
+        <button class="filter-tab-btn" data-filter="peb">
+          <span data-lang="vi">Kèo PEB (Built-up)</span><span data-lang="en">PEB / Built-up</span>
+        </button>
+        <button class="filter-tab-btn" data-filter="clip-angles">
+          <span data-lang="vi">Thép Góc (Clip Angles)</span><span data-lang="en">Clip Angles</span>
+        </button>
+        <button class="filter-tab-btn" data-filter="end-plates">
+          <span data-lang="vi">Mặt Bích (End Plates)</span><span data-lang="en">End Plates</span>
+        </button>
+      </div>
+
+      <!-- Component Grid -->
+      <div class="projects-grid">
+
+        <!-- 1. BASE PLATES OVERVIEW (PUBLISHED) -->
+        <div class="project-lux-card" data-category="base-plates">
+          <span class="project-card-badge">Base Plates • Series 1</span>
+          <div class="project-card-image-box">
+            <img src="base-plates/images/page_41_img_2.png" alt="Base Plates Overview" class="project-card-image" style="padding: 1.2rem; object-fit: contain; height: 190px;" />
+            <div class="project-card-overlay">
+              <span style="color:#ffffff; font-weight:700; border-bottom:1px solid #c89d55; padding-bottom:4px;">VIEW DETAILS</span>
+            </div>
+          </div>
+          <div class="project-card-content">
+            <h3 class="project-card-title">Base Plates Comparison</h3>
+            <p class="project-card-desc">
+              <span data-lang="vi">So sánh chi tiết và tiêu chí lựa chọn các loại bản đế chân cột Simple Base Plate (55), U.S. 71 và Base Plate (1004).</span>
+              <span data-lang="en">In-depth comparison and selection matrix for Simple Base Plate (55), U.S. 71, and Base Plate (1004).</span>
+            </p>
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Components</td>
+                <td class="project-meta-val">55, 71, 1004</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">Status</td>
+                <td class="project-meta-val" style="color: #48bb78; font-weight: bold;">PUBLISHED</td>
+              </tr>
+            </table>
+            <div class="project-card-footer">
+              <a href="base-plates/base-plates-article.html" class="project-card-link">
+                <span data-lang="vi">Đọc Bài Viết</span><span data-lang="en">Read Article</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. BOLTED GUSSET (11) (PUBLISHED) -->
+        <div class="project-lux-card" data-category="bracings">
+          <span class="project-card-badge">Bracings • Series 2</span>
+          <div class="project-card-image-box">
+            <img src="bolted-gusset/images/page_368_img_1.png" alt="Bolted Gusset (11)" class="project-card-image" style="padding: 1.2rem; object-fit: contain; height: 190px;" />
+            <div class="project-card-overlay">
+              <span style="color:#ffffff; font-weight:700; border-bottom:1px solid #c89d55; padding-bottom:4px;">VIEW DETAILS</span>
+            </div>
+          </div>
+          <div class="project-card-content">
+            <h3 class="project-card-title">Bolted Gusset (11)</h3>
+            <p class="project-card-desc">
+              <span data-lang="vi">Hướng dẫn chi tiết bản mã liên kết giằng bắt bu lông trong Tekla Structures, cấu hình sườn sấn và thép góc liên kết.</span>
+              <span data-lang="en">Detailed masterguide for bolted gusset bracing connection, clip angles setup, and stiffeners in Tekla.</span>
+            </p>
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Components</td>
+                <td class="project-meta-val">Bolted Gusset (11)</td>
+              </tr>
+              <tr>
+                <td class="project-meta-label">Status</td>
+                <td class="project-meta-val" style="color: #48bb78; font-weight: bold;">PUBLISHED</td>
+              </tr>
+            </table>
+            <div class="project-card-footer">
+              <a href="bolted-gusset/bolted-gusset-article.html" class="project-card-link">
+                <span data-lang="vi">Đọc Bài Viết</span><span data-lang="en">Read Article</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. STIFFENED BASE PLATE (1014) (COMING SOON) -->
+        <div class="project-lux-card card-planned" data-category="base-plates">
+          <span class="project-card-badge">Base Plates • Series 1</span>
+          <div class="card-planned-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span data-lang="vi">Đang biên soạn</span><span data-lang="en">Coming Soon</span>
+          </div>
+          <div class="project-card-image-box">
+            <img src="base-plates/images/page_77_img_4.png" alt="Stiffened Base Plate 1014" class="project-card-image" style="padding: 1.2rem; object-fit: contain; height: 190px;" />
+          </div>
+          <div class="project-card-content">
+            <h3 class="project-card-title">Stiffened Base Plate</h3>
+            <p class="project-card-desc">
+              <span data-lang="vi">Làm chủ liên kết chân cột móng chịu lực lớn Stiffened Base Plate (1014) với hệ sườn đứng phân bố hình tròn, sườn sấn xiên lực.</span>
+              <span data-lang="en">Mastering advanced Stiffened Base Plate (1014) with circular stiffeners and high moment transfer mechanisms.</span>
+            </p>
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Components</td>
+                <td class="project-meta-val">1004, 1014</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- 4. SPECIAL COLUMNS BASE (1066, 1068) (COMING SOON) -->
+        <div class="project-lux-card card-planned" data-category="base-plates">
+          <span class="project-card-badge">Base Plates • Series 1</span>
+          <div class="card-planned-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span data-lang="vi">Đang biên soạn</span><span data-lang="en">Coming Soon</span>
+          </div>
+          <div class="project-card-image-box">
+            <img src="base-plates/images/page_89_img_1.png" alt="Hollow Section base plate" class="project-card-image" style="padding: 1.2rem; object-fit: contain; height: 190px;" />
+          </div>
+          <div class="project-card-content">
+            <h3 class="project-card-title">Special Column Bases</h3>
+            <p class="project-card-desc">
+              <span data-lang="vi">Liên kết chân cột hộp rỗng (1066) và chân cột vát biến đổi tiết diện (1068) chuyên sâu cho khung Zamil và cột tổ hợp Built-up.</span>
+              <span data-lang="en">Deep dive into Box Section Column Base Plate (1066) and Tapered Column Base Plate (1068) for portal frames.</span>
+            </p>
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Components</td>
+                <td class="project-meta-val">1066, 1068</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- 5. CORNER BOLTED GUSSET (57, 58) (COMING SOON) -->
+        <div class="project-lux-card card-planned" data-category="bracings">
+          <span class="project-card-badge">Bracings • Series 2</span>
+          <div class="card-planned-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span data-lang="vi">Đang biên soạn</span><span data-lang="en">Coming Soon</span>
+          </div>
+          <div class="project-card-image-box">
+            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Corner bracing" class="project-card-image" style="height: 190px;" />
+          </div>
+          <div class="project-card-content">
+            <h3 class="project-card-title">Corner Bracing Gussets</h3>
+            <p class="project-card-desc">
+              <span data-lang="vi">Kỹ thuật mô hình hóa liên kết giằng góc chéo chịu tải trọng nặng: Corner bolted gusset (57) và Wraparound gusset (58).</span>
+              <span data-lang="en">Heavy structural corner joint detailing using Corner bolted gusset (57) and Wraparound gusset (58) connections.</span>
+            </p>
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Components</td>
+                <td class="project-meta-val">57, 58</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- 6. TENSIONERS & BRACING (COMING SOON) -->
+        <div class="project-lux-card card-planned" data-category="bracings">
+          <span class="project-card-badge">Bracings • Series 2</span>
+          <div class="card-planned-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span data-lang="vi">Đang biên soạn</span><span data-lang="en">Coming Soon</span>
+          </div>
+          <div class="project-card-image-box">
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80" alt="Tensioner Central Gusset" class="project-card-image" style="height: 190px;" />
+          </div>
+          <div class="project-card-content">
+            <h3 class="project-card-title">Tensioners & Turnbuckles</h3>
+            <p class="project-card-desc">
+              <span data-lang="vi">Giải pháp mô hình hệ giằng cáp/tròn mảnh chịu kéo: Tensioner (7), Tensioner central gusset (18) và Turnbuckle bracing (S3).</span>
+              <span data-lang="en">Detaining slender tension rod systems using Tensioner (7), Tensioner central gusset (18), and Turnbuckles.</span>
+            </p>
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Components</td>
+                <td class="project-meta-val">7, 18, S3</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- 7. PEB TAPERED SECTION & BEAM (S45, S94) (COMING SOON) -->
+        <div class="project-lux-card card-planned" data-category="peb">
+          <span class="project-card-badge">PEB • Series 3</span>
+          <div class="card-planned-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span data-lang="vi">Đang biên soạn</span><span data-lang="en">Coming Soon</span>
+          </div>
+          <div class="project-card-image-box">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="PEB Section creator" class="project-card-image" style="height: 190px;" />
+          </div>
+          <div class="project-card-content">
+            <h3 class="project-card-title">PEB Tapered Frame</h3>
+            <p class="project-card-desc">
+              <span data-lang="vi">Cách dựng cấu kiện biến đổi tiết diện tối ưu khối lượng: Tapered beam 2 (S45) và cấu kiện tiền chế PEB Tapered section (S94).</span>
+              <span data-lang="en">Generating optimized variable frame structures using Tapered beam 2 (S45) and PEB Tapered section (S94).</span>
+            </p>
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Components</td>
+                <td class="project-meta-val">S45, S94</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- 8. CLIP ANGLES (116, 117) (COMING SOON) -->
+        <div class="project-lux-card card-planned" data-category="clip-angles">
+          <span class="project-card-badge">Clip Angles • Series 4</span>
+          <div class="card-planned-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span data-lang="vi">Đang biên soạn</span><span data-lang="en">Coming Soon</span>
+          </div>
+          <div class="project-card-image-box">
+            <img src="https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=800&q=80" alt="Clip angle connection" class="project-card-image" style="height: 190px;" />
+          </div>
+          <div class="project-card-content">
+            <h3 class="project-card-title">Standard Clip Angles</h3>
+            <p class="project-card-desc">
+              <span data-lang="vi">Mô hình hóa chi tiết liên kết khớp dầm phụ vào bụng dầm chính bằng Clip Angle (116) và Two sided clip angle (117) xiên góc.</span>
+              <span data-lang="en">Detailing pinned connections using standard Clip Angle (116) and Two sided clip angle (117) web connectors.</span>
+            </p>
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Components</td>
+                <td class="project-meta-val">116, 117, 141</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- 9. END PLATES MOMENT (14, 27) (COMING SOON) -->
+        <div class="project-lux-card card-planned" data-category="end-plates">
+          <span class="project-card-badge">End Plates • Series 5</span>
+          <div class="card-planned-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span data-lang="vi">Đang biên soạn</span><span data-lang="en">Coming Soon</span>
+          </div>
+          <div class="project-card-image-box">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Column - 2 beams connection" class="project-card-image" style="height: 190px;" />
+          </div>
+          <div class="project-card-content">
+            <h3 class="project-card-title">Moment End Plates</h3>
+            <p class="project-card-desc">
+              <span data-lang="vi">Thiết kế các chi tiết nối cứng chịu mô-men uốn của dầm vào cánh cột: Column - 2 beams (14) và Stiffened end plate (27) gia cường.</span>
+              <span data-lang="en">Modeling rigid moment joints using Column - 2 beams (14) and Stiffened end plate (27) configurations.</span>
+            </p>
+            <table class="project-meta-table">
+              <tr>
+                <td class="project-meta-label">Components</td>
+                <td class="project-meta-val">14, 27</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-copy">
+        <span data-lang="vi">© 2026 iViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+        <span data-lang="en">© 2026 iViDLab. Digital solutions for the construction industry.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  
+  <!-- Interactive Filtering Script for Portal Cards -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabBtns = document.querySelectorAll('.filter-tab-btn');
+      const cards = document.querySelectorAll('.project-lux-card');
+      
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class
+          tabBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          const filter = btn.getAttribute('data-filter');
+          
+          cards.forEach(card => {
+            const categories = card.getAttribute('data-category');
+            if (filter === 'all' || categories.includes(filter)) {
+              card.style.display = 'block';
+              // Trigger slight animation
+              card.style.opacity = '0';
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transition = 'opacity 0.4s ease';
+              }, 30);
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
