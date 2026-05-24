@@ -263,6 +263,14 @@
         </div>
       </div>
     </div>
+    <div class="charts-grid" style="grid-template-columns: 1fr; margin-top: -0.5rem;">
+      <div class="chart-container">
+        <div class="chart-title">👁️ So Sánh Lượt Xem & Lượt Tải (Conversion Rate)</div>
+        <div style="height: 250px; position: relative;">
+          <canvas id="conversionChart"></canvas>
+        </div>
+      </div>
+    </div>
 
     <!-- LOGS TABLE -->
     <div class="logs-table-container">
@@ -320,6 +328,7 @@
 
     let timelineChartInstance = null;
     let domainChartInstance = null;
+    let conversionChartInstance = null;
 
     function unlockDashboard(event) {
       if (event) event.preventDefault();
@@ -352,34 +361,44 @@
       seedMockData();
       const logs = JSON.parse(safeStorage.getItem('ividlab_download_logs') || '[]');
       
-      // Update global stats via Abacus API
-      fetch('https://abacus.jasoncameron.dev/get/ividlab/views')
-        .then(res => {
-          if (!res.ok && res.status !== 400 && res.status !== 404) throw new Error('API Error');
-          return res.json();
-        })
-        .then(data => {
-          document.getElementById('stat-total-views').innerText = data.value || 0;
-        })
-        .catch(e => {
-          console.error(e);
-          document.getElementById('stat-total-views').innerText = '0 (Bị chặn/Lỗi)';
-        });
+      // Update global stats via Abacus API using Promise.all
+      Promise.all([
+        fetch('https://abacus.jasoncameron.dev/get/ividlab/views').then(r => r.json()).catch(() => ({value: 0})),
+        fetch('https://abacus.jasoncameron.dev/get/ividlab/downloads').then(r => r.json()).catch(() => ({value: 0}))
+      ]).then(([viewsData, downloadsData]) => {
+        const globalViews = viewsData.value || 0;
+        const globalDownloads = Math.max(downloadsData.value || 0, logs.length);
 
-      fetch('https://abacus.jasoncameron.dev/get/ividlab/downloads')
-        .then(res => {
-          if (!res.ok && res.status !== 400 && res.status !== 404) throw new Error('API Error');
-          return res.json();
-        })
-        .then(data => {
-          // If global counter is smaller than local logs, it means counter reset, keep max
-          const count = Math.max(data.value || 0, logs.length);
-          document.getElementById('stat-total-downloads').innerText = count;
-        })
-        .catch(e => {
-          console.error(e);
-          document.getElementById('stat-total-downloads').innerText = logs.length;
+        document.getElementById('stat-total-views').innerText = globalViews;
+        document.getElementById('stat-total-downloads').innerText = globalDownloads;
+
+        // Render Conversion Chart
+        if (conversionChartInstance) conversionChartInstance.destroy();
+        const ctxConv = document.getElementById('conversionChart').getContext('2d');
+        conversionChartInstance = new Chart(ctxConv, {
+          type: 'bar',
+          data: {
+            labels: ['Lượt Xem Web', 'Lượt Tải Xuống'],
+            datasets: [{
+              label: 'Số lượng',
+              data: [globalViews, globalDownloads],
+              backgroundColor: ['#b794f4', '#4fd1c5'],
+              borderWidth: 0,
+              borderRadius: 6,
+              barPercentage: 0.6
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#8892a4', stepSize: 1 } },
+              x: { grid: { display: false }, ticks: { color: '#8892a4', font: { weight: 'bold' } } }
+            }
+          }
         });
+      });
       
       const uniqueEmails = [...new Set(logs.map(l => l.email.toLowerCase()))];
       document.getElementById('stat-unique-emails').innerText = uniqueEmails.length;
