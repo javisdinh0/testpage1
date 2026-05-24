@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Special Column Bases (1066 & 1068) — iViDLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 950px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.25; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-image { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); margin: 2rem 0; box-shadow: var(--shadow); background: rgba(255,255,255,0.02); }
+    .article-body { font-size: 1.12rem; line-height: 1.85; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); margin: 2.8rem 0 1.2rem; font-size: 1.85rem; font-family: 'Space Grotesk', sans-serif; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.5rem; }
+    .article-body h3 { color: var(--text-primary); margin: 2rem 0 1rem; font-size: 1.4rem; font-family: 'Space Grotesk', sans-serif; }
+    .article-body p { margin-bottom: 1.5rem; }
+    .article-body ul, .article-body ol { margin-bottom: 2rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .highlight-box { background: rgba(99,179,237,0.03); border-left: 4px solid var(--accent-blue); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; border: 1px solid rgba(99,179,237,0.08); border-left-width: 4px; }
+    .info-alert { background: rgba(31,138,128,0.03); border-left: 4px solid var(--accent-cyan); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; border: 1px solid rgba(31,138,128,0.08); border-left-width: 4px; }
+    
+    .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+    .img-card { background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; text-align: center; }
+    .img-card img { max-width: 100%; border-radius: 4px; max-height: 250px; object-fit: contain; background: rgba(255,255,255,0.02); }
+    .img-card-title { font-size: 0.9rem; color: var(--text-primary); margin-top: 0.75rem; font-weight: 500; }
+
+    @media (max-width: 768px) {
+      .article-title { font-size: 2.2rem; }
+      .article-container { padding: 1.5rem; }
+      .img-grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">iViDLab</span>
+        <span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#home" class="nav-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+        <li><a href="../index.html#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+        <li><a href="../index.html#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-select-lang="vi">VN</button>
+          <button class="lang-btn" data-select-lang="en">EN</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <header class="article-header">
+        <a href="../index.html" class="article-back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-lang="vi">Quay lại danh sách</span><span data-lang="en">Back to list</span>
+        </a>
+        <h1 class="article-title">
+          <span data-lang="vi">Giải pháp chân cột đặc biệt: Chân cột hộp rỗng (1066) & Cột biến đổi tiết diện (1068)</span>
+          <span data-lang="en">Special Column Bases: Hollow Section Column Base Plate (1066) & Tapered Column Base Plate (1068)</span>
+        </h1>
+        <div class="article-meta">
+          <span data-lang="vi">Chuyên mục: Tekla Structures</span><span data-lang="en">Category: Tekla Structures</span>
+          <span>•</span>
+          <span data-lang="vi">Ngày đăng: 24/05/2026</span><span data-lang="en">Published: May 24, 2026</span>
+          <span>•</span>
+          <span data-lang="vi">Tác giả: iViDLab Team</span><span data-lang="en">Author: iViDLab Team</span>
+        </div>
+      </header>
+
+      <img src="images/img_p132_0.png" alt="Special Column Base Overview" class="article-image" style="max-height: 380px; object-fit: contain; padding: 2rem 0;">
+
+      <div class="article-body">
+        
+        <!-- ==================== VIETNAMESE LANG WRAPPER ==================== -->
+        <div data-lang="vi">
+          <p>Trong thực tế thiết kế kết cấu thép, không phải lúc nào các kỹ sư cũng sử dụng tiết diện chữ I hoặc H chuẩn. Khung Zamil, các công trình đặc thù thường sử dụng tiết diện cột vát (tapered column) hoặc cột hộp rỗng (hollow section). Để mô hình hóa chính xác những tiết diện này trong Tekla Structures, <strong>Component 1066 (Hollow Section Base Plate)</strong> và <strong>1068 (Tapered Column Base Plate)</strong> là những công cụ không thể thay thế.</p>
+
+          <p>Dựa trên tài liệu hệ thống của Tekla <code>TS_COMP_2025_en_System components.pdf</code>, <strong>iViDLab Team</strong> xin giới thiệu chi tiết cách vận dụng hai loại liên kết này một cách hiệu quả nhất.</p>
+
+          <h2>1. Cột biến đổi tiết diện (Tapered Column) - Component 1068</h2>
+          <p>Liên kết 1068 được thiết kế riêng cho các cấu kiện cột có cánh hoặc bụng thay đổi kích thước theo chiều dọc. Hệ thống sườn gia cường sẽ tự động bắt theo độ nghiêng của cánh cột, một tính năng mà các component thông thường không hỗ trợ tốt.</p>
+
+          <div class="info-alert">
+            <strong>Mẹo chuyên gia:</strong> Đảm bảo rằng cấu kiện cột của bạn được định nghĩa đúng thuộc tính tiết diện biến đổi (parametric profile) trước khi áp dụng component 1068 để hệ thống tự động nhận diện góc nghiêng.
+          </div>
+
+          <h2>2. Cột hộp rỗng (Hollow Section) - Component 1066</h2>
+          <p>Đối với cột hộp rỗng chữ nhật hoặc vuông, component 1066 giúp bố trí sườn gia cường bao quanh chu vi ngoài hoặc ẩn bên trong lòng cột nếu tiết diện đủ lớn. Chú ý khai báo lỗ thoát nước/thi công (drain/vent holes) trên bản đế nếu cột được đổ bê tông bên trong hoặc cần mạ kẽm nhúng nóng.</p>
+
+          <div class="img-grid-2">
+            <div class="img-card">
+              <img src="images/img_p131_0.png" alt="Hollow Section Details">
+              <div class="img-card-title">Cấu hình cột hộp rỗng</div>
+            </div>
+            <div class="img-card">
+              <img src="images/img_p136_0.png" alt="Tapered Column Configuration">
+              <div class="img-card-title">Gia cường cột biến đổi tiết diện</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== ENGLISH LANG WRAPPER ==================== -->
+        <div data-lang="en" style="display:none;">
+          <p>In structural steel design practice, standard I or H sections are not always the default choice. Portal frames and specialized structures frequently employ tapered columns or hollow sections. To accurately model these in Tekla Structures, <strong>Component 1066 (Hollow Section Base Plate)</strong> and <strong>1068 (Tapered Column Base Plate)</strong> are indispensable tools.</p>
+
+          <p>Based on Tekla's system documentation <code>TS_COMP_2025_en_System components.pdf</code>, the <strong>iViDLab Team</strong> provides a detailed guide on how to utilize these connections most effectively.</p>
+
+          <h2>1. Tapered Column Base Plate - Component 1068</h2>
+          <p>Component 1068 is exclusively designed for column members with varying flange or web dimensions along their length. The stiffener system automatically adapts to the inclination of the column flange, a feature not well-supported by standard base plate components.</p>
+
+          <div class="info-alert">
+            <strong>Pro Tip:</strong> Ensure your column member is correctly defined with a parametric profile attribute before applying component 1068, so the system automatically recognizes the taper angle.
+          </div>
+
+          <h2>2. Hollow Section Base Plate - Component 1066</h2>
+          <p>For rectangular or square hollow columns, component 1066 assists in arranging stiffeners around the outer perimeter or hidden inside the column if the section is large enough. Pay attention to defining drain/vent holes on the base plate if the column is concrete-filled or requires hot-dip galvanizing.</p>
+
+          <div class="img-grid-2">
+            <div class="img-card">
+              <img src="images/img_p131_0.png" alt="Hollow Section Details">
+              <div class="img-card-title">Hollow Section Details</div>
+            </div>
+            <div class="img-card">
+              <img src="images/img_p136_0.png" alt="Tapered Column Configuration">
+              <div class="img-card-title">Tapered Column Reinforcements</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 iViDLab. <span data-lang="vi">Bản quyền thuộc về javisdinh0.</span><span data-lang="en">All rights reserved by javisdinh0.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../app.js"></script>
+</body>
+</html>
