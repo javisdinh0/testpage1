@@ -1,0 +1,6 @@
+# iViDLab Website Git Ignore
+Doc/
+Thumbs.db
+.DS_Store
+*.dat
+*.tmp
