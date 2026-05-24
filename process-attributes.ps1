@@ -18,7 +18,7 @@ $mappings = @(
     [PSCustomObject]@{
         Folder = "bolted-gusset"
         HtmlFile = "bolted-gusset-article.html"
-        Patterns = @("j11", "j400000011", "*(11)*")
+        Patterns = @("j11")
         TitleVi = "Tải Về Sample Attributes Giằng Bolted Gusset (11)"
         TitleEn = "Download Bolted Gusset (11) Sample Attributes"
         DescVi = "Bộ tệp cấu hình thuộc tính (Attributes) đã được iViDLab Team tối ưu hóa sẵn. Hãy tải về và chép vào thư mục <code>attributes</code> của mô hình Tekla để sử dụng ngay lập tức:"
