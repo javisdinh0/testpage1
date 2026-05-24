@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Base Plates Overview (55, 71, 1004) Guide — iViDLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 950px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.25; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-image { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); margin: 2rem 0; box-shadow: var(--shadow); background: rgba(255,255,255,0.02); }
+    .article-body { font-size: 1.12rem; line-height: 1.85; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); margin: 2.8rem 0 1.2rem; font-size: 1.85rem; font-family: 'Space Grotesk', sans-serif; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.5rem; }
+    .article-body h3 { color: var(--text-primary); margin: 2rem 0 1rem; font-size: 1.4rem; font-family: 'Space Grotesk', sans-serif; }
+    .article-body p { margin-bottom: 1.5rem; }
+    .article-body ul, .article-body ol { margin-bottom: 2rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .highlight-box { background: rgba(99,179,237,0.03); border-left: 4px solid var(--accent-blue); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; border: 1px solid rgba(99,179,237,0.08); border-left-width: 4px; }
+    .info-alert { background: rgba(31,138,128,0.03); border-left: 4px solid var(--accent-cyan); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; border: 1px solid rgba(31,138,128,0.08); border-left-width: 4px; }
+    
+    .tech-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.95rem; }
+    .tech-table th { background: rgba(255,255,255,0.03); color: var(--text-primary); font-weight: 600; text-align: left; padding: 1rem; border: 1px solid var(--border); }
+    .tech-table td { padding: 1rem; border: 1px solid var(--border); vertical-align: top; color: var(--text-secondary); }
+    .tech-table tr:nth-child(even) { background: rgba(255,255,255,0.01); }
+    
+    .img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+    .img-card { background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; text-align: center; }
+    .img-card img { max-width: 100%; border-radius: 4px; max-height: 180px; object-fit: contain; background: rgba(255,255,255,0.02); }
+    .img-card-title { font-size: 0.9rem; color: var(--text-primary); margin-top: 0.75rem; font-weight: 500; }
+    
+    .mermaid-styled { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin: 2rem 0; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text-primary); line-height: 1.5; }
+
+    @media (max-width: 768px) {
+      .article-title { font-size: 2.2rem; }
+      .article-container { padding: 1.5rem; }
+      .img-grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">iViDLab</span>
+        <span class="logo-bracket">/&gt;</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html#home" class="nav-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+        <li><a href="../index.html#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+        <li><a href="../index.html#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-select-lang="vi">VN</button>
+          <button class="lang-btn" data-select-lang="en">EN</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <header class="article-header">
+        <a href="../index.html" class="article-back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-lang="vi">Quay lại danh sách</span><span data-lang="en">Back to list</span>
+        </a>
+        <h1 class="article-title">
+          <span data-lang="vi">Lựa Chọn Bản Đế Chân Cột Trong Tekla: So Sánh Simple Base Plate (55), U.S. 71 và Base Plate (1004)</span>
+          <span data-lang="en">Selecting Base Plates in Tekla: Comparing Simple Base Plate (55), U.S. 71, and Base Plate (1004)</span>
+        </h1>
+        <div class="article-meta">
+          <span data-lang="vi">Chuyên mục: Tekla Structures</span><span data-lang="en">Category: Tekla Structures</span>
+          <span>•</span>
+          <span data-lang="vi">Ngày đăng: 24/05/2026</span><span data-lang="en">Published: May 24, 2026</span>
+          <span>•</span>
+          <span data-lang="vi">Tác giả: iViDLab Team</span><span data-lang="en">Author: iViDLab Team</span>
+        </div>
+      </header>
+
+      <img src="images/page_41_img_2.png" alt="Simple Base Plate (55) Overview" class="article-image" style="max-height: 380px; object-fit: contain; padding: 2rem 0;">
+
+      <div class="article-body">
+        
+        <!-- ==================== VIETNAMESE LANG WRAPPER ==================== -->
+        <div data-lang="vi">
+          <p>Thiết kế chi tiết liên kết chân cột (base plate design) là một trong những bước tối quan trọng trong quy trình Detailer kết cấu thép. Liên kết này truyền toàn bộ tải trọng từ hệ khung siêu tĩnh phía trên xuống móng bê tông cốt thép. Việc lựa chọn cấu kiện chân cột phù hợp trong Tekla Structures không chỉ ảnh hưởng trực tiếp đến tốc độ mô hình hóa (modeling speed) mà còn quyết định sự chính xác khi chế tạo tại xưởng và lắp ghép ngoài công trường.</p>
+
+          <p>Bài viết này của <strong>iViDLab Team</strong>, dựa trên tài liệu chuẩn hóa <code>TS_COMP_2025_en_System components.pdf</code> (Trang 41 - 100), sẽ giúp bạn so sánh chi tiết 3 giải pháp chân cột phổ biến nhất: <strong>Simple base plate (55)</strong>, <strong>U.S. Base plate (71)</strong> và <strong>Base plate (1004)</strong>.</p>
+
+          <h2>1. Tổng quan & Bản đồ 3 loại chân cột phổ biến</h2>
+          <p>Mỗi cấu kiện chân cột tiêu chuẩn trong Tekla được lập trình để giải quyết một trường hợp chịu lực cụ thể của chân cột kết cấu thép:</p>
+          
+          <div class="img-grid-3">
+            <div class="img-card">
+              <img src="images/page_41_img_2.png" alt="Simple Base Plate 55" />
+              <div class="img-card-title">Simple Base Plate (55)</div>
+            </div>
+            <div class="img-card">
+              <img src="images/page_52_img_1.png" alt="U.S. Base Plate 71" />
+              <div class="img-card-title">U.S. Base Plate (71)</div>
+            </div>
+            <div class="img-card">
+              <img src="images/page_74_img_1.png" alt="Base Plate 1004" />
+              <div class="img-card-title">Base Plate (1004)</div>
+            </div>
+          </div>
+
+          <p>Dưới đây là bảng so sánh trực quan các tính năng cốt lõi giúp kỹ sư detailer đưa ra lựa chọn chính xác:</p>
+
+          <table class="tech-table">
+            <thead>
+              <tr>
+                <th>Tiêu chí so sánh</th>
+                <th>Simple Base Plate (55)</th>
+                <th>U.S. Base Plate (71)</th>
+                <th>Base Plate (1004)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Hồ sơ cột áp dụng</strong></td>
+                <td>Hồ sơ chữ I đối xứng, thép hộp (RHS)</td>
+                <td>Hồ sơ chữ I, cột hộp rỗng chữ nhật/tròn</td>
+                <td>Bất kỳ loại tiết diện nào (I, HSS, Built-up...)</td>
+              </tr>
+              <tr>
+                <td><strong>Liên kết sườn gia cường</strong></td>
+                <td>Cơ bản (Sườn phẳng ở bụng hoặc cánh)</td>
+                <td>Chuyên nghiệp (Sườn xiên góc, sườn chữ U)</td>
+                <td>Đầy đủ mọi tùy chọn nâng cao</td>
+              </tr>
+              <tr>
+                <td><strong>Tạo bu lông neo (Anchor Rods)</strong></td>
+                <td>Không tạo bu lông neo tự động</td>
+                <td>Có tạo bu lông neo, bản đệm neo phụ</td>
+                <td>Sinh bu lông neo nâng cao, đai ốc, long đền đệm</td>
+              </tr>
+              <tr>
+                <td><strong>Vát cạnh & Tùy biến tấm</strong></td>
+                <td>Đơn giản, vát 4 góc thẳng</td>
+                <td>Vát xiên và cắt uốn tấm cạnh phức tạp</td>
+                <td>Hoàn toàn tự do vát cạnh và tạo góc bo</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>2. Quy trình thao tác click chuột dựng chân cột (Selection Order)</h2>
+          <p>Để chân cột được sinh ra chính xác và định hướng bu lông đúng góc thiết kế, detailer cần tuân thủ thứ tự click chuột tiêu chuẩn dưới đây:</p>
+          
+          <div class="mermaid-styled">
+            1. Click chọn cấu kiện chính (Cột dầm thép)<br>
+            2. Click chọn 1 điểm trên trục hoặc điểm chân cột móng hình học<br>
+            3. Cấu kiện chân cột và bu lông sẽ tự động được sinh ra căn đều theo trọng tâm tiết diện cột.
+          </div>
+
+          <h2>3. Đi sâu vào chi tiết thiết lập các cấu kiện</h2>
+
+          <h3>3.1. Simple base plate (55) - Sự tinh giản tối đa</h3>
+          <p>Đúng như tên gọi của nó, cấu kiện <strong>55</strong> dùng cho các liên kết chân khớp đơn giản, chân cột phụ chịu lực dọc nhỏ và không có lực nhổ uốn ngược.</p>
+          <img src="images/page_42_img_1.png" alt="Simple Base Plate 55 settings" class="article-image" style="max-height: 300px; object-fit: contain;">
+          <p><strong>Cài đặt cốt lõi trên Tab Picture:</strong>
+            <ul>
+              <li><strong>(1) Thickness / Width / Height:</strong> Chiều dày, chiều rộng và chiều cao của bản đế chính.</li>
+              <li><strong>(2) Horizontal/Vertical offset:</strong> Độ dịch chuyển bản đế so với tâm cột hình học.</li>
+              <li>**Ưu điểm:** Cực kỳ gọn nhẹ, dựng hình nhanh, chiếm ít tài nguyên hệ thống khi dựng các nhà công nghiệp có hàng trăm chân cột phụ.</li>
+            </ul>
+          </p>
+
+          <h3>3.2. U.S. Base plate (71) - Tiêu chuẩn cơ điện lực và giằng góc xiên</h3>
+          <p>Cấu kiện <strong>71</strong> được kế thừa từ tiêu chuẩn detailer của Mỹ, nổi tiếng với hệ sườn sấn xiên và thép góc gối chịu lực cắt.</p>
+          <ul>
+            <li><strong>Sườn xiên gối (Beam stiffeners):</strong> Hỗ trợ hàn trực tiếp sườn chéo vào bản đế và bụng cột để chống uốn nách cột do lực ngang lớn.</li>
+            <li><strong>Bản đệm hàn (Shim plates):</strong> Hỗ trợ thiết lập khe hở vữa rót không co ngót (grout thickness) và chèn thêm các bản thép mỏng chống sụt lún khi siết đai ốc.</li>
+          </ul>
+
+          <h3>3.3. Base plate (1004) - Tiêu chuẩn vàng của hệ thống</h3>
+          <p>Đối với chân cột chịu lực lớn trong khung Zamil hoặc chân cột khung cổng siêu tĩnh chịu mô-men uốn cao, **Base plate (1004)** chính là sự lựa chọn tối cao nhờ tính năng tạo bu lông neo và sườn sấn hoàn hảo nhất.</p>
+          <img src="images/page_77_img_4.png" alt="Base Plate 1004 Picture Settings" class="article-image" style="max-height: 320px; object-fit: contain;">
+          
+          <p><strong>Cấu hình Tab Anchor Rods nâng cao:</strong></p>
+          <img src="images/page_89_img_1.png" alt="Anchor Rods detailing settings" class="article-image" style="max-height: 280px; object-fit: contain;">
+          <ul>
+            <li><strong>Anchor rod profile:</strong> Chọn đường kính thanh ren chịu lực kéo lớn (ví dụ: `M24`, `M30`).</li>
+            <li><strong>Grout thickness:</strong> Khoảng hở đổ vữa lót tự chảy cường độ cao (thông thường từ 30mm - 50mm).</li>
+            <li><strong>Anchor plate & Washer plates:</strong> Tạo bản đệm vuông/tròn ở chân bu lông để neo giữ cứng trong bê tông đài móng móng.</li>
+          </ul>
+
+          <h2>4. Hướng dẫn & mẹo thực tế cho Detailer (Tips & Tricks)</h2>
+          <div class="highlight-box">
+            <ul>
+              <li><strong>Xử lý lực cắt ngang cực lớn (Shear Key/Shear Lug):</strong> Khi lực cắt dưới chân cột vượt quá khả năng chịu cắt của bu lông neo, tuyệt đối không được tăng số lượng bu lông một cách vô lý. Hãy sử dụng tùy chọn **Shear Key** trên tab *Parameters* của cấu kiện 1004 để tạo một đoạn thép hình chữ I hoặc thép hộp hàn dưới đáy bản mã cắm sâu vào bê tông để chịu lực cắt an toàn.</li>
+              <li><strong>Lỗ thoát khí vữa rót (Grout Hole):</strong> Với bản đế có kích thước lớn hơn 500x500mm, khi đổ vữa lót móng rất dễ bị bọt khí bên trong dẫn đến rỗng móng chân cột. Hãy thiết lập tạo ít nhất 1 lỗ tròn đường kính D50 ở tâm bản bụng cột trên tab *Parameters* để làm lỗ thoát khí và rót vữa thông suốt.</li>
+              <li><strong>Tung sai lắp dựng ngoài công trường (Tolerance):</strong> Đường kính lỗ luồn bu lông neo trên bản đế nên được thiết lập rộng hơn đường kính bu lông ít nhất 6mm - 10mm (ví dụ bu lông M24 thì lỗ bản đế D30 - D34) kèm theo một **Washer plate** dày bắt phía trên để đảm bảo việc căn chỉnh định vị chân cột dễ dàng khi lắp dựng thực tế ngoài công trường có sai số định vị.</li>
+            </ul>
+          </div>
+
+          <p>Hi vọng bài so sánh chuyên sâu chân cột từ <strong>iViDLab Team</strong> sẽ giúp bạn tự tin chọn cấu kiện chính xác cho mọi dự án thép nhà công nghiệp và khung kèo lớn trong tương lai!</p>
+        </div>
+
+
+        <!-- ==================== ENGLISH LANG WRAPPER ==================== -->
+        <div data-lang="en">
+          <p>Detailing base plate connections is one of the most critical steps in structural steel detailing. This joint transfers all loads from the upper super-structures down to the concrete foundation. Selecting the right base plate component in Tekla Structures directly affects not only your modeling speed but also workshop fabrication accuracy and site erection efficiency.</p>
+
+          <p>This comprehensive comparison guide by the <strong>iViDLab Team</strong>, based on the standardized <code>TS_COMP_2025_en_System components.pdf</code> manual (Pages 41 - 100), will deep dive into the three most popular base plate joints: <strong>Simple base plate (55)</strong>, <strong>U.S. Base plate (71)</strong>, and <strong>Base plate (1004)</strong>.</p>
+
+          <h2>1. Overview & Comparison of the 3 Standard Joints</h2>
+          <p>Each standard base plate component in Tekla is programmed to resolve specific structural force transfer cases:</p>
+          
+          <div class="img-grid-3">
+            <div class="img-card">
+              <img src="images/page_41_img_2.png" alt="Simple Base Plate 55" />
+              <div class="img-card-title">Simple Base Plate (55)</div>
+            </div>
+            <div class="img-card">
+              <img src="images/page_52_img_1.png" alt="U.S. Base Plate 71" />
+              <div class="img-card-title">U.S. Base Plate (71)</div>
+            </div>
+            <div class="img-card">
+              <img src="images/page_74_img_1.png" alt="Base Plate 1004" />
+              <div class="img-card-title">Base Plate (1004)</div>
+            </div>
+          </div>
+
+          <p>The comparative technical matrix below outlines the core functionalities to help detailers make the right choice:</p>
+
+          <table class="tech-table">
+            <thead>
+              <tr>
+                <th>Feature / Criterion</th>
+                <th>Simple Base Plate (55)</th>
+                <th>U.S. Base Plate (71)</th>
+                <th>Base Plate (1004)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Compatible Column Profile</strong></td>
+                <td>Symmetric I-beam, hollow box section (RHS)</td>
+                <td>I-beam, hollow round/rectangular column</td>
+                <td>Any profile types (I, HSS, Built-up...)</td>
+              </tr>
+              <tr>
+                <td><strong>Stiffener Configurations</strong></td>
+                <td>Basic (Flat plates at web or flanges)</td>
+                <td>Professional (Skewed gussets, U-stiffeners)</td>
+                <td>Highly customizable advanced options</td>
+              </tr>
+              <tr>
+                <td><strong>Anchor Rods Generation</strong></td>
+                <td>No automated anchor rod generation</td>
+                <td>Supported with extra anchor plate detailing</td>
+                <td>Advanced anchor rod, washers & nut assemblies</td>
+              </tr>
+              <tr>
+                <td><strong>Plate Chamfers & Cuts</strong></td>
+                <td>Simple straight 4-corner chamfering</td>
+                <td>Skewed skewing and complex plate profiles</td>
+                <td>Fully customized chamfers and edge curves</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>2. Pick Sequence & Selection Order</h2>
+          <p>To position the base plate and orientate the anchor rods correctly along your workplane, strictly follow this standard picking sequence:</p>
+          
+          <div class="mermaid-styled">
+            1. Select the main part (Steel Column or Beam)<br>
+            2. Click a point along the column profile axis or foundation geometric center<br>
+            3. The base plate and anchor assemblies automatically generate centered on the column profile gravity center.
+          </div>
+
+          <h2>3. Detailing and Deep-Dive Parameter Settings</h2>
+
+          <h3>3.1. Simple base plate (55) - Ultimate Simplicity</h3>
+          <p>Component <strong>55</strong> is designed specifically for simple pinned joints, secondary posts, and columns subjected to low axial load with zero tension uplift.</p>
+          <img src="images/page_42_img_1.png" alt="Simple Base Plate 55 settings" class="article-image" style="max-height: 300px; object-fit: contain;">
+          <p><strong>Core parameters on the Picture Tab:</strong>
+            <ul>
+              <li><strong>(1) Thickness / Width / Height:</strong> Geometry settings for the primary base plate.</li>
+              <li><strong>(2) Horizontal/Vertical offset:</strong> Shifting the plate center away from the column center.</li>
+              <li>**Advantage:** Fast modeling, low memory footprint when generating industrial structures with hundreds of secondary wind columns.</li>
+            </ul>
+          </p>
+
+          <h3>3.2. U.S. Base plate (71) - Rigid Joint and Skewed Gusset Configurations</h3>
+          <p>Component <strong>71</strong> is derived from classic US structural detailing standards, highly regarded for its angled skewed stiffeners and shear keys.</p>
+          <ul>
+            <li><strong>Beam stiffeners:</strong> Diagonal stiffening plates welded to base plates and column webs to resist heavy wind and crane bending moments.</li>
+            <li><strong>Shim plates:</strong> Defines concrete grout thickness clearance and adds extra shim plate packs to prevent buckling during anchor bolt tightening.</li>
+          </ul>
+
+          <h3>3.3. Base plate (1004) - The Industry Gold Standard</h3>
+          <p>For heavy moments joints in portal frame Zamil buildings and ultra-stiff portal frames, **Base plate (1004)** represents the standard choice thanks to its highly customizable anchor rods and stiffeners tab.</p>
+          <img src="images/page_77_img_4.png" alt="Base Plate 1004 Picture Settings" class="article-image" style="max-height: 320px; object-fit: contain;">
+          
+          <p><strong>Advanced Anchor Rod Detailing:</strong></p>
+          <img src="images/page_89_img_1.png" alt="Anchor Rods detailing settings" class="article-image" style="max-height: 280px; object-fit: contain;">
+          <ul>
+            <li><strong>Anchor rod profile:</strong> Select your thread rod diameters (e.g. `M24`, `M30`).</li>
+            <li><strong>Grout thickness:</strong> Clearance space for high-strength non-shrink grout pours (typically 30mm - 50mm).</li>
+            <li><strong>Anchor plate & Washer plates:</strong> Custom square or circular plates buried in concrete pad foundation to anchor the structural columns firmly.</li>
+          </ul>
+
+          <h2>4. Expert Detailing Erection Advice (Tips & Tricks)</h2>
+          <div class="highlight-box">
+            <ul>
+              <li><strong>Handling Huge Shear Forces (Shear Key/Shear Lug):</strong> When horizontal base shear exceeds anchor bolt capacity, do not keep adding anchor bolts blindly. Use the **Shear Key** parameter on the *Parameters* tab of Base Plate 1004 to create an H-beam or box section lug welded underneath the base plate to transfer shear directly into concrete.</li>
+              <li><strong>Grout Air Release Holes (Grout Hole):</strong> For base plates wider than 500x500mm, pouring fluid grout can trap pockets of air, creating structural voids underneath the column. Set at least one D50 circular air hole at the column web center via the *Parameters* tab to ensure a complete, smooth grout pour.</li>
+              <li><strong>Site Erection Tolerances (Tolerance):</strong> Base plate hole diameters for anchor rods should be at least 6mm - 10mm larger than the rod diameter (e.g., M24 rod should have a D30 - D34 hole) combined with heavy **Washer plates** placed on top to absorb site setting-out discrepancies.</li>
+            </ul>
+          </div>
+
+          <p>We hope this technical deep dive by the **iViDLab Team** empowers you to select base plate components confidently for your future large-span portal frames and industrial Zamil structures!</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-copy">
+        <span data-lang="vi">© 2026 iViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+        <span data-lang="en">© 2026 iViDLab. Digital solutions for the construction industry.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../app.js?v=1.0.1"></script>
+</body>
+</html>
