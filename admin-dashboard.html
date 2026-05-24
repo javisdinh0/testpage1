@@ -354,22 +354,30 @@
       
       // Update global stats via Counter API
       fetch('https://api.counterapi.dev/v1/ividlab_stats/views')
-        .then(res => res.json())
+        .then(res => {
+          if (!res.ok && res.status !== 400 && res.status !== 404) throw new Error('API Error');
+          return res.json();
+        })
         .then(data => {
           document.getElementById('stat-total-views').innerText = data.count || 0;
         })
         .catch(e => {
-          document.getElementById('stat-total-views').innerText = 'Lỗi API';
+          console.error(e);
+          document.getElementById('stat-total-views').innerText = '0 (Bị chặn/Lỗi)';
         });
 
       fetch('https://api.counterapi.dev/v1/ividlab_stats/downloads')
-        .then(res => res.json())
+        .then(res => {
+          if (!res.ok && res.status !== 400 && res.status !== 404) throw new Error('API Error');
+          return res.json();
+        })
         .then(data => {
           // If global counter is smaller than local logs, it means counter reset, keep max
           const count = Math.max(data.count || 0, logs.length);
           document.getElementById('stat-total-downloads').innerText = count;
         })
         .catch(e => {
+          console.error(e);
           document.getElementById('stat-total-downloads').innerText = logs.length;
         });
       
