@@ -80,72 +80,86 @@
         </div>
       </header>
 
-      <img src="images/img_p410_0.png" alt="Corner Bracing Overview" class="article-image" style="max-height: 380px; object-fit: contain; padding: 2rem 0;">
+      <!-- Banner Images -->
+      <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+        <div style="flex: 1; position: relative;">
+          <img src="images/img_56.png" alt="Corner Tube Gusset 56" class="article-image" style="width: 100%; max-height: 400px; object-fit: cover; padding: 0; border-radius: 8px; margin: 0;">
+          <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">Macro 56: Corner Tube Gusset</div>
+        </div>
+        <div style="flex: 1; position: relative;">
+          <img src="images/img_57.png" alt="Corner Bolted Gusset 57" class="article-image" style="width: 100%; max-height: 400px; object-fit: cover; padding: 0; border-radius: 8px; margin: 0;">
+          <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">Macro 57: Corner Bolted Gusset</div>
+        </div>
+      </div>
 
       <div class="article-body">
         
         <!-- ==================== VIETNAMESE LANG WRAPPER ==================== -->
         <div data-lang="vi">
-          <p>Hệ giằng góc khung đóng vai trò cốt lõi trong việc duy trì ổn định không gian và truyền tải trọng ngang (gió, động đất) xuống móng. Việc lựa chọn cấu kiện giằng góc không chỉ liên quan đến khả năng chịu lực mà còn phải đảm bảo không cản trở các hệ thống bao che xung quanh.</p>
+          <h2>1. INTRODUCTION (Tổng quan nhiệm vụ & Component ID)</h2>
+          <p>Tại các nút giao góc (corner) giữa dầm và cột, việc bố trí liên kết hệ giằng chéo đòi hỏi một bản mã góc (corner gusset) được thiết kế đặc biệt để vừa tránh va chạm với hệ khung chính, vừa đảm bảo truyền lực tối ưu. Nhóm công cụ <strong>Corner Bracing Macros</strong> của Tekla giải quyết triệt để bài toán này với 2 macro chủ lực:</p>
+          <ul>
+            <li><strong>Corner tube gusset (56):</strong> Dành riêng cho hệ giằng dùng thép hộp/ống (RHS/CHS). Ống giằng được xẻ rãnh, đút bản mã (tongue/connection plate) vào giữa và bắt bu lông hoặc hàn. Có hỗ trợ bịt kín đầu ống.</li>
+            <li><strong>Corner bolted gusset (57):</strong> Chuyên dùng cho thanh giằng thép hình (chữ L, U, C). Thanh giằng được bắt bu lông thông qua các thép góc (clip angles).</li>
+          </ul>
 
-          <p>Bài viết này được <strong>iViDLab Team</strong> biên soạn từ <code>TS_COMP_2025_en_System components.pdf</code>, tập trung phân tích <strong>Corner bolted gusset (57)</strong> và <strong>Wraparound gusset (58)</strong>.</p>
+          <h2>2. USE CASES TABLE (Các trường hợp thực tế)</h2>
+          <table class="project-meta-table" style="width:100%; text-align:left; border-collapse: collapse; margin-bottom: 2rem;">
+            <tr style="background: rgba(255,255,255,0.05);">
+              <th style="padding: 1rem; border-bottom: 1px solid var(--border);">Component ID</th>
+              <th style="padding: 1rem; border-bottom: 1px solid var(--border);">Tiết diện giằng (Brace Profile)</th>
+              <th style="padding: 1rem; border-bottom: 1px solid var(--border);">Ứng dụng thực tế & Đặc điểm</th>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);"><strong>56</strong></td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Hollow Sections (RHS, CHS, SHS)</td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Sử dụng cho hệ giằng ống chịu lực nén/kéo lớn. Khả năng hàn seal plate (bịt đầu) để chống rỉ sét bên trong ống.</td>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);"><strong>57</strong></td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Angle (L), Channel (C/U)</td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Kết cấu giàn giáo, tháp truyền tải, nhà xưởng nhẹ. Thi công nhanh chóng bằng bu lông thông qua thép góc (clip angles).</td>
+            </tr>
+          </table>
 
-          <h2>1. Corner Bolted Gusset (57)</h2>
-          <p>Liên kết 57 là giải pháp giằng góc truyền thống. Bản mã gusset được hàn trực tiếp vào cánh cột hoặc bụng dầm, và liên kết bulong với thanh giằng. Điều này đòi hỏi người kỹ sư phải điều chỉnh góc vát bản mã sao cho không bị cấn với các thanh giằng góc khác, đồng thời phải đảm bảo đủ khoảng cách để siết bulong.</p>
-
-          <div class="info-alert">
-            <strong>Mẹo chuyên gia:</strong> Để tránh va chạm tại các góc có từ 3 thanh giằng trở lên tụ về, hãy tận dụng chức năng offset và chamfer tự động của component 57 thay vì phải di chuyển thủ công.
+          <h2>3. SELECTION ORDER (Quy trình thao tác)</h2>
+          <p>Cả 2 macro này đều cho phép gắn từ 1 đến tối đa 10 thanh giằng vào cùng một nút. Thứ tự click chuột đặc biệt quan trọng:</p>
+          
+          <div class="highlight-box">
+            <ol>
+              <li>Pick <strong>Main part</strong> (Cấu kiện chính thứ nhất tạo nên góc, thường là Cột).</li>
+              <li>Pick <strong>Secondary part(s)</strong> (Chọn lần lượt các thanh giằng từ 1 đến 10).</li>
+              <li>Pick <strong>Secondary part tạo góc</strong> (Cấu kiện thứ 2 tạo nên góc, thường là Dầm). Tekla sẽ neo bản mã vào cấu kiện này.</li>
+              <li>Click <strong>chuột giữa (Middle mouse)</strong> để kết thúc và sinh liên kết.</li>
+            </ol>
           </div>
 
-          <h2>2. Wraparound Gusset (58)</h2>
-          <p>Khác biệt lớn nhất của 58 là bản mã "ôm" (wraparound) quanh cánh cột, cho phép tạo liên kết giằng ở mặt phẳng ngoài của cột mà không cần khoét lỗ hay thêm chi tiết trung gian phức tạp. Đặc biệt hữu ích khi thiết kế các khung tháp trụ truyền tải điện (lattice tower) hoặc giàn mái (roof bracing) có ống lồng.</p>
+          <h2>4. DEEP DIVE SETTINGS (Chi tiết thông số)</h2>
+          
+          <h3>Gusset Plate Inner Corner (Góc khuyết bản mã)</h3>
+          <p>Khi bản mã góc nằm quá sát góc giao dầm-cột, nó thường xuyên bị cấn (clash) với đường hàn của khung chính. Macro cung cấp tab <strong>Gusset</strong> để tự động vát góc (notch):</p>
+          <ul>
+            <li><strong>Bevel chamfer:</strong> Vát chéo góc (phổ biến nhất).</li>
+            <li><strong>Convex/Concave chamfer:</strong> Bo tròn lồi/lõm (thường dùng để giảm ứng suất tập trung theo dạng 1/4 hình tròn).</li>
+            <li><strong>Square notch:</strong> Cắt khoét dạng góc vuông.</li>
+          </ul>
 
-          <div class="img-grid-3">
-            <div class="img-card">
-              <img src="images/img_p426_0.png" alt="Bolted Gusset Corner Details">
-              <div class="img-card-title">Chi tiết góc Gusset (57)</div>
-            </div>
-            <div class="img-card">
-              <img src="images/img_p431_0.png" alt="Wraparound Clearance">
-              <div class="img-card-title">Khoảng hở Wraparound (58)</div>
-            </div>
-            <div class="img-card">
-              <img src="images/img_p444_0.png" alt="Bracing Intersections">
-              <div class="img-card-title">Giao cắt đa hướng</div>
-            </div>
+          <h3>Brace Conn Tab (Với Macro 56)</h3>
+          <p>Ở tab <strong>Brace conn</strong>, bạn cấu hình cách thức đầu ống giằng kết nối với bản mã. Các thông số quan trọng: <em>Connection plate</em> (Bản mã lưỡi gà cắm vào ống), <em>Seal plates</em> (Tấm thép bịt đầu ống), và lựa chọn <strong>Brace is welded / Brace is bolted</strong> (Hàn hay bắt bu lông).</p>
+
+          <h3>Clip Angle Orientation (Với Macro 57)</h3>
+          <p>Đối với thép hình chữ L, hệ thống dùng thép góc (clip angle) làm trung gian. Ở tab <strong>Brace conn</strong>, biến <em>Clip angle orientation</em> quyết định cạnh dài (longer leg) của thép góc sẽ được bắt vào bản mã chính hay bắt vào thanh giằng.</p>
+
+          <h2>5. DETAIL ERRECTION TIPS (Mẹo thi công & lắp dựng)</h2>
+          <div class="info-alert">
+            <strong>Lưu ý mạ kẽm (Galvanizing Tip for Macro 56):</strong> 
+            Nếu bạn sử dụng Macro 56 và kích hoạt tính năng tạo <strong>Seal plates</strong> (tấm bịt kín đầu ống thép hộp) để chống nước đọng, bạn BẮT BUỘC phải yêu cầu xưởng gia công khoan thêm lỗ thoát khí (vent holes). Do ống hộp bị hàn kín hoàn toàn, nếu thả vào bể mạ kẽm nhúng nóng 450 độ C mà không có lỗ xả khí, áp suất dãn nở sẽ làm nổ tung ống giằng gây nguy hiểm chết người!
           </div>
         </div>
 
         <!-- ==================== ENGLISH LANG WRAPPER ==================== -->
         <div data-lang="en" style="display:none;">
-          <p>Corner bracing systems play a vital role in maintaining spatial stability and transferring lateral loads (wind, seismic) to the foundation. Selecting the right corner bracing component involves not only structural capacity but also ensuring it doesn't clash with surrounding cladding systems.</p>
 
-          <p>This article by the <strong>iViDLab Team</strong>, compiled from <code>TS_COMP_2025_en_System components.pdf</code>, focuses on analyzing <strong>Corner bolted gusset (57)</strong> and <strong>Wraparound gusset (58)</strong>.</p>
-
-          <h2>1. Corner Bolted Gusset (57)</h2>
-          <p>Component 57 is the traditional corner bracing solution. The gusset plate is welded directly to the column flange or beam web, and bolted to the bracing member. This requires the detailer to adjust the gusset chamfer angle to avoid clashing with other bracing members, while ensuring sufficient clearance for bolt tightening.</p>
-
-          <div class="info-alert">
-            <strong>Pro Tip:</strong> To avoid collisions at corners where 3 or more bracing members converge, utilize the automatic offset and chamfer functions of component 57 instead of moving elements manually.
-          </div>
-
-          <h2>2. Wraparound Gusset (58)</h2>
-          <p>The major distinction of 58 is that the gusset "wraps around" the column flange, allowing bracing connections on the outer plane of the column without needing to cut holes or add complex intermediate details. It's particularly useful when designing lattice transmission towers or roof bracing with sleeve tubes.</p>
-
-          <div class="img-grid-3">
-            <div class="img-card">
-              <img src="images/img_p426_0.png" alt="Bolted Gusset Corner Details">
-              <div class="img-card-title">Gusset Corner Details (57)</div>
-            </div>
-            <div class="img-card">
-              <img src="images/img_p431_0.png" alt="Wraparound Clearance">
-              <div class="img-card-title">Wraparound Clearance (58)</div>
-            </div>
-            <div class="img-card">
-              <img src="images/img_p444_0.png" alt="Bracing Intersections">
-              <div class="img-card-title">Multi-directional Intersections</div>
-            </div>
-          </div>
         </div>
 
       </div>
