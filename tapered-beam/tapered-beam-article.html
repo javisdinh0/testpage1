@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tapered Built-Up Components (S45, S94) • iViDLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 950px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.25; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-image { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); margin: 2rem 0; box-shadow: var(--shadow); background: rgba(255,255,255,0.02); }
+    .article-body { font-size: 1.12rem; line-height: 1.85; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); font-size: 1.8rem; margin: 2.5rem 0 1rem; }
+    .article-body h3 { color: var(--text-primary); font-size: 1.3rem; margin: 2rem 0 0.8rem; }
+    .article-body p { margin-bottom: 1.2rem; }
+    .article-body ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.5rem; }
+    
+    .highlight-box {
+      background: rgba(43, 235, 179, 0.05);
+      border-left: 4px solid var(--accent-cyan);
+      padding: 1.5rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 2rem 0;
+    }
+
+    .info-alert {
+      background: rgba(255, 165, 0, 0.1);
+      border-left: 4px solid orange;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+      color: var(--text-primary);
+    }
+    
+    .project-meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    .project-meta-table th, .project-meta-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    .project-meta-table th { background: rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body>
+  <div class="glow" style="top: 20%; left: 10%;"></div>
+  
+  <nav class="navbar">
+    <a href="../index.html" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      iViDLab
+    </a>
+    <div class="lang-toggle-wrapper">
+      <div class="lang-toggle" id="lang-toggle">
+        <div class="lang-btn active" data-target="vi">VN</div>
+        <div class="lang-btn" data-target="en">EN</div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <a href="../index.html" class="article-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-lang="vi">Trở về Trang chủ</span><span data-lang="en">Back to Home</span>
+      </a>
+      
+      <header class="article-header">
+        <h1 class="article-title" data-lang="vi">Mô hình hóa Dầm/Cột biến đổi tiết diện: Sự khác biệt giữa S45 và S94</h1>
+        <h1 class="article-title" data-lang="en" style="display:none;">Modeling Tapered Built-Up Components: Differences between S45 and S94</h1>
+        
+        <div class="article-meta">
+          <div class="article-meta-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span data-lang="vi">24 Tháng 05, 2026</span><span data-lang="en">May 24, 2026</span>
+          </div>
+          <div class="article-meta-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>20 min read</span>
+          </div>
+          <div class="article-meta-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <span>Series 3 • PEB Components</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Banner Images -->
+      <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+        <div style="flex: 1; position: relative;">
+          <img src="images/img_s45.png" alt="Tapered Beam 2 S45" class="article-image" style="width: 100%; max-height: 400px; object-fit: cover; padding: 0; border-radius: 8px; margin: 0;">
+          <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">Macro S45: Tapered Beam 2</div>
+        </div>
+        <div style="flex: 1; position: relative;">
+          <img src="images/img_s94.png" alt="PEB Tapered Section S94" class="article-image" style="width: 100%; max-height: 400px; object-fit: cover; padding: 0; border-radius: 8px; margin: 0;">
+          <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">Macro S94: PEB Tapered Section</div>
+        </div>
+      </div>
+
+      <div class="article-body">
+        
+        <!-- ==================== VIETNAMESE LANG WRAPPER ==================== -->
+        <div data-lang="vi">
+          <h2>1. INTRODUCTION (Tổng quan nhiệm vụ & Component ID)</h2>
+          <p>Trong thiết kế Nhà thép tiền chế (Pre-Engineered Buildings - PEB), việc tối ưu khối lượng thép là yếu tố sống còn. Để làm được điều đó, kỹ sư sử dụng các cấu kiện tổ hợp biến đổi tiết diện (Tapered Built-up Sections) nhằm thay đổi kích thước dầm/cột theo đúng biểu đồ mô-men uốn.</p>
+          <p>Tekla Structures hỗ trợ nhiều công cụ tạo hình Tapered, trong đó mạnh mẽ nhất là:</p>
+          <ul>
+            <li><strong>Tapered beam 2 (S45):</strong> Tạo dầm/cột hình chữ I từ 3 tấm thép rời (1 bản bụng, 2 bản cánh). Điểm đặc biệt của S45 là cho phép định nghĩa độ dài của từng phân đoạn nối (spliced material) để khớp với khổ thép nguyên liệu.</li>
+            <li><strong>PEB Tapered section (S94):</strong> Công cụ hiện đại và gọn nhẹ, tạo ra dầm/cột vát một cách mượt mà và liền mạch giữa 2 điểm (start point & end point).</li>
+          </ul>
+
+          <h2>2. USE CASES TABLE (Các trường hợp thực tế)</h2>
+          <table class="project-meta-table">
+            <tr>
+              <th>Component ID</th>
+              <th>Mô tả (Description)</th>
+              <th>Ứng dụng thực tế</th>
+            </tr>
+            <tr>
+              <td><strong>S45</strong></td>
+              <td>Tạo cấu kiện I-shape ghép từ nhiều đốt (sections) liên tiếp nhau.</td>
+              <td>Phù hợp mô hình Dầm vì kèo (Rafter) vượt nhịp lớn (30m - 50m). Vì dầm quá dài, xưởng sản xuất phải cắt phôi theo từng tấm thép chuẩn (6m hoặc 12m), sau đó hàn tổ hợp dọc chiều dài.</td>
+            </tr>
+            <tr>
+              <td><strong>S94</strong></td>
+              <td>Tạo cấu kiện vát nguyên khối liên tục giữa 2 điểm.</td>
+              <td>Thích hợp cho mô hình Cột khung Zamil hoặc Dầm ngắn. Dễ thao tác, ít tốn tài nguyên hệ thống (nhẹ).</td>
+            </tr>
+          </table>
+
+          <h2>3. SELECTION ORDER (Quy trình thao tác)</h2>
+          <p>Cả 2 macro này đều dựa trên thao tác chọn điểm cơ bản trong không gian:</p>
+          
+          <div class="highlight-box">
+            <ol>
+              <li>Pick <strong>Start point</strong> (Điểm bắt đầu của dầm/cột).</li>
+              <li>Pick <strong>End point</strong> (Điểm kết thúc của dầm/cột).</li>
+              <li>Đối với S94, cấu kiện sẽ được sinh ra ngay lập tức. Đối với S45, đôi khi bạn có thể khai báo thêm các điểm trung gian tùy biến.</li>
+            </ol>
+          </div>
+
+          <h2>4. DEEP DIVE SETTINGS (Chi tiết thông số)</h2>
+          
+          <h3>Tab Picture (Định nghĩa Độ vát)</h3>
+          <p>Trọng tâm của cấu kiện Tapered nằm ở thẻ <strong>Picture</strong>. Bạn cần nhập khoảng cách chiều cao của bản bụng (Web height) tại 2 vị trí: Top (đỉnh) và Bottom (đáy). Đối với dầm vát cong, hệ thống sẽ nội suy hình học để tạo ra tấm thép vát hoàn hảo.</p>
+
+          <h3>Tab Parts (Định nghĩa Bản cánh và Bản bụng)</h3>
+          <p>Ở tab <strong>Parts</strong>, bạn định nghĩa tiết diện cho 3 tấm thép độc lập:</p>
+          <ul>
+            <li><strong>Web plate:</strong> Độ dày bản bụng (Web thickness). <em>(S45 cho phép nhập hàng loạt chiều dài các đốt tách rời: vd `4*6000` nghĩa là 4 đoạn bản bụng dài 6m).</em></li>
+            <li><strong>Outer flange / Top flange:</strong> Bản cánh trên/ngoài.</li>
+            <li><strong>Inner flange / Bottom flange:</strong> Bản cánh dưới/trong.</li>
+          </ul>
+
+          <h2>5. DETAIL ERRECTION TIPS (Mẹo thi công & lắp dựng)</h2>
+          <div class="info-alert">
+            <strong>Mẹo tối ưu CNC (Fabrication Tip for S45):</strong> 
+            Khi khai báo chiều dài các đốt nối (splice length) trong component S45, kỹ sư <strong>BẮT BUỘC</strong> phải làm việc với bộ phận Vật tư của xưởng để biết phôi thép nguyên liệu có độ dài chuẩn là bao nhiêu (thường là tấm 6000mm, 8000mm, 12000mm). Phải nhập thông số phân đoạn bản bụng sao cho phù hợp với phôi thép để máy cắt Plasma/Oxy-gas CNC có thể nesting (sắp xếp) tiết kiệm phế liệu thép nhất! Việc mô hình một cái dầm Tapered dài 13 mét nguyên khối mà không cắt đôi là một lỗi chết người, không xưởng nào có phôi thép và máy ép nào đủ lớn để làm!
+          </div>
+        </div>
+
+        <!-- ==================== ENGLISH LANG WRAPPER ==================== -->
+        <div data-lang="en" style="display:none;">
+          <h2>1. INTRODUCTION (Task Overview & Component ID)</h2>
+          <p>In Pre-Engineered Building (PEB) design, optimizing steel weight is crucial. To achieve this, engineers utilize Tapered Built-up Sections, which adjust the beam/column dimensions to closely match the bending moment diagram.</p>
+          <p>Tekla Structures offers several tools for creating tapered sections, the most powerful being:</p>
+          <ul>
+            <li><strong>Tapered beam 2 (S45):</strong> Creates an I-shaped beam/column from 3 separate steel plates (1 web, 2 flanges). The unique feature of S45 is its ability to define the lengths of individual spliced material sections to match raw steel plate sizes.</li>
+            <li><strong>PEB Tapered section (S94):</strong> A modern, lightweight tool that creates a smoothly tapered beam/column seamlessly between two picked points.</li>
+          </ul>
+
+          <h2>2. USE CASES TABLE</h2>
+          <table class="project-meta-table">
+            <tr>
+              <th>Component ID</th>
+              <th>Description</th>
+              <th>Practical Application</th>
+            </tr>
+            <tr>
+              <td><strong>S45</strong></td>
+              <td>Creates an I-shape built up from multiple consecutive sections.</td>
+              <td>Ideal for modeling large-span Rafters (30m - 50m). Since the beam is excessively long, the fabrication shop must cut the web from standard plate sizes (6m or 12m) and weld them longitudinally.</td>
+            </tr>
+            <tr>
+              <td><strong>S94</strong></td>
+              <td>Creates a continuous, monolithic tapered section between 2 points.</td>
+              <td>Suitable for single-span Tapered PEB Columns or short beams. Easy to manipulate and consumes less system resources (lightweight).</td>
+            </tr>
+          </table>
+
+          <h2>3. SELECTION ORDER</h2>
+          <p>Both macros rely on basic point picking in 3D space:</p>
+          
+          <div class="highlight-box">
+            <ol>
+              <li>Pick the <strong>Start point</strong> of the beam/column.</li>
+              <li>Pick the <strong>End point</strong> of the beam/column.</li>
+              <li>For S94, the component is generated immediately. For S45, you can sometimes define intermediate custom points.</li>
+            </ol>
+          </div>
+
+          <h2>4. DEEP DIVE SETTINGS</h2>
+          
+          <h3>Picture Tab (Defining the Taper)</h3>
+          <p>The core of a Tapered component lies in the <strong>Picture</strong> tab. You must input the Web height at two locations: Top and Bottom. For sloped beams, the system interpolates the geometry to generate a perfectly tapered plate.</p>
+
+          <h3>Parts Tab (Defining Web and Flanges)</h3>
+          <p>In the <strong>Parts</strong> tab, you define the cross-sections for the 3 independent plates:</p>
+          <ul>
+            <li><strong>Web plate:</strong> Web thickness. <em>(S45 allows batch input for spliced lengths: e.g., `4*6000` means four 6m-long web sections).</em></li>
+            <li><strong>Outer flange / Top flange:</strong> Top/outer plate width and thickness.</li>
+            <li><strong>Inner flange / Bottom flange:</strong> Bottom/inner plate width and thickness.</li>
+          </ul>
+
+          <h2>5. DETAIL ERRECTION TIPS</h2>
+          <div class="info-alert">
+            <strong>CNC Optimization Tip (For S45):</strong> 
+            When defining splice lengths in component S45, the detailer <strong>ABSOLUTELY MUST</strong> coordinate with the procurement department to ascertain the standard dimensions of raw steel plates (typically 6000mm, 8000mm, or 12000mm). The web splice intervals must be inputted to match these standard lengths so the CNC Plasma/Oxy-gas cutting machines can perform optimal nesting, minimizing scrap! Modeling a monolithic 13-meter tapered beam without a splice is a fatal detailing error, as no shop has raw plates or press brakes large enough to manufacture it!
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  
+  <script src="../app.js"></script>
+</body>
+</html>
