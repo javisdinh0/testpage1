@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolted Gusset Standards — iViDLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 950px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.25; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-body { font-size: 1.12rem; line-height: 1.85; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); margin: 2.8rem 0 1.2rem; font-size: 1.85rem; font-family: 'Space Grotesk', sans-serif; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.5rem; }
+    .article-body h3 { color: var(--text-primary); margin: 2rem 0 1rem; font-size: 1.4rem; font-family: 'Space Grotesk', sans-serif; }
+    .article-body p { margin-bottom: 1.5rem; }
+    .article-body ul, .article-body ol { margin-bottom: 2rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .info-alert { background: rgba(31,138,128,0.03); border-left: 4px solid var(--accent-cyan); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; border: 1px solid rgba(31,138,128,0.08); border-left-width: 4px; }
+    .cite-badge { display: inline-block; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 2px 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--accent-cyan); margin-left: 6px; }
+    
+    @media (max-width: 768px) {
+      .article-title { font-size: 2.2rem; }
+      .article-container { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">iViDLab</span>
+        <span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#home" class="nav-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+        <li><a href="../index.html#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+        <li><a href="../index.html#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-select-lang="vi">VN</button>
+          <button class="lang-btn" data-select-lang="en">EN</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <header class="article-header">
+        <a href="../tekla-index.html" class="article-back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-lang="vi">Quay lại danh sách</span><span data-lang="en">Back to list</span>
+        </a>
+        <h1 class="article-title">
+          <span data-lang="vi">Hệ Thống Tiêu Chuẩn Kỹ Thuật Cho Liên Kết Bolted Gusset</span>
+          <span data-lang="en">Technical Standards for Bolted Gusset Connections</span>
+        </h1>
+        <div class="article-meta">
+          <span data-lang="vi">Chuyên mục: Kỹ thuật & Tiêu chuẩn</span><span data-lang="en">Category: Engineering & Standards</span>
+          <span>•</span>
+          <span data-lang="vi">Ngày đăng: 24/05/2026</span><span data-lang="en">Published: May 24, 2026</span>
+          <span>•</span>
+          <span data-lang="vi">Tác giả: iViDLab Team</span><span data-lang="en">Author: iViDLab Team</span>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <!-- VIETNAMESE -->
+        <div data-lang="vi">
+          <p>Liên kết bản mã bằng bu lông (Bolted Gusset) là một nút giao quan trọng trong hệ chịu lực của kết cấu thép. Việc thiết kế, gia công và lắp ráp loại liên kết này không chỉ phụ thuộc vào kinh nghiệm mà còn bị chi phối bởi các hệ thống tiêu chuẩn quốc tế khắt khe.</p>
+          
+          <div class="info-alert">
+            <strong>Ghi chú:</strong> Bài viết này trích dẫn chi tiết các nguồn tài liệu kỹ thuật (Chương, Mục, Bảng, Công thức) từ các bản tiêu chuẩn quốc tế để người đọc có thể dễ dàng tra cứu và đối chiếu với tài liệu gốc.
+          </div>
+
+          <h2>1. Tiêu Chuẩn AISC (Mỹ)</h2>
+          <p>AISC (American Institute of Steel Construction) là hệ tiêu chuẩn xương sống cho việc thiết kế liên kết. Các quy định chủ yếu nằm trong tài liệu <strong>AISC 360-16 (Specification for Structural Steel Buildings)</strong> và <strong>AISC Steel Construction Manual (15th Edition)</strong>:</p>
+          <ul>
+            <li><strong>Khoảng cách bu lông:</strong> Khoảng cách tối thiểu giữa tâm các lỗ bu lông là 2.67 lần đường kính danh định (khuyến nghị dùng 3.0d) <span class="cite-badge">AISC 360-16, Sect. J3.3</span>. Khoảng cách tối thiểu từ tâm lỗ ra mép bản mã được quy định nghiêm ngặt tại <span class="cite-badge">Table J3.4 / J3.4M</span>.</li>
+            <li><strong>Xé rách khối (Block Shear):</strong> Trạng thái phá hoại dọc theo chu vi cụm lỗ bu lông chịu sự chi phối của lực kéo đứt và lực cắt. Công thức tính toán được tham chiếu tại <span class="cite-badge">AISC 360-16, Sect. J4.3, Eq. (J4-5)</span>.</li>
+            <li><strong>Khả năng tì ép và xé mép lỗ (Bearing and Tearout):</strong> Kiểm tra áp lực lên vách lỗ bản mã để chống biến dạng. Được quy định chi tiết tại <span class="cite-badge">AISC 360-16, Sect. J3.10, Eq. (J3-6a) - (J3-6c)</span>.</li>
+            <li><strong>Mặt cắt Whitmore:</strong> Phương pháp kinh điển để tính toán bề rộng làm việc hiệu quả (tỏa ra góc 30 độ) của bản mã gusset chịu lực dọc trục. Trích dẫn từ <span class="cite-badge">AISC Manual 15th Ed, Part 9, Hình 9-1 (Whitmore Section)</span>.</li>
+          </ul>
+
+          <h2>2. Tiêu Chuẩn EN 1090 & Eurocode 3 (Châu Âu)</h2>
+          <p>Hệ tiêu chuẩn Châu Âu mang tính toàn diện, không chỉ thiết kế mà còn khắt khe trong khâu chế tạo và kiểm soát chất lượng gia công:</p>
+          <ul>
+            <li><strong>Tính toán chịu lực:</strong> Tiêu chuẩn <strong>EN 1993-1-8:2005 (Eurocode 3: Part 1-8)</strong> quy định các hạng mục phân loại liên kết bu lông chịu cắt (Category A, B, C) tại <span class="cite-badge">EN 1993-1-8, Table 3.4</span> và các công thức chịu lực cơ bản cho bu lông tại <span class="cite-badge">Table 3.2</span>.</li>
+            <li><strong>Gia công lỗ trên bản mã:</strong> Theo <strong>EN 1090-2:2018 (Execution of steel structures)</strong>, nghiêm cấm sử dụng mỏ hàn nhiệt (thermal cutting) để đục lỗ bu lông trên bản mã chịu lực. Sai số kích thước lỗ khoan/đột được quy định rõ tại <span class="cite-badge">EN 1090-2, Sect. 6.6 (Hole making)</span>.</li>
+            <li><strong>Quy trình siết bu lông:</strong> Việc siết bu lông cường độ cao cho các liên kết chống trượt phải tuân thủ nghiêm ngặt phương pháp siết (Torque method, Turn-of-nut) theo <span class="cite-badge">EN 1090-2, Sect. 8.3 & 8.5 (Tightening of preloaded bolts)</span>.</li>
+          </ul>
+
+          <h2>3. Tiêu Chuẩn MBMA (Nhà Thép Tiền Chế)</h2>
+          <p>Đối với hệ nhà thép tiền chế (PEB), tiêu chuẩn của MBMA (Metal Building Manufacturers Association) đưa ra các quy định thực tiễn cho công tác thi công:</p>
+          <ul>
+            <li><strong>Dung sai chế tạo & lắp dựng:</strong> Hướng dẫn về độ sai lệch cho phép của vị trí bản mã gusset hàn tại xưởng và dung sai xê dịch bu lông ngoài công trường. Tham chiếu tài liệu <strong>MBMA 2012 Metal Building Systems Manual</strong> tại <span class="cite-badge">Chapter 4, Sect. 4.2.2 (Fabrication Tolerances) & 4.3 (Erection)</span>.</li>
+          </ul>
+
+          <h2>4. Tiêu Chuẩn AISI (Thép Cán Nguội)</h2>
+          <p>Khi sử dụng bản mã để liên kết hệ giằng tiết diện thép mỏng (Cold-Formed Steel), kỹ sư phải chuyển sang áp dụng hệ tiêu chuẩn của AISI:</p>
+          <ul>
+            <li><strong>Tính toán vật liệu mỏng:</strong> Áp dụng <strong>AISI S100-16 (North American Specification for the Design of CFS)</strong>. Sự chú ý đặc biệt được đặt vào hiện tượng xé rách lỗ bu lông, xé mép, và lật cong bản mã mỏng cục bộ. Được quy định rất chi tiết tại <span class="cite-badge">AISI S100-16, Chapter J (Connections), Sect. J3</span>.</li>
+          </ul>
+
+          <div class="info-alert">
+            <strong>💡 Kết Luận:</strong> Việc tuân thủ và trích dẫn chính xác các điều khoản từ những bộ tiêu chuẩn hiện hành giúp kỹ sư tối ưu hóa tính an toàn, đáp ứng điều kiện nghiệm thu quốc tế và giảm thiểu rủi ro bảo trì.
+          </div>
+        </div>
+
+        <!-- ENGLISH -->
+        <div data-lang="en">
+          <p>The Bolted Gusset connection is a critical node in steel structures. Designing, fabricating, and erecting this connection relies heavily on stringent international standards and specifications.</p>
+          
+          <div class="info-alert">
+            <strong>Note:</strong> This article provides precise citations (Chapters, Sections, Tables, Equations) directly from the official international codes to facilitate easy cross-referencing for engineers and detailers.
+          </div>
+
+          <h2>1. AISC Standard (USA)</h2>
+          <p>AISC (American Institute of Steel Construction) is the backbone for connection design, primarily detailed in <strong>AISC 360-16</strong> and the <strong>AISC Steel Construction Manual (15th Edition)</strong>:</p>
+          <ul>
+            <li><strong>Bolt Spacing:</strong> The minimum distance between bolt hole centers is 2.67 times the nominal diameter (3.0d preferred) per <span class="cite-badge">AISC 360-16, Sect. J3.3</span>. Minimum edge distances are strictly dictated by <span class="cite-badge">Table J3.4 / J3.4M</span>.</li>
+            <li><strong>Block Shear Strength:</strong> The failure mode where a block of steel tears out along the bolt hole perimeter. The design equation is referenced at <span class="cite-badge">AISC 360-16, Sect. J4.3, Eq. (J4-5)</span>.</li>
+            <li><strong>Bearing and Tearout:</strong> Checks the pressure on the plate hole edges to prevent deformation and tearing. Defined at <span class="cite-badge">AISC 360-16, Sect. J3.10, Eq. (J3-6a) - (J3-6c)</span>.</li>
+            <li><strong>Whitmore Section:</strong> The classical method for calculating the effective working area of an axially loaded gusset plate (spreading at 30 degrees). Illustrated in the <span class="cite-badge">AISC Manual 15th Ed, Part 9, Figure 9-1</span>.</li>
+          </ul>
+
+          <h2>2. EN 1090 & Eurocode 3 (Europe)</h2>
+          <p>European standards are comprehensive, emphasizing strict fabrication tolerances and execution quality control:</p>
+          <ul>
+            <li><strong>Design Resistance:</strong> <strong>EN 1993-1-8:2005 (Eurocode 3: Part 1-8)</strong> classifies bolted connection categories (A, B, C for shear) in <span class="cite-badge">Table 3.4</span> and defines fastener resistance formulas in <span class="cite-badge">Table 3.2</span>.</li>
+            <li><strong>Hole Fabrication:</strong> According to <strong>EN 1090-2:2018</strong>, thermal cutting for bolt holes on structural load-bearing gusset plates is strictly prohibited (drilling or punching is required). Tolerances are defined in <span class="cite-badge">EN 1090-2, Sect. 6.6</span>.</li>
+            <li><strong>Bolt Tightening:</strong> Preloaded slip-resistant connections must follow specific tightening procedures (Torque, Turn-of-nut method) referenced in <span class="cite-badge">EN 1090-2, Sect. 8.3 & 8.5</span>.</li>
+          </ul>
+
+          <h2>3. MBMA Standard (Pre-Engineered Buildings)</h2>
+          <p>The Metal Building Manufacturers Association (MBMA) provides practical erection tolerances for PEB systems:</p>
+          <ul>
+            <li><strong>Fabrication & Erection Tolerances:</strong> Guidelines on plate positioning deviations and site assembly tolerances. Refer to the <strong>MBMA 2012 Metal Building Systems Manual</strong> at <span class="cite-badge">Chapter 4, Sect. 4.2.2 & 4.3</span>.</li>
+          </ul>
+
+          <h2>4. AISI Standard (Cold-Formed Steel)</h2>
+          <p>For thin-gauge bracing systems, engineers must refer to the AISI specifications:</p>
+          <ul>
+            <li><strong>Thin Material Design:</strong> Applies <strong>AISI S100-16 (North American Specification for the Design of CFS)</strong>. Special consideration is given to hole tear-out, bearing strength reduction, and local buckling. Detailed in <span class="cite-badge">AISI S100-16, Chapter J, Sect. J3</span>.</li>
+          </ul>
+
+          <div class="info-alert">
+            <strong>💡 Conclusion:</strong> Strictly applying and referencing these official standards optimizes structural safety, ensures international compliance, and reduces lifecycle maintenance risks.
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-copy">
+        <span data-lang="vi">© 2026 iViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+        <span data-lang="en">© 2026 iViDLab. Digital solutions for the construction industry.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../app.js?v=1.0.1"></script>
+</body>
+</html>
