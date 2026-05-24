@@ -155,11 +155,71 @@
             <strong>Lưu ý mạ kẽm (Galvanizing Tip for Macro 56):</strong> 
             Nếu bạn sử dụng Macro 56 và kích hoạt tính năng tạo <strong>Seal plates</strong> (tấm bịt kín đầu ống thép hộp) để chống nước đọng, bạn BẮT BUỘC phải yêu cầu xưởng gia công khoan thêm lỗ thoát khí (vent holes). Do ống hộp bị hàn kín hoàn toàn, nếu thả vào bể mạ kẽm nhúng nóng 450 độ C mà không có lỗ xả khí, áp suất dãn nở sẽ làm nổ tung ống giằng gây nguy hiểm chết người!
           </div>
+          <div class="info-alert" style="border-left-color: #ff4757; background: rgba(255, 71, 87, 0.05);">
+            <strong>Cảnh báo Lỗi cấu tạo (Bolts vs Welds for Macro 57):</strong> 
+            Đối với cấu kiện sử dụng bu lông như Macro 57, bản mã góc (gusset plate) thường được hàn tại xưởng (Shop welds) vào dầm/cột. Tuy nhiên, tại bề mặt tiếp xúc giữa bản mã và thép góc (clip angle) hoặc giữa thép góc và thanh giằng, hệ thống <strong>TUYỆT ĐỐI KHÔNG ĐƯỢC CÓ ĐƯỜNG HÀN</strong>. Việc gán sai cấu kiện hoặc để chế độ tự động sinh đường hàn đè lên bu lông sẽ khiến chi tiết không thể lắp ráp thực tế ngoài công trường!
+          </div>
         </div>
 
         <!-- ==================== ENGLISH LANG WRAPPER ==================== -->
         <div data-lang="en" style="display:none;">
+          <h2>1. INTRODUCTION (Task Overview & Component ID)</h2>
+          <p>At corner intersections between beams and columns, detailing diagonal bracing requires a specialized corner gusset plate designed to avoid clashing with the primary frame while ensuring optimal load transfer. Tekla's <strong>Corner Bracing Macros</strong> provide two primary components for this:</p>
+          <ul>
+            <li><strong>Corner tube gusset (56):</strong> Designed for Hollow Structural Sections (RHS/CHS). The tube brace is slotted to receive a connection plate, which is then bolted or welded.</li>
+            <li><strong>Corner bolted gusset (57):</strong> Used for open profiles like Angle (L) or Channel (C/U) braces. The brace is bolted to the gusset plate via intermediary clip angles.</li>
+          </ul>
 
+          <h2>2. USE CASES TABLE</h2>
+          <table class="project-meta-table" style="width:100%; text-align:left; border-collapse: collapse; margin-bottom: 2rem;">
+            <tr style="background: rgba(255,255,255,0.05);">
+              <th style="padding: 1rem; border-bottom: 1px solid var(--border);">Component ID</th>
+              <th style="padding: 1rem; border-bottom: 1px solid var(--border);">Brace Profile</th>
+              <th style="padding: 1rem; border-bottom: 1px solid var(--border);">Application & Characteristics</th>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);"><strong>56</strong></td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Hollow Sections (RHS, CHS, SHS)</td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">High-capacity tension/compression tubular bracing. Ability to generate seal plates.</td>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);"><strong>57</strong></td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Angle (L), Channel (C/U)</td>
+              <td style="padding: 1rem; border-bottom: 1px solid var(--border);">Rapid erection using bolted clip angles.</td>
+            </tr>
+          </table>
+
+          <h2>3. SELECTION ORDER</h2>
+          
+          <div class="highlight-box">
+            <ol>
+              <li>Pick the <strong>Main part</strong> (typically the Column).</li>
+              <li>Pick the <strong>Secondary part(s)</strong> (Select the braces sequentially, 1 to 10).</li>
+              <li>Pick the <strong>Corner-forming secondary part</strong> (typically the Beam).</li>
+              <li>Click the <strong>Middle mouse button</strong> to finalize.</li>
+            </ol>
+          </div>
+
+          <h2>4. DEEP DIVE SETTINGS</h2>
+          
+          <h3>Gusset Plate Inner Corner (Notching)</h3>
+          <p>The <strong>Gusset</strong> tab provides auto-notching options to prevent clashing with primary welds:</p>
+          <ul>
+            <li><strong>Bevel chamfer:</strong> A straight diagonal cut (most common).</li>
+            <li><strong>Convex/Concave chamfer:</strong> Circular cuts to relieve stress concentrations.</li>
+            <li><strong>Square notch:</strong> A rectangular cutout.</li>
+          </ul>
+
+          <h2>5. DETAIL ERRECTION TIPS</h2>
+          <div class="info-alert">
+            <strong>Hot-Dip Galvanizing Tip (Macro 56):</strong> 
+            If you enable <strong>Seal plates</strong> to fully close the HSS ends, you ABSOLUTELY MUST instruct the fabrication shop to drill vent holes to prevent explosions during hot-dip galvanizing!
+          </div>
+
+          <div class="info-alert" style="border-left-color: #ff4757; background: rgba(255, 71, 87, 0.05);">
+            <strong>Detailing Warning (Bolts vs Welds for Macro 57):</strong> 
+            For bolted connections like Macro 57, the gusset plate is typically Shop Welded to the main frame. However, at the interface between the gusset and the clip angle, or the clip angle and the brace, there must be <strong>ABSOLUTELY NO WELDS</strong>. Incorrect component settings that generate welds over a bolted connection will render the detail impossible to assemble on-site!
+          </div>
         </div>
 
       </div>
