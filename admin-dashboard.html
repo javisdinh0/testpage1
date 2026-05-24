@@ -352,28 +352,28 @@
       seedMockData();
       const logs = JSON.parse(safeStorage.getItem('ividlab_download_logs') || '[]');
       
-      // Update global stats via Counter API
-      fetch('https://api.counterapi.dev/v1/ividlab_stats/views')
+      // Update global stats via Abacus API
+      fetch('https://abacus.jasoncameron.dev/get/ividlab/views')
         .then(res => {
           if (!res.ok && res.status !== 400 && res.status !== 404) throw new Error('API Error');
           return res.json();
         })
         .then(data => {
-          document.getElementById('stat-total-views').innerText = data.count || 0;
+          document.getElementById('stat-total-views').innerText = data.value || 0;
         })
         .catch(e => {
           console.error(e);
           document.getElementById('stat-total-views').innerText = '0 (Bị chặn/Lỗi)';
         });
 
-      fetch('https://api.counterapi.dev/v1/ividlab_stats/downloads')
+      fetch('https://abacus.jasoncameron.dev/get/ividlab/downloads')
         .then(res => {
           if (!res.ok && res.status !== 400 && res.status !== 404) throw new Error('API Error');
           return res.json();
         })
         .then(data => {
           // If global counter is smaller than local logs, it means counter reset, keep max
-          const count = Math.max(data.count || 0, logs.length);
+          const count = Math.max(data.value || 0, logs.length);
           document.getElementById('stat-total-downloads').innerText = count;
         })
         .catch(e => {

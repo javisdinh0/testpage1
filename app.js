@@ -396,9 +396,9 @@ if (!window.safeStorage) {
 (function() {
   // Track View (once per session)
   if (!sessionStorage.getItem('ividlab_global_viewed')) {
-    fetch('https://api.counterapi.dev/v1/ividlab_stats/views/up')
+    fetch('https://abacus.jasoncameron.dev/hit/ividlab/views')
       .then(res => res.json())
-      .then(data => console.log('Global view counted:', data.count))
+      .then(data => console.log('Global view counted:', data.value))
       .catch(e => console.error('Counter API error:', e));
     sessionStorage.setItem('ividlab_global_viewed', 'true');
   }
@@ -406,8 +406,8 @@ if (!window.safeStorage) {
 
 // Global utility for download tracking (called from individual articles)
 window.trackGlobalDownload = function() {
-  fetch('https://api.counterapi.dev/v1/ividlab_stats/downloads/up')
+  fetch('https://abacus.jasoncameron.dev/hit/ividlab/downloads')
     .then(res => res.json())
-    .then(data => console.log('Global download counted:', data.count))
+    .then(data => console.log('Global download counted:', data.value))
     .catch(e => console.error('Counter API download error:', e));
 };
