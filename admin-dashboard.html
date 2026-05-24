@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -243,11 +243,8 @@
         <div class="card-value" id="stat-unique-emails">0</div>
       </div>
       <div class="dashboard-card">
-        <span class="card-title">Kết Nối Live Backend</span>
-        <div class="card-value" style="font-size: 1.3rem; margin-top: 0.85rem; display: flex; align-items: center; gap: 0.5rem;" id="stat-connection">
-          <span style="width: 8px; height: 8px; border-radius: 50%; background: #ff5f57;" id="conn-dot"></span>
-          <span id="conn-text" style="color: var(--text-secondary);">Chưa cấu hình (Demo Mode)</span>
-        </div>
+        <span class="card-title">Tổng Lượt Xem Web (Global)</span>
+        <div class="card-value" id="stat-total-views">Đang tải...</div>
       </div>
     </div>
 
@@ -288,61 +285,6 @@
           <!-- Dynamically populated -->
         </tbody>
       </table>
-    </div>
-
-    <!-- GOOGLE APPS SCRIPT CONFIGURATION -->
-    <div class="gas-config-section">
-      <h3 style="font-size: 1.3rem; color: var(--accent-cyan); margin-bottom: 1rem; font-weight: 700;">⚙️ Liên Kết Real-Time Google Sheet & Lead Analytics</h3>
-      <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Trang web của bạn đang sử dụng hệ thống giả lập cục bộ (`localStorage`). Để chuyển sang **tự động hóa 100% bằng Google Sheets** và ghi nhận danh sách email khách hàng trên trang tính trực tuyến thực tế, hãy thực hiện theo các bước sau:</p>
-      
-      <div style="margin-bottom: 1.5rem;">
-        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Mã Triển Khai Web App (Google Apps Script Web App URL):</label>
-        <div style="display: flex; gap: 0.75rem;">
-          <input type="url" id="gas-url-field" placeholder="https://script.google.com/macros/s/.../exec" style="flex: 1; padding: 0.8rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text-primary); outline: none;">
-          <button onclick="saveGasUrl()" class="btn-primary" style="padding: 0 1.5rem; border: none; cursor: pointer;">Lưu Kết Nối</button>
-        </div>
-      </div>
-
-      <h4 style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Hướng Dẫn Cấu Hình Apps Script Đơn Giản:</h4>
-      <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.25rem; font-size: 0.92rem;">
-        <li>Truy cập <a href="https://sheets.google.com" target="_blank" style="color: var(--accent-blue);">Google Sheets</a> và tạo một bảng tính trống mới để chứa data khách hàng.</li>
-        <li>Trên thanh công cụ phía trên, click chọn <strong>Tiện ích mở rộng (Extensions)</strong> -> <strong>Apps Script</strong>.</li>
-        <li>Xóa toàn bộ mã code mặc định hiển thị trong trình soạn thảo, sao chép và dán đoạn mã code dưới đây vào:</li>
-      </ol>
-
-      <div class="copy-box">function doPost(e) {
-  try {
-    var data = JSON.parse(e.postData.contents);
-    var email = data.email;
-    var app = data.app;
-    var version = data.version;
-    var lang = data.lang || 'vi';
-    var timestamp = new Date();
-    
-    // Ghi nhận thông tin đăng ký tải xuống vào Google Sheet active
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    sheet.appendRow([timestamp, email, app, version, lang]);
-    
-    return ContentService.createTextOutput(JSON.stringify({status: "success"}))
-      .setMimeType(ContentService.MimeType.JSON);
-  } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({status: "error", message: error.toString()}))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}</div>
-
-      <ol start="4" style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.25rem; font-size: 0.92rem;">
-        <li>Nhấn biểu tượng Lưu hình đĩa mềm trên thanh công cụ.</li>
-        <li>Click vào nút <strong>Triển khai (Deploy)</strong> ở góc trên bên phải -> chọn <strong>Triển khai mới (New deployment)</strong>.</li>
-        <li>Ở bảng mở ra, click biểu tượng răng cưa chọn loại cấu hình là <strong>Ứng dụng web (Web app)</strong>.</li>
-        <li>Thiết lập:
-          <ul style="padding-left: 1rem; margin: 0.25rem 0;">
-            <li><strong>Thực thi dưới dạng (Execute as):</strong> Chọn <u>Tôi (Me)</u>.</li>
-            <li><strong>Ai có quyền truy cập (Who has access):</strong> Chọn <u>Bất kỳ ai (Anyone)</u>.</li>
-          </ul>
-        </li>
-        <li>Click <strong>Triển khai (Deploy)</strong>, cấp quyền truy cập email và tài khoản của bạn, sau đó copy <strong>URL Ứng dụng web (Web app URL)</strong> và dán vào ô cấu hình phía trên của trang này!</li>
-      </ol>
     </div>
   </main>
 
@@ -408,27 +350,28 @@
 
     function loadDashboardData() {
       seedMockData();
-      
-      // Load GAS URL if configured
-      const gasUrl = safeStorage.getItem('ividlab_gas_url') || '';
-      document.getElementById('gas-url-field').value = gasUrl;
-      
-      const connDot = document.getElementById('conn-dot');
-      const connText = document.getElementById('conn-text');
-      if (gasUrl) {
-        connDot.style.background = '#68d391'; // Live green
-        connText.innerText = 'Đã kết nối (Live Mode)';
-        connText.style.color = 'var(--accent-green)';
-      } else {
-        connDot.style.background = '#ff5f57'; // Demo red
-        connText.innerText = 'Chưa cấu hình (Demo Mode)';
-        connText.style.color = 'var(--text-secondary)';
-      }
-
       const logs = JSON.parse(safeStorage.getItem('ividlab_download_logs') || '[]');
       
-      // Stats
-      document.getElementById('stat-total-downloads').innerText = logs.length;
+      // Update global stats via Counter API
+      fetch('https://api.counterapi.dev/v1/ividlab_stats/views')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('stat-total-views').innerText = data.count || 0;
+        })
+        .catch(e => {
+          document.getElementById('stat-total-views').innerText = 'Lỗi API';
+        });
+
+      fetch('https://api.counterapi.dev/v1/ividlab_stats/downloads')
+        .then(res => res.json())
+        .then(data => {
+          // If global counter is smaller than local logs, it means counter reset, keep max
+          const count = Math.max(data.count || 0, logs.length);
+          document.getElementById('stat-total-downloads').innerText = count;
+        })
+        .catch(e => {
+          document.getElementById('stat-total-downloads').innerText = logs.length;
+        });
       
       const uniqueEmails = [...new Set(logs.map(l => l.email.toLowerCase()))];
       document.getElementById('stat-unique-emails').innerText = uniqueEmails.length;
@@ -468,18 +411,6 @@
       const logs = JSON.parse(safeStorage.getItem('ividlab_download_logs') || '[]');
       const filtered = logs.filter(l => l.email.toLowerCase().includes(query));
       renderTable(filtered);
-    }
-
-    function saveGasUrl() {
-      const url = document.getElementById('gas-url-field').value.trim();
-      if (url) {
-        safeStorage.setItem('ividlab_gas_url', url);
-        alert('Đã lưu URL kết nối Google Apps Script Web App thành công!');
-      } else {
-        safeStorage.removeItem('ividlab_gas_url');
-        alert('Đã gỡ bỏ URL kết nối Google Apps Script. Chuyển về chế độ giả lập Demo cục bộ.');
-      }
-      loadDashboardData();
     }
 
     function resetMockData() {

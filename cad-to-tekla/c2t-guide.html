@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hướng Dẫn Cài Đặt & Sử Dụng C2T: AutoCAD to Tekla Sync — iViDLab</title>
-  <meta name="description" content="Hướng dẫn chi tiết từng bước cài đặt thủ công AutoLISP C2T vào AutoCAD bằng lệnh AP (APPLOAD) và cách đồng bộ hóa lưới trục sang Tekla Structures." />
+  <title>HÆ°á»›ng Dáº«n CÃ i Äáº·t & Sá»­ Dá»¥ng C2T: AutoCAD to Tekla Sync â€” iViDLab</title>
+  <meta name="description" content="HÆ°á»›ng dáº«n chi tiáº¿t tá»«ng bÆ°á»›c cÃ i Ä‘áº·t thá»§ cÃ´ng AutoLISP C2T vÃ o AutoCAD báº±ng lá»‡nh AP (APPLOAD) vÃ  cÃ¡ch Ä‘á»“ng bá»™ hÃ³a lÆ°á»›i trá»¥c sang Tekla Structures." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
@@ -122,9 +122,9 @@
         <span class="logo-bracket">/&gt;</span>
       </a>
       <ul class="nav-links">
-        <li><a href="../index.html#home" class="nav-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
-        <li><a href="../index.html#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
-        <li><a href="../index.html#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
+        <li><a href="../index.html#home" class="nav-link"><span data-lang="vi">Trang Chá»§</span><span data-lang="en">Home</span></a></li>
+        <li><a href="../index.html#apps" class="nav-link"><span data-lang="vi">Giáº£i PhÃ¡p</span><span data-lang="en">Solutions</span></a></li>
+        <li><a href="../index.html#about" class="nav-link"><span data-lang="vi">Vá» TÃ´i</span><span data-lang="en">About</span></a></li>
         <li class="lang-switcher">
           <button class="lang-btn active" data-select-lang="vi">VN</button>
           <button class="lang-btn" data-select-lang="en">EN</button>
@@ -138,18 +138,18 @@
       <header class="article-header">
         <a href="../index.html" class="article-back">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          <span data-lang="vi">Quay lại danh sách</span><span data-lang="en">Back to list</span>
+          <span data-lang="vi">Quay láº¡i danh sÃ¡ch</span><span data-lang="en">Back to list</span>
         </a>
         <h1 class="article-title" id="guide-main-heading">
-          <span data-lang="vi">Hướng Dẫn Nạp AutoLISP C2T Và Chi Tiết Sử Dụng</span>
+          <span data-lang="vi">HÆ°á»›ng Dáº«n Náº¡p AutoLISP C2T VÃ  Chi Tiáº¿t Sá»­ Dá»¥ng</span>
           <span data-lang="en">Manual AutoLISP Loading & Detailed C2T Usage Guide</span>
         </h1>
         <div class="article-meta">
-          <span data-lang="vi">Chuyên mục: CAD To Tekla Automation</span><span data-lang="en">Category: CAD To Tekla Automation</span>
-          <span>•</span>
-          <span data-lang="vi">Cập nhật: 20/05/2026</span><span data-lang="en">Updated: May 20, 2026</span>
-          <span>•</span>
-          <span data-lang="vi">Tác giả: Admin iViDLab</span><span data-lang="en">Author: Admin iViDLab</span>
+          <span data-lang="vi">ChuyÃªn má»¥c: CAD To Tekla Automation</span><span data-lang="en">Category: CAD To Tekla Automation</span>
+          <span>â€¢</span>
+          <span data-lang="vi">Cáº­p nháº­t: 20/05/2026</span><span data-lang="en">Updated: May 20, 2026</span>
+          <span>â€¢</span>
+          <span data-lang="vi">TÃ¡c giáº£: Admin iViDLab</span><span data-lang="en">Author: Admin iViDLab</span>
         </div>
       </header>
 
@@ -158,18 +158,18 @@
       <div class="article-body">
         <!-- ==================== VIETNAMESE CONTENT ==================== -->
         <div data-lang="vi">
-          <p><strong>C2T (Cad to Tekla Grid Sync)</strong> là giải pháp tự động hóa giúp đồng bộ hóa lưới trục và cao trình từ bản vẽ AutoCAD trực tiếp sang mô hình 3D trên Tekla Structures chính xác tuyệt đối. Bài viết này sẽ hướng dẫn chi tiết cách tích hợp thủ công gói AutoLISP C2T bằng lệnh <code>AP</code> (APPLOAD) và các bước vận hành phần mềm hiệu quả.</p>
+          <p><strong>C2T (Cad to Tekla Grid Sync)</strong> lÃ  giáº£i phÃ¡p tá»± Ä‘á»™ng hÃ³a giÃºp Ä‘á»“ng bá»™ hÃ³a lÆ°á»›i trá»¥c vÃ  cao trÃ¬nh tá»« báº£n váº½ AutoCAD trá»±c tiáº¿p sang mÃ´ hÃ¬nh 3D trÃªn Tekla Structures chÃ­nh xÃ¡c tuyá»‡t Ä‘á»‘i. BÃ i viáº¿t nÃ y sáº½ hÆ°á»›ng dáº«n chi tiáº¿t cÃ¡ch tÃ­ch há»£p thá»§ cÃ´ng gÃ³i AutoLISP C2T báº±ng lá»‡nh <code>AP</code> (APPLOAD) vÃ  cÃ¡c bÆ°á»›c váº­n hÃ nh pháº§n má»m hiá»‡u quáº£.</p>
 
-          <h2>🛠️ Hướng Dẫn Nạp AutoLISP C2T Thủ Công Bằng Lệnh AP (APPLOAD)</h2>
-          <p>Ngoài trình cài đặt tự động (.EXE), bạn hoàn toàn có thể tích hợp thủ công công cụ C2T vào AutoCAD dưới dạng AutoLISP (.LSP) để dễ dàng quản lý lệnh tắt và linh hoạt lưu trữ trong các thư mục làm việc riêng. Hãy thực hiện theo các bước sau:</p>
+          <h2>ðŸ› ï¸ HÆ°á»›ng Dáº«n Náº¡p AutoLISP C2T Thá»§ CÃ´ng Báº±ng Lá»‡nh AP (APPLOAD)</h2>
+          <p>NgoÃ i trÃ¬nh cÃ i Ä‘áº·t tá»± Ä‘á»™ng (.EXE), báº¡n hoÃ n toÃ n cÃ³ thá»ƒ tÃ­ch há»£p thá»§ cÃ´ng cÃ´ng cá»¥ C2T vÃ o AutoCAD dÆ°á»›i dáº¡ng AutoLISP (.LSP) Ä‘á»ƒ dá»… dÃ ng quáº£n lÃ½ lá»‡nh táº¯t vÃ  linh hoáº¡t lÆ°u trá»¯ trong cÃ¡c thÆ° má»¥c lÃ m viá»‡c riÃªng. HÃ£y thá»±c hiá»‡n theo cÃ¡c bÆ°á»›c sau:</p>
 
           <div class="steps-container">
             <!-- Step 1 -->
             <div class="step-card">
               <div class="step-number">1</div>
               <div class="step-content">
-                <h4>Tải và giải nén thư viện thủ công</h4>
-                <p>Tải về gói thư viện thủ công C2T (chứa file <code>C2T-Cad to Tekla.dll</code> và file script Lisp loader) và giải nén vào một thư mục cố định an toàn trên máy tính của bạn. <br>Ví dụ: <code>D:\iViDLab\Tools\C2T\</code></p>
+                <h4>Táº£i vÃ  giáº£i nÃ©n thÆ° viá»‡n thá»§ cÃ´ng</h4>
+                <p>Táº£i vá» gÃ³i thÆ° viá»‡n thá»§ cÃ´ng C2T (chá»©a file <code>C2T-Cad to Tekla.dll</code> vÃ  file script Lisp loader) vÃ  giáº£i nÃ©n vÃ o má»™t thÆ° má»¥c cá»‘ Ä‘á»‹nh an toÃ n trÃªn mÃ¡y tÃ­nh cá»§a báº¡n. <br>VÃ­ dá»¥: <code>D:\iViDLab\Tools\C2T\</code></p>
               </div>
             </div>
 
@@ -177,13 +177,13 @@
             <div class="step-card">
               <div class="step-number">2</div>
               <div class="step-content">
-                <h4>Cấu hình Support Path & Trusted Locations</h4>
-                <p>Để AutoCAD luôn tự động tìm thấy các file hỗ trợ và không hiển thị cảnh báo bảo mật phiền phức:</p>
+                <h4>Cáº¥u hÃ¬nh Support Path & Trusted Locations</h4>
+                <p>Äá»ƒ AutoCAD luÃ´n tá»± Ä‘á»™ng tÃ¬m tháº¥y cÃ¡c file há»— trá»£ vÃ  khÃ´ng hiá»ƒn thá»‹ cáº£nh bÃ¡o báº£o máº­t phiá»n phá»©c:</p>
                 <ol style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
-                  <li>Gõ lệnh <code>OP</code> hoặc <code>OPTIONS</code> trong CAD để mở bảng tùy chọn (Options).</li>
-                  <li>Chọn tab <strong>Files</strong>, nhấn vào dấu <code>+</code> tại mục <strong>Support File Search Path</strong>, chọn <strong>Add</strong> -> <strong>Browse</strong> và tìm đến thư mục chứa file ở Bước 1.</li>
-                  <li>Tương tự, kéo xuống mục <strong>Trusted Locations</strong> ở ngay phía dưới, add thư mục đó vào danh sách tin cậy.</li>
-                  <li>Nhấn <strong>Apply</strong> và <strong>OK</strong> để lưu lại.</li>
+                  <li>GÃµ lá»‡nh <code>OP</code> hoáº·c <code>OPTIONS</code> trong CAD Ä‘á»ƒ má»Ÿ báº£ng tÃ¹y chá»n (Options).</li>
+                  <li>Chá»n tab <strong>Files</strong>, nháº¥n vÃ o dáº¥u <code>+</code> táº¡i má»¥c <strong>Support File Search Path</strong>, chá»n <strong>Add</strong> -> <strong>Browse</strong> vÃ  tÃ¬m Ä‘áº¿n thÆ° má»¥c chá»©a file á»Ÿ BÆ°á»›c 1.</li>
+                  <li>TÆ°Æ¡ng tá»±, kÃ©o xuá»‘ng má»¥c <strong>Trusted Locations</strong> á»Ÿ ngay phÃ­a dÆ°á»›i, add thÆ° má»¥c Ä‘Ã³ vÃ o danh sÃ¡ch tin cáº­y.</li>
+                  <li>Nháº¥n <strong>Apply</strong> vÃ  <strong>OK</strong> Ä‘á»ƒ lÆ°u láº¡i.</li>
                 </ol>
               </div>
             </div>
@@ -192,12 +192,12 @@
             <div class="step-card">
               <div class="step-number">3</div>
               <div class="step-content">
-                <h4>Dùng lệnh AP (APPLOAD) để nạp công cụ</h4>
-                <p>Nhập lệnh <code>AP</code> hoặc <code>APPLOAD</code> trong dòng lệnh AutoCAD. Hộp thoại nạp ứng dụng xuất hiện:</p>
+                <h4>DÃ¹ng lá»‡nh AP (APPLOAD) Ä‘á»ƒ náº¡p cÃ´ng cá»¥</h4>
+                <p>Nháº­p lá»‡nh <code>AP</code> hoáº·c <code>APPLOAD</code> trong dÃ²ng lá»‡nh AutoCAD. Há»™p thoáº¡i náº¡p á»©ng dá»¥ng xuáº¥t hiá»‡n:</p>
                 <ul style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
-                  <li>Tìm đến thư mục chứa file, chọn file AutoLISP nạp Grid (Ví dụ: <code>C2T-Cad to Tekla.lsp</code>).</li>
-                  <li>Click vào nút <strong>Load</strong>.</li>
-                  <li>Nhìn xuống dòng trạng thái Command Line của AutoCAD sẽ thấy thông báo load thành công: <br><strong style="color: var(--primary);">"[iViDLab] Shortcut command [CTT] registered successfully."</strong></li>
+                  <li>TÃ¬m Ä‘áº¿n thÆ° má»¥c chá»©a file, chá»n file AutoLISP náº¡p Grid (VÃ­ dá»¥: <code>C2T-Cad to Tekla.lsp</code>).</li>
+                  <li>Click vÃ o nÃºt <strong>Load</strong>.</li>
+                  <li>NhÃ¬n xuá»‘ng dÃ²ng tráº¡ng thÃ¡i Command Line cá»§a AutoCAD sáº½ tháº¥y thÃ´ng bÃ¡o load thÃ nh cÃ´ng: <br><strong style="color: var(--primary);">"[iViDLab] Shortcut command [CTT] registered successfully."</strong></li>
                 </ul>
               </div>
             </div>
@@ -206,50 +206,50 @@
             <div class="step-card">
               <div class="step-number">4</div>
               <div class="step-content">
-                <h4>Tự động hóa nạp vĩnh viễn (Startup Suite)</h4>
-                <p>Để không phải dùng lệnh AP để load lại mỗi khi khởi động lại AutoCAD:</p>
+                <h4>Tá»± Ä‘á»™ng hÃ³a náº¡p vÄ©nh viá»…n (Startup Suite)</h4>
+                <p>Äá»ƒ khÃ´ng pháº£i dÃ¹ng lá»‡nh AP Ä‘á»ƒ load láº¡i má»—i khi khá»Ÿi Ä‘á»™ng láº¡i AutoCAD:</p>
                 <ol style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
-                  <li>Trong bảng điều khiển <strong>APPLOAD</strong>, tìm biểu tượng chiếc cặp màu vàng có tên <strong>Startup Suite</strong>.</li>
-                  <li>Click vào nút <strong>Contents...</strong> ở bên dưới chiếc cặp.</li>
-                  <li>Click nút <strong>Add...</strong>, tìm và chọn đúng file AutoLISP nạp <code>C2T-Cad to Tekla.lsp</code> của bạn rồi nhấn Open.</li>
-                  <li>Click <strong>Close</strong> để hoàn tất. Từ nay, mỗi khi mở bất kỳ bản vẽ CAD nào, công cụ C2T sẽ tự động sẵn sàng sử dụng.</li>
+                  <li>Trong báº£ng Ä‘iá»u khiá»ƒn <strong>APPLOAD</strong>, tÃ¬m biá»ƒu tÆ°á»£ng chiáº¿c cáº·p mÃ u vÃ ng cÃ³ tÃªn <strong>Startup Suite</strong>.</li>
+                  <li>Click vÃ o nÃºt <strong>Contents...</strong> á»Ÿ bÃªn dÆ°á»›i chiáº¿c cáº·p.</li>
+                  <li>Click nÃºt <strong>Add...</strong>, tÃ¬m vÃ  chá»n Ä‘Ãºng file AutoLISP náº¡p <code>C2T-Cad to Tekla.lsp</code> cá»§a báº¡n rá»“i nháº¥n Open.</li>
+                  <li>Click <strong>Close</strong> Ä‘á»ƒ hoÃ n táº¥t. Tá»« nay, má»—i khi má»Ÿ báº¥t ká»³ báº£n váº½ CAD nÃ o, cÃ´ng cá»¥ C2T sáº½ tá»± Ä‘á»™ng sáºµn sÃ ng sá»­ dá»¥ng.</li>
                 </ol>
               </div>
             </div>
           </div>
 
           <div class="tip-box">
-            <strong>💡 Mẹo Chuyên Gia:</strong> Đoạn mã AutoLISP nạp DLL thủ công cực kỳ đơn giản. Bạn có thể sử dụng Trình Tạo File AutoLISP tùy chỉnh ở phần dưới bài viết để tự đặt lệnh tắt theo ý muốn (ví dụ: <code>C2T</code>, <code>CTT</code>, hoặc <code>GRID</code>) và tạo file Lisp của riêng bạn chỉ trong 1 click.
+            <strong>ðŸ’¡ Máº¹o ChuyÃªn Gia:</strong> Äoáº¡n mÃ£ AutoLISP náº¡p DLL thá»§ cÃ´ng cá»±c ká»³ Ä‘Æ¡n giáº£n. Báº¡n cÃ³ thá»ƒ sá»­ dá»¥ng TrÃ¬nh Táº¡o File AutoLISP tÃ¹y chá»‰nh á»Ÿ pháº§n dÆ°á»›i bÃ i viáº¿t Ä‘á»ƒ tá»± Ä‘áº·t lá»‡nh táº¯t theo Ã½ muá»‘n (vÃ­ dá»¥: <code>C2T</code>, <code>CTT</code>, hoáº·c <code>GRID</code>) vÃ  táº¡o file Lisp cá»§a riÃªng báº¡n chá»‰ trong 1 click.
           </div>
 
-          <h2>🚀 Hướng Dẫn Sử Dụng Đồng Bộ Lưới Trục Chi Tiết Từng Bước</h2>
-          <p>Khi công cụ đã được load thành công vào AutoCAD, bạn có thể nhanh chóng đồng bộ lưới trục sang Tekla bằng các bước cực kỳ dễ dàng sau:</p>
+          <h2>ðŸš€ HÆ°á»›ng Dáº«n Sá»­ Dá»¥ng Äá»“ng Bá»™ LÆ°á»›i Trá»¥c Chi Tiáº¿t Tá»«ng BÆ°á»›c</h2>
+          <p>Khi cÃ´ng cá»¥ Ä‘Ã£ Ä‘Æ°á»£c load thÃ nh cÃ´ng vÃ o AutoCAD, báº¡n cÃ³ thá»ƒ nhanh chÃ³ng Ä‘á»“ng bá»™ lÆ°á»›i trá»¥c sang Tekla báº±ng cÃ¡c bÆ°á»›c cá»±c ká»³ dá»… dÃ ng sau:</p>
 
           <div class="steps-container">
             <div class="step-card">
               <div class="step-number">1</div>
               <div class="step-content">
-                <h4>Chuẩn bị bản vẽ CAD và mở Tekla</h4>
-                <p>Mở bản vẽ mặt bằng kiến trúc/kết cấu trên AutoCAD có chứa các Dimension đo khoảng cách các trục. Đồng thời, khởi động phần mềm Tekla Structures và mở model dự án của bạn lên.</p>
+                <h4>Chuáº©n bá»‹ báº£n váº½ CAD vÃ  má»Ÿ Tekla</h4>
+                <p>Má»Ÿ báº£n váº½ máº·t báº±ng kiáº¿n trÃºc/káº¿t cáº¥u trÃªn AutoCAD cÃ³ chá»©a cÃ¡c Dimension Ä‘o khoáº£ng cÃ¡ch cÃ¡c trá»¥c. Äá»“ng thá»i, khá»Ÿi Ä‘á»™ng pháº§n má»m Tekla Structures vÃ  má»Ÿ model dá»± Ã¡n cá»§a báº¡n lÃªn.</p>
               </div>
             </div>
 
             <div class="step-card">
               <div class="step-number">2</div>
               <div class="step-content">
-                <h4>Gõ lệnh tắt để mở giao diện C2T</h4>
-                <p>Gõ lệnh <code>CTT</code> (hoặc lệnh tắt bạn đã đặt) trên AutoCAD để khởi chạy công cụ. Giao diện trực quan hiện đại của C2T sẽ xuất hiện, tự động kết nối API song song sang Tekla.</p>
+                <h4>GÃµ lá»‡nh táº¯t Ä‘á»ƒ má»Ÿ giao diá»‡n C2T</h4>
+                <p>GÃµ lá»‡nh <code>CTT</code> (hoáº·c lá»‡nh táº¯t báº¡n Ä‘Ã£ Ä‘áº·t) trÃªn AutoCAD Ä‘á»ƒ khá»Ÿi cháº¡y cÃ´ng cá»¥. Giao diá»‡n trá»±c quan hiá»‡n Ä‘áº¡i cá»§a C2T sáº½ xuáº¥t hiá»‡n, tá»± Ä‘á»™ng káº¿t ná»‘i API song song sang Tekla.</p>
               </div>
             </div>
 
             <div class="step-card">
               <div class="step-number">3</div>
               <div class="step-content">
-                <h4>Quét chọn Dimensions theo phương X, Y và Z</h4>
+                <h4>QuÃ©t chá»n Dimensions theo phÆ°Æ¡ng X, Y vÃ  Z</h4>
                 <ol style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
-                  <li><strong>Phương X (Lưới trục đứng):</strong> Click nút <em>Select X Dimensions</em>, quét chọn các đường Dim nằm ngang (đo khoảng cách trục dọc). Hệ thống sẽ tự động bóc tách khoảng cách trục và điền nhãn tăng dần 1, 2, 3...</li>
-                  <li><strong>Phương Y (Lưới trục ngang):</strong> Click nút <em>Select Y Dimensions</em>, quét chọn các đường Dim đứng (đo khoảng cách trục ngang) và gán chuỗi nhãn chữ A, B, C...</li>
-                  <li><strong>Cao trình Z:</strong> Nhập cao trình gốc Base Level (ví dụ: 0.00) và click quét chọn chiều cao các tầng. C2T tự động cộng dồn khoảng cách để tính toán cao trình sàn tuyệt đối chính xác cho Tekla.</li>
+                  <li><strong>PhÆ°Æ¡ng X (LÆ°á»›i trá»¥c Ä‘á»©ng):</strong> Click nÃºt <em>Select X Dimensions</em>, quÃ©t chá»n cÃ¡c Ä‘Æ°á»ng Dim náº±m ngang (Ä‘o khoáº£ng cÃ¡ch trá»¥c dá»c). Há»‡ thá»‘ng sáº½ tá»± Ä‘á»™ng bÃ³c tÃ¡ch khoáº£ng cÃ¡ch trá»¥c vÃ  Ä‘iá»n nhÃ£n tÄƒng dáº§n 1, 2, 3...</li>
+                  <li><strong>PhÆ°Æ¡ng Y (LÆ°á»›i trá»¥c ngang):</strong> Click nÃºt <em>Select Y Dimensions</em>, quÃ©t chá»n cÃ¡c Ä‘Æ°á»ng Dim Ä‘á»©ng (Ä‘o khoáº£ng cÃ¡ch trá»¥c ngang) vÃ  gÃ¡n chuá»—i nhÃ£n chá»¯ A, B, C...</li>
+                  <li><strong>Cao trÃ¬nh Z:</strong> Nháº­p cao trÃ¬nh gá»‘c Base Level (vÃ­ dá»¥: 0.00) vÃ  click quÃ©t chá»n chiá»u cao cÃ¡c táº§ng. C2T tá»± Ä‘á»™ng cá»™ng dá»“n khoáº£ng cÃ¡ch Ä‘á»ƒ tÃ­nh toÃ¡n cao trÃ¬nh sÃ n tuyá»‡t Ä‘á»‘i chÃ­nh xÃ¡c cho Tekla.</li>
                 </ol>
               </div>
             </div>
@@ -257,23 +257,23 @@
             <div class="step-card">
               <div class="step-number">4</div>
               <div class="step-content">
-                <h4>Xuất lưới và cập nhật nhanh trên Tekla</h4>
-                <p>Click nút <strong>Export Grid</strong> trên giao diện C2T. File cấu hình lưới trục <code>.grd</code> sẽ được tự động xuất thẳng vào thư mục model Tekla đang mở. <br>Quay lại phần mềm Tekla structures, click đúp vào lưới trục hiện có để mở Grid Properties, click <strong>Modify</strong>. Lưới trục mới sẽ được đồng bộ và cập nhật ngay lập tức mà không cần gõ tay bất cứ tọa độ nào!</p>
+                <h4>Xuáº¥t lÆ°á»›i vÃ  cáº­p nháº­t nhanh trÃªn Tekla</h4>
+                <p>Click nÃºt <strong>Export Grid</strong> trÃªn giao diá»‡n C2T. File cáº¥u hÃ¬nh lÆ°á»›i trá»¥c <code>.grd</code> sáº½ Ä‘Æ°á»£c tá»± Ä‘á»™ng xuáº¥t tháº³ng vÃ o thÆ° má»¥c model Tekla Ä‘ang má»Ÿ. <br>Quay láº¡i pháº§n má»m Tekla structures, click Ä‘Ãºp vÃ o lÆ°á»›i trá»¥c hiá»‡n cÃ³ Ä‘á»ƒ má»Ÿ Grid Properties, click <strong>Modify</strong>. LÆ°á»›i trá»¥c má»›i sáº½ Ä‘Æ°á»£c Ä‘á»“ng bá»™ vÃ  cáº­p nháº­t ngay láº­p tá»©c mÃ  khÃ´ng cáº§n gÃµ tay báº¥t cá»© tá»a Ä‘á»™ nÃ o!</p>
               </div>
             </div>
           </div>
 
           <!-- ==================== DOWNLOAD CENTER ==================== -->
           <div class="download-center" id="download-center">
-            <div class="dc-title">Tải Về Giải Pháp C2T: Cad to Tekla</div>
-            <div class="dc-desc">Nhận trình cài đặt tự động (Setup.exe) đầy đủ tính năng. Tự động thiết lập môi trường, sao chép tệp thư viện và tích hợp lệnh vào AutoCAD & Tekla Structures chỉ trong vài giây.</div>
+            <div class="dc-title">Táº£i Vá» Giáº£i PhÃ¡p C2T: Cad to Tekla</div>
+            <div class="dc-desc">Nháº­n trÃ¬nh cÃ i Ä‘áº·t tá»± Ä‘á»™ng (Setup.exe) Ä‘áº§y Ä‘á»§ tÃ­nh nÄƒng. Tá»± Ä‘á»™ng thiáº¿t láº­p mÃ´i trÆ°á»ng, sao chÃ©p tá»‡p thÆ° viá»‡n vÃ  tÃ­ch há»£p lá»‡nh vÃ o AutoCAD & Tekla Structures chá»‰ trong vÃ i giÃ¢y.</div>
             
             <div style="max-width: 500px; margin: 2rem auto 0; padding: 0 1rem;">
               <div class="download-card" style="background: rgba(200, 157, 85, 0.02); border-color: rgba(200, 157, 85, 0.2);">
-                <div class="dc-icon">📦</div>
-                <div class="dc-card-title">Bộ Cài Đặt Tự Động (Setup.exe)</div>
-                <div class="dc-card-desc">Phương án nhanh chóng và tối ưu nhất. Tự động cấu hình trọn gói từ A-Z cho AutoCAD và Tekla, đăng ký lệnh tắt mà không cần bất kỳ thao tác thủ công phức tạp nào.</div>
-                <button class="btn-primary c2t-download-trigger" onclick="openDownloadModal()">Tải Bộ Cài Setup (.EXE)</button>
+                <div class="dc-icon">ðŸ“¦</div>
+                <div class="dc-card-title">Bá»™ CÃ i Äáº·t Tá»± Äá»™ng (Setup.exe)</div>
+                <div class="dc-card-desc">PhÆ°Æ¡ng Ã¡n nhanh chÃ³ng vÃ  tá»‘i Æ°u nháº¥t. Tá»± Ä‘á»™ng cáº¥u hÃ¬nh trá»n gÃ³i tá»« A-Z cho AutoCAD vÃ  Tekla, Ä‘Äƒng kÃ½ lá»‡nh táº¯t mÃ  khÃ´ng cáº§n báº¥t ká»³ thao tÃ¡c thá»§ cÃ´ng phá»©c táº¡p nÃ o.</div>
+                <button class="btn-primary c2t-download-trigger" onclick="openDownloadModal()">Táº£i Bá»™ CÃ i Setup (.EXE)</button>
               </div>
             </div>
           </div>
@@ -284,7 +284,7 @@
         <div data-lang="en">
           <p><strong>C2T (Cad to Tekla Grid Sync)</strong> is an advanced automation solution built to synchronize grid lines and elevations from AutoCAD drawings directly into Tekla Structures. This article guides you through manually loading C2T AutoLISP using the <code>AP</code> (APPLOAD) command and provides detailed usage steps.</p>
 
-          <h2>🛠️ How to Load C2T AutoLISP Manually via APPLOAD (AP) Command</h2>
+          <h2>ðŸ› ï¸ How to Load C2T AutoLISP Manually via APPLOAD (AP) Command</h2>
           <p>In addition to our automated installer (.EXE), you can manually load the C2T plugin into AutoCAD using AutoLISP (.LSP). This offers full flexibility in terms of directory structure and command alias customization. Follow these steps:</p>
 
           <div class="steps-container">
@@ -339,10 +339,10 @@
           </div>
 
           <div class="tip-box">
-            <strong>💡 Pro Tip:</strong> The AutoLISP code used to bootstrap C# DLLs is extremely lightweight. Use the custom LISP Generator tool in the download area below to define your favorite command abbreviation (e.g., C2T, CTT, GRID) and build your script instantly.
+            <strong>ðŸ’¡ Pro Tip:</strong> The AutoLISP code used to bootstrap C# DLLs is extremely lightweight. Use the custom LISP Generator tool in the download area below to define your favorite command abbreviation (e.g., C2T, CTT, GRID) and build your script instantly.
           </div>
 
-          <h2>🚀 Step-by-Step C2T Grid Synchronization Guide</h2>
+          <h2>ðŸš€ Step-by-Step C2T Grid Synchronization Guide</h2>
           <p>Once loaded, running C2T and exporting grids is a simple 4-step process:</p>
 
           <div class="steps-container">
@@ -390,7 +390,7 @@
             
             <div style="max-width: 500px; margin: 2rem auto 0; padding: 0 1rem;">
               <div class="download-card" style="background: rgba(200, 157, 85, 0.02); border-color: rgba(200, 157, 85, 0.2);">
-                <div class="dc-icon">📦</div>
+                <div class="dc-icon">ðŸ“¦</div>
                 <div class="dc-card-title">Automated Installer (Setup.exe)</div>
                 <div class="dc-card-desc">Recommended for standard users. Installs files, configures profiles, maps registry entries, and sets up AutoCAD shortcut aliases automatically from A to Z. No manual actions needed.</div>
                 <button class="btn-primary c2t-download-trigger" onclick="openDownloadModal()">Download Setup (.EXE)</button>
@@ -410,14 +410,14 @@
       
       <!-- VIETNAMESE STATE -->
       <div id="download-modal-vi">
-        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Nhập Email để Tải Xuống</h3>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Vui lòng nhập địa chỉ email của bạn để tải xuống. Quá trình tải xuống tệp nén an toàn `iViDCadToTeklaSetup.zip` chứa trình cài đặt tự động `.exe` sẽ tự động bắt đầu ngay lập tức sau khi xác nhận.</p>
+        <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-blue); font-family: 'Space Grotesk', sans-serif;">Nháº­p Email Ä‘á»ƒ Táº£i Xuá»‘ng</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">Vui lÃ²ng nháº­p Ä‘á»‹a chá»‰ email cá»§a báº¡n Ä‘á»ƒ táº£i xuá»‘ng. QuÃ¡ trÃ¬nh táº£i xuá»‘ng tá»‡p nÃ©n an toÃ n `iViDCadToTeklaSetup.zip` chá»©a trÃ¬nh cÃ i Ä‘áº·t tá»± Ä‘á»™ng `.exe` sáº½ tá»± Ä‘á»™ng báº¯t Ä‘áº§u ngay láº­p tá»©c sau khi xÃ¡c nháº­n.</p>
         <form id="download-form-vi">
           <div style="margin-bottom: 1.25rem;">
             <input type="email" id="email-input-vi" required placeholder="example@domain.com" style="width: 100%; padding: 0.85rem 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-size: 0.95rem; transition: border-color 0.2s; outline: none;" />
           </div>
           <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem; border: none; cursor: pointer;">
-            <span>Tải Xuống Ngay</span>
+            <span>Táº£i Xuá»‘ng Ngay</span>
           </button>
         </form>
       </div>
@@ -439,19 +439,19 @@
       <!-- LOADING STATE -->
       <div id="download-modal-loading" style="display: none; text-align: center; padding: 2rem 0;">
         <div style="width: 48px; height: 48px; border: 4px solid rgba(99, 179, 237, 0.1); border-top-color: var(--accent-blue); border-radius: 50%; display: inline-block; animation: spin 1s linear infinite; margin-bottom: 1.5rem;"></div>
-        <p id="loading-text-vi" style="color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Đang chuẩn bị tải xuống, vui lòng chờ...</p>
+        <p id="loading-text-vi" style="color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Äang chuáº©n bá»‹ táº£i xuá»‘ng, vui lÃ²ng chá»...</p>
         <p id="loading-text-en" style="display: none; color: var(--text-primary); font-size: 1.05rem; font-weight: 600;">Preparing download, please wait...</p>
       </div>
 
       <!-- SUCCESS STATE -->
       <div id="download-modal-success" style="display: none; text-align: center; padding: 1.5rem 0 0.5rem;">
-        <div style="width: 64px; height: 64px; background: rgba(104, 211, 145, 0.1); border: 2px solid var(--accent-green); color: var(--accent-green); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem; font-weight: bold;">✓</div>
+        <div style="width: 64px; height: 64px; background: rgba(104, 211, 145, 0.1); border: 2px solid var(--accent-green); color: var(--accent-green); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem; font-weight: bold;">âœ“</div>
         
         <div id="success-text-vi">
-          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Bắt Đầu Tải Xuống!</h4>
-          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem;">Tệp nén an toàn `iViDCadToTeklaSetup.zip` (chứa trình cài đặt `.exe`) đang được tải xuống tự động cho email:</p>
+          <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.75rem;">Báº¯t Äáº§u Táº£i Xuá»‘ng!</h4>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem;">Tá»‡p nÃ©n an toÃ n `iViDCadToTeklaSetup.zip` (chá»©a trÃ¬nh cÃ i Ä‘áº·t `.exe`) Ä‘ang Ä‘Æ°á»£c táº£i xuá»‘ng tá»± Ä‘á»™ng cho email:</p>
           <p id="success-email-vi" style="color: var(--accent-blue); font-weight: 600; font-size: 1rem; margin-bottom: 1rem;"></p>
-          <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.5rem;">Nếu quá trình tải xuống không tự động bắt đầu sau vài giây, vui lòng click nút bên dưới:</p>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.5rem;">Náº¿u quÃ¡ trÃ¬nh táº£i xuá»‘ng khÃ´ng tá»± Ä‘á»™ng báº¯t Ä‘áº§u sau vÃ i giÃ¢y, vui lÃ²ng click nÃºt bÃªn dÆ°á»›i:</p>
         </div>
 
         <div id="success-text-en" style="display: none;">
@@ -468,12 +468,12 @@
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            <span data-lang="vi">Tải Xuống Lại</span>
+            <span data-lang="vi">Táº£i Xuá»‘ng Láº¡i</span>
             <span data-lang="en">Download Again</span>
           </a>
         </div>
 
-        <button onclick="closeDownloadModal()" class="btn-ghost" style="padding: 0.6rem 1.5rem; font-size: 0.9rem; border-radius: var(--radius-sm); cursor: pointer;">Đóng / Close</button>
+        <button onclick="closeDownloadModal()" class="btn-ghost" style="padding: 0.6rem 1.5rem; font-size: 0.9rem; border-radius: var(--radius-sm); cursor: pointer;">ÄÃ³ng / Close</button>
       </div>
     </div>
   </div>
@@ -657,5 +657,6 @@
   <script src="../app.js"></script>
 </body>
 </html>
+
 
 

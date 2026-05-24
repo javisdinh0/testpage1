@@ -391,3 +391,23 @@ if (!window.safeStorage) {
     });
   });
 })();
+
+/* ===== COUNTER API - VIEWS & DOWNLOADS (NO GOOGLE) ===== */
+(function() {
+  // Track View (once per session)
+  if (!sessionStorage.getItem('ividlab_global_viewed')) {
+    fetch('https://api.counterapi.dev/v1/ividlab_stats/views/up')
+      .then(res => res.json())
+      .then(data => console.log('Global view counted:', data.count))
+      .catch(e => console.error('Counter API error:', e));
+    sessionStorage.setItem('ividlab_global_viewed', 'true');
+  }
+})();
+
+// Global utility for download tracking (called from individual articles)
+window.trackGlobalDownload = function() {
+  fetch('https://api.counterapi.dev/v1/ividlab_stats/downloads/up')
+    .then(res => res.json())
+    .then(data => console.log('Global download counted:', data.count))
+    .catch(e => console.error('Counter API download error:', e));
+};
