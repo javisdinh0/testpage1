@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PEB Knee Joint & Frame Generation (S93, S53, S92) • iViDLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 950px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.25; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-image { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); margin: 2rem 0; box-shadow: var(--shadow); background: rgba(255,255,255,0.02); }
+    .article-body { font-size: 1.12rem; line-height: 1.85; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); font-size: 1.8rem; margin: 2.5rem 0 1rem; }
+    .article-body h3 { color: var(--text-primary); font-size: 1.3rem; margin: 2rem 0 0.8rem; }
+    .article-body p { margin-bottom: 1.2rem; }
+    .article-body ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.5rem; }
+    
+    .highlight-box {
+      background: rgba(43, 235, 179, 0.05);
+      border-left: 4px solid var(--accent-cyan);
+      padding: 1.5rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 2rem 0;
+    }
+
+    .info-alert {
+      background: rgba(255, 165, 0, 0.1);
+      border-left: 4px solid orange;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+      color: var(--text-primary);
+    }
+    
+    .project-meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    .project-meta-table th, .project-meta-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    .project-meta-table th { background: rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body>
+  <div class="glow" style="top: 20%; left: 10%;"></div>
+  
+  <nav class="navbar">
+    <a href="../index.html" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      iViDLab
+    </a>
+    <div class="lang-toggle-wrapper">
+      <div class="lang-toggle" id="lang-toggle">
+        <div class="lang-btn active" data-target="vi">VN</div>
+        <div class="lang-btn" data-target="en">EN</div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <a href="../index.html" class="article-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-lang="vi">Trở về Trang chủ</span><span data-lang="en">Back to Home</span>
+      </a>
+      
+      <header class="article-header">
+        <h1 class="article-title" data-lang="vi">Làm chủ liên kết nách kèo PEB Knee joint (S93) và sinh khung tự động (S53, S92)</h1>
+        <h1 class="article-title" data-lang="en" style="display:none;">Mastering PEB Knee Joint (S93) and Automated Frame Generation (S53, S92)</h1>
+        
+        <div class="article-meta">
+          <div class="article-meta-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span data-lang="vi">24 Tháng 05, 2026</span><span data-lang="en">May 24, 2026</span>
+          </div>
+          <div class="article-meta-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>22 min read</span>
+          </div>
+          <div class="article-meta-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <span>Series 3 • PEB Components</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Banner Images -->
+      <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+        <div style="flex: 1; position: relative;">
+          <img src="images/img_s93.png" alt="PEB Knee Joint S93" class="article-image" style="width: 100%; max-height: 400px; object-fit: cover; padding: 0; border-radius: 8px; margin: 0;">
+          <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">Macro S93: PEB Knee Joint</div>
+        </div>
+        <div style="flex: 1; position: relative;">
+          <img src="images/img_s92.png" alt="PEB Frame S92" class="article-image" style="width: 100%; max-height: 400px; object-fit: cover; padding: 0; border-radius: 8px; margin: 0;">
+          <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">Macro S92: Automated PEB Frame</div>
+        </div>
+      </div>
+
+      <div class="article-body">
+        
+        <!-- ==================== VIETNAMESE LANG WRAPPER ==================== -->
+        <div data-lang="vi">
+          <h2>1. INTRODUCTION (Tổng quan nhiệm vụ & Component ID)</h2>
+          <p>Trong kết cấu nhà thép tiền chế (PEB), <strong>nút nách kèo (Knee Joint)</strong> là vị trí chịu mô-men uốn khổng lồ nhất, nơi giao thoa giữa lực nén của cột và lực uốn của dầm vì kèo. Việc thiết kế nút này đòi hỏi các bản bích dày (end plate) và hệ thống sườn gia cường (stiffener) phức tạp để chống oằn cục bộ.</p>
+          <p>Nhóm công cụ sau đây sẽ giúp bạn giải quyết triệt để bài toán này từ mức độ vi mô (nút) đến vĩ mô (khung):</p>
+          <ul>
+            <li><strong>PEB Knee joint (S93):</strong> Macro chuyên dụng để tạo mặt bích nối dầm vào cột, hỗ trợ mặt bích nằm ngang, thẳng đứng hoặc vuông góc với dầm, kèm theo tùy chọn tạo sườn chéo (diagonal stiffener).</li>
+            <li><strong>Tapered frame (S53) & PEB Frame (S92):</strong> Các "Siêu Macro" tự động sinh ra một khung nhà xưởng hoàn chỉnh. Chúng gọi lồng (nest) các macro khác như S45 (dầm vát) và S93 (nách kèo) để mô hình hóa toàn bộ khung Zamil chỉ trong 1 thao tác click chuột.</li>
+          </ul>
+
+          <h2>2. USE CASES TABLE (Các trường hợp thực tế)</h2>
+          <table class="project-meta-table">
+            <tr>
+              <th>Component ID</th>
+              <th>Chức năng (Function)</th>
+              <th>Ứng dụng thực tế</th>
+            </tr>
+            <tr>
+              <td><strong>S93</strong></td>
+              <td>Tạo liên kết nách kèo (Knee connection).</td>
+              <td>Dùng trong giai đoạn Detailing chi tiết (LOD 350-400), khi bạn cần kiểm soát chính xác vị trí bu lông, chiều dày sườn gia cường chéo (diagonal stiffener) tại từng nút riêng lẻ.</td>
+            </tr>
+            <tr>
+              <td><strong>S53 / S92</strong></td>
+              <td>Sinh khung tự động toàn tập (Automated Frame Generation).</td>
+              <td>Dùng trong giai đoạn thiết kế cơ sở (Concept/Basic Design, LOD 200). Cho phép dựng hàng loạt khung Zamil, thay đổi nhịp, cao độ, độ vát rất nhanh chóng để lấy khối lượng sơ bộ.</td>
+            </tr>
+          </table>
+
+          <h2>3. SELECTION ORDER (Quy trình thao tác)</h2>
+          
+          <div class="highlight-box">
+            <p><strong>Thao tác với S93 (PEB Knee Joint):</strong></p>
+            <ol>
+              <li>Pick <strong>Main part</strong> (Cột).</li>
+              <li>Pick <strong>Secondary part</strong> (Dầm vì kèo).</li>
+              <li>Click chuột giữa (Middle mouse) để hoàn tất.</li>
+            </ol>
+            
+            <p><strong>Thao tác với S92 (PEB Frame):</strong></p>
+            <ol>
+              <li>Chỉ cần pick <strong>1 điểm gốc tọa độ</strong> (Insertion point). Khung sẽ tự động mọc lên dựa trên các thông số khoảng cách nhịp đã nhập.</li>
+            </ol>
+          </div>
+
+          <h2>4. DEEP DIVE SETTINGS (Chi tiết thông số)</h2>
+          
+          <h3>Giải phẫu PEB Knee joint (S93)</h3>
+          <p>Tại tab <strong>Picture</strong>, bạn quyết định dạng hình học của liên kết:</p>
+          <ul>
+            <li><strong>Connection type:</strong> <code>Horizontal</code> (Bản bích nằm ngang), <code>Vertical</code> (Bản bích đứng) hoặc <code>Perpendicular</code> (Bản bích vuông góc với phương dầm).</li>
+            <li><strong>Diagonal stiffener / Web plate:</strong> Có sinh sườn chéo nối từ cánh trong dầm vát xuống cánh trong cột vát hay không. Sườn này rất quan trọng để chịu lực nén tập trung.</li>
+          </ul>
+
+          <h3>Giải phẫu PEB Frame (S92)</h3>
+          <p>Tại tab <strong>Parameters</strong>, bản chất S92 là một bảng điều khiển trung tâm để gọi các macro khác (nested components). Bạn sẽ chọn <code>Column 1</code> là cấu kiện S94, <code>Rafter 1</code> là S45, <code>Column 1 knee joint</code> là S93. Sự kết hợp này mang lại tốc độ dựng hình khủng khiếp.</p>
+
+          <h2>5. DETAIL ERRECTION TIPS (Mẹo quản lý mô hình)</h2>
+          <div class="info-alert">
+            <strong>CẢNH BÁO QUẢN LÝ BẢN VẼ (Detailing Warning for S92/S53):</strong> 
+            Sử dụng "Siêu macro" S92 rất "sướng" lúc dựng hình ban đầu. Tuy nhiên, khi bạn chuyển sang giai đoạn xuất bản vẽ chế tạo (Detailing phase), các cấu kiện bị "lồng nhau" (nested components) sẽ khiến hệ thống Numbering (đánh số) của Tekla trở nên vô cùng rối rắm và khó kiểm soát. 
+            <br><br>
+            <strong>Lời khuyên chuyên gia:</strong> Sau khi dùng S92 để tạo xong hệ khung cơ bản, hãy chọn khung đó, chuột phải và nhấn <strong>Explode Component</strong> (phá vỡ liên kết cha). Khi đó, hệ thống sẽ trả về các nút S93, S45 độc lập. Việc quản lý sửa đổi và xuất bản vẽ Assembly (tổ hợp) lúc này sẽ trở nên chính xác tuyệt đối!
+          </div>
+        </div>
+
+        <!-- ==================== ENGLISH LANG WRAPPER ==================== -->
+        <div data-lang="en" style="display:none;">
+          <h2>1. INTRODUCTION (Task Overview & Component ID)</h2>
+          <p>In Pre-Engineered Building (PEB) structures, the <strong>Knee Joint</strong> is the region subjected to the most massive bending moments, where the compressive forces of the column intersect with the bending forces of the rafter. Designing this node requires thick extended end plates and intricate stiffener systems to prevent local buckling.</p>
+          <p>The following tools completely resolve this challenge from the micro (node) to the macro (frame) level:</p>
+          <ul>
+            <li><strong>PEB Knee joint (S93):</strong> A specialized macro for connecting rafters to columns, supporting horizontal, vertical, or perpendicular end plates, along with options to generate diagonal stiffeners.</li>
+            <li><strong>Tapered frame (S53) & PEB Frame (S92):</strong> "Super Macros" that automatically generate a complete factory frame. They nest other macros such as S45 (tapered beam) and S93 (knee joint) to model an entire PEB portal frame with a single click.</li>
+          </ul>
+
+          <h2>2. USE CASES TABLE</h2>
+          <table class="project-meta-table">
+            <tr>
+              <th>Component ID</th>
+              <th>Function</th>
+              <th>Practical Application</th>
+            </tr>
+            <tr>
+              <td><strong>S93</strong></td>
+              <td>Creates the knee connection.</td>
+              <td>Used during the rigorous Detailing phase (LOD 350-400), when you need precise control over bolt locations, plate thicknesses, and diagonal stiffeners at individual nodes.</td>
+            </tr>
+            <tr>
+              <td><strong>S53 / S92</strong></td>
+              <td>Automated Frame Generation.</td>
+              <td>Used in the Concept/Basic Design phase (LOD 200). Allows for rapid deployment of multiple portal frames, modifying spans, heights, and tapers instantly for preliminary material take-offs.</td>
+            </tr>
+          </table>
+
+          <h2>3. SELECTION ORDER</h2>
+          
+          <div class="highlight-box">
+            <p><strong>Operating S93 (PEB Knee Joint):</strong></p>
+            <ol>
+              <li>Pick the <strong>Main part</strong> (Column).</li>
+              <li>Pick the <strong>Secondary part</strong> (Rafter).</li>
+              <li>Click the middle mouse button to finish.</li>
+            </ol>
+            
+            <p><strong>Operating S92 (PEB Frame):</strong></p>
+            <ol>
+              <li>Simply pick a single <strong>insertion point</strong> in the model. The entire frame is generated automatically based on the inputted span parameters.</li>
+            </ol>
+          </div>
+
+          <h2>4. DEEP DIVE SETTINGS</h2>
+          
+          <h3>Anatomy of PEB Knee joint (S93)</h3>
+          <p>On the <strong>Picture</strong> tab, you govern the connection's geometric topology:</p>
+          <ul>
+            <li><strong>Connection type:</strong> <code>Horizontal</code>, <code>Vertical</code>, or <code>Perpendicular</code> (relative to the rafter).</li>
+            <li><strong>Diagonal stiffener / Web plate:</strong> Determines whether a diagonal stiffener is generated spanning the inner corner. This plate is critical for resisting concentrated compressive stresses.</li>
+          </ul>
+
+          <h3>Anatomy of PEB Frame (S92)</h3>
+          <p>On the <strong>Parameters</strong> tab, S92 acts as a central command dashboard for nested components. You assign <code>Column 1</code> to use macro S94, <code>Rafter 1</code> to use S45, and <code>Column 1 knee joint</code> to use S93. This orchestration results in tremendous modeling speed.</p>
+
+          <h2>5. DETAIL ERRECTION TIPS (Model Management)</h2>
+          <div class="info-alert">
+            <strong>DETAILING WARNING (For S92/S53):</strong> 
+            Utilizing the S92 "Super Macro" feels incredible during initial conceptual modeling. However, when you transition to the fabrication detailing phase, these nested components will cause Tekla's Numbering system to become extremely convoluted and difficult to control.
+            <br><br>
+            <strong>Pro Tip:</strong> Once you have generated the foundational frame using S92, select the frame, right-click, and select <strong>Explode Component</strong> (breaking the parent link). This returns the S93 and S45 nodes to their independent macro states. Managing revisions and generating precise Assembly drawings will then become absolutely bulletproof!
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  
+  <script src="../app.js"></script>
+</body>
+</html>
