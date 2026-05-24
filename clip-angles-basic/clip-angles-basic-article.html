@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Clip Angles (116, 117) • iViDLab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 950px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.25; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-image { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); margin: 2rem 0; box-shadow: var(--shadow); background: rgba(255,255,255,0.02); }
+    .article-body { font-size: 1.12rem; line-height: 1.85; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); font-size: 1.8rem; margin: 2.5rem 0 1rem; }
+    .article-body h3 { color: var(--text-primary); font-size: 1.3rem; margin: 2rem 0 0.8rem; }
+    .article-body p { margin-bottom: 1.2rem; }
+    .article-body ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .highlight-box { background: rgba(43, 235, 179, 0.05); border-left: 4px solid var(--accent-cyan); padding: 1.5rem; border-radius: 0 var(--radius) var(--radius) 0; margin: 2rem 0; }
+    .info-alert { background: rgba(255, 165, 0, 0.1); border-left: 4px solid orange; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; color: var(--text-primary); }
+    .project-meta-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
+    .project-meta-table th, .project-meta-table td { padding: 1rem; border-bottom: 1px solid var(--border); text-align: left; }
+    .project-meta-table th { background: rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="../index.html" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      iViDLab
+    </a>
+    <div class="lang-toggle-wrapper">
+      <div class="lang-toggle" id="lang-toggle">
+        <div class="lang-btn active" data-target="vi">VN</div>
+        <div class="lang-btn" data-target="en">EN</div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <a href="../index.html" class="article-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-lang="vi">Trở về Trang chủ</span><span data-lang="en">Back to Home</span>
+      </a>
+      
+      <header class="article-header">
+        <h1 class="article-title" data-lang="vi">Làm chủ liên kết thép góc cơ bản: Clip angle (116) và Two sided clip angle (117)</h1>
+        <h1 class="article-title" data-lang="en" style="display:none;">Mastering Basic Clip Angles: Clip angle (116) and Two sided clip angle (117)</h1>
+        
+        <div class="article-meta">
+          <div class="article-meta-info">
+            <span data-lang="vi">24 Tháng 05, 2026</span><span data-lang="en">May 24, 2026</span>
+          </div>
+          <div class="article-meta-info">Series 4 — Clip Angles</div>
+        </div>
+      </header>
+
+      <img src="images/img_116.png" alt="Clip Angle 116 3D Render" class="article-image" style="max-height: 450px; object-fit: cover;">
+
+      <div class="article-body">
+        
+        <!-- VIETNAMESE -->
+        <div data-lang="vi">
+          <h2>1. TỔNG QUAN NHIỆM VỤ</h2>
+          <p>Mở đầu Series 4, chúng ta cùng giải quyết bài toán cơ bản nhất trong kết cấu khung thép: Liên kết khớp (shear connection) nối dầm phụ vào dầm chính hoặc cột. Thay vì hàn trực tiếp, giải pháp phổ biến nhất là sử dụng một hoặc hai đoạn thép góc chữ L (Clip angle) làm trung gian kết nối bằng bu lông.</p>
+          
+          <h2>2. BẢNG SO SÁNH ỨNG DỤNG</h2>
+          <table class="project-meta-table">
+            <tr>
+              <th>Component ID</th>
+              <th>Ứng dụng chính (Application)</th>
+              <th>Số lượng dầm phụ</th>
+            </tr>
+            <tr>
+              <td><strong>116 (Clip angle)</strong></td>
+              <td>Nối 1 dầm phụ vào bản bụng dầm chính hoặc cột.</td>
+              <td>1 Dầm phụ (Secondary part)</td>
+            </tr>
+            <tr>
+              <td><strong>117 (Two sided clip angle)</strong></td>
+              <td>Nối 2 dầm phụ nằm đối diện nhau qua bản bụng dầm chính/cột. Dùng bu lông xuyên suốt.</td>
+              <td>2 Dầm phụ đối xứng</td>
+            </tr>
+          </table>
+
+          <h2>3. THIẾT LẬP CHI TIẾT (DEEP DIVE)</h2>
+          <h3>Tab Parts & Picture</h3>
+          <p>Xác định profile của thép góc (ví dụ: `L100*100*10`). Tại tab Picture, bạn quyết định bố trí 1 hay 2 thép góc úp vào bụng dầm phụ.</p>
+          <h3>Tab Notch (Chống va chạm bản cánh)</h3>
+          <p>Khi dầm phụ cao ngang bằng dầm chính, bản cánh trên của chúng sẽ đâm vào nhau. Tab Notch cho phép tự động cắt gọt (Cope/Notch) bản cánh dầm phụ để luồn vừa vào dưới cánh dầm chính.</p>
+        </div>
+
+        <!-- ENGLISH -->
+        <div data-lang="en" style="display:none;">
+          <h2>1. INTRODUCTION</h2>
+          <p>To kick off Series 4, we tackle the most fundamental connection in steel framing: Shear connections joining secondary beams to primary beams or columns. Instead of direct welding, the standard approach utilizes one or two L-shaped clip angles as an intermediate bolted medium.</p>
+          
+          <h2>2. USE CASES TABLE</h2>
+          <table class="project-meta-table">
+            <tr>
+              <th>Component ID</th>
+              <th>Primary Application</th>
+              <th>Secondary Parts</th>
+            </tr>
+            <tr>
+              <td><strong>116 (Clip angle)</strong></td>
+              <td>Connects 1 secondary beam to a primary beam web or column.</td>
+              <td>1 Secondary beam</td>
+            </tr>
+            <tr>
+              <td><strong>117 (Two sided clip angle)</strong></td>
+              <td>Connects 2 opposing secondary beams sharing the same primary web using through-bolts.</td>
+              <td>2 Opposing beams</td>
+            </tr>
+          </table>
+
+          <h2>3. DEEP DIVE SETTINGS</h2>
+          <h3>Parts & Picture Tab</h3>
+          <p>Define the L-profile size (e.g., `L100*100*10`). In the Picture tab, select whether to use one or two clip angles flanking the secondary beam web.</p>
+          <h3>Notch Tab (Flange Coping)</h3>
+          <p>When the secondary beam is flush with the top of the primary beam, their flanges will clash. The Notch tab automates flange coping/notching so the secondary beam slides seamlessly under the primary flange.</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const langBtns = document.querySelectorAll('.lang-btn');
+      const viBlocks = document.querySelectorAll('[data-lang="vi"]');
+      const enBlocks = document.querySelectorAll('[data-lang="en"]');
+      langBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          langBtns.forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          const lang = e.target.getAttribute('data-target');
+          if (lang === 'vi') {
+            viBlocks.forEach(b => b.style.display = '');
+            enBlocks.forEach(b => b.style.display = 'none');
+          } else {
+            viBlocks.forEach(b => b.style.display = 'none');
+            enBlocks.forEach(b => b.style.display = '');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heavy Clip Angles (141, 143) • iViDLab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 950px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.25; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-image { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); margin: 2rem 0; box-shadow: var(--shadow); background: rgba(255,255,255,0.02); }
+    .article-body { font-size: 1.12rem; line-height: 1.85; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); font-size: 1.8rem; margin: 2.5rem 0 1rem; }
+    .article-body h3 { color: var(--text-primary); font-size: 1.3rem; margin: 2rem 0 0.8rem; }
+    .article-body p { margin-bottom: 1.2rem; }
+    .article-body ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .highlight-box { background: rgba(43, 235, 179, 0.05); border-left: 4px solid var(--accent-cyan); padding: 1.5rem; border-radius: 0 var(--radius) var(--radius) 0; margin: 2rem 0; }
+    .info-alert { background: rgba(255, 165, 0, 0.1); border-left: 4px solid orange; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; color: var(--text-primary); }
+    .project-meta-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
+    .project-meta-table th, .project-meta-table td { padding: 1rem; border-bottom: 1px solid var(--border); text-align: left; }
+    .project-meta-table th { background: rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="../index.html" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      iViDLab
+    </a>
+    <div class="lang-toggle-wrapper">
+      <div class="lang-toggle" id="lang-toggle">
+        <div class="lang-btn active" data-target="vi">VN</div>
+        <div class="lang-btn" data-target="en">EN</div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <a href="../index.html" class="article-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-lang="vi">Trở về Trang chủ</span><span data-lang="en">Back to Home</span>
+      </a>
+      
+      <header class="article-header">
+        <h1 class="article-title" data-lang="vi">Thiết kế liên kết thép góc chịu lực cắt nặng: Macro 141 và 143</h1>
+        <h1 class="article-title" data-lang="en" style="display:none;">Heavy Clip Angle Design for High Shear Loads: Macro 141 and 143</h1>
+        
+        <div class="article-meta">
+          <div class="article-meta-info">
+            <span data-lang="vi">24 Tháng 05, 2026</span><span data-lang="en">May 24, 2026</span>
+          </div>
+          <div class="article-meta-info">Series 4 — Clip Angles</div>
+        </div>
+      </header>
+
+      <img src="images/img_141.png" alt="Heavy Clip Angle 141 3D Render" class="article-image" style="max-height: 450px; object-fit: cover;">
+
+      <div class="article-body">
+        
+        <!-- VIETNAMESE -->
+        <div data-lang="vi">
+          <h2>1. TỔNG QUAN NHIỆM VỤ</h2>
+          <p>Khi lực cắt (Shear force) từ dầm phụ truyền vào dầm chính quá lớn, một vài bu lông bắt qua bản bụng thép góc thông thường (Macro 116) sẽ không đủ khả năng chịu tải. Chúng ta cần nâng cấp lên <strong>Clip angle (141)</strong> hoặc <strong>Two sided clip angle (143)</strong> để bổ sung các sườn gia cường đỡ đáy (bottom stiffeners) chịu tỳ trực tiếp.</p>
+          
+          <h2>2. BẢNG SO SÁNH ỨNG DỤNG</h2>
+          <table class="project-meta-table">
+            <tr>
+              <th>Component ID</th>
+              <th>Ứng dụng chính (Application)</th>
+              <th>Tính năng nâng cao (Advanced Features)</th>
+            </tr>
+            <tr>
+              <td><strong>141 (Clip angle)</strong></td>
+              <td>Dầm phụ chịu lực cắt cực nặng đâm vào bụng dầm/cột.</td>
+              <td>Có sườn đỡ đáy, vát góc (Haunch), bản đệm (Plate washers).</td>
+            </tr>
+            <tr>
+              <td><strong>143 (Two sided)</strong></td>
+              <td>2 Dầm phụ chịu tải nặng đối xứng nhau.</td>
+              <td>Sử dụng bu lông xuyên qua cả dầm chính và 2 thép góc.</td>
+            </tr>
+          </table>
+
+          <h2>3. THIẾT LẬP CHI TIẾT (DEEP DIVE)</h2>
+          <div class="highlight-box">
+            <strong>Tab Stiffeners & Haunch:</strong><br>
+            Đây là sức mạnh thực sự của Macro 141/143. Tùy chọn <em>Bottom Stiffener</em> sinh ra một bản mã dày hàn vuông góc vào dầm chính, tạo thành một "cái ghế" để dầm phụ tỳ đáy lên. Nó triệt tiêu gần như hoàn toàn ứng suất cắt trượt trên thân bu lông.
+          </div>
+          <p>Tab <strong>Plate washers</strong> cho phép tạo thêm các bản thép vuông dày lót dưới đầu đai ốc để phân tán lực siết, rất phù hợp cho các liên kết hạng nặng trong dầm cầu trục.</p>
+        </div>
+
+        <!-- ENGLISH -->
+        <div data-lang="en" style="display:none;">
+          <h2>1. INTRODUCTION</h2>
+          <p>When the shear force transferred from a secondary beam is massive, standard clip angles (Macro 116) reliant purely on bolt shear capacity will fail. We must upgrade to <strong>Clip angle (141)</strong> or <strong>Two sided clip angle (143)</strong> to incorporate bearing-type bottom stiffener plates.</p>
+          
+          <h2>2. USE CASES TABLE</h2>
+          <table class="project-meta-table">
+            <tr>
+              <th>Component ID</th>
+              <th>Primary Application</th>
+              <th>Advanced Features</th>
+            </tr>
+            <tr>
+              <td><strong>141 (Clip angle)</strong></td>
+              <td>Heavy shear secondary beam connecting to a primary web.</td>
+              <td>Bottom bearing stiffener, Haunches, Plate washers.</td>
+            </tr>
+            <tr>
+              <td><strong>143 (Two sided)</strong></td>
+              <td>2 Heavy shear beams opposing each other.</td>
+              <td>Through-bolts combining primary web and dual clip angles.</td>
+            </tr>
+          </table>
+
+          <h2>3. DEEP DIVE SETTINGS</h2>
+          <div class="highlight-box">
+            <strong>Stiffeners & Haunch Tab:</strong><br>
+            This is the true power of Macro 141/143. Enabling the <em>Bottom Stiffener</em> creates a thick welded plate projecting from the primary beam, forming a "seat" for the secondary beam to rest upon. This converts bolt shear stress into direct bearing pressure.
+          </div>
+          <p>The <strong>Plate washers</strong> tab allows inserting thick square washers under the nuts to distribute tightening forces, ideal for heavy crane runway beams.</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const langBtns = document.querySelectorAll('.lang-btn');
+      const viBlocks = document.querySelectorAll('[data-lang="vi"]');
+      const enBlocks = document.querySelectorAll('[data-lang="en"]');
+      langBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          langBtns.forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          const lang = e.target.getAttribute('data-target');
+          if (lang === 'vi') {
+            viBlocks.forEach(b => b.style.display = '');
+            enBlocks.forEach(b => b.style.display = 'none');
+          } else {
+            viBlocks.forEach(b => b.style.display = 'none');
+            enBlocks.forEach(b => b.style.display = '');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
