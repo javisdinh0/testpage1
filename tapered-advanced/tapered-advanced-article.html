@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tapered Advanced Connections (199, 200) • iViDLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 950px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.25; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-image { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); margin: 2rem 0; box-shadow: var(--shadow); background: rgba(255,255,255,0.02); }
+    .article-body { font-size: 1.12rem; line-height: 1.85; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); font-size: 1.8rem; margin: 2.5rem 0 1rem; }
+    .article-body h3 { color: var(--text-primary); font-size: 1.3rem; margin: 2rem 0 0.8rem; }
+    .article-body p { margin-bottom: 1.2rem; }
+    .article-body ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.5rem; }
+    
+    .highlight-box {
+      background: rgba(43, 235, 179, 0.05);
+      border-left: 4px solid var(--accent-cyan);
+      padding: 1.5rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 2rem 0;
+    }
+
+    .info-alert {
+      background: rgba(255, 165, 0, 0.1);
+      border-left: 4px solid orange;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+      color: var(--text-primary);
+    }
+    
+    .project-meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    .project-meta-table th, .project-meta-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    .project-meta-table th { background: rgba(255,255,255,0.05); }
+
+    .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+    .img-card { background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; text-align: center; }
+    .img-card img { max-width: 100%; border-radius: 4px; max-height: 250px; object-fit: contain; }
+    .img-card-title { font-size: 0.9rem; color: var(--text-primary); margin-top: 0.75rem; font-weight: 500; }
+  </style>
+</head>
+<body>
+  <div class="glow" style="top: 20%; left: 10%;"></div>
+  
+  <nav class="navbar">
+    <a href="../index.html" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      iViDLab
+    </a>
+    <div class="lang-toggle-wrapper">
+      <div class="lang-toggle" id="lang-toggle">
+        <div class="lang-btn active" data-target="vi">VN</div>
+        <div class="lang-btn" data-target="en">EN</div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <a href="../index.html" class="article-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-lang="vi">Trở về Trang chủ</span><span data-lang="en">Back to Home</span>
+      </a>
+      
+      <header class="article-header">
+        <h1 class="article-title" data-lang="vi">Các liên kết tổ hợp nâng cao: Tapered beam to beam (200) và Tapered column to tapered beam (199)</h1>
+        <h1 class="article-title" data-lang="en" style="display:none;">Advanced Built-up Connections: Tapered beam to beam (200) and Tapered column to tapered beam (199)</h1>
+        
+        <div class="article-meta">
+          <div class="article-meta-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span data-lang="vi">24 Tháng 05, 2026</span><span data-lang="en">May 24, 2026</span>
+          </div>
+          <div class="article-meta-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>20 min read</span>
+          </div>
+          <div class="article-meta-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <span>Series 3 — PEB Components</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Banner Images -->
+      <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+        <div style="flex: 1; position: relative;">
+          <img src="images/macro_199_render.png" alt="Macro 199 3D Render" class="article-image" style="width: 100%; max-height: 400px; object-fit: cover; padding: 0; border-radius: 8px; margin: 0;">
+          <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; color: #fff;">Macro 199: Tapered column to tapered beam</div>
+        </div>
+        <div style="flex: 1; position: relative;">
+          <img src="images/macro_200_render.png" alt="Macro 200 3D Render" class="article-image" style="width: 100%; max-height: 400px; object-fit: cover; padding: 0; border-radius: 8px; margin: 0;">
+          <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; color: #fff;">Macro 200: Tapered beam to beam</div>
+        </div>
+      </div>
+
+      <div class="article-body">
+        
+        <!-- ==================== VIETNAMESE LANG ==================== -->
+        <div data-lang="vi">
+          <h2>1. TỔNG QUAN NHIỆM VỤ & COMPONENT ID</h2>
+          <p>Để khép lại Series 3 về cấu kiện nhà thép tiền chế (PEB), chúng ta sẽ tìm hiểu bộ đôi liên kết tổ hợp cực kỳ quyền lực: <strong>Tapered column to tapered beam (199)</strong> và <strong>Tapered beam to beam (200)</strong>. Đây là hai công cụ chuyên trị các nút giao góc nách khung lệch (skewed knee joints) và đỉnh chóp (apex/ridge joints) của dầm thép vát tiết diện.</p>
+          <ul>
+            <li><strong>Macro 199:</strong> Nối dầm vát vào cột vát. Tự động sinh bản bích (end plates), sườn gia cường bản bụng (web stiffeners) và sườn gia cường bản cánh tam giác (triangular flange stiffeners).</li>
+            <li><strong>Macro 200:</strong> Nối hai dầm vát tại đỉnh nóc nhà. Sinh hai bản bích ghép lại, dàn bu lông và hệ thống sườn gia cường.</li>
+          </ul>
+
+          <h2>2. BẢNG SO SÁNH TRƯỜNG HỢP SỬ DỤNG (USE CASES)</h2>
+          <table class="project-meta-table">
+            <tr>
+              <th>Component ID</th>
+              <th>Ứng dụng chính (Application)</th>
+              <th>Cấu kiện yêu cầu (Required parts)</th>
+            </tr>
+            <tr>
+              <td><strong>199</strong></td>
+              <td>Knee Joint (Góc nách khung) kết nối cột và dầm vát. Hỗ trợ tốt các nách khung có góc lệch.</td>
+              <td>1 Dầm tổ hợp (Beam), 1 Cột tổ hợp (Column)</td>
+            </tr>
+            <tr>
+              <td><strong>200</strong></td>
+              <td>Apex/Ridge Joint (Đỉnh nóc khung) kết nối hai nửa dầm vát tại chính giữa nhịp nhà xưởng.</td>
+              <td>2 Dầm tổ hợp (Beams)</td>
+            </tr>
+          </table>
+
+          <h2>3. THỨ TỰ LỰA CHỌN (SELECTION ORDER)</h2>
+          <p>Khác với các liên kết I-beam thông thường, do các cấu kiện tổ hợp (Built-up) được tạo thành từ nhiều bản mã rời rạc (web, top flange, bottom flange), bạn <strong>BẮT BUỘC phải click chọn vào bản bụng (web)</strong> của cấu kiện khi thao tác.</p>
+          
+          <div class="highlight-box">
+            <strong>Trình tự click chuột:</strong>
+            <ol>
+              <li>Macro 199: Chọn bản bụng của dầm (Main part) -> Chọn bản bụng của cột (Secondary part).</li>
+              <li>Macro 200: Chọn bản bụng của dầm thứ nhất (Main part) -> Chọn bản bụng của dầm thứ hai (Secondary part).</li>
+            </ol>
+            <em>Liên kết sẽ tự động sinh ngay sau khi cấu kiện thứ 2 được chọn mà không cần nhấn chuột giữa.</em>
+          </div>
+
+          <h2>4. CHI TIẾT THIẾT LẬP (DEEP DIVE SETTINGS)</h2>
+          
+          <h3>Tab Picture (Kích thước sườn & Bản bích)</h3>
+          <p>Tại tab này, bạn có thể thiết lập cự ly của sườn gia cường (stiffener dimensions) và phần nhô ra của bản bích (end plate edge dimension).</p>
+          
+          <h3>Tab Parts & Parameters</h3>
+          <p>Định nghĩa chiều dày, mác thép (Material) và tiền tố đánh số (Prefix/Start No) cho tất cả các bản thép cấu thành liên kết (End plate, Web stiffener, Flange stiffener). Tại tab Parameters, bạn có thể thiết lập vát góc sườn (Stiffener chamfer dimensions).</p>
+
+          <h3>Tab Bolts</h3>
+          <p>Kiểm soát cấu hình mạng lưới bu lông: kích thước (Bolt size), dung sai (Tolerance) và khoảng cách các hàng/cột (Bolt spacing). Chú ý sử dụng dấu cách (space) để nhập danh sách bước bu lông.</p>
+
+          <h2>5. MẸO LẮP DỰNG & QUẢN LÝ SAI SỐ (ERRECTION TIPS)</h2>
+          <div class="info-alert" style="border-left-color: #ff4757; background: rgba(255, 71, 87, 0.05);">
+            <strong>CẢNH BÁO QUAN TRỌNG KHI RENDER & DETAILING:</strong><br>
+            Tuyệt đối không được hàn (weld) bản bích (End plates) vào cấu kiện chính tại vị trí đã có bu lông. Liên kết bu lông tại công trường (Site bolts) yêu cầu hai mặt bản bích tách rời nhau hoàn toàn và được siết chặt bằng bu lông. Nếu có bất kỳ đường hàn nào nối chết 2 bản bích hoặc nối bản bích vào cấu kiện đối diện, quá trình lắp ráp công trường sẽ hoàn toàn thất bại.
+          </div>
+          <div class="highlight-box">
+            <strong>Slotted Holes cho Macro 200 (Đỉnh chóp):</strong>
+            Khi cẩu lắp hai nửa mái dầm dài vài chục mét và ghép lại tại đỉnh chóp, sai số chế tạo và võng tự trọng là rất lớn. Hãy luôn sử dụng tùy chọn <strong>Slotted holes</strong> ở các hàng bu lông tại đỉnh (Tab Bolts) để tạo lỗ hình oval dài, giúp công nhân dễ dàng xỏ bu lông qua hai bản bích đang rung lắc trên cao.
+          </div>
+        </div>
+
+        <!-- ==================== ENGLISH LANG ==================== -->
+        <div data-lang="en" style="display:none;">
+          <h2>1. INTRODUCTION & COMPONENT ID</h2>
+          <p>To conclude Series 3 on Pre-Engineered Building (PEB) components, we explore two highly powerful built-up connections: <strong>Tapered column to tapered beam (199)</strong> and <strong>Tapered beam to beam (200)</strong>. These are specialized tools for handling skewed knee joints and apex/ridge joints of tapered steel profiles.</p>
+          <ul>
+            <li><strong>Macro 199:</strong> Connects a tapered beam to a tapered column. Automatically generates end plates, web stiffeners, and triangular flange stiffeners.</li>
+            <li><strong>Macro 200:</strong> Connects two tapered beams at the building's apex. Generates flush end plates, bolt groups, and stiffening systems.</li>
+          </ul>
+
+          <h2>2. USE CASES TABLE</h2>
+          <table class="project-meta-table">
+            <tr>
+              <th>Component ID</th>
+              <th>Primary Application</th>
+              <th>Required Parts</th>
+            </tr>
+            <tr>
+              <td><strong>199</strong></td>
+              <td>Knee Joint connecting tapered columns and beams. Ideal for skewed joints.</td>
+              <td>1 Built-up Beam, 1 Built-up Column</td>
+            </tr>
+            <tr>
+              <td><strong>200</strong></td>
+              <td>Apex/Ridge Joint connecting two beam halves at the center of the roof span.</td>
+              <td>2 Built-up Beams</td>
+            </tr>
+          </table>
+
+          <h2>3. SELECTION ORDER</h2>
+          <p>Unlike standard I-beam connections, because built-up parts consist of multiple individual plates, you <strong>MUST select the web plate</strong> of the component when applying the macro.</p>
+          
+          <div class="highlight-box">
+            <strong>Clicking Sequence:</strong>
+            <ol>
+              <li>Macro 199: Select the beam's web (Main part) -> Select the column's web (Secondary part).</li>
+              <li>Macro 200: Select the first beam's web (Main part) -> Select the second beam's web (Secondary part).</li>
+            </ol>
+            <em>The connection is created automatically upon selecting the second part.</em>
+          </div>
+
+          <h2>4. DEEP DIVE SETTINGS</h2>
+          
+          <h3>Picture Tab (Stiffener & Plate Dimensions)</h3>
+          <p>Here you can set stiffener placement dimensions and the end plate's edge distance projection.</p>
+          
+          <h3>Parts & Parameters Tab</h3>
+          <p>Define the thickness, material grade, and numbering prefix for all constituent plates (End plate, Web stiffener, Flange stiffener). The Parameters tab allows you to configure stiffener chamfer dimensions.</p>
+
+          <h3>Bolts Tab</h3>
+          <p>Controls the bolt array: Bolt size, hole tolerance, and spacing. Remember to use spaces to separate multiple spacing values.</p>
+
+          <h2>5. ERRECTION TIPS & TOLERANCE MANAGEMENT</h2>
+          <div class="info-alert" style="border-left-color: #ff4757; background: rgba(255, 71, 87, 0.05);">
+            <strong>CRITICAL DETAILING WARNING:</strong><br>
+            Absolutely NO WELDS are permitted on the bolted interfaces. Site-bolted connections require the mating faces of the end plates (or the end plate and column flange) to be completely un-welded. Generating weld seams that lock these interfaces together will make site erection impossible.
+          </div>
+          <div class="highlight-box">
+            <strong>Slotted Holes for Macro 200 (Apex Joint):</strong>
+            When lifting two massive roof rafters and joining them at the apex, fabrication tolerances and self-weight deflection can cause misalignment. Always utilize the <strong>Slotted holes</strong> option on the Bolts tab to create elongated holes, making it easier for site crews to insert bolts through the swaying end plates high in the air.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-copy">
+        <span data-lang="vi">© 2026 iViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+        <span data-lang="en">© 2026 iViDLab. Digital solutions for the construction industry.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const langBtns = document.querySelectorAll('.lang-btn');
+      const viBlocks = document.querySelectorAll('[data-lang="vi"]');
+      const enBlocks = document.querySelectorAll('[data-lang="en"]');
+
+      function switchLanguage(lang) {
+        langBtns.forEach(btn => {
+          if (btn.getAttribute('data-target') === lang) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+
+        if (lang === 'vi') {
+          viBlocks.forEach(b => b.style.display = '');
+          enBlocks.forEach(b => b.style.display = 'none');
+        } else {
+          viBlocks.forEach(b => b.style.display = 'none');
+          enBlocks.forEach(b => b.style.display = '');
+        }
+      }
+
+      langBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          switchLanguage(e.target.getAttribute('data-target'));
+        });
+      });
+    });
+  </script>
+</body>
+</html>
