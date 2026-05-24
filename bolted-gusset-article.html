@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolted Gusset (11) Guide — iViDLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .article-page { padding: 120px 2rem 5rem; position: relative; z-index: 1; }
+    .article-container { max-width: 950px; margin: 0 auto; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; box-shadow: var(--shadow); }
+    .article-header { margin-bottom: 2.5rem; }
+    .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 1.5rem; transition: var(--transition); }
+    .article-back:hover { transform: translateX(-5px); color: var(--accent-cyan); }
+    .article-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.25; }
+    .article-meta { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .article-image { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); margin: 2rem 0; box-shadow: var(--shadow); background: rgba(255,255,255,0.02); }
+    .article-body { font-size: 1.12rem; line-height: 1.85; color: var(--text-secondary); }
+    .article-body h2 { color: var(--text-primary); margin: 2.8rem 0 1.2rem; font-size: 1.85rem; font-family: 'Space Grotesk', sans-serif; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.5rem; }
+    .article-body h3 { color: var(--text-primary); margin: 2rem 0 1rem; font-size: 1.4rem; font-family: 'Space Grotesk', sans-serif; }
+    .article-body p { margin-bottom: 1.5rem; }
+    .article-body ul, .article-body ol { margin-bottom: 2rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.75rem; }
+    .highlight-box { background: rgba(99,179,237,0.03); border-left: 4px solid var(--accent-blue); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; border: 1px solid rgba(99,179,237,0.08); border-left-width: 4px; }
+    .info-alert { background: rgba(31,138,128,0.03); border-left: 4px solid var(--accent-cyan); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; border: 1px solid rgba(31,138,128,0.08); border-left-width: 4px; }
+    
+    .tech-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.95rem; }
+    .tech-table th { background: rgba(255,255,255,0.03); color: var(--text-primary); font-weight: 600; text-align: left; padding: 1rem; border: 1px solid var(--border); }
+    .tech-table td { padding: 1rem; border: 1px solid var(--border); vertical-align: top; color: var(--text-secondary); }
+    .tech-table tr:nth-child(even) { background: rgba(255,255,255,0.01); }
+    
+    .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+    .img-card { background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; text-align: center; }
+    .img-card img { max-width: 100%; border-radius: 4px; max-height: 250px; object-fit: contain; background: rgba(255,255,255,0.02); }
+    .img-card-title { font-size: 0.9rem; color: var(--text-primary); margin-top: 0.75rem; font-weight: 500; }
+    
+    .mermaid-styled { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin: 2rem 0; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text-primary); line-height: 1.5; }
+
+    @media (max-width: 768px) {
+      .article-title { font-size: 2.2rem; }
+      .article-container { padding: 1.5rem; }
+      .img-grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">iViDLab</span>
+        <span class="logo-bracket">/&gt;</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#home" class="nav-link"><span data-lang="vi">Trang Chủ</span><span data-lang="en">Home</span></a></li>
+        <li><a href="index.html#apps" class="nav-link"><span data-lang="vi">Giải Pháp</span><span data-lang="en">Solutions</span></a></li>
+        <li><a href="index.html#about" class="nav-link"><span data-lang="vi">Về Tôi</span><span data-lang="en">About</span></a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-select-lang="vi">VN</button>
+          <button class="lang-btn" data-select-lang="en">EN</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="article-page">
+    <div class="article-container">
+      <header class="article-header">
+        <a href="index.html" class="article-back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-lang="vi">Quay lại danh sách</span><span data-lang="en">Back to list</span>
+        </a>
+        <h1 class="article-title">
+          <span data-lang="vi">Hướng Dẫn Làm Chủ Liên Kết Bolted Gusset (11) Trong Tekla Structures</span>
+          <span data-lang="en">Mastering the Bolted Gusset (11) Connection in Tekla Structures</span>
+        </h1>
+        <div class="article-meta">
+          <span data-lang="vi">Chuyên mục: Tekla Structures</span><span data-lang="en">Category: Tekla Structures</span>
+          <span>•</span>
+          <span data-lang="vi">Ngày đăng: 24/05/2026</span><span data-lang="en">Published: May 24, 2026</span>
+          <span>•</span>
+          <span data-lang="vi">Tác giả: iViDLab Team</span><span data-lang="en">Author: iViDLab Team</span>
+        </div>
+      </header>
+
+      <img src="Pic1/bolted_gusset/page_368_img_1.png" alt="Bolted Gusset (11) Overview Illustration" class="article-image" style="max-height: 400px; object-fit: contain; padding: 2rem 0;">
+
+      <div class="article-body">
+        
+        <!-- ==================== VIETNAMESE LANG WRAPPER ==================== -->
+        <div data-lang="vi">
+          <p>Trong thiết kế kết cấu thép nhà công nghiệp và nhà cao tầng, hệ giằng (bracing system) đóng vai trò quyết định chịu lực ngang (gió, động đất, cầu trục). Việc liên kết hệ giằng vào dầm, cột chính sao cho vừa đảm bảo khả năng truyền lực, vừa tối ưu chi phí vật liệu và lắp dựng luôn là bài toán đau đầu của kỹ sư detailer. <strong>Bolted gusset (11)</strong> chính là "vũ khí hạng nặng" trong hệ thống thư viện liên kết của Tekla Structures giúp giải quyết bài toán này một cách tự động, chính xác và linh hoạt nhất.</p>
+
+          <p>Bài viết này được biên soạn bởi <strong>iViDLab Team</strong> dựa trên tài liệu chuẩn hóa <code>TS_COMP_2025_en_System components.pdf</code> giúp bạn hiểu sâu sắc nguyên lý hoạt động, các trường hợp ứng dụng thực tế và cách thiết lập các thông số nâng cao của liên kết này.</p>
+
+          <h2>1. Tổng quan về liên kết Bolted gusset (11)</h2>
+          <p>Liên kết <strong>Bolted gusset (11)</strong> dùng để liên kết từ <strong>1 đến 10 thanh giằng (braces)</strong> vào một cấu kiện chính (dầm hoặc cột) thông qua một bản mã chung (gusset plate).</p>
+          
+          <div class="info-alert">
+            <strong>💡 Cơ chế hoạt động cốt lõi:</strong>
+            <ul>
+              <li><strong>Bản mã chính (Gusset plate)</strong> được bắt bu lông hoặc hàn vào cấu kiện dầm/cột chính.</li>
+              <li><strong>Các thanh giằng (Braces)</strong> được xẻ rãnh hoặc ép phẳng và bắt bu lông trực tiếp vào bản mã chính.</li>
+              <li>Tùy chọn tạo thêm <strong>thép góc liên kết (clip angles)</strong> ở đầu các thanh giằng hoặc hai bên bản mã để tăng khả năng chống cắt/chịu kéo dọc.</li>
+            </ul>
+          </div>
+
+          <p>Hệ thống sẽ tự động tạo ra toàn bộ các cấu kiện phụ bao gồm: Bản mã (Gusset plate), Thép góc liên kết (Clip angle / Shear tab), Bản mã liên kết phụ (Connection plates), Bản bịt đầu thanh giằng ống (Seal plates), Bản gia cường dầm/cột (Stiffeners), hệ bu lông, đường hàn và các đường khuyết cắt thép.</p>
+
+          <h2>2. Thứ tự chọn cấu kiện khi thao tác (Selection Order)</h2>
+          <p>Quy trình thực hiện cuộc gọi cấu kiện vô cùng quan trọng. Để liên kết được sinh ra chính xác không bị ngược hoặc lệch trục, bạn hãy tuân thủ trình tự sau:</p>
+          
+          <div class="mermaid-styled">
+            1. Chọn cấu kiện chính (Cột hoặc Dầm)<br>
+            2. Chọn thanh giằng phụ thứ nhất (First brace)<br>
+            3. Chọn thanh giằng phụ thứ hai (Second brace)<br>
+            4. Chọn các thanh giằng tiếp theo (Tối đa lên đến 10 giằng)<br>
+            5. Nhấn nút chuột giữa (Middle mouse button) để kết thúc và kích hoạt dựng hình.
+          </div>
+
+          <h2>3. Các trường hợp ứng dụng thực tế (Use Cases & Situations)</h2>
+          <p>Bolted gusset (11) hỗ trợ hầu như mọi định dạng tiết diện giằng trên thực tế: Thép hộp rỗng (RHS/HSS), thép ống tròn (Tube), thép góc đơn/kép (L), thép chữ T (WT), thép hình chữ I...</p>
+
+          <div class="img-grid-2">
+            <div class="img-card">
+              <img src="Pic1/bolted_gusset/page_369_img_2.jpg" alt="RHS profile bracing" />
+              <div class="img-card-title">Thanh giằng thép hộp rỗng (RHS)</div>
+            </div>
+            <div class="img-card">
+              <img src="Pic1/bolted_gusset/page_370_img_1.png" alt="Tube profile bracing" />
+              <div class="img-card-title">Thanh giằng thép ống tròn (Tube)</div>
+            </div>
+            <div class="img-card">
+              <img src="Pic1/bolted_gusset/page_370_img_2.png" alt="T profile bracing" />
+              <div class="img-card-title">Thanh giằng thép hình chữ T</div>
+            </div>
+            <div class="img-card">
+              <img src="Pic1/bolted_gusset/page_370_img_3.png" alt="L profile bracing" />
+              <div class="img-card-title">Thanh giằng thép góc L đơn/kép</div>
+            </div>
+          </div>
+
+          <p>Đặc biệt, trong các kết cấu cột hộp rỗng (HSS columns), bản mã liên kết có thể cấu hình <strong>cắt xuyên qua thân cột</strong> (runs through the column) để liên kết giằng tại bản đế chân cột (base plate) vô cùng mạnh mẽ.</p>
+
+          <div class="img-grid-2">
+            <div class="img-card">
+              <img src="Pic1/bolted_gusset/page_374_img_1.png" alt="Part identification key" />
+              <div class="img-card-title">Sơ đồ cấu kiện (1: Bản mã xuyên cột, 2: Thép góc liên kết)</div>
+            </div>
+            <div class="img-card">
+              <img src="Pic1/bolted_gusset/page_373_img_1.png" alt="Through hollow section column base" />
+              <div class="img-card-title">Liên kết xuyên cột rỗng tại bản đế chân cột</div>
+            </div>
+          </div>
+
+          <h2>4. Hướng dẫn chi tiết thiết lập thông số các Tab</h2>
+
+          <h3>4.1. Tab Picture (Kích thước hình học & Vị trí)</h3>
+          <p>Tab này điều khiển hình dáng bản mã và khoảng cách tương đối giữa các cấu kiện.</p>
+          <img src="Pic1/bolted_gusset/page_375_img_1.png" alt="Picture tab settings layout" class="article-image" style="max-height: 350px; object-fit: contain;">
+          
+          <ul>
+            <li><strong>(1) Gap distance:</strong> Khoảng hở giữa mép bản mã và bề mặt dầm/cột chính.</li>
+            <li><strong>(2) Corner angle:</strong> Góc nghiêng vát cạnh bản mã (độ).</li>
+            <li><strong>(3) Edge length:</strong> Chiều dài cạnh vát bản mã.</li>
+            <li><strong>(4) Distance between braces:</strong> Khoảng cách khe hở giữa các thanh giằng giao nhau.</li>
+            <li><strong>(5) Distance to brace:</strong> Khoảng hở từ dầm/cột đến đầu thanh giằng.</li>
+            <li><strong>(6) Offset:</strong> Khoảng cách từ mép thép góc/bản mã đệm đến mép bản mã chính.</li>
+          </ul>
+
+          <h3>4.2. Tab Gusset (Bản mã & Kiểu liên kết dầm/cột)</h3>
+          <p>Định cấu hình chiều dày bản mã, thép góc liên kết (L profile) và cách thức bắt vào dầm/cột:</p>
+          <ul>
+            <li><strong>Welded directly:</strong> Bản mã hàn trực tiếp vào dầm/cột chính (không cần cấu kiện liên kết trung gian).</li>
+            <li><strong>Connected with clip angles:</strong> Tạo thép góc (clip angle) bắt bu lông/hàn bản mã vào dầm/cột. Bạn có thể chọn đặt thép góc ở một bên hoặc cả hai bên bản mã chính.</li>
+            <li><strong>Connected with connection plate:</strong> Sử dụng tấm liên kết đệm phẳng bắt bu lông vào dầm/cột chính.</li>
+          </ul>
+          
+          <img src="Pic1/bolted_gusset/page_380_img_1.png" alt="Gusset plate chamfer details" class="article-image" style="max-height: 280px; object-fit: contain;">
+          <p>Mục <strong>Gusset plate chamfer</strong> cho phép cài đặt vát góc bản mã tránh va chạm cánh dầm:
+            <ul>
+              <li><strong>(1)</strong> Khoảng cách từ tấm liên kết phụ tới cánh trong dầm/cột.</li>
+              <li><strong>(2), (3)</strong> Kích thước khe hở ngang/dọc tới bản cánh dầm/cột.</li>
+              <li><strong>(4), (5)</strong> Chiều ngang và chiều dọc góc vát bản mã chính.</li>
+            </ul>
+          </p>
+
+          <h3>4.3. Tab Brace conn (Xẻ rãnh giằng & Tấm bịt đầu)</h3>
+          <p>Khi sử dụng thanh giằng rỗng dạng hộp hoặc tròn, bạn bắt buộc phải xẻ đầu thanh giằng (notching/slotting) để đút lọt tấm bản mã chính qua. Tab này hỗ trợ:
+            <ul>
+              <li>Thiết lập chiều sâu xẻ rãnh dọc <strong>(1)</strong>, độ mở rộng khe ngang <strong>(2)</strong> và góc ngàm vát <strong>(3)</strong>.</li>
+              <li>Hỗ trợ bo tròn góc rãnh xẻ (Rounded notch) kèm bán kính bo để tránh nứt gãy mỏi vật liệu khi chịu tải lực biến động.</li>
+              <li>Bố trí tấm bịt đầu (Seal plate) ngăn nước, ẩm xâm nhập rỉ sét bên trong giằng.</li>
+            </ul>
+          </p>
+          <img src="Pic1/bolted_gusset/page_382_img_2.png" alt="Brace notch and slot shapes" class="article-image" style="max-height: 250px; object-fit: contain;">
+
+          <h3>4.4. Tab Stiffeners (Tấm gia cường dầm/cột)</h3>
+          <p>Thiết lập các tấm sườn gia cường bản bụng dầm/cột tại vị trí bản mã truyền lực vào:</p>
+          <img src="Pic1/bolted_gusset/page_383_img_1.png" alt="Stiffener layout settings" class="article-image" style="max-height: 280px; object-fit: contain;">
+          <ul>
+            <li>Cài đặt chiều dày sườn sấn giằng (Stiffener 1, 2).</li>
+            <li><strong>Stiffener length (1) & (2):</strong> Khoảng cách biên sườn đến mép bản mã và tổng chiều dài sườn gia cường.</li>
+            <li>Chọn kiểu vát góc sườn (Straight line, Convex/Concave arc).</li>
+          </ul>
+
+          <h3>4.5. Tab Gusset bolts (Bu lông liên kết vào cột/dầm)</h3>
+          <p>Quản lý nhóm bu lông trên bản mã hoặc thép góc liên kết nối vào cấu kiện chính:</p>
+          <img src="Pic1/bolted_gusset/page_385_img_2.png" alt="Gusset bolt group dimensions" class="article-image" style="max-height: 260px; object-fit: contain;">
+          <ul>
+            <li><strong>(1) Bolt edge distance:</strong> Khoảng cách từ tâm bu lông biên đến mép bản mã.</li>
+            <li><strong>(2) Number of bolts:</strong> Số lượng hàng bu lông.</li>
+            <li><strong>(3) Bolt spacing:</strong> Khoảng cách bước bu lông (ví dụ: `80 80` để định nghĩa 3 bu lông cách nhau 80mm).</li>
+            <li>Hỗ trợ xếp bu lông so le (Staggered) 4 kiểu để tối ưu hóa sự phân bố bu lông chịu kéo/cắt.</li>
+          </ul>
+
+          <h3>4.6. Tab Brace bolts 1 / 2 / 3 (Bu lông thanh giằng riêng biệt)</h3>
+          <p>Đặc quyền mạnh mẽ của Bolted gusset (11) là cho phép bạn tùy chỉnh nhóm bu lông riêng biệt cho thanh giằng 1, thanh giằng 2, và các thanh giằng tiếp theo trên các tab Brace bolts tương ứng.</p>
+          <img src="Pic1/bolted_gusset/page_391_img_1.png" alt="Brace bolt spacing details" class="article-image" style="max-height: 260px; object-fit: contain;">
+          <ul>
+            <li>Thiết lập bước bu lông, khoảng cách biên giằng và số lượng bu lông.</li>
+            <li><strong>Deleted bolts (6):</strong> Cho phép bạn xóa bỏ bu lông bất kỳ bằng cách điền số thứ tự của bu lông trong nhóm (nhập số cách nhau bởi dấu cách).</li>
+            <li>Tùy chọn tạo **lỗ oval (slotted holes)** để tạo dung sai lắp ghép hiện trường dễ dàng: chọn Hole type là *Slotted*, nhập kích thước lỗ oval chiều dọc/ngang và hướng xoay của lỗ oval (Rotate Slots).</li>
+          </ul>
+
+          <h3>4.7. Tab Angle bolts (Bu lông trên thép góc phụ)</h3>
+          <p>Cài đặt nhóm bu lông bắt trên thép góc liên kết dọc theo chiều dầm/cột chính:</p>
+          <img src="Pic1/bolted_gusset/page_396_img_1.png" alt="Angle bolts configuration" class="article-image" style="max-height: 250px; object-fit: contain;">
+          <ul>
+            <li>Cài đặt số lượng bu lông **(1)**, bước bu lông **(2)**, khoảng cách biên thép góc **(3)** và khoảng cách thép góc tới thanh giằng **(4)**.</li>
+          </ul>
+
+          <h2>5. Mẹo tối ưu hóa thiết kế trong thực tế (Tips & Tricks)</h2>
+          <div class="highlight-box">
+            <ul>
+              <li><strong>Tận dụng AutoDefaults:</strong> Cấu kiện số 11 liên kết chặt chẽ với tệp cấu hình hệ thống `joints.def`. Bạn có thể để trống các ô kích thước bu lông và chiều dày bản mã chính để Tekla tự động tính toán kích thước an toàn nhất dựa trên cường độ vật liệu dầm/cột đầu vào.</li>
+              <li><strong>Trình tự chọn quyết định vị trí tối ưu:</strong> Khi bật tính năng *Optimize gusset plate weight* trên tab Gusset, thanh giằng được quét chọn đầu tiên trong mô hình sẽ được kéo sát cấu kiện chính nhất, giúp thu hẹp tiết diện bản mã tối đa, giảm khối lượng thép thừa.</li>
+              <li><strong>Giải pháp dung sai hiện trường:</strong> Luôn sử dụng tùy chọn lỗ oval (Slotted holes) tại đầu các thanh giằng. Điều này sẽ giúp công nhân ngoài công trường lắp ráp bu lông cực kỳ dễ dàng mà không bị kẹt khi hệ khung chính có sai số chế tạo nhỏ.</li>
+            </ul>
+          </div>
+
+          <p>Hi vọng bài viết hướng dẫn chuyên sâu này của <strong>iViDLab</strong> sẽ là cẩm nang hữu ích giúp bạn hoàn toàn làm chủ cấu kiện **Bolted gusset (11)** trong công tác thiết kế chi tiết kết cấu thép Zamil và nhà công nghiệp nhịp lớn!</p>
+        </div>
+
+
+        <!-- ==================== ENGLISH LANG WRAPPER ==================== -->
+        <div data-lang="en" style="display: none;">
+          <p>In structural steel design for industrial and high-rise buildings, the bracing system plays a decisive role in resisting lateral loads (wind, seismic, cranes). Connecting the bracing system to main beams and columns while ensuring efficient load transfer, cost-optimized materials, and smooth erection is always a detailing challenge. <strong>Bolted gusset (11)</strong> is the ultimate "heavy weapon" in the Tekla Structures system connection catalog, designed to solve this task automatically, precisely, and highly flexibly.</p>
+
+          <p>This comprehensive guide is prepared by the <strong>iViDLab Team</strong> based on the standardized <code>TS_COMP_2025_en_System components.pdf</code> reference manual, giving you a deep dive into its mechanics, practical use cases, and advanced parameter setups.</p>
+
+          <h2>1. Overview of Bolted gusset (11) Connection</h2>
+          <p>The <strong>Bolted gusset (11)</strong> system component connects **1 to 10 braces** to a single main part (beam or column) using a shared gusset plate.</p>
+          
+          <div class="info-alert">
+            <strong>💡 Core Operational Logic:</strong>
+            <ul>
+              <li>The **Gusset plate** is bolted or welded directly to the main beam or column.</li>
+              <li>The **Braces** are slotted or flattened and bolted directly onto the gusset plate.</li>
+              <li>Optional **clip angles** can be created at the ends of the braces or on each side of the gusset plate to increase shear and tension capacity.</li>
+            </ul>
+          </div>
+
+          <p>The component automatically generates all required detailing parts: Gusset plates, Clip angles/Shear tabs, Connection plates, Seal plates (for hollow/tube braces), Stiffeners, bolt groups, welds, and cut-outs.</p>
+
+          <h2>2. Selection Order (Picking Coordinates)</h2>
+          <p>The picking order of elements is critical. To ensure the connection is correctly aligned along the workplane without being reversed, strictly follow this sequence:</p>
+          
+          <div class="mermaid-styled">
+            1. Select the main part (Column or Beam)<br>
+            2. Select the first secondary part (First brace)<br>
+            3. Select the second secondary part (Second brace)<br>
+            4. Select subsequent secondary parts (Up to 10 braces in total)<br>
+            5. Click the middle mouse button to commit and generate the connection.
+          </div>
+
+          <h2>3. Practical Use Cases & Situations</h2>
+          <p>Bolted gusset (11) supports almost all industry-standard brace profiles: Hollow Structural Sections (RHS/HSS), circular tubes (CHS), single/twin angle bars (L), structural tees (WT), and wide-flange I-sections.</p>
+
+          <div class="img-grid-2">
+            <div class="img-card">
+              <img src="Pic1/bolted_gusset/page_369_img_2.jpg" alt="RHS profile bracing" />
+              <div class="img-card-title">Hollow Section (RHS) Bracing</div>
+            </div>
+            <div class="img-card">
+              <img src="Pic1/bolted_gusset/page_370_img_1.png" alt="Tube profile bracing" />
+              <div class="img-card-title">Circular Tube (CHS) Bracing</div>
+            </div>
+            <div class="img-card">
+              <img src="Pic1/bolted_gusset/page_370_img_2.png" alt="T profile bracing" />
+              <div class="img-card-title">T-Section Bracing</div>
+            </div>
+            <div class="img-card">
+              <img src="Pic1/bolted_gusset/page_370_img_3.png" alt="L profile bracing" />
+              <div class="img-card-title">Angle Bar (L) Bracing (Single/Twin)</div>
+            </div>
+          </div>
+
+          <p>Notably, for HSS hollow section columns, the gusset plate can be configured to **run through the column** (passing completely through) to connect bracing at the base plate level, providing exceptionally robust load-bearing nodes.</p>
+
+          <div class="img-grid-2">
+            <div class="img-card">
+              <img src="Pic1/bolted_gusset/page_374_img_1.png" alt="Part identification key" />
+              <div class="img-card-title">Part Key (1: Through Gusset, 2: Clip Angle)</div>
+            </div>
+            <div class="img-card">
+              <img src="Pic1/bolted_gusset/page_373_img_1.png" alt="Through hollow section column base" />
+              <div class="img-card-title">Through Hollow Column Connection at Base Plate</div>
+            </div>
+          </div>
+
+          <h2>4. Detailed Configuration Tabs & Parameters</h2>
+
+          <h3>4.1. Picture Tab (Geometry & Positioning)</h3>
+          <p>Controls the shape of the gusset plate and relative clearances between parts.</p>
+          <img src="Pic1/bolted_gusset/page_375_img_1.png" alt="Picture tab settings layout" class="article-image" style="max-height: 350px; object-fit: contain;">
+          
+          <ul>
+            <li><strong>(1) Gap distance:</strong> The gap clearance between the gusset plate edge and the main part.</li>
+            <li><strong>(2) Corner angle:</strong> The slope angle of the gusset plate corner (in degrees).</li>
+            <li><strong>(3) Edge length:</strong> Defines the length of the skewed edge on the gusset plate.</li>
+            <li><strong>(4) Distance between braces:</strong> Clear distance between crossing bracing elements.</li>
+            <li><strong>(5) Distance to brace:</strong> Distance from the main part center/edge to the end of the brace.</li>
+            <li><strong>(6) Offset:</strong> Distance from the clip angle/connection plate edge to the gusset plate edge.</li>
+          </ul>
+
+          <h3>4.2. Gusset Tab (Plate and Connection Types)</h3>
+          <p>Sets thicknesses of plates, clip angle profile catalog entries (L profile), and beam/column attachment methods:</p>
+          <ul>
+            <li><strong>Welded directly:</strong> The gusset plate is welded directly to the main column/beam web or flange.</li>
+            <li><strong>Connected with clip angles:</strong> Installs clip angles to bolt or weld the gusset to the main part. Available as single-sided (Left/Right) or double-sided.</li>
+            <li><strong>Connected with connection plate:</strong> Uses a flat splice/connection plate bolted to the main part.</li>
+          </ul>
+          
+          <img src="Pic1/bolted_gusset/page_380_img_1.png" alt="Gusset plate chamfer details" class="article-image" style="max-height: 280px; object-fit: contain;">
+          <p>The **Gusset plate chamfer** parameters allow fine-tuning the plate profile to clear column/beam flanges:
+            <ul>
+              <li><strong>(1)</strong> Clearance distance from the connection plate to the inner flange.</li>
+              <li><strong>(2), (3)</strong> Horizontal/vertical clearance to the main flange.</li>
+              <li><strong>(4), (5)</strong> Horizontal and vertical dimensions of the gusset plate corner chamfer.</li>
+            </ul>
+          </p>
+
+          <h3>4.3. Brace Conn Tab (Notches, Slots & Seal Plates)</h3>
+          <p>When using hollow section braces, you must slot (notch) the ends of the braces to let the gusset plate pass through. This tab defines:
+            <ul>
+              <li>Vertical notch depth **(1)**, horizontal slot opening **(2)**, and skewed notch angle **(3)**.</li>
+              <li>Allows bo-rounded corner slots (Rounded notch) with custom radii to avoid high fatigue stress concentration.</li>
+              <li>Option to add a Seal plate to weld and seal the hollow tubes against water ingress and internal corrosion.</li>
+            </ul>
+          </p>
+          <img src="Pic1/bolted_gusset/page_382_img_2.png" alt="Brace notch and slot shapes" class="article-image" style="max-height: 250px; object-fit: contain;">
+
+          <h3>4.4. Stiffeners Tab (Main Part Reinforcements)</h3>
+          <p>Defines column/beam web stiffeners placed at high-stress force entry locations:</p>
+          <img src="Pic1/bolted_gusset/page_383_img_1.png" alt="Stiffener layout settings" class="article-image" style="max-height: 280px; object-fit: contain;">
+          <ul>
+            <li>Thickness of stiffeners (Stiffener 1, 2).</li>
+            <li><strong>Stiffener length (1) & (2):</strong> Gap from stiffener edge to gusset edge, and total stiffener length.</li>
+            <li>Selects the chamfer style (Straight line, Convex/Concave arc).</li>
+          </ul>
+
+          <h3>4.5. Gusset Bolts Tab (Main Part Connection Bolts)</h3>
+          <p>Controls the bolt groups connecting the gusset plate or clip angles to the column/beam:</p>
+          <img src="Pic1/bolted_gusset/page_385_img_2.png" alt="Gusset bolt group dimensions" class="article-image" style="max-height: 260px; object-fit: contain;">
+          <ul>
+            <li><strong>(1) Bolt edge distance:</strong> Gap from bolt center to the outer edge of the plate.</li>
+            <li><strong>(2) Number of bolts:</strong> Column row count of bolts.</li>
+            <li><strong>(3) Bolt spacing:</strong> Steps between bolts (e.g., `80 80` for 3 bolts spaced 80mm apart).</li>
+            <li>Supports bolt staggering (Staggered Type 1 to 4) to optimize block shear resistance.</li>
+          </ul>
+
+          <h3>4.6. Brace Bolts 1 / 2 / 3 Tabs (Individual Bracing Bolt Groups)</h3>
+          <p>A very powerful aspect of Bolted gusset (11) is the ability to configure independent bolt group settings for brace 1, brace 2, and brace 3 separately on their respective tabs.</p>
+          <img src="Pic1/bolted_gusset/page_391_img_1.png" alt="Brace bolt spacing details" class="article-image" style="max-height: 260px; object-fit: contain;">
+          <ul>
+            <li>Sets bolt pitch spacing, edge distances, and column counts.</li>
+            <li><strong>Deleted bolts (6):</strong> Exclude individual bolts by entering their sequence number in the group (separated by space).</li>
+            <li>Supports **Slotted holes** for field erection adjustments: change Hole type to *Slotted*, specify vertical/horizontal slotted slot sizes, and rotate the slot orientation (Rotate Slots).</li>
+          </ul>
+
+          <h3>4.7. Angle Bolts Tab (Clip Angle Bolts)</h3>
+          <p>Governs bolt dimensions and pitch values for the connection angles:</p>
+          <img src="Pic1/bolted_gusset/page_396_img_1.png" alt="Angle bolts configuration" class="article-image" style="max-height: 250px; object-fit: contain;">
+          <ul>
+            <li>Defines bolt counts **(1)**, spacings **(2)**, edge distance **(3)**, and angle-to-brace clearance **(4)**.</li>
+          </ul>
+
+          <h2>5. Expert Erection and Design Tips (Tips & Tricks)</h2>
+          <div class="highlight-box">
+            <ul>
+              <li><strong>Utilize AutoDefaults:</strong> Component 11 interacts seamlessly with the system `joints.def` file. You can leave bolt sizes and plate thicknesses empty to let Tekla automatically calculate safe designs based on active project materials.</li>
+              <li><strong>Picking Sequence Matters:</strong> When enabling *Optimize gusset plate weight* on the Gusset tab, the first brace selected during coordinate picking will be placed closest to the beam/column. This shrinks the overall gusset area, reducing raw steel weight.</li>
+              <li><strong>Site Tolerance Adjustments:</strong> Always use slotted holes at brace-to-gusset interfaces. This guarantees site erection crews can easily bolt elements together without getting stuck due to manufacturing tolerances or frame offsets.</li>
+            </ul>
+          </div>
+
+          <p>We hope this comprehensive detailing guide from **iViDLab** acts as a valuable resource to help you fully master the **Bolted gusset (11)** connection in your large-span steel frame detailing projects!</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-copy">
+        <span data-lang="vi">© 2026 iViDLab. Giải pháp số hóa cho ngành xây dựng.</span>
+        <span data-lang="en">© 2026 iViDLab. Digital solutions for the construction industry.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js?v=1.0.1"></script>
+</body>
+</html>
